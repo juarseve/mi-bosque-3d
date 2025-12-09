@@ -10,6 +10,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof(AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
+        // --- NUEVO: Referencia al Animator ---
+        [Header("Animaciones")]
+        [SerializeField] private Animator m_Animator;
+        // -------------------------------------
         [SerializeField] private bool m_IsWalking;
         public bool m_IsRunning;
         [SerializeField] public float m_WalkSpeed;
@@ -106,6 +110,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             // -------------------------------------------
+
+            // --- NUEVO: Si no asignaste el Animator manualmenten, intenta buscarlo en los hijos ---
+            if (m_Animator == null)
+            {
+                m_Animator = GetComponentInChildren<Animator>();
+            }
+            // ------------------------------------------------------------------------------------
 
 #if UNITY_ANDROID || UNITY_IOS
             joystick.SetActive(true);
@@ -224,8 +235,25 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             ProgressStepCycle(speed);
             UpdateCameraPosition(speed);
+            UpdateAnimator();
         }
+        // --- NUEVO: Función para controlar la animación ---
+        private void UpdateAnimator()
+        {
+            if (m_Animator == null) return;
 
+            // Calculamos la velocidad horizontal real (ignorando el salto/eje Y)
+            Vector3 horizontalVelocity = m_CharacterController.velocity;
+            horizontalVelocity.y = 0;
+
+            // Obtenemos la magnitud (velocidad actual de 0 a X)
+            float currentSpeed = horizontalVelocity.magnitude;
+
+            // Enviamos el valor al Animator. 
+            // Usamos DampTime (0.1f) para que la transición sea suave y no brusca.
+            m_Animator.SetFloat("Speed", currentSpeed, 0.1f, Time.fixedDeltaTime);
+        }
+        // --------------------------------------------------
         // --- [TPS] NUEVA LÓGICA DE ROTACIÓN ---
         private void RotateCameraManual()
         {
@@ -252,6 +280,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             m_AudioSource.clip = m_JumpSound;
             m_AudioSource.Play();
+            // --- NUEVO: Activar la animación de salto ---
+            if (m_Animator != null)
+            {
+                m_Animator.SetTrigger("Jump");
+            }
+            // --------------------------------------------
         }
 
         private void ProgressStepCycle(float speed)

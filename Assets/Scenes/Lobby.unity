@@ -39926,6 +39926,7 @@ MonoBehaviour:
   UnpausedSnapshot: {fileID: 24500006, guid: 12b4a7a7fbce6024e8687b4657c3ab44, type: 2}
   fadeTime: 1
   manejadorJuego: {fileID: 0}
+  pistaexplicacion: {fileID: 0}
   actionLogger: {fileID: 0}
 --- !u!1001 &639618033
 PrefabInstance:
@@ -70744,18 +70745,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2519
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 14300000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_Height
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 14300000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_Radius
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 14300000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 14300000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_Center.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8200000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
@@ -70787,6 +70792,11 @@ PrefabInstance:
       propertyPath: MinDistance
       value: 1.1802063
       objectReference: {fileID: 0}
+    - target: {fileID: 4234785457508548590, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f8b5e113076508b4a990328b0b7f4bae, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
 --- !u!1 &1135869720
@@ -86125,6 +86135,7 @@ MonoBehaviour:
   fpsController: {fileID: 1503623491}
   rayLength: 5
   fpsCamera: {fileID: 1152084303}
+  interactionOrigin: {fileID: 0}
   layerToHit:
     serializedVersion: 2
     m_Bits: 1024
@@ -86142,6 +86153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imagenes: []
   nombres: []
+  nombresView: []
   isDiscovered: 
   isLoaded: 
   descripciones: []
@@ -86282,7 +86294,7 @@ CapsuleCollider:
   m_Radius: 0.6
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &1505135731
 PrefabInstance:
   m_ObjectHideFlags: 0
