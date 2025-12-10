@@ -46,7 +46,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public float mouseSensitivity = 2f; // Velocidad del mouse
         private float rotX = 0f; // Acumulador rotación vertical
         private float rotY = 0f; // Acumulador rotación horizontal
-        // -------------------------------------------
+                                 // -------------------------------------------
+
+        private float m_JumpTimestamp = 0; // Para controlar el tiempo entre saltos
+        private float m_MinJumpInterval = 0.25f; // Tiempo mínimo entre saltos
 
         private Camera m_Camera;
         public bool m_Jump;
@@ -152,7 +155,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 #elif UNITY_EDITOR || UNITY_STANDALONE_WIN || UNITY_STANDALONE
             if (!m_Jump)
             {
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+                if (CrossPlatformInputManager.GetButtonDown("Jump") && Time.time >= m_JumpTimestamp)
+                {
+                    m_Jump = true;
+                    m_JumpTimestamp = Time.time + m_MinJumpInterval; // Reseteamos el contador
+                }
             }
 #endif
 
@@ -252,6 +259,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // Enviamos el valor al Animator. 
             // Usamos DampTime (0.1f) para que la transición sea suave y no brusca.
             m_Animator.SetFloat("Speed", currentSpeed, 0.1f, Time.fixedDeltaTime);
+
+            m_Animator.SetBool("IsGrounded", m_CharacterController.isGrounded);
         }
         // --------------------------------------------------
         // --- [TPS] NUEVA LÓGICA DE ROTACIÓN ---
@@ -340,8 +349,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             float horizontal = RunAxis.x;
             float vertical = RunAxis.y;
 #elif UNITY_EDITOR || UNITY_STANDALONE_WIN || UNITY_STANDALONE
-            float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
 #endif
             bool waswalking = m_IsWalking;
 #if !MOBILE_INPUT
