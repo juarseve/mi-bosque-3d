@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -50,8 +50,58 @@ public class WallTrigger_2 : MonoBehaviour
     void Start()
     {
         usadas = new List<int>();
-        NL = GameObject.Find("NotifLogros").GetComponent<NotificarLogros>();
+        
+        var notifLogrosObj = GameObject.Find("NotifLogros");
+        if (notifLogrosObj != null)
+        {
+            NL = notifLogrosObj.GetComponent<NotificarLogros>();
+        }
+        
         actionLogger = GameObject.Find("ActionLogger");
+        if (actionLogger == null)
+        {
+            Debug.LogWarning("WallTrigger_2: No se encontró el GameObject 'ActionLogger'");
+        }
+    }
+    
+    // Maneja el cursor cuando la aplicación recupera el foco (Alt+Tab)
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if (hasFocus)
+        {
+            // Si hay una interfaz de preguntas o feedback activa, restaurar el cursor
+            bool hasActiveUI = false;
+            
+            if (canvasPreguntasImagenes != null && canvasPreguntasImagenes.activeInHierarchy)
+            {
+                hasActiveUI = true;
+            }
+            
+            if (canvasFeedback != null && canvasFeedback.activeInHierarchy)
+            {
+                hasActiveUI = true;
+            }
+            
+            // También verificar si el juego está pausado
+            if (MenuPausa.IsPaused || MenuPausa.IsPausedByOtherCanvas)
+            {
+                hasActiveUI = true;
+            }
+            
+            if (hasActiveUI)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                Debug.Log("WallTrigger_2: Cursor restaurado porque hay interfaz activa");
+            }
+            else
+            {
+                // Si no hay UI activa, bloquear el cursor para modo 3ª persona
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                Debug.Log("WallTrigger_2: Cursor bloqueado porque no hay interfaz activa");
+            }
+        }
     }
 
     public void DestroyScriptInstance()
@@ -100,6 +150,11 @@ public class WallTrigger_2 : MonoBehaviour
 ;
 
         canvasPreguntasImagenes.SetActive(true);
+        
+        // Asegurar que el cursor esté visible y desbloqueado para la interfaz
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        
         Debug.Log("WALL TRIGGER 2 SCRIPT");
         Debug.Log("END ENUM PREG");
         NL.cerrar();
@@ -140,91 +195,233 @@ public class WallTrigger_2 : MonoBehaviour
 
     private void RespuestaIncorrecta(string opt)
     {
+        if (q == null)
+        {
+            Debug.LogError("WallTrigger_2: La pregunta (q) es null en RespuestaIncorrecta");
+            return;
+        }
+        
         //aqui
-        actionLogger.GetComponent<ActionLogger>().actionLogger.agregarAccion(pregunta.text, "incorrecta");
+        if (actionLogger != null && actionLogger.GetComponent<ActionLogger>() != null && 
+            actionLogger.GetComponent<ActionLogger>().actionLogger != null && pregunta != null)
+        {
+            actionLogger.GetComponent<ActionLogger>().actionLogger.agregarAccion(pregunta.text, "incorrecta");
+        }
         Debug.Log("WALL TRIGGER 2 SCRIPT");
         Debug.Log("BEGIN RESPUESTA INC");
-        canvasPreguntasImagenes.SetActive(false);
+        
+        if (canvasPreguntasImagenes != null)
+        {
+            canvasPreguntasImagenes.SetActive(false);
+        }
+        
+        // Asegurar que el cursor esté visible cuando se muestra el feedback
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        
+        // Asegurar que el cursor esté visible cuando se muestra el feedback
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
-        canvasFeedback.transform.Find("Titulo correcto").gameObject.SetActive(false);
-        canvasFeedback.transform.Find("Subtitulo correcto").gameObject.SetActive(false);
-        canvasFeedback.transform.Find("Titulo incorrecto").gameObject.SetActive(true);
-        pacoCorrecto.SetActive(false);
-        pacoIncorrecto.SetActive(true);
-        canvasFeedback.transform.Find("Feedback").gameObject.GetComponent<Text>().text = feedback;
-        canvasFeedback.transform.Find("check").gameObject.SetActive(false);
-        canvasFeedback.transform.Find("cross").gameObject.SetActive(true);
-        f_Imagen.sprite = Resources.Load<Sprite>("Questions/Images3/" + q.ChallengeID);
-        canvasFeedback.transform.Find("Button").gameObject.GetComponent<Button>().onClick.AddListener(CloseFeedbackCanvas);
-        canvasFeedback.transform.localPosition.Set(33.28f, -0.8f, 0);
-        Debug.Log("marca");
-        canvasFeedback.SetActive(true);
+        if (canvasFeedback != null)
+        {
+            var tituloCorrecto = canvasFeedback.transform.Find("Titulo correcto");
+            if (tituloCorrecto != null) tituloCorrecto.gameObject.SetActive(false);
+            
+            var subtituloCorrecto = canvasFeedback.transform.Find("Subtitulo correcto");
+            if (subtituloCorrecto != null) subtituloCorrecto.gameObject.SetActive(false);
+            
+            var tituloIncorrecto = canvasFeedback.transform.Find("Titulo incorrecto");
+            if (tituloIncorrecto != null) tituloIncorrecto.gameObject.SetActive(true);
+            
+            var feedbackText = canvasFeedback.transform.Find("Feedback")?.gameObject?.GetComponent<Text>();
+            if (feedbackText != null)
+            {
+                feedbackText.text = feedback;
+            }
+            
+            var checkObj = canvasFeedback.transform.Find("check");
+            if (checkObj != null) checkObj.gameObject.SetActive(false);
+            
+            var crossObj = canvasFeedback.transform.Find("cross");
+            if (crossObj != null) crossObj.gameObject.SetActive(true);
+            
+            if (f_Imagen != null && q != null)
+            {
+                f_Imagen.sprite = Resources.Load<Sprite>("Questions/Images3/" + q.ChallengeID);
+            }
+            
+            var buttonObj = canvasFeedback.transform.Find("Button");
+            if (buttonObj != null)
+            {
+                var button = buttonObj.gameObject.GetComponent<Button>();
+                if (button != null)
+                {
+                    button.onClick.RemoveAllListeners();
+                    button.onClick.AddListener(CloseFeedbackCanvas);
+                }
+            }
+            
+            canvasFeedback.transform.localPosition.Set(33.28f, -0.8f, 0);
+            canvasFeedback.SetActive(true);
+        }
+        
+        if (pacoCorrecto != null) pacoCorrecto.SetActive(false);
+        if (pacoIncorrecto != null) pacoIncorrecto.SetActive(true);
 
-        mochila.desbloquearPregunta(q.ChallengeID, false);
+        if (mochila != null && q != null)
+        {
+            mochila.desbloquearPregunta(q.ChallengeID, false);
+        }
         Debug.Log("WALL TRIGGER 2 SCRIPT");
         Debug.Log("END RESP INC");
     }
 
     private void CloseFeedbackCanvas()
     {
-        canvasFeedback.GetComponent<Animator>().SetBool("show", true);
-        MenuPausa.instance.Reanudar();
-        GameObject.FindGameObjectWithTag("Player").GetComponent<MouseController>().enabled = true;
-        EventManager.eventManager.TriggerEvent(nombreEvento);
-        EventManager.StopListening(nombreEvento);
-        controlPanel.GetComponent<Animator>().SetBool("hide", false);
+        if (canvasFeedback != null)
+        {
+            var animator = canvasFeedback.GetComponent<Animator>();
+            if (animator != null)
+            {
+                animator.SetBool("show", true);
+            }
+        }
+        
+        // Asegurar que el cursor esté bloqueado y oculto cuando se cierra el feedback
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        
+        if (MenuPausa.instance != null)
+        {
+            MenuPausa.instance.Reanudar();
+        }
+        
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            var mouseController = player.GetComponent<MouseController>();
+            if (mouseController != null)
+            {
+                mouseController.enabled = true;
+            }
+        }
+        
+        if (EventManager.eventManager != null)
+        {
+            EventManager.eventManager.TriggerEvent(nombreEvento);
+            EventManager.StopListening(nombreEvento);
+        }
+        
+        if (controlPanel != null)
+        {
+            var animator = controlPanel.GetComponent<Animator>();
+            if (animator != null)
+            {
+                animator.SetBool("hide", false);
+            }
+        }
     }
 
     private void RespuestaCorrecta(string opt)
     {
+        if (q == null)
+        {
+            Debug.LogError("WallTrigger_2: La pregunta (q) es null en RespuestaCorrecta");
+            return;
+        }
+        
         Debug.Log("mandar a server :" + q.codename +"-" + q.image + "-" + "Bosque-Estación " + n_estacion + "-"+ opt + "-" + q.question);
         
-        if (!GameManager.OfflineMode)
+        if (!GameManager.OfflineMode && Peticiones.instance != null && Player.instance != null && Player.instance.playerData != null)
         {
             Peticiones.instance.registerPregunta(Player.instance.playerData, System.DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), opt, "Bosque-Estación " + n_estacion, ""+q.codename);
         }
             Debug.Log("WALL TRIGGER 2 SCRIPT");
         Debug.Log("BEGIN RESP CORRECTA");
-        canvasPreguntasImagenes.SetActive(false);
-        actionLogger.GetComponent<ActionLogger>().actionLogger.agregarAccion(pregunta.text, "correcta");
+        if (canvasPreguntasImagenes != null)
+        {
+            canvasPreguntasImagenes.SetActive(false);
+        }
+        
+        // Asegurar que el cursor esté visible cuando se muestra el feedback
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        
+        if (actionLogger != null && actionLogger.GetComponent<ActionLogger>() != null && 
+            actionLogger.GetComponent<ActionLogger>().actionLogger != null && pregunta != null)
+        {
+            actionLogger.GetComponent<ActionLogger>().actionLogger.agregarAccion(pregunta.text, "correcta");
+        }
 
-        canvasFeedback.transform.Find("Titulo correcto").gameObject.SetActive(true);
-        canvasFeedback.transform.Find("Subtitulo correcto").gameObject.SetActive(true);
-        canvasFeedback.transform.Find("Titulo incorrecto").gameObject.SetActive(false);
-        pacoCorrecto.SetActive(true);
-        pacoIncorrecto.SetActive(false);
-        canvasFeedback.transform.Find("Feedback").gameObject.GetComponent<Text>().text = feedback;
-        canvasFeedback.transform.Find("check").gameObject.SetActive(true);
-        canvasFeedback.transform.Find("cross").gameObject.SetActive(false);
-        f_Imagen.sprite = Resources.Load<Sprite>("Questions/Images3/" + q.ChallengeID);
-        //TOPO AQUI
-        canvasFeedback.transform.Find("Button").gameObject.GetComponent<Button>().onClick.AddListener(CloseFeedbackCanvas);
-        canvasFeedback.transform.localPosition.Set(33.28f, -0.8f, 0);
-        Debug.Log("marca");
-        canvasFeedback.SetActive(true);
+        if (canvasFeedback != null)
+        {
+            var tituloCorrecto = canvasFeedback.transform.Find("Titulo correcto");
+            if (tituloCorrecto != null) tituloCorrecto.gameObject.SetActive(true);
+            
+            var subtituloCorrecto = canvasFeedback.transform.Find("Subtitulo correcto");
+            if (subtituloCorrecto != null) subtituloCorrecto.gameObject.SetActive(true);
+            
+            var tituloIncorrecto = canvasFeedback.transform.Find("Titulo incorrecto");
+            if (tituloIncorrecto != null) tituloIncorrecto.gameObject.SetActive(false);
+            
+            var feedbackText = canvasFeedback.transform.Find("Feedback")?.gameObject?.GetComponent<Text>();
+            if (feedbackText != null)
+            {
+                feedbackText.text = feedback;
+            }
+            
+            var checkObj = canvasFeedback.transform.Find("check");
+            if (checkObj != null) checkObj.gameObject.SetActive(true);
+            
+            var crossObj = canvasFeedback.transform.Find("cross");
+            if (crossObj != null) crossObj.gameObject.SetActive(false);
+            
+            if (f_Imagen != null && q != null)
+            {
+                f_Imagen.sprite = Resources.Load<Sprite>("Questions/Images3/" + q.ChallengeID);
+            }
+            
+            var buttonObj = canvasFeedback.transform.Find("Button");
+            if (buttonObj != null)
+            {
+                var button = buttonObj.gameObject.GetComponent<Button>();
+                if (button != null)
+                {
+                    button.onClick.RemoveAllListeners();
+                    button.onClick.AddListener(CloseFeedbackCanvas);
+                }
+            }
+            
+            canvasFeedback.transform.localPosition.Set(33.28f, -0.8f, 0);
+            canvasFeedback.SetActive(true);
+        }
+        
+        if (pacoCorrecto != null) pacoCorrecto.SetActive(true);
+        if (pacoIncorrecto != null) pacoIncorrecto.SetActive(false);
 
-        //fondoCanvasDialogo.SetActive(true);
-        //texto = "¡Felicidades! Respuesta correcta.\n" + feedback;
-        //texto = "Felicidades tu respuesta: " + respuesta + " es correcta.\n" + feedback;
-        //StartCoroutine(Dialogo(fondoCanvasDialogo, dialogoPersonaje, texto));
-        //Dialogue dialogue = new Dialogue();
-        //dialogue.sentences = new string[] { texto };
-        //dialogue.title = new string[dialogue.sentences.Length];
-        //dialogue.sprites = new Sprite[dialogue.sentences.Length];
-        //        dialogue.title="";
-        //DialogueManager.instance.StartDialogue(dialogue, nombreEvento, this.gameObject, 1, false, true);
-        int x = 0;
-        int y = 0;
-        int.TryParse(cantidadEstrellas.text, out x);
-        int.TryParse(desafio.text, out y);
-        x += 5;
-        y += 1;
-        cantidadEstrellas.text = x.ToString();
-        desafio.text = y.ToString();
-        Player.instance.PreguntasCorrectas();
-        //yield return new WaitForSeconds(13.0f);
-        //Continuar();
-        mochila.desbloquearPregunta(q.ChallengeID, true);
+        // Actualizar estrellas y desafíos
+        if (cantidadEstrellas != null && desafio != null)
+        {
+            int x = 0;
+            int y = 0;
+            int.TryParse(cantidadEstrellas.text, out x);
+            int.TryParse(desafio.text, out y);
+            x += 5;
+            y += 1;
+            cantidadEstrellas.text = x.ToString();
+            desafio.text = y.ToString();
+        }
+        
+        if (Player.instance != null)
+        {
+            Player.instance.PreguntasCorrectas();
+        }
+        
+        if (mochila != null && q != null)
+        {
+            mochila.desbloquearPregunta(q.ChallengeID, true);
+        }
 
         Debug.Log("WALL TRIGGER 2 SCRIPT");
         Debug.Log("END RESP CORRECT");

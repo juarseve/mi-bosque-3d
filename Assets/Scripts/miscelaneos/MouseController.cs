@@ -1,6 +1,7 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class MouseController : MonoBehaviour
@@ -58,9 +59,87 @@ public class MouseController : MonoBehaviour
     {
         if (ApplicationIsBack == true)
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            // Verificar si hay interfaces de UI activas que necesitan el cursor
+            bool hasActiveUI = false;
+            
+            // Verificar si el juego está pausado
+            if (MenuPausa.IsPaused || MenuPausa.IsPausedByOtherCanvas)
+            {
+                hasActiveUI = true;
+            }
+            
+            // Verificar si hay diálogos abiertos
+            if (DialogueManager.instance != null && DialogueManager.instance.isDialogueActive)
+            {
+                hasActiveUI = true;
+            }
+            
+            // Verificar si el libro está abierto
+            if (BookPages.instance != null && BookPages.instance.isOpen)
+            {
+                hasActiveUI = true;
+            }
+            
+            // Verificar si hay algún Canvas activo que pueda necesitar el cursor
+            // Buscar todos los Canvas en la escena
+            Canvas[] allCanvases = FindObjectsOfType<Canvas>();
+            foreach (Canvas canvas in allCanvases)
+            {
+                if (canvas != null && canvas.gameObject.activeInHierarchy && canvas.enabled)
+                {
+                    // Verificar si el canvas es de tipo ScreenSpace (interfaz de usuario)
+                    if (canvas.renderMode == RenderMode.ScreenSpaceOverlay || 
+                        canvas.renderMode == RenderMode.ScreenSpaceCamera)
+                    {
+                        // Verificar si el canvas tiene algún objeto hijo activo
+                        // Esto indica que hay una interfaz visible
+                        if (HasActiveUIChildren(canvas.transform))
+                        {
+                            hasActiveUI = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            // Solo bloquear el cursor si no hay UI activa
+            if (!hasActiveUI)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            else
+            {
+                // Si hay UI activa, asegurar que el cursor esté visible
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
         }
+    }
+    
+    // Método auxiliar para verificar si un transform tiene hijos activos
+    private bool HasActiveUIChildren(Transform parent)
+    {
+        // Verificar si el objeto mismo está activo y tiene componentes de UI
+        if (parent.gameObject.activeSelf && 
+            (parent.GetComponent<Button>() != null || 
+             parent.GetComponent<Image>() != null || 
+             parent.GetComponent<Text>() != null ||
+             parent.GetComponent<TMPro.TextMeshProUGUI>() != null))
+        {
+            return true;
+        }
+        
+        // Verificar recursivamente los hijos
+        foreach (Transform child in parent)
+        {
+            if (HasActiveUIChildren(child))
+            {
+                return true;
+            }
+        }
+        
+        return false;
     }
 
     void ClickObject()

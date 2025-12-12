@@ -125,6 +125,10 @@ public class MenuPausa : MonoBehaviour
         Debug.Log("2R "+IsPausedByOtherCanvas);
         UnpausedSnapshot.TransitionTo(fadeTime);
         cameraBlocker.enabled=false;
+        
+        // Bloquear y ocultar el cursor al volver al juego
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void ResumeGame()
