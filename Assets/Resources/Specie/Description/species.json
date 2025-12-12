@@ -11,7 +11,7 @@
         {
           "mongoId": "5dd8431a4a39665044fb91cb",
           "id": 1,
-          "description": " Miden 14 cm. Se alimentan de granos y semillas que encuentran en el suelo. Construyen nidos en árboles aislados.",
+          "description": "Sicalis flaveola Orden: Passeriformes | Familia: Thraupidae Endémica a Ecuador: No Miden 14 cm. Se alimentan de granos y semillas que encuentran en el suelo. Construyen nidos en árboles aislados. El macho es amarillo brillante saturado de anaranjado en la frente. Típicamente, muestra tonos menos marrón-oliva en la espalda y las alas que muchos pinzones amarillos, pero las poblaciones sureñas de Saffron son más opacas y más marrones arriba. Las hembras son más opacas que los machos, con las poblaciones sureñas incluso más marrones y rayadas.",
           "audioname": "Pinzón Sabanero_audio_descripcion_0",
           "imagename": "Pinzón Sabanero_image_0"
         }
@@ -28,14 +28,14 @@
         {
           "mongoId": "5dd85b1fbaf3fe76a27f1fe2",
           "id": 45,
-          "description": "Su nombre científico es Iguana iguana.",
+          "description": "Su nombre científico es Iguana iguana. Orden: Squamata: Sauria | Familia: Iguanidae: Iguaninae Endémica a Ecuador: No",
           "audioname": "Iguana_audio_descripcion_0",
           "imagename": "Iguana_image_0"
         },
         {
           "mongoId": "5dd85b1fbaf3fe76a27f1fe3",
           "id": 44,
-          "description": "Son herbívoros y habitan en selvas tropicales y manglares.",
+          "description": "Son herbívoros y habitan en selvas tropicales y manglares.La iguana verde más grande actualmente reportada tiene una longitud total de 2300 mm y un peso de 10.5 kg. La biología de iguana verde está muy ligada a cuerpos de agua, donde es capaz de bucear, nadar e incluso defecar. Son territoriales durante la época reproductiva y fuera de esta época pasan descansando, de preferencia sobre las copas de los árboles. Es una especie sedentaria que puede permanecer en el mismo árbol por varias semanas hasta que se agoten los alimentos, lugares para termorregulación y para dormir. Durante el día, se asolean más o menos cuatro horas por la mañana y dos o tres  oras por la tarde. Las iguanas verdes se comunican a través de un lenguaje corporal como la inclinación de la cabeza (utilizada como señal de apareamiento, territorialidad, rechazo, rascado, entre otros); el aplanar el cuerpo y movimientos de rascado. ",
           "audioname": "Iguana_audio_descripcion_0",
           "imagename": "Iguana_image_0"
         },
@@ -58,7 +58,7 @@
         {
           "mongoId": "5dd852c1fe5e8c68f7294bd0",
           "id": 7,
-          "description": "Es un árbol frondoso, se usa para la fabricación de muebles y embarcaciones lujosas.",
+          "description": "Teca- Tectona grandis Bototillo- Cochlospermum vitifolium.",
           "audioname": "Teca_audio_descripcion_0",
           "imagename": "Teca_image_0"
         },
@@ -113,26 +113,26 @@
       "id": 10,
       "name": "Pechiche",
       "nameView": "Pechiche",
-      "family": "Vitex cymosa",
+      "family": "Vitex gigantea",
       "gallery": [
         {
           "mongoId": "5dd8562644b5b86ed73021f9",
           "id": 21,
-          "description": "Su nombre científico es Vitex Gigantea Kunth es un árbol que llega a medir 20 m. de alto.",
+          "description": "Su nombre científico es Vitex Gigantea Kunth es un árbol grande que puede alcanzar entre los 30 metros de altura y 80cm de diámetro de altura de pecho o DAP (refiriéndose al grosor), su copa es irregular de follaje denso.", 
           "audioname": "Pechiche_audio_descripcion_0",
           "imagename": "Pechiche_image_0"
         },
         {
           "mongoId": "5dd8562644b5b86ed73021fa",
           "id": 22,
-          "description": "Su nombre científico es Vitex Gigantea Kunth es un árbol que llega a medir 20 m. de alto.",
+          "description": "Su nombre científico es Vitex Gigantea Kunth es un árbol grande que puede alcanzar entre los 30 metros de altura y 80cm de diámetro de altura de pecho o DAP (refiriéndose al grosor), su copa es irregular de follaje denso.",
           "audioname": "Pechiche_audio_descripcion_1",
           "imagename": "Pechiche_image_1"
         },
         {
           "mongoId": "5dd8562644b5b86ed73021fb",
           "id": 23,
-          "description": "Su nombre científico es Vitex Gigantea Kunth es un árbol que llega a medir 20 m. de alto.",
+          "description": "Su nombre científico es Vitex Gigantea Kunth es un árbol grande que puede alcanzar entre los 30 metros de altura y 80cm de diámetro de altura de pecho o DAP (refiriéndose al grosor), su copa es irregular de follaje denso.",
           "audioname": "Pechiche_audio_descripcion_2",
           "imagename": "Pechiche_image_2"
         }
@@ -149,7 +149,7 @@
         {
           "mongoId": "5dd8566444b5b86ed73021fd",
           "id": 24,
-          "description": "Esta hermosa ave que se alimenta principalmente de frutos lleva el nombre Tangara Azuleja por el color de su plumaje.",
+          "description": "Thraupis episcopus Orden: Passeriformes | Familia: Thraupidae Endémica a Ecuador: No. Esta hermosa ave que se alimenta principalmente de frutos lleva el nombre Tangara Azuleja por el color de su plumaje. Mide 18 cm de longitud y pesa en promedio 35 g. Su dieta consiste principalmente de frutos, pero también de néctar e insectos. Es una especie común, muy activa y relativamente confiada. Generalmente anda en parejas, pero también llega a formar grupos no muy numerosos. Se acerca a zonas habitadas por humanos, alimentándose de algunos frutos cultivados. Algunos grupos pequeños saben forrajear en el dosel de selvas de terra firme. Frecuentemente acompaña bandadas mixtas.",
           "audioname": "Tangara Azul y Gris_audio_descripcion_0",
           "imagename": "Tangara Azul y Gris_image_0"
         }
@@ -165,21 +165,21 @@
         {
           "mongoId": "5dd85bd0171a027783efa942",
           "id": 46,
-          "description": "Es un árbol de porte bajo con hojas simples y produce flores pequeñas. ",
+          "description": "Guasmo - Guazuma ulmifolia",
           "audioname": "Guasmo_audio_descripcion_0",
           "imagename": "Guasmo_image_0"
         },
         {
           "mongoId": "5dd85bd0171a027783efa943",
           "id": 47,
-          "description": "Es un árbol de porte bajo con hojas simples y produce flores pequeñas. ",
+          "description": "Es un árbol de porte bajo con hojas simples y produce flores pequeñas.",
           "audioname": "Guasmo_audio_descripcion_1",
           "imagename": "Guasmo_image_1"
         },
         {
           "mongoId": "5dd85bd0171a027783efa944",
           "id": 48,
-          "description": "Es un árbol de porte bajo con hojas simples y produce flores pequeñas. ",
+          "description": "Es un árbol de porte bajo con hojas simples y produce flores pequeñas.",
           "audioname": "Guasmo_audio_descripcion_2",
           "imagename": "Guasmo_image_2"
         }
@@ -195,7 +195,7 @@
         {
           "mongoId": "5dd8590671628572e2aad060",
           "id": 31,
-          "description": "Ampliamente distribuido en bosques húmedos, incluyendo llanuras de ríos y bosques secos.",
+          "description": "Fernan Sánchez - Triplaris cumingiana",
           "audioname": "Fernan Sánchez_audio_descripcion_0",
           "imagename": "Fernan Sánchez_image_0"
         },
@@ -226,14 +226,14 @@
         {
           "mongoId": "5dd85c5584573f78b5601112",
           "id": 51,
-          "description": "Su nombre científico es Tyrannus melancholicus.",
+          "description": "Su nombre científico es Tyrannus melancholicus Orden: Passeriformes | Familia: Tyrannidae Endémica a Ecuador: No.",
           "audioname": "Tirano Tropical_audio_descripcion_0",
           "imagename": "Tirano Tropical_image_0"
         },
         {
           "mongoId": "5dd85c5584573f78b5601113",
           "id": 49,
-          "description": "Se alimenta principalmente de insectos que capturan con sus vaivenes aéreos, también consume fruta.",
+          "description": "Mide aproximadamente 20 cm de longitud y pesa alrededor de 40 g. Se alimenta especialmente de insectos que caza generalmente en vuelo aunque a veces incorpora pequeños frutos a su dieta. El macho no se diferencia de la hembra con respecto a su plumaje, tiene el abdomen de un color amarillo, el pecho de un color oliváceo el cuello es de un color gris claro, la cabeza es de color gris y el dorso verde grisáceo. Esta especie defiende con agresividad su territorio frente a intrusos, inclusive si se trata de aves mucho más grandes cómo los tucanes y caracaras.",
           "audioname": "Tirano Tropical_audio_descripcion_0",
           "imagename": "Tirano Tropical_image_0"
         },
@@ -263,14 +263,14 @@
         {
           "mongoId": "5dd85aaec589a4759c90b67b",
           "id": 41,
-          "description": "A menudo en parejas, regularmente yergue las plumas coronarias para formar una cresta redonda y esponjosa mientras cabecea alertantemente.",
+          "description": "Pachyramphus homochrous Orden: Passeriformes | Familia: Tityridae Endémica a Ecuador: No",
           "audioname": "Cabezón Unicolor_audio_descripcion_0",
           "imagename": "Cabezón Unicolor_image_0"
         },
         {
           "mongoId": "5dd85aaec589a4759c90b67c",
           "id": 42,
-          "description": "A menudo en parejas, regularmente yergue las plumas coronarias para formar una cresta redonda y esponjosa mientras cabecea alertantemente.",
+          "description": "Esta especie es considerada de poco común a común en sus hábitats naturales: el dosel y los bordes de varios tipos de bosque húmedo a seco y caducifolio, claros adyacentes con árboles grandes dispersos, bosque secundario y de galería, y bosque árido semiabierto perturbado y matorral xérico con árboles altos dispersos. Principalmente por debajo de los 1000 m de altitud, pero registrada hasta cerca de 1500 m en Ecuador (Chimborazo).",
           "audioname": "Cabezón Unicolor_audio_descripcion_1",
           "imagename": "Cabezón Unicolor_image_1"
         },
@@ -294,7 +294,7 @@
         {
           "mongoId": "5e04e9cf898f5067dfced5e1",
           "id": 60,
-          "description": "Su nombre científico es Sciurus stramineus.",
+          "description": "Su nombre científico es Simosciurus stramineus. Orden: Rodentia | Familia: Sciuridae Endémica a Ecuador: Si",
           "audioname": "Ardilla_audio_descripcion_1",
           "imagename": "Ardilla_image_0"
         },
@@ -322,7 +322,7 @@
         {
           "mongoId": "5e04e9d0898f5067dfced5e5",
           "id": 60,
-          "description": "Se alimenta de frutos y se refugia en los huecos de los árboles.",
+          "description": "Es una especie diurna y arborícola. Puede ser solitaria o gregaria, formando grupos de hasta cinco individuos. Su alimentación se basa en frutos y semillas que toma directamente de los árboles. Sin embargo, puede consumir insectos, hongos, hojas y corteza de árboles. Se refugia en la parte alta de los árboles, en troncos huecos o escondidos entre el follaje. Sus nidos son acondicionados con hojas y ramas secas",
           "audioname": "Ardilla_audio_descripcion_1",
           "imagename": "Ardilla_image_3"
         }
@@ -369,13 +369,13 @@
       "specieId": "10000001",
       "id": 29,
       "name": "Jacaranda",
-      "nameView": "Jacaranda",
+      "nameView": "Jacaranda mimosifolia",
       "family": "Bignoniaceae",
       "gallery": [
         {
           "mongoId": "20000001",
           "id": 94,
-          "description": "Jacaranda es un árbol subtropical de Sudamérica ampliamente cultivado por sus vistosas y duraderas flores violetas.",
+          "description": "Jacaranda mimosifolia es un árbol subtropical de Sudamérica ampliamente cultivado por sus vistosas y duraderas flores violetas.",
           "audioname": "Jacaranda_audio_descripcion_0",
           "imagename": "Jacaranda_image_0"
         },
@@ -399,7 +399,7 @@
       "specieId": "10000002",
       "id": 97,
       "name": "Guayacán",
-      "nameView": "Guayacán",
+      "nameView": " - Tabebuia Chrysantha",
       "family": "Zygophyllaceae",
       "gallery": [
         {
@@ -429,7 +429,7 @@
       "specieId": "10000003",
       "id": 31,
       "name": "Laurel De Judea",
-      "nameView": "Laurel De Judea",
+      "nameView": "Laurel de Judea - Nerium oleander",
       "family": "Apocynaceae",
       "gallery": [
         {
@@ -459,13 +459,13 @@
       "specieId": "10000004",
       "id": 32,
       "name": "Oso Perezoso",
-      "nameView": "Oso Perezoso",
+      "nameView": "Choloepus hoffmanni -Perezoso de dos dedos de Hoffmann",
       "family": "Choloepodidae",
       "gallery": [
         {
           "mongoId": "20000010",
           "id": 105,
-          "description": "Su nombre científico es Choloepus hoffmanni.",
+          "description": "Su nombre científico es Choloepus hoffmanni Orden: Pilosa | Familia: Megalonychidae Endémica a Ecuador: No.",
           "audioname": "OsoPerezoso_audio_descripcion_0",
           "imagename": "OsoPerezoso_image_0"
         },
@@ -486,7 +486,7 @@
         {
           "mongoId": "20000013",
           "id": 105,
-          "description": "Estos animales, de 5 a 7 kg y de aproximadamente 60 cm de largo.",
+          "description": "Estos animales, de 5 a 7 kg y de aproximadamente 60 cm de largo. Es principalmente nocturno, arborícola y solitario. Tiene una dieta herbívora-omnívora, consume básicamente hojas pero también puede comer algunos frutos. La hembra pare una cría por vez. La gestación puede durar entre 11 meses 10 días y 12 meses 12 días e intervalos entre los nacimientos de 15 meses ó 170 a 263 días. Las crías llegan a su independencia alrededor de los nueve meses de edad. La reproducción se ha registrado durante todo el año, con un ligero aumento estacional. Prefiere árboles con abundantes lianas y con las copas expuestas al sol. A menudo se encuentra en la parte más alta de los árboles",
           "audioname": "OsoPerezoso_audio_descripcion_2",
           "imagename": "OsoPerezoso_image_2"
         }
@@ -496,13 +496,13 @@
       "specieId": "10000005",
       "id": 33,
       "name": "Venado Cola Blanca",
-      "nameView": "Venado Cola Blanca",
+      "nameView": "Ciervo de cola blanca - Odocoileus virginianus",
       "family": "Cervidae",
       "gallery": [
         {
           "mongoId": "20000012",
           "id": 108,
-          "description": "Su nombre científico es Odocoileus peruvianus.",
+          "description": "Su nombre científico es Odocoileus peruvianus. Orden: Artiodactyla | Familia: Cervidae Endémica a Ecuador: No EN PELIGRO",
           "audioname": "VenadoColaBlanca_audio_descripcion_0",
           "imagename": "VenadoColaBlanca_image_0"
         },
@@ -523,7 +523,7 @@
         {
           "mongoId": "20000015",
           "id": 108,
-          "description": "La punta de la cola es blanca, lo que le sirve para batirla como señal de alarma.",
+          "description": "La punta de la cola es blanca, lo que le sirve para batirla como señal de alarma. Es una especie terrestre, crepuscular y rumiante. Consume plantas selectivamente. Se considera que prefiere arbustos y árboles, también puede consumir semillas y frutos. La reproducción se da durante todo el año. La madurez sexual se da al año y medio en los machos y al año en las hembras. En general las especies de venados de cola blanca forman grupos que pueden estar concentrados alrededor de la madre o grupos de machos adultos de alrededor de un año de edad.",
           "audioname": "VenadoColaBlanca_audio_descripcion_2",
           "imagename": "VenadoColaBlanca_image_2"
         }
@@ -533,7 +533,7 @@
       "specieId": "10000006",
       "id": 34,
       "name": "Zorra Pampera",
-      "nameView": "Zorra Pampera",
+      "nameView": "Zorro de Sechura - Lycalopex sechurae",
       "family": "Canidae",
       "gallery": [
         {
@@ -560,7 +560,7 @@
         {
           "mongoId": "20000018",
           "id": 111,
-          "description": "El rango principal de la especie se extiende desde el suroeste y sur del Ecuador, al sur, a través de las tierras bajas costeras del Perú, hasta el norte de Lima.",
+          "description": "El rango principal de la especie se extiende desde el suroeste y sur del Ecuador, al sur, a través de las tierras bajas costeras del Perú, hasta el norte de Lima. Esta especie es generalmente solitaria y pocas veces es encontrada en grupos de más de tres individuos. Grupos más grandes han sido observados donde hay mayor concentración de alimento. Se ha reportado de ambientes desérticos y adyacentes a playas, áreas cultivadas, bosques secos en el oeste de los Andes. L. sechurae es un omnívoro oportunista, tiene la capacidad de ser estrictamente vegetariano cuando es necesario. Su dieta depende del hábitat en el que se encuentre, estación, y en general la abundancia del alimento. En áreas desérticas y bosques secos se alimenta de frutos, roedores, aves, reptiles, insectos y escorpiones. Mientras que a lo largo de playas costeras, se alimenta de cangrejos, carroña, de aves marinas y huevos.",
           "audioname": "ZorraPampera_audio_descripcion_2",
           "imagename": "ZorraPampera_image_2"
         }
@@ -576,7 +576,7 @@
         {
           "mongoId": "20000018",
           "id": 114,
-          "description": "Su nombre científico es Ateles fusciceps.",
+          "description": "Su nombre científico es Ateles fusciceps Orden: Primates | Familia: Atelidae Endémica a Ecuador: No EN PELIGRO CRÍTICO",
           "audioname": "MonoAraña_audio_descripcion_0",
           "imagename": "MonoAraña_image_0"
         },
@@ -590,7 +590,7 @@
         {
           "mongoId": "20000021",
           "id": 114,
-          "description": "Según la especie, su cuerpo mide de 65 a 90 cm de longitud, y la cola prensil de 60 a 92 cm.",
+          "description": "Según la especie, su cuerpo mide de 65 a 90 cm de longitud, y la cola prensil de 60 a 92 cm. Son primates diurnos que se alimentan de frutas, hojas, semillas, brotes tiernos e incluso cortezas e insectos. Convive en grupos de hasta 35 individuos aunque ocasionalmente pueden observarse individuos solitarios. Esta especie tiende a colgarse y balancearse con ayuda de las patas y la cola para desplazarse entre las ramas de los árboles. A pesar de que hay estimados de densidad poblacional para algunas áreas de Ecuador, que varían de 0.2 a 13.2 individuos/km2 , esta es una especie críticamente amenazada cuyas poblaciones no cuenta con más de 280 individuos en todo el Ecuador.",
           "audioname": "MonoAraña_audio_descripcion_2",
           "imagename": "MonoAraña_image_2"
         }
@@ -600,13 +600,13 @@
       "specieId": "10000008",
       "id": 36,
       "name": "Mono Aullador",
-      "nameView": "Mono Aullador",
+      "nameView": "Mono Aullador de manto dorado - Alouatta palliata",
       "family": "Atelidae",
       "gallery": [
         {
           "mongoId": "20000021",
           "id": 117,
-          "description": "Su nombre científico es Alouatta palliata.",
+          "description": "Su nombre científico es Alouatta palliata. Orden: Primates | Familia: Atelidae Endémica a Ecuador: No EN PELIGRO",
           "audioname": "MonoAullador_audio_descripcion_0",
           "imagename": "MonoAullador_image_0"
         },
@@ -627,7 +627,7 @@
         {
           "mongoId": "20000024",
           "id": 117,
-          "description": "Habita las zonas de selva, especialmente en las selvas de galería del Norte de la América del Sur.",
+          "description": "Habita las zonas de selva, especialmente en las selvas de galería del Norte de la América del Sur. Tiene actividad diurna, es arborícola y gregario. Se alimenta principalmente de hojas pero puede consumir ciertos frutos, flores y néctar; entre los frutos mayormente consumidos se encuentran los higos (Ficus sp.). Además puede consumir insectos accidentalmente cuando busca hojas. Puede formar tropas de 2 a 45 individuos; comúnmente entre 14 individuos. Usa el estrato alto del bosque. Se mueve lentamente y es sedentario. Puede sobrevivir en pequeños fragmentos de bosque. Se refugia en remanentes de bosque cuando hay eventos de rápida deforestación. e desplaza apoyado en sus cuatro extremidades y utiliza la cola como ayuda mientras toma su alimento con una o dos manos. Los grupos son territoriales y están formados por uno o más machos adultos, varias hembras adultas y sus crías. Los machos y hembras jóvenes se dispersan del grupo antes de llegar a la edad adulta, y viven solitarios hasta que pueden unirse a un grupo reproductor debido a la muerte de los individuos adultos o por enfrentamientos.",
           "audioname": "MonoAullador_audio_descripcion_2",
           "imagename": "MonoAullador_image_2"
         }
@@ -643,7 +643,7 @@
         {
           "mongoId": "20000024",
           "id": 120,
-          "description": "Su nombre científico es Tamandua mexicana.",
+          "description": "Su nombre científico es Tamandua mexicana Orden: Pilosa | Familia: Myrmecophagidae Endémica a Ecuador: No Es una especie de hábitos tanto diurnos como nocturnos, solitario y arborícola. Su principal alimento son las termitas, hormigas y abejas extraídas de sus nidos. Usa sus garras delanteras para romper los nidos. Un tercio de su dieta son las hormigas, en un día puede consumir 9 000 hormigas. Su visión es pobre y su olfato muy desarrollado, que le sirve para encontrar su alimento y en época reproductiva a los machos para encontrar una hembra receptiva. Su locomoción es lenta, tanto en el suelo como en los árboles. Descansa en árboles huecos, en madrigueras o en cualquier sitio que le brinde algún tipo de refugio. Cuando se siente amenazado se para verticalmente sobre sus patas traseras, levanta la nariz para olfatear, sube a un árbol o se aleja deambulando",
           "audioname": "OsoHormiguero_audio_descripcion_0",
           "imagename": "OsoHormiguero_image_0"
         },
@@ -680,7 +680,7 @@
         {
           "mongoId": "20000027",
           "id": 123,
-          "description": "Su nombre científico es  Amazona viridigenalis.",
+          "description": "Su nombre científico es  Psittacara erythrogenys Orden: Psittaciformes | Familia: Psittacidae Endémica a Ecuador: No Casi amenazada.",
           "audioname": "LoroCaraRoja_audio_descripcion_0",
           "imagename": "LoroCaraRoja_image_0"
         },
@@ -717,7 +717,7 @@
         {
           "mongoId": "20000027",
           "id": 126,
-          "description": "Su nombre científico es Anhinga anhinga.",
+          "description": "Su nombre científico es Anhinga anhinga Orden: Suliformes | Familia: Anhingidae Endémica a Ecuador: No.",
           "audioname": "Aninga_audio_descripcion_0",
           "imagename": "Aninga_image_0"
         },
@@ -738,7 +738,7 @@
         {
           "mongoId": "20000030",
           "id": 126,
-          "description": "En líneas generales los machos poseen un plumaje más oscuro, una cresta eréctil en el cráneo y un pico mayor.",
+          "description": "En líneas generales los machos poseen un plumaje más oscuro, una cresta eréctil en el cráneo y un pico mayor. Ave de cuello largo que se encuentra en pantanos rodeados de árboles, ciénagas y estanques artificiales. Los machos son negros con blanco en las alas, las hembras son similares pero con cuello y cabeza parduscos. Se sumerge bajo el agua y arponea peces con su pico parecido a un puñal. A menudo nada manteniendo sólo la cabeza y el cuello fuera del agua. Al igual que los cormoranes, se percha en lo abierto para extender sus alas y secar las plumas. Forma relativamente similar a los cormoranes, pero con la cola más larga y con un pico claramente puntiagudo. Ocasionalmente sube muy alto",
           "audioname": "Aninga_audio_descripcion_2",
           "imagename": "Aninga_image_2"
         }
@@ -754,7 +754,7 @@
         {
           "mongoId": "20000027",
           "id": 129,
-          "description": "Su nombre científico es Piaya cayana.",
+          "description": "Su nombre científico es Piaya cayana Orden: Cuculiformes | Familia: Cuculidae Endémica a Ecuador: No.",
           "audioname": "CucoArdilla_audio_descripcion_0",
           "imagename": "_image_0"
         },
@@ -775,7 +775,7 @@
         {
           "mongoId": "20000030",
           "id": 129,
-          "description": "Su nido es una taza de hojas, construido en una rama de un árbol, oculta en la vegetación densa, a una altura de 1 a 12 m.",
+          "description": "Su nido es una taza de hojas, construido en una rama de un árbol, oculta en la vegetación densa, a una altura de 1 a 12 m. Mide entre 43 y 46 cm de longitud y pesa entre 95 y 105 g. El plumaje es de color castaño en el dorso y la cabeza, más pálido en la garganta. Se alimenta de insectos grandes, como cigarras o chicharras, avispas y orugas (incluidas las que tienen pelos urticantes o espinas) y ocasionalmente arácnidos, lagartijas y algunas frutas, como las de Trophis racemosa (Moraceae). Su nido es una taza de hojas, construido en una rama de un árbol, oculta en la vegetación densa, a una altura de 1 a 12 m. La hembra pone dos huevos blancos.",
           "audioname": "CucoArdilla_audio_descripcion_2",
           "imagename": "CucoArdilla_image_2"
         }
@@ -791,7 +791,7 @@
         {
           "mongoId": "20000027",
           "id": 135,
-          "description": "Su nombre científico es Melanerpes pucherani.",
+          "description": "Su nombre científico es Melanerpes pucherani. Orden: Piciformes | Familia: Picidae Endémica a Ecuador: No",
           "audioname": "CarpinteroCarinegro_audio_descripcion_0",
           "imagename": "CarpinteroCarinegro_image_0"
         },
@@ -805,7 +805,7 @@
         {
           "mongoId": "20000030",
           "id": 135,
-          "description": "Se alimentan de insectos, gusanos y larvas que pueden encontrar durante todo el año, capturándolos bajo la corteza o perforando el interior de los árboles o de los troncos caídos.",
+          "description": "Se alimentan de insectos, gusanos y larvas que pueden encontrar durante todo el año, capturándolos bajo la corteza o perforando el interior de los árboles o de los troncos caídos. Carpintero de tamaño mediano de bosques perennifolios y sus bordes en tierras bajas tropicales. Es distintivo, tiene una máscara negra grande, parche blanco detrás de los ojos, partes superiores negras con barras blancas angostas y un gran parche blanco en la rabadilla. El macho tiene la corona roja completa. En la hembra la parte frontal es grisácea y la posterior es roja.",
           "audioname": "CarpinteroCarinegro_audio_descripcion_2",
           "imagename": "CarpinteroCarinegro_image_2"
         }
@@ -821,7 +821,7 @@
         {
           "mongoId": "20000027",
           "id": 138,
-          "description": "Su nombre científico es Ardea alba.",
+          "description": "Su nombre científico es Ardea alba. Orden: Pelecaniformes | Familia: Ardeidae Endémica a Ecuador: No.",
           "audioname": "GarzaBlanca_audio_descripcion_0",
           "imagename": "GarzaBlanca_image_0"
         },
@@ -842,7 +842,7 @@
         {
           "mongoId": "20000030",
           "id": 138,
-          "description": "Se alimenta en aguas poco profundas, o hábitats más secos, principalmente de peces, ranas, pequeños mamíferos y ocasionalmente aves pequeñas y reptiles.",
+          "description": "Se alimenta en aguas poco profundas, o hábitats más secos, principalmente de peces, ranas, pequeños mamíferos y ocasionalmente aves pequeñas y reptiles. Esta garza mide de pico a cola entre 80 y 105 cm, su envergadura alar está entre 130 y 170 cm. Su peso oscila entre los 700 y 1,500 g. Es un ave acuática de plumaje blanco, grande y esbelta, que puede alcanzar el metro de altura. Vuela consu largo cuello retraído, pero suele caminar con él estirado. Tiene el pico amarillo y las patas negras con dedos negros (su pico puede oscurecerse y la parte inferior de las patas aclararse durante la época de cría). La especie es parcialmente migratoria. Se alimenta en aguas poco profundas, o hábitats más secos, principalmente de peces, ranas, pequeños mamíferos y ocasionalmente aves pequeñas y reptiles, atrapándolos con su pico largo y afilado.",
           "audioname": "GarzaBlanca_audio_descripcion_2",
           "imagename": "GarzaBlanca_image_2"
         }
@@ -858,7 +858,7 @@
         {
           "mongoId": "20000027",
           "id": 141,
-          "description": "Su nombre científico es Nycticorax nycticorax.",
+          "description": "Su nombre científico es Nycticorax nycticorax Orden: Pelecaniformes | Familia: Ardeidae Endémica a Ecuador: No",
           "audioname": "GarzaNocturna_audio_descripcion_0",
           "imagename": "GarzaNocturna_image_0"
         },
@@ -872,7 +872,7 @@
         {
           "mongoId": "20000030",
           "id": 141,
-          "description": "En Chiloé, un archipiélago del sur de Chile, esta ave tiene un papel importante en la mitología local, porque es asociada con la brujería y las fuerzas del mal.",
+          "description": "Se alimenta principalmente de peces, anfibios, pequeños reptiles e insectos. Excepcionalmente puede completar su dieta con algún ratón. Garza rechoncha con el cuello usualmente doblado. Adultos mayormente pálidos grisáceos con gorra y espalda negras. Ojos rojos. Con frecuencia se observa agachado bajo ramas colgantes durante el día. Se alimenta nocturnamente de peces, ranas y otras presas. Los inmaduros parduscos y estriados pueden ser confusos, pero observa las grandes manchas blancas en forma de lágrima en las alas",
           "audioname": "GarzaNocturna_audio_descripcion_2",
           "imagename": "GarzaNocturna_image_2"
         }

@@ -11,7 +11,7 @@
         {
           "mongoId": "5dd8431a4a39665044fb91cb",
           "id": 1,
-          "description": "Medem 14 cm. Alimentam-se de grãos e sementes que encontram no solo. Constroem ninhos em árvores isoladas.",
+          "description": "Sicalis flaveola Ordem: Passeriformes | Família: Thraupidae Endêmica do Equador: NãoMedem 14 cm. Alimentam-se de grãos e sementes que encontram no solo. Constroem ninhos em árvores isoladas.O macho é amarelo brilhante com tons alaranjados na testa. Normalmente, apresenta menos tons marrom-oliva nas costas e asas do que muitos outros tentilhões amarelos, mas as populações do sul do tentilhão-açafrão são mais opacas e acastanhadas na parte superior. As fêmeas são mais opacas do que os machos, sendo as populações do sul ainda mais acastanhadas e com estrias. ",
           "audioname": "Pinzón Sabanero_audio_descripcion_0",
           "imagename": "Pinzón Sabanero_image_0"
         }
@@ -28,14 +28,14 @@
         {
           "mongoId": "5dd85b1fbaf3fe76a27f1fe2",
           "id": 45,
-          "description": "Seu nome científico é Iguana iguana.",
+          "description": "Seu nome científico é Iguana iguana. Ordem: Squamata: Sauria | Família: Iguanidae: Iguaninae Endêmico do Equador: Não",
           "audioname": "Iguana_audio_descripcion_0",
           "imagename": "Iguana_image_0"
         },
         {
           "mongoId": "5dd85b1fbaf3fe76a27f1fe3",
           "id": 44,
-          "description": "São herbívoros e habitam em selvas tropicais e manguezais.",
+          "description": "São herbívoros e habitam em selvas tropicais e manguezais.The largest green iguana currently reported has a total length of 2300 mm and a weight of 10.5 kg. The biology of the green iguana is closely linked to bodies of water, where it is able to dive, swim, and even defecate. They are territorial during the breeding season and spend their time resting outside of this period, preferably in the treetops. It is a sedentary species that can remain in the same tree for several weeks until food, places for thermoregulation, and sleeping sites are exhausted. During the day, they bask in the sun for approximately four hours in the morning and two to three hours in the afternoon. Green iguanas communicate through body language such as head tilting (used as a signal for mating, territoriality, rejection, scratching, among others); flattening their bodies; and scratching movements.",
           "audioname": "Iguana_audio_descripcion_0",
           "imagename": "Iguana_image_0"
         },
@@ -58,7 +58,7 @@
         {
           "mongoId": "5dd852c1fe5e8c68f7294bd0",
           "id": 7,
-          "description": "É uma árvore frondosa, usada para a fabricação de móveis e embarcações luxuosas.",
+          "description": "Teca - Tectona grandis Bototillo- Cochlospermum vitifolium",
           "audioname": "Teca_audio_descripcion_0",
           "imagename": "Teca_image_0"
         },
@@ -113,26 +113,26 @@
       "id": 10,
       "name": "Pechiche",
       "nameView": "Pechiche",
-      "family": "Vitex cymosa",
+      "family": "Vitex gigantea",
       "gallery": [
         {
           "mongoId": "5dd8562644b5b86ed73021f9",
           "id": 21,
-          "description": "Seu nome científico é Vitex Gigantea Kunth, é uma árvore que chega a medir 20 m de altura.",
+          "description": "Seu nome científico é Vitex Gigantea Kunth, é uma árvore de grande porte que pode atingir entre 30 metros de altura e 80 cm de diâmetro à altura do peito (DAP), com copa irregular e folhagem densa.",
           "audioname": "Pechiche_audio_descripcion_0",
           "imagename": "Pechiche_image_0"
         },
         {
           "mongoId": "5dd8562644b5b86ed73021fa",
           "id": 22,
-          "description": "Seu nome científico é Vitex Gigantea Kunth, é uma árvore que chega a medir 20 m de altura.",
+          "description": "Seu nome científico é Vitex Gigantea Kunth, é uma árvore de grande porte que pode atingir entre 30 metros de altura e 80 cm de diâmetro à altura do peito (DAP), com copa irregular e folhagem densa.",
           "audioname": "Pechiche_audio_descripcion_1",
           "imagename": "Pechiche_image_1"
         },
         {
           "mongoId": "5dd8562644b5b86ed73021fb",
           "id": 23,
-          "description": "Seu nome científico é Vitex Gigantea Kunth, é uma árvore que chega a medir 20 m de altura.",
+          "description": "Seu nome científico é Vitex Gigantea Kunth, é uma árvore de grande porte que pode atingir entre 30 metros de altura e 80 cm de diâmetro à altura do peito (DAP), com copa irregular e folhagem densa.",
           "audioname": "Pechiche_audio_descripcion_2",
           "imagename": "Pechiche_image_2"
         }
@@ -149,7 +149,7 @@
         {
           "mongoId": "5dd8566444b5b86ed73021fd",
           "id": 24,
-          "description": "Esta bela ave que se alimenta principalmente de frutos leva o nome de Saíra-azuleja pela cor de sua plumagem.",
+          "description": "Thraupis episcopus Ordem: Passeriformes | Família: Thraupidae Endêmico do Equador: Não. Esta bela ave que se alimenta principalmente de frutos leva o nome de Saíra-azuleja pela cor de sua plumagem. Mede 18 cm de comprimento e pesa em média 35 g. Sua dieta consiste principalmente de frutas, mas também de néctar e insetos. É uma espécie comum, muito ativa e relativamente dócil. Geralmente viaja em pares, mas também forma pequenos grupos. Aproxima-se de áreas habitadas por humanos, alimentando-se de algumas frutas cultivadas. Alguns pequenos grupos forrageiam na copa de florestas de terra firme. Frequentemente acompanha bandos mistos.",
           "audioname": "Tangara Azul y Gris_audio_descripcion_0",
           "imagename": "Tangara Azul y Gris_image_0"
         }
@@ -165,7 +165,7 @@
         {
           "mongoId": "5dd85bd0171a027783efa942",
           "id": 46,
-          "description": "É uma árvore de porte baixo com folhas simples e produz flores pequenas.",
+          "description": "Guasmo - Guazuma ulmifolia",
           "audioname": "Guasmo_audio_descripcion_0",
           "imagename": "Guasmo_image_0"
         },
@@ -195,7 +195,7 @@
         {
           "mongoId": "5dd8590671628572e2aad060",
           "id": 31,
-          "description": "Amplamente distribuído em florestas úmidas, incluindo planícies de rios e florestas secas.",
+          "description": "Fernan Sánchez - Triplaris cumingiana",
           "audioname": "Fernan Sánchez_audio_descripcion_0",
           "imagename": "Fernan Sánchez_image_0"
         },
@@ -226,14 +226,14 @@
         {
           "mongoId": "5dd85c5584573f78b5601112",
           "id": 51,
-          "description": "Seu nome científico é Tyrannus melancholicus.",
+          "description": "Seu nome científico é Tyrannus melancholicus Ordem: Passeriformes | Família: Tyrannidae Endêmico do Equador: Não.",
           "audioname": "Tirano Tropical_audio_descripcion_0",
           "imagename": "Tirano Tropical_image_0"
         },
         {
           "mongoId": "5dd85c5584573f78b5601113",
           "id": 49,
-          "description": "Alimenta-se principalmente de insetos que capturam com seus movimentos aéreos, também consome frutas.",
+          "description": "Mede aproximadamente 20 cm de comprimento e pesa cerca de 40 g. Alimenta-se principalmente de insetos, que geralmente caça em voo, embora às vezes inclua pequenas frutas em sua dieta. O macho é indistinguível da fêmea em termos de plumagem; possui abdômen amarelo, peito verde-oliva, pescoço cinza-claro, cabeça cinza e dorso verde-acinzentado. Esta espécie defende agressivamente seu território contra intrusos, mesmo aves muito maiores, como tucanos e caracaras.",
           "audioname": "Tirano Tropical_audio_descripcion_0",
           "imagename": "Tirano Tropical_image_0"
         },
@@ -263,14 +263,14 @@
         {
           "mongoId": "5dd85aaec589a4759c90b67b",
           "id": 41,
-          "description": "Frequentemente em pares, regularmente eriça as penas da coroa para formar uma crista redonda e fofa enquanto acena alertamente.",
+          "description": "Pachyramphus homochrous Ordem: Passeriformes | Família: Tityridae Endêmico do Equador: Não",
           "audioname": "Cabezón Unicolor_audio_descripcion_0",
           "imagename": "Cabezón Unicolor_image_0"
         },
         {
           "mongoId": "5dd85aaec589a4759c90b67c",
           "id": 42,
-          "description": "Frequentemente em pares, regularmente eriça as penas da coroa para formar uma crista redonda e fofa enquanto acena alertamente.",
+          "description": "Essa espécie é considerada de incomum a comum em seus habitats naturais: a copa e as bordas de vários tipos de floresta decídua úmida a seca, clareiras adjacentes com árvores grandes dispersas, floresta secundária e de galeria, floresta árida semiaberta perturbada e matagal xerófilo com árvores altas dispersas. É encontrada principalmente abaixo de 1000 m de altitude, mas foi registrada até quase 1500 m no Equador (Chimborazo).",
           "audioname": "Cabezón Unicolor_audio_descripcion_1",
           "imagename": "Cabezón Unicolor_image_1"
         },
@@ -294,7 +294,7 @@
         {
           "mongoId": "5e04e9cf898f5067dfced5e1",
           "id": 60,
-          "description": "Seu nome científico é Sciurus stramineus.",
+          "description": "Seu nome científico é Simosciurus stramineus. Ordem: Rodentia | Família: Sciuridae Endêmica do Equador?: Sim",
           "audioname": "Ardilla_audio_descripcion_1",
           "imagename": "Ardilla_image_0"
         },
@@ -322,7 +322,7 @@
         {
           "mongoId": "5e04e9d0898f5067dfced5e5",
           "id": 60,
-          "description": "Alimenta-se de frutos e se refugia nos buracos das árvores.",
+          "description": "É uma espécie diurna e arborícola. Pode ser solitária ou gregária, formando grupos de até cinco indivíduos. Sua dieta consiste em frutos e sementes que retira diretamente das árvores. No entanto, também pode consumir insetos, fungos, folhas e casca de árvores. Empoleira-se nas partes superiores das árvores, em troncos ocos ou escondida entre a folhagem. Seus ninhos são forrados com folhas e galhos secos.",
           "audioname": "Ardilla_audio_descripcion_1",
           "imagename": "Ardilla_image_3"
         }
@@ -368,7 +368,7 @@
     {
       "specieId": "10000001",
       "id": 29,
-      "name": "Jacaranda",
+      "name": "Jacaranda mimosifolia",
       "nameView": "Jacarandá",
       "family": "Bignoniaceae",
       "gallery": [
@@ -399,7 +399,7 @@
       "specieId": "10000002",
       "id": 97,
       "name": "Guayacán",
-      "nameView": "Guaiacum",
+      "nameView": "Guaiacum - Tabebuia Chrysantha",
       "family": "Zygophyllaceae",
       "gallery": [
         {
@@ -429,7 +429,7 @@
       "specieId": "10000003",
       "id": 31,
       "name": "Laurel De Judea",
-      "nameView": "Louro-de-alexandria",
+      "nameView": "Louro-de-alexandria - Nerium oleander",
       "family": "Apocynaceae",
       "gallery": [
         {
@@ -459,13 +459,13 @@
       "specieId": "10000004",
       "id": 32,
       "name": "Oso Perezoso",
-      "nameView": "Bicho-preguiça",
+      "nameView": "Preguiça de dois dedos de Hoffmann - Choloepus hoffmanni",
       "family": "Choloepodidae",
       "gallery": [
         {
           "mongoId": "20000010",
           "id": 105,
-          "description": "Seu nome científico é Choloepus hoffmanni.",
+          "description": "Seu nome científico é Choloepus hoffmanni Ordem: Pilosa | Família: Megalonychidae Endêmico do Equador: Não.",
           "audioname": "OsoPerezoso_audio_descripcion_0",
           "imagename": "OsoPerezoso_image_0"
         },
@@ -486,7 +486,7 @@
         {
           "mongoId": "20000013",
           "id": 105,
-          "description": "Estes animais pesam de 5 a 7 kg e têm aproximadamente 60 cm de comprimento.",
+          "description": "Estes animais pesam de 5 a 7 kg e têm aproximadamente 60 cm de comprimento. É principalmente noturno, arborícola e solitário. Tem uma dieta herbívora-onívora, consumindo principalmente folhas, mas também alguns frutos. A fêmea dá à luz um filhote de cada vez. A gestação pode durar entre 11 meses e 10 dias e 12 meses e 12 dias, com intervalos entre os nascimentos de 15 meses ou 170 a 263 dias. Os filhotes tornam-se independentes por volta dos nove meses de idade. A reprodução foi registrada durante todo o ano, com um ligeiro aumento sazonal. Prefere árvores com lianas abundantes e copas expostas ao sol. É frequentemente encontrado nas partes mais altas das árvores.",
           "audioname": "OsoPerezoso_audio_descripcion_2",
           "imagename": "OsoPerezoso_image_2"
         }
@@ -502,7 +502,7 @@
         {
           "mongoId": "20000012",
           "id": 108,
-          "description": "Seu nome científico é Odocoileus peruvianus.",
+          "description": "Seu nome científico é Odocoileus peruvianus. Ordem: Artiodactyla | Família: Cervidae Endêmica do Equador: Não EM PERIGO",
           "audioname": "VenadoColaBlanca_audio_descripcion_0",
           "imagename": "VenadoColaBlanca_image_0"
         },
@@ -523,7 +523,7 @@
         {
           "mongoId": "20000015",
           "id": 108,
-          "description": "A ponta da cauda é branca, o que lhe serve para agitá-la como sinal de alarme.",
+          "description": "A ponta da cauda é branca, o que lhe serve para agitá-la como sinal de alarme. É uma espécie terrestre, crepuscular e ruminante. Consome plantas seletivamente. Considera-se que prefere arbustos e árvores, mas também pode consumir sementes e frutos. A reprodução ocorre durante todo o ano. A maturidade sexual é atingida com um ano e meio nos machos e um ano nas fêmeas. Em geral, os cervos-de-cauda-branca formam grupos que podem se concentrar ao redor da mãe ou grupos de machos adultos com cerca de um ano de idade.",
           "audioname": "VenadoColaBlanca_audio_descripcion_2",
           "imagename": "VenadoColaBlanca_image_2"
         }
@@ -539,7 +539,7 @@
         {
           "mongoId": "20000015",
           "id": 111,
-          "description": "Seu nome científico é Lycalopex sechurae.",
+          "description": "Seu nome científico é Lycalopex sechurae. Ordem: Carnívoro | Família: Canídeos Endêmico do Equador: Não VULNERÁVEL",
           "audioname": "ZorraPampera_audio_descripcion_0",
           "imagename": "ZorraPampera_image_0"
         },
@@ -560,7 +560,7 @@
         {
           "mongoId": "20000018",
           "id": 111,
-          "description": "A área principal da espécie se estende do sudoeste e sul do Equador, ao sul, através das planícies costeiras do Peru, até o norte de Lima.",
+          "description": "A área principal da espécie se estende do sudoeste e sul do Equador, ao sul, através das planícies costeiras do Peru, até o norte de Lima. Essa espécie é geralmente solitária e raramente encontrada em grupos com mais de três indivíduos. Grupos maiores foram observados onde há maior concentração de alimento. Ela foi registrada em ambientes desérticos e áreas adjacentes a praias, áreas cultivadas e florestas secas nos Andes ocidentais. L. sechurae é um onívoro oportunista, capaz de ser estritamente vegetariano quando necessário. Sua dieta depende do habitat, da estação do ano e da abundância geral de alimento. Em áreas desérticas e florestas secas, alimenta-se de frutas, roedores, aves, répteis, insetos e escorpiões. Ao longo das praias costeiras, alimenta-se de caranguejos, carniça, aves marinhas e ovos.",
           "audioname": "ZorraPampera_audio_descripcion_2",
           "imagename": "ZorraPampera_image_2"
         }
@@ -576,7 +576,7 @@
         {
           "mongoId": "20000018",
           "id": 114,
-          "description": "Seu nome científico é Ateles fusciceps.",
+          "description": "Seu nome científico é Ateles fusciceps Ordem: Primates | Família: Atelidae Endêmico do Equador: Não CRITICAMENTE AMEAÇADO",
           "audioname": "MonoAraña_audio_descripcion_0",
           "imagename": "MonoAraña_image_0"
         },
@@ -590,7 +590,7 @@
         {
           "mongoId": "20000021",
           "id": 114,
-          "description": "De acordo com a espécie, seu corpo mede de 65 a 90 cm de comprimento, e a cauda preênsil de 60 a 92 cm.",
+          "description": "De acordo com a espécie, seu corpo mede de 65 a 90 cm de comprimento, e a cauda preênsil de 60 a 92 cm. São primatas diurnos que se alimentam de frutas, folhas, sementes, brotos tenros e até mesmo cascas de árvores e insetos. Vivem em grupos de até 35 indivíduos, embora ocasionalmente possam ser observados indivíduos solitários. Essa espécie tende a se pendurar e balançar usando as pernas e a cauda para se mover entre os galhos das árvores. Embora as estimativas de densidade populacional para algumas áreas do Equador variem de 0,2 a 13,2 indivíduos/km², trata-se de uma espécie criticamente ameaçada de extinção, com populações que não ultrapassam 280 indivíduos em todo o Equador.",
           "audioname": "MonoAraña_audio_descripcion_2",
           "imagename": "MonoAraña_image_2"
         }
@@ -606,7 +606,7 @@
         {
           "mongoId": "20000021",
           "id": 117,
-          "description": "Seu nome científico é Alouatta palliata.",
+          "description": "Seu nome científico é Alouatta palliata Ordem: Primatas | Família: Atelidae Endêmico do Equador: Não EM PERIGO.",
           "audioname": "MonoAullador_audio_descripcion_0",
           "imagename": "MonoAullador_image_0"
         },
@@ -627,7 +627,7 @@
         {
           "mongoId": "20000024",
           "id": 117,
-          "description": "Habita as áreas de selva, especialmente nas florestas de galeria do norte da América do Sul.",
+          "description": "Habita as áreas de selva, especialmente nas florestas de galeria do norte da América do Sul. É diurno, arborícola e gregário. Alimenta-se principalmente de folhas, mas pode consumir certos frutos, flores e néctar; figos (Ficus sp.) estão entre os frutos mais comumente consumidos. Também pode ingerir insetos acidentalmente enquanto busca folhas. Pode formar grupos de 2 a 45 indivíduos, geralmente em torno de 14. Utiliza o dossel superior da floresta. Move-se lentamente e é sedentário. Pode sobreviver em pequenos fragmentos de floresta. Busca refúgio em remanescentes florestais durante períodos de rápido desmatamento. Move-se sobre quatro patas e usa a cauda como apoio enquanto agarra o alimento com uma ou duas mãos. Os grupos são territoriais e consistem em um ou mais machos adultos, várias fêmeas adultas e seus filhotes. Machos e fêmeas jovens dispersam-se do grupo antes de atingirem a idade adulta e vivem vidas solitárias até que possam se juntar a um grupo reprodutivo devido à morte de indivíduos adultos ou conflitos.",
           "audioname": "MonoAullador_audio_descripcion_2",
           "imagename": "MonoAullador_image_2"
         }
@@ -643,7 +643,7 @@
         {
           "mongoId": "20000024",
           "id": 120,
-          "description": "Seu nome científico é Tamandua mexicana.",
+          "description": "Seu nome científico é Tamandua mexicana Ordem: Pilosa | Família: Myrmecophagidae Endêmica do Equador: Não Esta espécie é ativa tanto de dia quanto de noite, é solitária e arborícola. Sua principal fonte de alimento são cupins, formigas e abelhas extraídas de seus ninhos. Ela usa suas garras dianteiras para abrir os ninhos. As formigas representam um terço de sua dieta; ela pode consumir até 9.000 formigas em um único dia. Sua visão é fraca, mas seu olfato é altamente desenvolvido, o qual utiliza para encontrar alimento e, durante a época de reprodução, ajuda os machos a encontrar fêmeas receptivas. Sua locomoção é lenta, tanto no solo quanto nas árvores. Ela repousa em ocos de árvores, tocas ou qualquer lugar que ofereça abrigo. Quando ameaçada, ela se ergue verticalmente sobre as patas traseiras, levanta o focinho para farejar, sobe em uma árvore ou se afasta.",
           "audioname": "OsoHormiguero_audio_descripcion_0",
           "imagename": "OsoHormiguero_image_0"
         },
@@ -680,7 +680,7 @@
         {
           "mongoId": "20000027",
           "id": 123,
-          "description": "Seu nome científico é Amazona viridigenalis.",
+          "description": "Seu nome científico é Psittacara erythrogenys Ordem: Psittaciformes | Família: Psittacidae Endêmica do Equador: Não Quase Ameaçada",
           "audioname": "LoroCaraRoja_audio_descripcion_0",
           "imagename": "LoroCaraRoja_image_0"
         },
@@ -717,7 +717,7 @@
         {
           "mongoId": "20000027",
           "id": 126,
-          "description": "Seu nome científico é Anhinga anhinga.",
+          "description": "Seu nome científico é Anhinga anhinga Ordem: Suliformes | Família: Anhingidae Endêmico do Equador: Não.",
           "audioname": "Aninga_audio_descripcion_0",
           "imagename": "Aninga_image_0"
         },
@@ -738,7 +738,7 @@
         {
           "mongoId": "20000030",
           "id": 126,
-          "description": "De modo geral, os machos possuem plumagem mais escura, uma crista erétil no crânio e um bico maior.",
+          "description": "De modo geral, os machos possuem plumagem mais escura, uma crista erétil no crânio e um bico maior. É uma ave de pescoço comprido encontrada em pântanos rodeados por árvores, brejos e lagoas artificiais. Os machos são pretos com asas brancas; as fêmeas são semelhantes, mas com o pescoço e a cabeça acastanhados. Mergulha e fisga peixes com seu bico em forma de adaga. Frequentemente nada com apenas a cabeça e o pescoço acima da água. Como os corvos-marinhos, empoleira-se em áreas abertas para abrir as asas e secar as penas. Seu formato é relativamente semelhante ao dos corvos-marinhos, mas com uma cauda mais longa e um bico distintamente pontiagudo. Ocasionalmente, plana muito alto.",
           "audioname": "Aninga_audio_descripcion_2",
           "imagename": "Aninga_image_2"
         }
@@ -754,7 +754,7 @@
         {
           "mongoId": "20000027",
           "id": 129,
-          "description": "Seu nome científico é Piaya cayana.",
+          "description": "Seu nome científico é Piaya cayana. Ordem: Cuculiformes | Família: Cuculidae Endêmico do Equador: Não",
           "audioname": "CucoArdilla_audio_descripcion_0",
           "imagename": "_image_0"
         },
@@ -775,7 +775,7 @@
         {
           "mongoId": "20000030",
           "id": 129,
-          "description": "Seu ninho é uma taça de folhas, construído em um galho de árvore, oculto na vegetação densa, a uma altura de 1 a 12 m.",
+          "description": "Seu ninho é uma taça de folhas, construído em um galho de árvore, oculto na vegetação densa, a uma altura de 1 a 12 m. It measures between 43 and 46 cm in length and weighs between 95 and 105 g. The plumage is chestnut-brown on the back and head, paler on the throat. It feeds on large insects, such as cicadas, wasps, and caterpillars (including those with stinging hairs or spines), and occasionally arachnids, lizards, and some fruits, such as those of Trophis racemosa (Moraceae). Its nest is a cup of leaves, built on a tree branch, hidden in dense vegetation, at a height of 1 to 12 m. The female lays two white eggs.",
           "audioname": "CucoArdilla_audio_descripcion_2",
           "imagename": "CucoArdilla_image_2"
         }
@@ -791,7 +791,7 @@
         {
           "mongoId": "20000027",
           "id": 135,
-          "description": "Seu nome científico é Melanerpes pucherani.",
+          "description": "Seu nome científico é Melanerpes pucherani. Ordem: Piciformes | Família: Picidae Endêmica do Equador: Não",
           "audioname": "CarpinteroCarinegro_audio_descripcion_0",
           "imagename": "CarpinteroCarinegro_image_0"
         },
@@ -805,7 +805,7 @@
         {
           "mongoId": "20000030",
           "id": 135,
-          "description": "Alimentam-se de insetos, vermes e larvas que podem encontrar durante todo o ano, capturando-os sob a casca ou perfurando o interior das árvores ou troncos caídos.",
+          "description": "Alimentam-se de insetos, vermes e larvas que podem encontrar durante todo o ano, capturando-os sob a casca ou perfurando o interior das árvores ou troncos caídos. Pica-pau de tamanho médio, habitante de florestas perenes e suas bordas em terras baixas tropicais. É uma espécie distinta, com uma grande máscara preta, uma mancha branca atrás dos olhos, partes superiores pretas com estreitas faixas brancas e uma grande mancha branca na garupa. O macho possui a coroa completamente vermelha. Na fêmea, a parte frontal é acinzentada e a dorsal é vermelha.",
           "audioname": "CarpinteroCarinegro_audio_descripcion_2",
           "imagename": "CarpinteroCarinegro_image_2"
         }
@@ -821,7 +821,7 @@
         {
           "mongoId": "20000027",
           "id": 138,
-          "description": "Seu nome científico é Ardea alba.",
+          "description": "Seu nome científico é Ardea alba. Ordem: Pelecaniformes | Família: Ardeidae Endêmica do Equador: Não.",
           "audioname": "GarzaBlanca_audio_descripcion_0",
           "imagename": "GarzaBlanca_image_0"
         },
@@ -842,7 +842,7 @@
         {
           "mongoId": "20000030",
           "id": 138,
-          "description": "Sua plumagem é branca e o bico é amarelo com pernas negras.",
+          "description": "Sua plumagem é branca e o bico é amarelo com pernas negras. Esta garça mede entre 80 e 105 cm do bico à cauda, ​​com uma envergadura entre 130 e 170 cm. Seu peso varia de 700 a 1.500 g. É uma ave aquática grande, esguia e de plumagem branca, que pode atingir um metro de altura. Voa com o longo pescoço retraído, mas geralmente caminha com ele estendido. Possui bico amarelo e pernas pretas com dedos pretos (seu bico pode escurecer e a parte inferior das pernas clarear durante a época de reprodução). A espécie é parcialmente migratória. Alimenta-se em águas rasas ou habitats mais secos, principalmente de peixes, rãs, pequenos mamíferos e, ocasionalmente, pequenas aves e répteis, capturando-os com seu bico longo e afiado.",
           "audioname": "GarzaBlanca_audio_descripcion_2",
           "imagename": "GarzaBlanca_image_2"
         }
@@ -858,7 +858,7 @@
         {
           "mongoId": "20000027",
           "id": 141,
-          "description": "Seu nome científico é Nycticorax nycticorax.",
+          "description": "Seu nome científico é Nycticorax nycticorax Ordem: Pelecaniformes | Família: Ardeidae Endêmico do Equador: Não",
           "audioname": "GarzaNocturna_audio_descripcion_0",
           "imagename": "GarzaNocturna_image_0"
         },
@@ -872,7 +872,7 @@
         {
           "mongoId": "20000030",
           "id": 141,
-          "description": "Em Chiloé, um arquipélago ao sul do Chile, esta ave tem um papel importante na mitologia local, por ser associada à bruxaria e às forças do mal.",
+          "description": "Alimenta-se principalmente de peixes, anfíbios, pequenos répteis e insetos. Excepcionalmente, pode complementar sua dieta com algum rato. Garça robusta com pescoço geralmente dobrado. Os adultos são predominantemente cinza-claros com uma coroa e dorso pretos. Olhos vermelhos. Frequentemente vista agachada sob galhos pendentes durante o dia. Alimenta-se à noite de peixes, rãs e outras presas. Os juvenis acastanhados e listrados podem ser confundidos, mas observe as grandes manchas brancas em forma de lágrima nas asas.",
           "audioname": "GarzaNocturna_audio_descripcion_2",
           "imagename": "GarzaNocturna_image_2"
         }

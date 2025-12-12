@@ -11,7 +11,7 @@
         {
           "mongoId": "5dd8431a4a39665044fb91cb",
           "id": 1,
-          "description": "They measure 14 cm. They feed on grains and seeds they find on the ground. They build nests in isolated trees.",
+          "description": "Sicalis flaveola Order: Passeriformes | Family: Thraupidae Endemic to Ecuador: NoThey measure 14 cm. They feed on grains and seeds they find on the ground. They build nests in isolated trees.The male is bright yellow saturated with orange on the forehead. Typically, it shows less olive-brown tones on the back and wings than many yellow finches, but the southern populations of Saffron are duller and browner above. Females are duller than males, with southern populations even browner and streaked.",
           "audioname": "Pinzón Sabanero_audio_descripcion_0",
           "imagename": "Pinzón Sabanero_image_0"
         }
@@ -28,14 +28,14 @@
         {
           "mongoId": "5dd85b1fbaf3fe76a27f1fe2",
           "id": 45,
-          "description": "Its scientific name is Iguana iguana.",
+          "description": "Its scientific name is Iguana iguana. Order: Squamata: Sauria | Family: Iguanidae: Iguaninae Endemic to Ecuador: No",
           "audioname": "Iguana_audio_descripcion_0",
           "imagename": "Iguana_image_0"
         },
         {
           "mongoId": "5dd85b1fbaf3fe76a27f1fe3",
           "id": 44,
-          "description": "They are herbivores and inhabit tropical jungles and mangroves.",
+          "description": "They are herbivores and inhabit tropical jungles and mangroves. The largest green iguana currently reported has a total length of 2300 mm and a weight of 10.5 kg. The biology of the green iguana is closely linked to bodies of water, where it is able to dive, swim, and even defecate. They are territorial during the breeding season and spend their time resting outside of this period, preferably in the treetops. It is a sedentary species that can remain in the same tree for several weeks until food, places for thermoregulation, and sleeping sites are exhausted. During the day, they bask in the sun for approximately four hours in the morning and two to three hours in the afternoon. Green iguanas communicate through body language such as head tilting (used as a signal for mating, territoriality, rejection, scratching, among others); flattening their bodies; and scratching movements.",
           "audioname": "Iguana_audio_descripcion_0",
           "imagename": "Iguana_image_0"
         },
@@ -58,7 +58,7 @@
         {
           "mongoId": "5dd852c1fe5e8c68f7294bd0",
           "id": 7,
-          "description": "It is a leafy tree, used for the manufacture of furniture and luxurious boats.",
+          "description": "Teak- Tectona grandis Bototillo- Cochlospermum vitifolium",
           "audioname": "Teca_audio_descripcion_0",
           "imagename": "Teca_image_0"
         },
@@ -113,26 +113,26 @@
       "id": 10,
       "name": "Pechiche",
       "nameView": "Pechiche",
-      "family": "Vitex cymosa",
+      "family": "Vitex gigantea",
       "gallery": [
         {
           "mongoId": "5dd8562644b5b86ed73021f9",
           "id": 21,
-          "description": "Its scientific name is Vitex Gigantea Kunth, it is a tree that can reach 20 m in height.",
+          "description": "Its scientific name is Vitex Gigantea Kunth, it is a large tree that can reach between 30 meters in height and 80 cm in diameter at breast height (DBH), its crown is irregular with dense foliage.",
           "audioname": "Pechiche_audio_descripcion_0",
           "imagename": "Pechiche_image_0"
         },
         {
           "mongoId": "5dd8562644b5b86ed73021fa",
           "id": 22,
-          "description": "Its scientific name is Vitex Gigantea Kunth, it is a tree that can reach 20 m in height.",
+          "description": "Its scientific name is Vitex Gigantea Kunth, it is a large tree that can reach between 30 meters in height and 80 cm in diameter at breast height (DBH), its crown is irregular with dense foliage.",
           "audioname": "Pechiche_audio_descripcion_1",
           "imagename": "Pechiche_image_1"
         },
         {
           "mongoId": "5dd8562644b5b86ed73021fb",
           "id": 23,
-          "description": "Its scientific name is Vitex Gigantea Kunth, it is a tree that can reach 20 m in height.",
+          "description": "Its scientific name is Vitex Gigantea Kunth, it is a large tree that can reach between 30 meters in height and 80 cm in diameter at breast height (DBH), its crown is irregular with dense foliage.",
           "audioname": "Pechiche_audio_descripcion_2",
           "imagename": "Pechiche_image_2"
         }
@@ -149,7 +149,7 @@
         {
           "mongoId": "5dd8566444b5b86ed73021fd",
           "id": 24,
-          "description": "This beautiful bird, which feeds mainly on fruits, is named the Blue-Gray Tanager due to the color of its plumage.",
+          "description": "Thraupis episcopus Order: Passeriformes | Family: Thraupidae Endemic to Ecuador: No. This beautiful bird, which feeds mainly on fruits, is named the Blue-Gray Tanager due to the color of its plumage. It measures 18 cm in length and weighs an average of 35 g. Its diet consists mainly of fruit, but also nectar and insects. It is a common, very active, and relatively tame species. It generally travels in pairs, but also forms small groups. It approaches areas inhabited by humans, feeding on some cultivated fruits. Some small groups forage in the canopy of terra firme forests. It frequently accompanies mixed flocks.",
           "audioname": "Tangara Azul y Gris_audio_descripcion_0",
           "imagename": "Tangara Azul y Gris_image_0"
         }
@@ -165,7 +165,7 @@
         {
           "mongoId": "5dd85bd0171a027783efa942",
           "id": 46,
-          "description": "It is a low-stature tree with simple leaves and produces small flowers.",
+          "description": "Guasmo - Guazuma ulmifolia",
           "audioname": "Guasmo_audio_descripcion_0",
           "imagename": "Guasmo_image_0"
         },
@@ -195,7 +195,7 @@
         {
           "mongoId": "5dd8590671628572e2aad060",
           "id": 31,
-          "description": "Widely distributed in humid forests, including river plains and dry forests.",
+          "description": "Fernan Sánchez - Triplaris cumingiana",
           "audioname": "Fernan Sánchez_audio_descripcion_0",
           "imagename": "Fernan Sánchez_image_0"
         },
@@ -226,14 +226,14 @@
         {
           "mongoId": "5dd85c5584573f78b5601112",
           "id": 51,
-          "description": "Its scientific name is Tyrannus melancholicus.",
+          "description": "Its scientific name is Tyrannus melancholicus Order: Passeriformes | Family: Tyrannidae Endemic to Ecuador: No.",
           "audioname": "Tirano Tropical_audio_descripcion_0",
           "imagename": "Tirano Tropical_image_0"
         },
         {
           "mongoId": "5dd85c5584573f78b5601113",
           "id": 49,
-          "description": "It feeds mainly on insects that it captures with its aerial maneuvers, it also consumes fruit.",
+          "description": "It measures approximately 20 cm in length and weighs around 40 g. It feeds mainly on insects, which it usually hunts in flight, although it sometimes includes small fruits in its diet. The male is indistinguishable from the female in terms of plumage; it has a yellow abdomen, an olive-colored breast, a light gray neck, a gray head, and a grayish-green back. This species aggressively defends its territory against intruders, even much larger birds such as toucans and caracaras.",
           "audioname": "Tirano Tropical_audio_descripcion_0",
           "imagename": "Tirano Tropical_image_0"
         },
@@ -247,7 +247,7 @@
         {
           "mongoId": "5dd85c5684573f78b5601115",
           "id": 51,
-          "description": "It feeds mainly on insects that it captures with its aerial maneuvers, it also consumes fruit.",
+          "description": "It measures approximately 20 cm in length and weighs around 40 g. It feeds mainly on insects, which it usually hunts in flight, although it sometimes includes small fruits in its diet. The male is indistinguishable from the female in terms of plumage; it has a yellow abdomen, an olive-colored breast, a light gray neck, a gray head, and a grayish-green back. This species aggressively defends its territory against intruders, even much larger birds such as toucans and caracaras.",
           "audioname": "Tirano Tropical_audio_descripcion_2",
           "imagename": "Tirano Tropical_image_2"
         }
@@ -263,14 +263,14 @@
         {
           "mongoId": "5dd85aaec589a4759c90b67b",
           "id": 41,
-          "description": "Often in pairs, it regularly erects its crown feathers to form a round, fluffy crest while nodding alertly.",
+          "description": "Pachyramphus homochrous Order: Passeriformes | Family: Tityridae Endemic to Ecuador: No.",
           "audioname": "Cabezón Unicolor_audio_descripcion_0",
           "imagename": "Cabezón Unicolor_image_0"
         },
         {
           "mongoId": "5dd85aaec589a4759c90b67c",
           "id": 42,
-          "description": "Often in pairs, it regularly erects its crown feathers to form a round, fluffy crest while nodding alertly.",
+          "description": "This species is considered uncommon to common in its natural habitats: the canopy and edges of various types of humid to dry deciduous forest, adjacent clearings with scattered large trees, secondary and gallery forest, disturbed semi-open arid forest, and xeric scrubland with scattered tall trees. It is found mainly below 1000 m in altitude, but has been recorded up to nearly 1500 m in Ecuador (Chimborazo).",
           "audioname": "Cabezón Unicolor_audio_descripcion_1",
           "imagename": "Cabezón Unicolor_image_1"
         },
@@ -294,7 +294,7 @@
         {
           "mongoId": "5e04e9cf898f5067dfced5e1",
           "id": 60,
-          "description": "Its scientific name is Sciurus stramineus.",
+          "description": "Its scientific name is Simosciurus stramineus. Order: Rodentia | Family: Sciuridae Endemic to Ecuador?: Yes",
           "audioname": "Ardilla_audio_descripcion_1",
           "imagename": "Ardilla_image_0"
         },
@@ -322,7 +322,7 @@
         {
           "mongoId": "5e04e9d0898f5067dfced5e5",
           "id": 60,
-          "description": "It feeds on fruits and takes refuge in tree hollows.",
+          "description": "It is a diurnal and arboreal species. It can be solitary or gregarious, forming groups of up to five individuals. Its diet consists of fruits and seeds that it takes directly from the trees. However, it may also consume insects, fungi, leaves, and tree bark. It roosts in the upper parts of trees, in hollow trunks, or hidden among the foliage. Its nests are lined with dry leaves and branches.",
           "audioname": "Ardilla_audio_descripcion_1",
           "imagename": "Ardilla_image_3"
         }
@@ -368,14 +368,14 @@
     {
       "specieId": "10000001",
       "id": 29,
-      "name": "Jacaranda",
-      "nameView": "Jacaranda",
+      "name": "Jacaranda mimosifolia",
+      "nameView": "Jacaranda mimosifolia",
       "family": "Bignoniaceae",
       "gallery": [
         {
           "mongoId": "20000001",
           "id": 94,
-          "description": "Jacaranda is a subtropical tree from South America widely cultivated for its showy and long-lasting violet flowers.",
+          "description": "Jacaranda mimosifolia is a subtropical tree from South America widely cultivated for its showy and long-lasting violet flowers.",
           "audioname": "Jacaranda_audio_descripcion_0",
           "imagename": "Jacaranda_image_0"
         },
@@ -399,7 +399,7 @@
       "specieId": "10000002",
       "id": 97,
       "name": "Guayacán",
-      "nameView": "Guayacan",
+      "nameView": "Guayacan - Tabebuia Chrysantha",
       "family": "Zygophyllaceae",
       "gallery": [
         {
@@ -429,7 +429,7 @@
       "specieId": "10000003",
       "id": 31,
       "name": "Laurel De Judea",
-      "nameView": "Laurel of Judea",
+      "nameView": "Laurel of Judea - Nerium oleander",
       "family": "Apocynaceae",
       "gallery": [
         {
@@ -459,13 +459,13 @@
       "specieId": "10000004",
       "id": 32,
       "name": "Oso Perezoso",
-      "nameView": "Sloth Bear",
+      "nameView": "Hoffmann's two-toed sloth - Choloepus hoffmanni",
       "family": "Choloepodidae",
       "gallery": [
         {
           "mongoId": "20000010",
           "id": 105,
-          "description": "Its scientific name is Choloepus hoffmanni.",
+          "description": "Its scientific name is Choloepus hoffmanni Order: Pilosa | Family: Megalonychidae Endemic to Ecuador: No.",
           "audioname": "OsoPerezoso_audio_descripcion_0",
           "imagename": "OsoPerezoso_image_0"
         },
@@ -486,7 +486,7 @@
         {
           "mongoId": "20000013",
           "id": 105,
-          "description": "These animals, weighing 5 to 7 kg and approximately 60 cm long.",
+          "description": "These animals, weighing 5 to 7 kg and approximately 60 cm long. It is primarily nocturnal, arboreal, and solitary. It has a herbivorous-omnivorous diet, consuming mainly leaves but also some fruit. The female gives birth to one offspring at a time. Gestation can last between 11 months 10 days and 12 months 12 days, with intervals between births of 15 months or 170 to 263 days. The young become independent at around nine months of age. Reproduction has been recorded year-round, with a slight seasonal increase. It prefers trees with abundant lianas and canopies exposed to the sun. It is often found in the highest parts of the trees.", 
           "audioname": "OsoPerezoso_audio_descripcion_2",
           "imagename": "OsoPerezoso_image_2"
         }
@@ -502,7 +502,7 @@
         {
           "mongoId": "20000012",
           "id": 108,
-          "description": "Its scientific name is Odocoileus peruvianus.",
+          "description": "Its scientific name is Odocoileus peruvianus. Order: Artiodactyla | Family: Cervidae Endemic to Ecuador: No ENDANGERED",
           "audioname": "VenadoColaBlanca_audio_descripcion_0",
           "imagename": "VenadoColaBlanca_image_0"
         },
@@ -523,7 +523,7 @@
         {
           "mongoId": "20000015",
           "id": 108,
-          "description": "The tip of the tail is white, which it uses to wag as an alarm signal.",
+          "description": "The tip of the tail is white, which it uses to wag as an alarm signal. It is a terrestrial, crepuscular, and ruminant species. It selectively consumes plants. It is considered to prefer shrubs and trees, but may also consume seeds and fruits. Reproduction occurs year-round. Sexual maturity is reached at one and a half years in males and one year in females. In general, white-tailed deer form groups that may be concentrated around the mother or groups of adult males around one year old.",
           "audioname": "VenadoColaBlanca_audio_descripcion_2",
           "imagename": "VenadoColaBlanca_image_2"
         }
@@ -539,7 +539,7 @@
         {
           "mongoId": "20000015",
           "id": 111,
-          "description": "Its scientific name is Lycalopex sechurae.",
+          "description": "Its scientific name is Lycalopex sechurae. Order: Carnivora | Family: Canidae Endemic to Ecuador: No VULNERABLE",
           "audioname": "ZorraPampera_audio_descripcion_0",
           "imagename": "ZorraPampera_image_0"
         },
@@ -560,7 +560,7 @@
         {
           "mongoId": "20000018",
           "id": 111,
-          "description": "The main range of the species extends from the southwest and south of Ecuador, south through the coastal lowlands of Peru, to northern Lima.",
+          "description": "The main range of the species extends from the southwest and south of Ecuador, south through the coastal lowlands of Peru, to northern Lima. This species is generally solitary and rarely found in groups of more than three individuals. Larger groups have been observed where there is a greater concentration of food. It has been reported from desert environments and areas adjacent to beaches, cultivated areas, and dry forests in the western Andes. L. sechurae is an opportunistic omnivore, capable of being strictly vegetarian when necessary. Its diet depends on the habitat, season, and overall food abundance. In desert areas and dry forests, it feeds on fruits, rodents, birds, reptiles, insects, and scorpions. Along coastal beaches, it feeds on crabs, carrion, seabirds, and eggs.",
           "audioname": "ZorraPampera_audio_descripcion_2",
           "imagename": "ZorraPampera_image_2"
         }
@@ -576,7 +576,7 @@
         {
           "mongoId": "20000018",
           "id": 114,
-          "description": "Its scientific name is Ateles fusciceps.",
+          "description": "Its scientific name is Ateles fusciceps Order: Primates | Family: Atelidae Endemic to Ecuador: No CRITICALLY ENDANGERED",
           "audioname": "MonoAraña_audio_descripcion_0",
           "imagename": "MonoAraña_image_0"
         },
@@ -590,7 +590,7 @@
         {
           "mongoId": "20000021",
           "id": 114,
-          "description": "Depending on the species, its body measures from 65 to 90 cm in length, and the prehensile tail from 60 to 92 cm.",
+          "description": "Depending on the species, its body measures from 65 to 90 cm in length, and the prehensile tail from 60 to 92 cm. They are diurnal primates that feed on fruits, leaves, seeds, tender shoots, and even bark and insects. They live in groups of up to 35 individuals, although solitary individuals can occasionally be observed. This species tends to hang and swing using its legs and tail to move among the branches of trees. Although population density estimates for some areas of Ecuador range from 0.2 to 13.2 individuals/km², this is a critically endangered species with populations numbering no more than 280 individuals throughout Ecuador.",
           "audioname": "MonoAraña_audio_descripcion_2",
           "imagename": "MonoAraña_image_2"
         }
@@ -606,7 +606,7 @@
         {
           "mongoId": "20000021",
           "id": 117,
-          "description": "Its scientific name is Alouatta palliata.",
+          "description": "Its scientific name is Alouatta palliata. Order: Primates | Family: Atelidae Endemic to Ecuador: No ENDANGERED",
           "audioname": "MonoAullador_audio_descripcion_0",
           "imagename": "MonoAullador_image_0"
         },
@@ -627,7 +627,7 @@
         {
           "mongoId": "20000024",
           "id": 117,
-          "description": "It inhabits jungle areas, especially the gallery forests of northern South America.",
+          "description": "It inhabits jungle areas, especially the gallery forests of northern South America It is diurnal, arboreal, and gregarious. It feeds mainly on leaves but may consume certain fruits, flowers, and nectar; figs (Ficus sp.) are among the most commonly consumed fruits. It may also accidentally ingest insects while foraging for leaves. It can form troops of 2 to 45 individuals, commonly around 14. It uses the upper canopy of the forest. It moves slowly and is sedentary. It can survive in small forest fragments. It takes refuge in forest remnants during periods of rapid deforestation. It moves on all fours and uses its tail for support while grasping food with one or two hands. Groups are territorial and consist of one or more adult males, several adult females, and their offspring. Young males and females disperse from the group before reaching adulthood and live solitary lives until they can join a breeding group due to the death of adult individuals or conflicts..",
           "audioname": "MonoAullador_audio_descripcion_2",
           "imagename": "MonoAullador_image_2"
         }
@@ -643,7 +643,7 @@
         {
           "mongoId": "20000024",
           "id": 120,
-          "description": "Its scientific name is Tamandua mexicana.",
+          "description": "Its scientific name is Tamandua mexicana Order: Pilosa | Family: Myrmecophagidae Endemic to Ecuador: No This species is active both day and night, is solitary, and arboreal. Its main food source is termites, ants, and bees extracted from their nests. It uses its front claws to break open nests. Ants make up a third of its diet; it can consume up to 9,000 ants in a single day. Its vision is poor, but its sense of smell is highly developed, which it uses to find food and, during the breeding season, helps males find receptive females. Its locomotion is slow, both on the ground and in trees. It rests in hollow trees, burrows, or any place that offers shelter. When threatened, it stands vertically on its hind legs, raises its nose to sniff, climbs a tree, or wanders away.",
           "audioname": "OsoHormiguero_audio_descripcion_0",
           "imagename": "OsoHormiguero_image_0"
         },
@@ -680,7 +680,7 @@
         {
           "mongoId": "20000027",
           "id": 123,
-          "description": "Its scientific name is Amazona viridigenalis.",
+          "description": "Its scientific name is Psittacara erythrogenys Order: Psittaciformes | Family: Psittacidae Endemic to Ecuador: No Near Threatened.",
           "audioname": "LoroCaraRoja_audio_descripcion_0",
           "imagename": "LoroCaraRoja_image_0"
         },
@@ -717,7 +717,7 @@
         {
           "mongoId": "20000027",
           "id": 126,
-          "description": "Its scientific name is Anhinga anhinga.",
+          "description": "Its scientific name is Anhinga anhinga Order: Suliformes | Family: Anhingidae Endemic to Ecuador: No.",
           "audioname": "Aninga_audio_descripcion_0",
           "imagename": "Aninga_image_0"
         },
@@ -738,7 +738,7 @@
         {
           "mongoId": "20000030",
           "id": 126,
-          "description": "In general, males have darker plumage, an erectile crest on the skull, and a larger beak.",
+          "description": "In general, males have darker plumage, an erectile crest on the skull, and a larger beak. A long-necked bird found in marshes surrounded by trees, swamps, and artificial ponds. Males are black with white wings; females are similar but with a brownish neck and head. It dives underwater and spears fish with its dagger-like bill. It often swims with only its head and neck above water. Like cormorants, it perches in open areas to spread its wings and dry its feathers. Its shape is relatively similar to cormorants, but with a longer tail and a distinctly pointed bill. It occasionally soars very high.",
           "audioname": "Aninga_audio_descripcion_2",
           "imagename": "Aninga_image_2"
         }
@@ -754,7 +754,7 @@
         {
           "mongoId": "20000027",
           "id": 129,
-          "description": "Its scientific name is Piaya cayana.",
+          "description": "Its scientific name is Piaya cayana Order: Cuculiformes | Family: Cuculidae Endemic to Ecuador: No.",
           "audioname": "CucoArdilla_audio_descripcion_0",
           "imagename": "_image_0"
         },
@@ -775,7 +775,7 @@
         {
           "mongoId": "20000030",
           "id": 129,
-          "description": "Its nest is a cup of leaves, built on a tree branch, hidden in dense vegetation, at a height of 1 to 12 m.",
+          "description": "Its nest is a cup of leaves, built on a tree branch, hidden in dense vegetation, at a height of 1 to 12 m. It measures between 43 and 46 cm in length and weighs between 95 and 105 g. The plumage is chestnut-brown on the back and head, paler on the throat. It feeds on large insects, such as cicadas, wasps, and caterpillars (including those with stinging hairs or spines), and occasionally arachnids, lizards, and some fruits, such as those of Trophis racemosa (Moraceae). Its nest is a cup of leaves, built on a tree branch, hidden in dense vegetation, at a height of 1 to 12 m. The female lays two white eggs.",
           "audioname": "CucoArdilla_audio_descripcion_2",
           "imagename": "CucoArdilla_image_2"
         }
@@ -791,7 +791,7 @@
         {
           "mongoId": "20000027",
           "id": 135,
-          "description": "Its scientific name is Melanerpes pucherani.",
+          "description": "Its scientific name is Melanerpes pucherani. Order: Piciformes | Family: Picidae Endemic to Ecuador: No",
           "audioname": "CarpinteroCarinegro_audio_descripcion_0",
           "imagename": "CarpinteroCarinegro_image_0"
         },
@@ -805,7 +805,7 @@
         {
           "mongoId": "20000030",
           "id": 135,
-          "description": "They feed on insects, worms, and larvae that they can find year-round, capturing them under the bark or by drilling into the interior of trees or fallen trunks.",
+          "description": "They feed on insects, worms, and larvae that they can find year-round, capturing them under the bark or by drilling into the interior of trees or fallen trunks. A medium-sized woodpecker of evergreen forests and their edges in tropical lowlands. It is distinctive, with a large black mask, a white patch behind the eyes, black upperparts with narrow white bars, and a large white rump patch. The male has a completely red crown. In the female, the front is grayish and the back is red.",
           "audioname": "CarpinteroCarinegro_audio_descripcion_2",
           "imagename": "CarpinteroCarinegro_image_2"
         }
@@ -821,7 +821,7 @@
         {
           "mongoId": "20000027",
           "id": 138,
-          "description": "Its scientific name is Ardea alba.",
+          "description": "Its scientific name is Ardea alba. Order: Pelecaniformes | Family: Ardeidae Endemic to Ecuador: No.",
           "audioname": "GarzaBlanca_audio_descripcion_0",
           "imagename": "GarzaBlanca_image_0"
         },
@@ -842,7 +842,7 @@
         {
           "mongoId": "20000030",
           "id": 138,
-          "description": "It feeds in shallow waters or drier habitats, mainly on fish, frogs, small mammals, and occasionally small birds and reptiles.",
+          "description": "It feeds in shallow waters or drier habitats, mainly on fish, frogs, small mammals, and occasionally small birds and reptiles. This heron measures between 80 and 105 cm from beak to tail, with a wingspan between 130 and 170 cm. Its weight ranges from 700 to 1,500 g. It is a large, slender, white-plumaged waterbird that can reach a meter in height. It flies with its long neck retracted, but usually walks with it outstretched. It has a yellow beak and black legs with black toes (its beak may darken and the lower part of its legs lighten during the breeding season). The species is partially migratory. It feeds in shallow waters or drier habitats, mainly on fish, frogs, small mammals, and occasionally small birds and reptiles, catching them with its long, sharp beak.",
           "audioname": "GarzaBlanca_audio_descripcion_2",
           "imagename": "GarzaBlanca_image_2"
         }
@@ -858,7 +858,7 @@
         {
           "mongoId": "20000027",
           "id": 141,
-          "description": "Its scientific name is Nycticorax nycticorax.",
+          "description": "Its scientific name is Nycticorax nycticorax Order: Pelecaniformes | Family: Ardeidae Endemic to Ecuador: No",
           "audioname": "GarzaNocturna_audio_descripcion_0",
           "imagename": "GarzaNocturna_image_0"
         },
@@ -872,7 +872,7 @@
         {
           "mongoId": "20000030",
           "id": 141,
-          "description": "In Chiloé, an archipelago in southern Chile, this bird plays an important role in local mythology because it is associated with witchcraft and evil forces.",
+          "description": "It feeds mainly on fish, amphibians, small reptiles, and insects. Exceptionally, it may supplement its diet with a mouse. Stocky heron with a usually folded neck. Adults are mostly pale grayish with a black cap and back. Red eyes. Often seen crouching under overhanging branches during the day. Feeds at night on fish, frogs, and other prey. Brownish, streaked immatures can be confusing, but note the large, teardrop-shaped white patches on the wings.",
           "audioname": "GarzaNocturna_audio_descripcion_2",
           "imagename": "GarzaNocturna_image_2"
         }
