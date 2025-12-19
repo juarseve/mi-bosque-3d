@@ -275,7 +275,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             rotX -= mouseY;
 
             // Limitar la vista arriba/abajo
-            rotX = Mathf.Clamp(rotX, -60f, 60f);
+            rotX = Mathf.Clamp(rotX, -20f, 60f);
 
             // APLICAR ROTACIÓN GLOBAL (WORLD SPACE)
             // Quaternion.Euler crea una rotación absoluta en el mundo.

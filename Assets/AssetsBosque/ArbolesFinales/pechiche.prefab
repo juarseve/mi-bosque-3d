@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5967734465086583287}
   - component: {fileID: 8909147779774214473}
   - component: {fileID: 2873206484803894230}
+  - component: {fileID: 1686422677684608646}
   m_Layer: 0
   m_Name: pechiche
   m_TagString: Untagged
@@ -88,6 +89,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1686422677684608646
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8243391196521220333}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.35, y: 9.297917, z: 0.5}
+  m_Center: {x: -0.05, y: 4.62, z: 0.16}
 --- !u!114 &-8044630796679938029
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -507,6 +507,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 1158131939460066404, guid: a3819624f3e321f4a8e2c4f352122c87, type: 3}
+--- !u!1 &24523340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: d4c264b909426534fb43cd43c4d5e0e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 727775736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &24523341
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24523340}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.48, y: 3.01, z: 1.97}
+  m_Center: {x: 0, y: 1.46, z: 0}
 --- !u!1001 &24970727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70805,6 +70824,39 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: f8b5e113076508b4a990328b0b7f4bae, type: 2}
+    - target: {fileID: 6205226163439910197, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 80380c8a578952c4cba3664be65e752c, type: 2}
+    - target: {fileID: 8928749969242610780, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: -8499701361930146817, guid: aeeeb7d807fc36f4bbb0f4efe1efdd68,
+        type: 3}
+    - target: {fileID: 8928749969242610780, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7dd309458225fc741a969b0eeb184fa2, type: 2}
+    - target: {fileID: 8663969380127903872, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: -8499701361930146817, guid: 366b8bbea02a1ce4ab0f843174225cc4,
+        type: 3}
+    - target: {fileID: 8663969380127903872, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 348472489759254226, guid: 6d191dfb7dde188439c8e51549594219,
+        type: 3}
+    - target: {fileID: 8663969380127903872, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7dd309458225fc741a969b0eeb184fa2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
 --- !u!1 &1135869720
@@ -106859,6 +106911,7 @@ GameObject:
   - component: {fileID: 8419914139207673385}
   - component: {fileID: 7126542258509342319}
   - component: {fileID: 2477395528869178036}
+  - component: {fileID: 23843445577122922}
   m_Layer: 0
   m_Name: Tronco
   m_TagString: Untagged
@@ -106866,6 +106919,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &23843445577122922
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23843445577122921}
+  m_Material: {fileID: 13400000, guid: 3aeb7dadc0c69d54d9e5777e9d5631f1, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2, y: 23, z: 2.31}
+  m_Center: {x: 0.06, y: 11.461341, z: -0.15}
 --- !u!4 &26240328418953922
 Transform:
   m_ObjectHideFlags: 0
@@ -120346,6 +120412,7 @@ GameObject:
   - component: {fileID: 7891541487802129134}
   - component: {fileID: 8915851887211010728}
   - component: {fileID: 4268447604323669619}
+  - component: {fileID: 1804075501848869039}
   m_Layer: 0
   m_Name: Tronco
   m_TagString: Untagged
@@ -120353,6 +120420,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &1804075501848869039
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804075501848869038}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.48, y: 36.34145, z: 5.16}
+  m_Center: {x: 1.9, y: -11.42575, z: -2.5}
 --- !u!4 &1816319674623336779
 Transform:
   m_ObjectHideFlags: 0
@@ -131301,6 +131381,7 @@ GameObject:
   - component: {fileID: 3786419840241468914}
   - component: {fileID: 2500355313838114228}
   - component: {fileID: 7076528990016883055}
+  - component: {fileID: 4612019139329796019}
   m_Layer: 0
   m_Name: Tronco
   m_TagString: Untagged
@@ -131308,6 +131389,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &4612019139329796019
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4612019139329796018}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.21200334, z: -0.015}
+  m_Center: {x: -0.0013955011, y: 0.09578531, z: 0.0013641285}
 --- !u!33 &4613795188580247053
 MeshFilter:
   m_ObjectHideFlags: 0

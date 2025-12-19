@@ -1351,7 +1351,7 @@ CapsuleCollider:
   m_Radius: 0.1
   m_Height: 0.6
   m_Direction: 2
-  m_Center: {x: 0, y: 0.05, z: -0.11}
+  m_Center: {x: 0, y: 0.1, z: -0.11}
 --- !u!114 &11458590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1404,7 +1404,6 @@ MonoBehaviour:
   Panel: {fileID: 0}
   Galeria: {fileID: 0}
   Panel3: {fileID: 0}
-  mouseController: {fileID: 0}
   CuadroChallengeDos: {fileID: 0}
   isAnimal: 1
   isPlant: 0
@@ -1412,6 +1411,7 @@ MonoBehaviour:
   logroSist: {fileID: 0}
   fpscontroller: {fileID: 0}
   canvasJoy: {fileID: 0}
+  actionLogger: {fileID: 0}
   specieName: Iguana
 --- !u!1 &142006
 GameObject:
