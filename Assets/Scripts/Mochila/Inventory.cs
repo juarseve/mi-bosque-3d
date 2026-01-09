@@ -469,6 +469,28 @@ public class Inventory : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         feedback.SetActive(false);
     }
+
+    // ============================================================
+    // MÉTODO PARA AGREGAR TODAS LAS SEMILLAS - USAR CON CUIDADO
+    // ============================================================
+    
+    [ContextMenu("Agregar Todas las Semillas")]
+    public void AgregarTodasLasSemillas()
+    {
+        // Agregar una semilla de cada tipo disponible en el juego
+        AddItem(3);  // Teca
+        AddItem(4);  // Ceibo
+        AddItem(8);  // Bototillo
+        AddItem(9);  // Judea
+        AddItem(10); // Guayaca (Guayacán)
+        AddItem(11); // Jacaranda
+        
+        Debug.Log("✅ Se agregaron todas las semillas al inventario");
+        
+        // Mostrar mensaje de confirmación
+        ShowMessageM("Todas las semillas agregadas al inventario");
+    }
+    
 }
 
 [System.Serializable]
@@ -476,5 +498,6 @@ public struct InventoryWrapper
 {
     public List<SlotInfo> slotInfoList;
 }
+
 
 
