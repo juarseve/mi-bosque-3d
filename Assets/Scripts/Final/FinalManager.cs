@@ -21,6 +21,7 @@ public class FinalManager : MonoBehaviour
     public GameObject diploma;
     public GameObject background;
     public GameObject credits;
+    public GameObject exportButton;
 
     [Header("Configuración")]
     public int currentSpeed = 6;               // velocidad de la cámara
@@ -50,6 +51,9 @@ public class FinalManager : MonoBehaviour
         // Inicializar estados
         background.SetActive(false);
         credits.SetActive(false);
+
+        if (exportButton != null)
+            exportButton.SetActive(false);
     }
 
     void Update()
@@ -138,6 +142,9 @@ public class FinalManager : MonoBehaviour
             credits.SetActive(true);
             playCredits();
             fadingToCredits = false; // transición completada
+
+            if (exportButton != null)
+                exportButton.SetActive(true);
         }
     }
 

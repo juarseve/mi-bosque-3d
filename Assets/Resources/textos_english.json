@@ -4,7 +4,8 @@
     "continuar": "CONTINUE",
     "informacion": "Information",
     "entendido": "Accept",
-    "minimizar": "Minimize"
+    "minimizar": "Minimize",
+    "exportar": "Export Certificate"
   },
   "interfaz": {
     "pausa": " Pause",
