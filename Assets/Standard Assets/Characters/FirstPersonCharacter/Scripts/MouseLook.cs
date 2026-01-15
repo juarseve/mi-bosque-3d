@@ -40,7 +40,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             YSensitivity = 1f;
             float yRot = LookAxis.x * XSensitivity;
             float xRot = LookAxis.y * YSensitivity;
-#elif UNITY_EDITOR || UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX
+#elif UNITY_EDITOR || UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
             float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
             float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
 #endif

@@ -48,7 +48,10 @@ public class GameManager : MonoBehaviour
     public SpecieObjectList test;
 
     void Start()
-    {
+    {   
+        // 60 Fps software limiter
+        QualitySettings.vSyncCount = 0; 
+        Application.targetFrameRate = 60; 
 
         /*if (File.Exists(Application.dataPath + "/GreenForest/Data/estadisticas.json"))
         {
@@ -64,7 +67,7 @@ public class GameManager : MonoBehaviour
             };
             Debug.Log("Nueva lista creada");
         }*/
-        
+
     }
 
     //void Update()

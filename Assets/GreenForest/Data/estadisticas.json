@@ -3,27 +3,15 @@
     {
       "gameId": "001",
       "playerId": "",
-
-      "level": 1,
-      "dataType": "specie_data",
-      "FechaInterna": "9/1/2026 9:30:38",
-      "data": {
-        "specieId": "23",
-        "show_desc_date": "9/1/2026 9:30:38"
-      }
-    },
-    {
-      "gameId": "001",
-      "playerId": "",
-      "level": 1,
+      "level": 0,
       "dataType": "game_data",
-      "FechaInterna": "9/1/2026 9:53:15",
+      "FechaInterna": "14/1/2026 11:19:06",
       "data": {
-        "Start_Date": "9/1/2026 9:30:31",
-        "End_Date": "9/1/2026 9:53:15",
-        "duration": 23,
+        "Start_Date": "14/1/2026 11:18:54",
+        "End_Date": "14/1/2026 11:19:06",
+        "duration": 1,
         "score": 0,
-        "NumberImages": 1
+        "NumberImages": 0
       }
     }
   ]
