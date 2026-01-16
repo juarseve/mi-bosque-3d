@@ -138,8 +138,8 @@ public class TargetManager : MonoBehaviour
         Debug.Log("Entra a nextMessage");
         Debug.Log("Index: " + index);
 
-        if (canNext)
-        {
+        //if (canNext)
+        //{
             panel.SetActive(true);
             if (index < message.Length - 1)
             {
@@ -148,7 +148,7 @@ public class TargetManager : MonoBehaviour
                 StartCoroutine(texting());
             }
 
-        }
+        //}
         else
         {
             UnityEngine.Debug.Log("No entra al can");
@@ -171,7 +171,7 @@ public class TargetManager : MonoBehaviour
             {
 
                 canNext = false;
-                button.SetActive(false);
+                // button.SetActive(false);
             }
 
         }
@@ -179,7 +179,7 @@ public class TargetManager : MonoBehaviour
         if (index == 9)
         {
             canNext = false;
-            button.SetActive(false);
+            // button.SetActive(false);
         }
 
     }

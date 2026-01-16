@@ -2,14 +2,14 @@
   "lista": [
     {
       "gameId": "001",
-      "playerId": "",
-      "level": 3,
+      "playerId": null,
+      "level": 1,
       "dataType": "game_data",
-      "FechaInterna": "16/1/2026 0:14:01",
+      "FechaInterna": "1/16/2026 8:42:50 AM",
       "data": {
-        "Start_Date": "16/1/2026 0:13:58",
-        "End_Date": "16/1/2026 0:14:01",
-        "duration": 1,
+        "Start_Date": "1/16/2026 8:39:42 AM",
+        "End_Date": "1/16/2026 8:42:50 AM",
+        "duration": 3,
         "score": 0,
         "NumberImages": 0
       }

@@ -104,7 +104,7 @@ public class MenuController : MonoBehaviour
     {
         try{
             actionLogger = GameObject.Find("ActionLogger");
-            actionLogger.GetComponent<ActionLogger>().actionLogger.agregarAccion("Change Scene", "Tutorial-Lobby");
+            actionLogger.GetComponent<ActionLogger>().actionLogger.agregarAccion("Change Scene", "Lobby");
             actionLogger.GetComponent<ActionLogger>().actionLogger.locacion = "Lobby";
         }catch(Exception e)
         {
@@ -120,8 +120,8 @@ public class MenuController : MonoBehaviour
         try
         {
             actionLogger = GameObject.Find("ActionLogger");
-            actionLogger.GetComponent<ActionLogger>().actionLogger.agregarAccion("Change Scene", "Menu Partidas-Tutorial");
-            actionLogger.GetComponent<ActionLogger>().actionLogger.locacion = "Tutorial";
+            actionLogger.GetComponent<ActionLogger>().actionLogger.agregarAccion("Change Scene", "Lobby");
+            actionLogger.GetComponent<ActionLogger>().actionLogger.locacion = "Lobby";
         }
         catch (Exception e)
         {

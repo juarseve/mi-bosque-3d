@@ -17,6 +17,6 @@ public class MoveToSceneEndVideo : MonoBehaviour
     void EndReached(UnityEngine.Video.VideoPlayer vp)
     {
         vp.playbackSpeed = vp.playbackSpeed / 10.0F;
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene("Lobby");
     }
 }
