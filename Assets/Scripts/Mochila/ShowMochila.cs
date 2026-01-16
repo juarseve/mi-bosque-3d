@@ -62,11 +62,7 @@ public class ShowMochila : MonoBehaviour
     private void Start()
     {
 #if UNITY_STANDALONE_WIN || UNITY_STANDALONE 
-        cerrarMochila.SetActive(true);
-        mochilaIcon.SetActive(true);
-        tablonIcon.SetActive(true);
-        helpIcon.SetActive(true);
-        lupaIcon.SetActive(true);
+        InitializeIcons();
 #endif
 #if UNITY_ANDROID || UNITY_IOS
         if(GameObject.Find("Control Mochila") != null) {
@@ -81,6 +77,18 @@ public class ShowMochila : MonoBehaviour
 #endif
         Player.instance.playerData.mochilaDesbloqueada = true;
         NL = GameObject.Find("NotifLogros").GetComponent<NotificarLogros>();
+    }
+
+    // Asegura que los íconos del HUD estén visibles (llamable desde GameManager tras cargar una partida)
+    public void InitializeIcons()
+    {
+#if UNITY_STANDALONE_WIN || UNITY_STANDALONE 
+        if (cerrarMochila != null) cerrarMochila.SetActive(true);
+        if (mochilaIcon != null) mochilaIcon.SetActive(true);
+        if (tablonIcon != null) tablonIcon.SetActive(true);
+        if (helpIcon != null) helpIcon.SetActive(true);
+        if (lupaIcon != null) lupaIcon.SetActive(true);
+#endif
     }
 
     //public void ShowBackPack()

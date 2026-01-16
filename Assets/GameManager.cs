@@ -181,7 +181,15 @@ public class GameManager : MonoBehaviour
             player.GetComponent<Player>().ActualizarUI();
             player.GetComponent<BookPages>().isDiscovered = playerData.isDiscovered;
             player.GetComponent<ShowBook>().enabled = playerData.libroDesbloqueado;
-            player.GetComponentInChildren<ShowMochila>().enabled = playerData.mochilaDesbloqueada;
+            var showMochilaComp = player.GetComponentInChildren<ShowMochila>();
+            if (showMochilaComp != null)
+            {
+                showMochilaComp.enabled = playerData.mochilaDesbloqueada;
+                if (playerData.mochilaDesbloqueada)
+                {
+                    showMochilaComp.InitializeIcons();
+                }
+            }
             mochila = GameObject.FindGameObjectWithTag("Bag").GetComponent<Inventory>();
             if (playerData.inventoryWrapper.slotInfoList.Count > 0)
             {
@@ -199,7 +207,15 @@ public class GameManager : MonoBehaviour
         }else if (scene.name == "Lobby")
         {
             player.GetComponent<Player>().playerData = playerData;
-            player.GetComponentInChildren<ShowMochila>().enabled = playerData.mochilaDesbloqueada;
+            var showMochilaComp2 = player.GetComponentInChildren<ShowMochila>();
+            if (showMochilaComp2 != null)
+            {
+                showMochilaComp2.enabled = playerData.mochilaDesbloqueada;
+                if (playerData.mochilaDesbloqueada)
+                {
+                    showMochilaComp2.InitializeIcons();
+                }
+            }
             mochila = GameObject.FindGameObjectWithTag("Bag").GetComponent<Inventory>();
             if (playerData.inventoryWrapper.slotInfoList.Count > 0)
             {
