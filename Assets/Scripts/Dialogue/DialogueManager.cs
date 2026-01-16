@@ -135,6 +135,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        Debug.Log("Maybe is here: ");
         if (sentence != "")
         {
             if (startTyping && !typedSentence)
@@ -209,8 +210,9 @@ public class DialogueManager : MonoBehaviour
         animatorDesafio.SetBool("IsOpen", false);
         MenuPausa.instance.Reanudar();
         mouseController.enabled = true;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        firstPersonController.enabled = true;
         isDialogueActive = false;
         typedSentence = false;
         index_dialogue_img = 0;
@@ -225,6 +227,9 @@ public class DialogueManager : MonoBehaviour
         {
             Destroy(currentDTGO);
         }
+
+        TriggerTutorial();
+
         if (isPreguntas)
         {
             imagen.enabled = false;
@@ -237,6 +242,18 @@ public class DialogueManager : MonoBehaviour
         }
         characterImages[2].SetActive(true);
         //characterImage.sprite = personaje_expresiones[2];
+    }
+
+    private void TriggerTutorial()
+    {
+        // Disable the player movement (first-person controller) during the tutorial
+        firstPersonController.enabled = false;
+
+        // Start the tutorial after the dialogue ends
+        TargetManager.instance.StartTutorial();
+
+        // Log to track when the tutorial starts
+        Debug.Log("Starting tutorial after dialogue...");
     }
 
     // busca dialogos en el JSON, reemplaza las claves por los dialogos
