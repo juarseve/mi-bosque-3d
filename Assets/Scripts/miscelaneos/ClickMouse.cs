@@ -3,7 +3,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 using System;
 
 
-public class ClickMouse : MonoBehaviour
+public class ClickMouse : MonoBehaviour, IInteractable
 {
     private Collider cameraBlocker;
 
@@ -11,7 +11,6 @@ public class ClickMouse : MonoBehaviour
     public GameObject Galeria;
     private Galery GaleryScript;
     public GameObject Panel3;
-    //private MouseController mouseController;
     private MouseController mouseController;
     public static bool IsGalery = false;
     public GameObject CuadroChallengeDos;
@@ -29,6 +28,9 @@ public class ClickMouse : MonoBehaviour
     private NotificarLogros NL;
 
     public string specieName;
+    
+    // Flag para evitar doble interacción
+    private bool isInteracting = false;
 
     private void Awake()
     {
@@ -37,173 +39,381 @@ public class ClickMouse : MonoBehaviour
         
         //GaleryScript = Galeria.GetComponent<Galery>();
     }
+    
     void Start()
     {
         puntero = GameObject.Find("Crosshair/Image");
         actionLogger = GameObject.Find("ActionLogger");
         tempResult = false;
-        cameraBlocker = ConstantObjects.instance.cameraBlocker;
-        mouseController = ConstantObjects.instance.mouseController;
-        Panel.SetActive(false);
-        isKnown = false;
-        NL = GameObject.Find("NotifLogros").GetComponent<NotificarLogros>();
-    }
-    private void OnMouseEnter()
-    {
-        puntero.GetComponent<Puntero>().puntero();
-    }
-    private void OnMouseExit()
-    {
-        puntero.GetComponent<Puntero>().mira();
-    }
-    public void ShowGallery()
-    {
-        Debug.Log("**********************en el show galery ");
-#if UNITY_ANDROID || UNITY_IOS
-        canvasJoy.SetActive(false);
-#endif
-        cameraBlocker = ConstantObjects.instance.cameraBlocker;
-        mouseController = ConstantObjects.instance.mouseController;
         
-        MenuPausa.instance.Pausar();
-        mouseController.enabled = false;
-        Panel.SetActive(true);
-        Galeria.SetActive(true);
-        Panel3.SetActive(false);
-        if (GaleryScript==null)
+        // Obtener referencias de forma segura
+        if (ConstantObjects.instance != null)
         {
-            GaleryScript = Galeria.GetComponent<Galery>();
+            cameraBlocker = ConstantObjects.instance.cameraBlocker;
+            mouseController = ConstantObjects.instance.mouseController;
         }
-        GaleryScript.name = specieName;
-        GaleryScript.visible = true;
-        //La siguiente linea se encarga de registrar un elemento en el libro.
-        registrarEspecieId();
-        CerrarCuadroChallengeDos();
-        IsGalery = true;
-        //Time.timeScale = 0f;
-
-
-        NL.cerrar();
-    }
-
-    private void registrarEspecieId()
-    {
-        Debug.Log("Desde el script ClickMouse de la especie " + specieName + " se lanzo la funcion registrarEspecieId");
-        if (gameObject.tag == "Bird")
+        
+        if (Panel != null)
         {
-            string estacionPajaro="";
-            try
-            {
-                estacionPajaro = gameObject.transform.parent.parent.parent.parent.gameObject.GetComponent<Estacion>().ID.ToString();
-            }catch(Exception e)
-            {
-                estacionPajaro = "1";
-            }
-            BookPages.instance.registrarEspecie(specieName, estacionPajaro);
-            return;
+            Panel.SetActive(false);
         }
-        //OBTENER ESTACION ACTUAL AQUI
-        string estacion = gameObject.transform.parent.parent.parent.gameObject.GetComponent<Estacion>().ID.ToString();
-        //OBTENER ESTACION ACTUAL AQUI
-        BookPages.instance.registrarEspecie(specieName, estacion);
-        Debug.Log("Registrar Especie: " + specieName);
-        Debug.Log("Estacion: " + estacion);
-        //Tambien se deberia agregar la estacion
-
+        
+        isKnown = false;
+        
+        GameObject notifLogros = GameObject.Find("NotifLogros");
+        if (notifLogros != null)
+        {
+            NL = notifLogros.GetComponent<NotificarLogros>();
+        }
     }
-    private void OnMouseDown()
+    
+    // ============== IMPLEMENTACIÓN DE IInteractable ==============
+    
+    public void OnInteract()
     {
-        tempResult = false;
-        Debug.Log("********************empezando en click mouse" + tempResult);
+        if (isInteracting) return;
+        isInteracting = true;
+        
         try
         {
-
+            HandleInteraction();
+        }
+        finally
+        {
+            // Resetear flag después de un pequeño delay
+            Invoke("ResetInteracting", 0.5f);
+        }
+    }
+    
+    private void ResetInteracting()
+    {
+        isInteracting = false;
+    }
+    
+    public void OnLookAt()
+    {
+        if (puntero != null)
+        {
+            Puntero p = puntero.GetComponent<Puntero>();
+            if (p != null)
+            {
+                p.puntero();
+            }
+        }
+    }
+    
+    public void OnLookAway()
+    {
+        if (puntero != null)
+        {
+            Puntero p = puntero.GetComponent<Puntero>();
+            if (p != null)
+            {
+                p.mira();
+            }
+        }
+    }
+    
+    // ============== LÓGICA DE INTERACCIÓN ==============
+    
+    private void HandleInteraction()
+    {
+        tempResult = false;
+        Debug.Log("ClickMouse: Interacción iniciada con " + specieName);
+        
+        try
+        {
             if (!isKnown)
             {
                 if (isAnimal)
                 {
-                    if (specieName != "")
+                    if (!string.IsNullOrEmpty(specieName))
                     {
-                        Debug.Log("**********************se manda el nombre " + specieName);
-                        if (logroSist.GetComponent<LogrosGlobales>().misiones[6].requisitos.Contains(specieName))
+                        Debug.Log("ClickMouse: Procesando animal " + specieName);
+                        if (logroSist != null)
                         {
-                            tempResult = logroSist.GetComponent<LogrosGlobales>().ProgresarLogro(6);
-                            fpscontroller.GetComponent<Player>().gainEXP(1);
+                            LogrosGlobales logros = logroSist.GetComponent<LogrosGlobales>();
+                            if (logros != null && logros.misiones[6].requisitos.Contains(specieName))
+                            {
+                                tempResult = logros.ProgresarLogro(6);
+                                if (fpscontroller != null)
+                                {
+                                    Player player = fpscontroller.GetComponent<Player>();
+                                    if (player != null)
+                                    {
+                                        player.gainEXP(1);
+                                    }
+                                }
+                            }
+                            logros.ProgresarMision(0, specieName);
+                            logros.ProgresarMision(6, specieName);
                         }
-                        logroSist.GetComponent<LogrosGlobales>().ProgresarMision(0, specieName);
-                        logroSist.GetComponent<LogrosGlobales>().ProgresarMision(6, specieName);
                     }
-
-                    /*
-                    Mision mision = (GameObject.FindGameObjectWithTag("sistema").GetComponent<LogrosGlobales>()).misiones[6];
-                    Peticiones.instance.registerPlayerMission(mision.nombre, Player.instance.playerData, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-
-                    Player.instance.playerData.logros[6] = DateTime.Now.ToString();
-                    Peticiones.instance.registerPlayerPrize((GameObject.FindGameObjectWithTag("sistema").GetComponent<LogrosGlobales>()).logros[6].nombre, Player.instance.playerData);
-                    */
-                    //Debug.Log("********************Se volvio" + tempResult);
                 }
                 else if (isPlant)
                 {
-                    if (specieName != "")
+                    if (!string.IsNullOrEmpty(specieName))
                     {
-                        Debug.Log("**********************se manda el nombre " + specieName);
-                        if (logroSist.GetComponent<LogrosGlobales>().misiones[7].requisitos.Contains(specieName))
+                        Debug.Log("ClickMouse: Procesando planta " + specieName);
+                        if (logroSist != null)
                         {
-                            fpscontroller.GetComponent<Player>().gainEXP(1);
-                            tempResult = logroSist.GetComponent<LogrosGlobales>().ProgresarLogro(7);
+                            LogrosGlobales logros = logroSist.GetComponent<LogrosGlobales>();
+                            if (logros != null && logros.misiones[7].requisitos.Contains(specieName))
+                            {
+                                if (fpscontroller != null)
+                                {
+                                    Player player = fpscontroller.GetComponent<Player>();
+                                    if (player != null)
+                                    {
+                                        player.gainEXP(1);
+                                    }
+                                }
+                                tempResult = logros.ProgresarLogro(7);
+                            }
+                            logros.ProgresarMision(0, specieName);
+                            logros.ProgresarMision(7, specieName);
                         }
-                        logroSist.GetComponent<LogrosGlobales>().ProgresarMision(0, specieName);
-                        logroSist.GetComponent<LogrosGlobales>().ProgresarMision(7, specieName);
                     }
-                    /*
-                    Mision mision = (GameObject.FindGameObjectWithTag("sistema").GetComponent<LogrosGlobales>()).misiones[7];
-                    Peticiones.instance.registerPlayerMission(mision.nombre, Player.instance.playerData, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-
-                    Player.instance.playerData.logros[7] = DateTime.Now.ToString();
-                    Peticiones.instance.registerPlayerPrize((GameObject.FindGameObjectWithTag("sistema").GetComponent<LogrosGlobales>()).logros[7].nombre, Player.instance.playerData);
-                    */
-                    
-                    //Debug.Log("********************Se volvio" + tempResult);
                 }
                 isKnown = true;
             }
 
-            actionLogger.GetComponent<ActionLogger>().actionLogger.agregarAccion("Interact especie", specieName);
+            if (actionLogger != null)
+            {
+                ActionLogger logger = actionLogger.GetComponent<ActionLogger>();
+                if (logger != null && logger.actionLogger != null)
+                {
+                    logger.actionLogger.agregarAccion("Interact especie", specieName);
+                }
+            }
         }
         catch (Exception e)
         {
+            Debug.LogWarning("ClickMouse: Error en HandleInteraction: " + e.Message);
         }
-        //Debug.Log("**********************antes del if es " + tempResult);
+        
         if (!(MenuPausa.IsPaused || MenuPausa.IsPausedByOtherCanvas || tempResult))
         {
-            //Debug.Log("**********************antes show galery ");
             ShowGallery();
-            cameraBlocker.enabled = true;
+            if (cameraBlocker != null)
+            {
+                cameraBlocker.enabled = true;
+            }
         }
+    }
+    
+    // ============== COMPATIBILIDAD CON MOUSE (LEGACY) ==============
+    
+    private void OnMouseEnter()
+    {
+        OnLookAt();
+    }
+    
+    private void OnMouseExit()
+    {
+        OnLookAway();
+    }
+    
+    private void OnMouseDown()
+    {
+        // Solo usar si no hay InteractionDetector activo
+        if (InteractionDetector.instance == null)
+        {
+            HandleInteraction();
+        }
+    }
+    
+    // ============== GALERÍA ==============
+    
+    public void ShowGallery()
+    {
+        Debug.Log("ClickMouse: Mostrando galería para " + specieName);
+        
+#if UNITY_ANDROID || UNITY_IOS
+        if (canvasJoy != null)
+        {
+            canvasJoy.SetActive(false);
+        }
+#endif
+        
+        // Actualizar referencias si es necesario
+        if (ConstantObjects.instance != null)
+        {
+            cameraBlocker = ConstantObjects.instance.cameraBlocker;
+            mouseController = ConstantObjects.instance.mouseController;
+        }
+        
+        MenuPausa.instance.Pausar();
+        
+        if (mouseController != null)
+        {
+            mouseController.enabled = false;
+        }
+        
+        if (Panel != null)
+        {
+            Panel.SetActive(true);
+        }
+        
+        if (Galeria != null)
+        {
+            Galeria.SetActive(true);
+            
+            if (GaleryScript == null)
+            {
+                GaleryScript = Galeria.GetComponent<Galery>();
+            }
+            
+            if (GaleryScript != null)
+            {
+                GaleryScript.name = specieName;
+                GaleryScript.visible = true;
+            }
+        }
+        
+        if (Panel3 != null)
+        {
+            Panel3.SetActive(false);
+        }
+        
+        // Registrar especie en el libro
+        registrarEspecieId();
+        
+        CerrarCuadroChallengeDos();
+        IsGalery = true;
+        
+        if (NL != null)
+        {
+            NL.cerrar();
+        }
+    }
 
+    private void registrarEspecieId()
+    {
+        Debug.Log("ClickMouse: Registrando especie " + specieName);
+        
+        if (gameObject.tag == "Bird")
+        {
+            string estacionPajaro = "1";
+            try
+            {
+                Transform parent = gameObject.transform.parent?.parent?.parent?.parent;
+                if (parent != null)
+                {
+                    Estacion estacion = parent.GetComponent<Estacion>();
+                    if (estacion != null)
+                    {
+                        estacionPajaro = estacion.ID.ToString();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning("ClickMouse: Error obteniendo estación del pájaro: " + e.Message);
+            }
+            
+            if (BookPages.instance != null)
+            {
+                BookPages.instance.registrarEspecie(specieName, estacionPajaro);
+            }
+            return;
+        }
+        
+        // Para otras especies
+        string estacionId = "1";
+        try
+        {
+            Transform parent = gameObject.transform.parent?.parent?.parent;
+            if (parent != null)
+            {
+                Estacion estacion = parent.GetComponent<Estacion>();
+                if (estacion != null)
+                {
+                    estacionId = estacion.ID.ToString();
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("ClickMouse: Error obteniendo estación: " + e.Message);
+        }
+        
+        if (BookPages.instance != null)
+        {
+            BookPages.instance.registrarEspecie(specieName, estacionId);
+        }
+        
+        Debug.Log("ClickMouse: Especie registrada: " + specieName + " en estación " + estacionId);
     }
 
 
     public void Continuar()
     {
 #if UNITY_ANDROID || UNITY_IOS
-        canvasJoy.SetActive(true);
+        if (canvasJoy != null)
+        {
+            canvasJoy.SetActive(true);
+        }
 #endif
-        cameraBlocker = ConstantObjects.instance.cameraBlocker;
-        mouseController = ConstantObjects.instance.mouseController;
+        
+        if (ConstantObjects.instance != null)
+        {
+            cameraBlocker = ConstantObjects.instance.cameraBlocker;
+            mouseController = ConstantObjects.instance.mouseController;
+        }
+        
         Time.timeScale = 1f;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>().enabled = true;
-        Galeria.GetComponent<Galery>().visible = false;
+        
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            FirstPersonController fps = player.GetComponent<FirstPersonController>();
+            if (fps != null)
+            {
+                fps.enabled = true;
+            }
+        }
+        
+        if (Galeria != null)
+        {
+            Galery galery = Galeria.GetComponent<Galery>();
+            if (galery != null)
+            {
+                galery.visible = false;
+            }
+        }
+        
         MenuPausa.instance.Reanudar();
-        mouseController.enabled = true;
+        
+        if (mouseController != null)
+        {
+            mouseController.enabled = true;
+        }
+        
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        Panel.SetActive(false);
-        Panel3.SetActive(true);
-        Galeria.SetActive(false);
+        
+        if (Panel != null)
+        {
+            Panel.SetActive(false);
+        }
+        
+        if (Panel3 != null)
+        {
+            Panel3.SetActive(true);
+        }
+        
+        if (Galeria != null)
+        {
+            Galeria.SetActive(false);
+        }
+        
         IsGalery = false;
-        cameraBlocker.enabled = false;
+        
+        if (cameraBlocker != null)
+        {
+            cameraBlocker.enabled = false;
+        }
     }
     
     public void CerrarCuadroChallengeDos()
@@ -212,9 +422,5 @@ public class ClickMouse : MonoBehaviour
         {
             CuadroChallengeDos.SetActive(false);
         }
-
-
     }
-
-
 }
