@@ -88,6 +88,17 @@ public class StadisticsData
     }
 
     [Serializable]
+    public class DataJumps : DataClass {
+        public int totalJumps;
+        public string date;
+
+        public DataJumps(int jumps) {
+            this.totalJumps = jumps;
+            this.date = DateTime.Now.ToString();
+        }
+    }
+
+    [Serializable]
     public class DataClass{
         
     }

@@ -55,46 +55,53 @@ public class ChallengePass : MonoBehaviour
         {
             dialogoDesafioPendiente.SetActive(false);
             dialogoDesafioCompleto.SetActive(true);
-            Player.instance.playerData.misiones[0] = true;
-            Mision mision = (LogroSist.GetComponent<LogrosGlobales>()).misiones[0];
-            
-            Player.instance.playerData.logros[0] = DateTime.Now.ToString();
 
-            
+            int[] numbers = { 0, 8 };
 
-            if (empezado){
-                StartCoroutine(ShowFeedback());
-                if (!sent)
+            foreach (int number in numbers) 
                 {
-                    Debug.Log("enviando estadísticas de final de misión...");
-                    Debug.Log(Peticiones.instance.registerPlayerMission(mision.nombre, Player.instance.playerData, inicio.ToString("yyyy-MM-dd hh:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")));
-                    if (!GameManager.OfflineMode)
-                    {
-                        Debug.Log("Intento con online1");
-                        Peticiones.instance.registerPlayerPrize(LogroSist.GetComponent<LogrosGlobales>().logros[0].nombre, Player.instance.playerData);
-                    }
-                    else
-                    {
+                Player.instance.playerData.misiones[number] = true;
+                // Debug.Log($"Cambiando mision 8 a estado: {Player.instance.playerData.misiones[8]}");
+                LogrosGlobales LogrosGlobales = LogroSist.GetComponent<LogrosGlobales>();
+                Mision mision = LogrosGlobales.misiones[number];
+                
+                Player.instance.playerData.logros[number] = DateTime.Now.ToString();
+                
 
-                        ActionLogger ac = GameObject.Find("ActionLogger").GetComponent<ActionLogger>();
+                if (empezado){
+                    StartCoroutine(ShowFeedback());
+                    if (!sent)
+                    {
+                        Debug.Log("enviando estadísticas de final de misión...");
+                        Debug.Log(Peticiones.instance.registerPlayerMission(mision.nombre, Player.instance.playerData, inicio.ToString("yyyy-MM-dd hh:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")));
                         if (!GameManager.OfflineMode)
                         {
-                            ac.actionLogger.agregarAccion("Settings", "Offline");
+                            Debug.Log("Intento con online1");
+                            Peticiones.instance.registerPlayerPrize(LogroSist.GetComponent<LogrosGlobales>().logros[number].nombre, Player.instance.playerData);
                         }
+                        else
+                        {
 
-                        ac.actionLogger.online = false;
-                        ac.actionLogger.agregarPeticion("prize", "" + LogroSist.GetComponent<LogrosGlobales>().logros[0].nombre, Player.instance.playerData.Token, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-                        try
-                        {
-                            ac.GetComponent<ActionLogger>().actionLogger.online = false;
+                            ActionLogger ac = GameObject.Find("ActionLogger").GetComponent<ActionLogger>();
+                            if (!GameManager.OfflineMode)
+                            {
+                                ac.actionLogger.agregarAccion("Settings", "Offline");
+                            }
+
+                            ac.actionLogger.online = false;
+                            ac.actionLogger.agregarPeticion("prize", "" + LogroSist.GetComponent<LogrosGlobales>().logros[number].nombre, Player.instance.playerData.Token, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                            try
+                            {
+                                ac.GetComponent<ActionLogger>().actionLogger.online = false;
+                            }
+                            catch (Exception e)
+                            {
+                                Debug.Log("act logger component not found");
+                            }
                         }
-                        catch (Exception e)
-                        {
-                            Debug.Log("act logger component not found");
-                        }
+                        sent = true;
+                        ChallengePass3.inicio = DateTime.Now;
                     }
-                    sent = true;
-                    ChallengePass3.inicio = DateTime.Now;
                 }
             }
         }
@@ -153,6 +160,8 @@ public class ChallengePass : MonoBehaviour
     {
         //actionLogger.GetComponent<ActionLogger>().actionLogger.agregarAccion("Finish Bosque mision", "" + 1);
         LogroSist.GetComponent<LogrosGlobales>().ProgresarLogro(0);
+        LogroSist.GetComponent<LogrosGlobales>().ProgresarLogro(8);
+        
         fpscontroller.GetComponent<Player>().gainEXP(3);
         if (!GameManager.OfflineMode)
         {

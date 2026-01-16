@@ -413,7 +413,9 @@
     "logro_8_nombre": "Game Finished",
     "logro_8_descripcion": "You finished the game",
     "logro_9_nombre": "100% Complete",
-    "logro_9_descripcion": "You completed everything!!!"
+    "logro_9_descripcion": "You completed everything!!!",
+    "logro_10_nombre": "Swift Forest Ranger",
+    "logro_10_descripcion": "You saved the rabbit by returning it to its burrow"
   },
   "misiones": {
     "estacion_mision": "Station: ",
@@ -428,6 +430,7 @@
     "mision_5_nombre": "Plant the seeds",
     "mision_6_nombre": "Fauna lover",
     "mision_7_nombre": "Flora lover",
+    "mision_8_nombre": "Con mi burrito sabanero",
 
     "mision_0_descripcion": "Show initiative by finding the requested species at the start.",
     "mision_1_descripcion": "Protect the rabbit from predators by returning it to its home.",
@@ -436,7 +439,8 @@
     "mision_4_descripcion": "Recycle the trash left by other visitors.",
     "mision_5_descripcion": "Plant the seeds you found on your adventure.",
     "mision_6_descripcion": "Find all the animals in the forest!!!",
-    "mision_7_descripcion": "Find all the plants in the forest!!!"
+    "mision_7_descripcion": "Find all the plants in the forest!!!",
+    "mision_8_descripcion": "Tuki tuki tuki tuki tuki"
   },
   "contrarreloj": {
     "title_activo": "Don't stop",

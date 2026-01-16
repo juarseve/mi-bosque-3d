@@ -413,7 +413,11 @@
     "logro_8_nombre": "Jogo Terminado",
     "logro_8_descripcion": "Você terminou o jogo",
     "logro_9_nombre": "100% Concluído",
-    "logro_9_descripcion": "Você concluiu tudo!!!"
+    "logro_9_descripcion": "Você concluiu tudo!!!",
+    "logro_10_nombre": "Guarda Florestal Veloz",
+    "logro_10_descripcion": "Você salvou o coelho devolvendo-o para sua toca",
+    "logro_8_nombre": "Guardabosque Responsable",
+    "logro_8_descripcion": "Tu comportamiento como Guardabosque es ejemplar (no saltos)"
   },
   "misiones": {
     "estacion_mision": "Estação: ",
@@ -428,6 +432,7 @@
     "mision_5_nombre": "Plante as sementes",
     "mision_6_nombre": "Amante da fauna",
     "mision_7_nombre": "Amante da flora",
+    "mision_8_nombre": "Con mi burrito sabanero",
 
     "mision_0_descripcion": "Mostre iniciativa encontrando as espécies solicitadas no início.",
     "mision_1_descripcion": "Proteja o coelho de predadores devolvendo-o para sua casa.",
@@ -436,7 +441,8 @@
     "mision_4_descripcion": "Recicle o lixo abandonado por outros visitantes.",
     "mision_5_descripcion": "Plante as sementes encontradas em sua aventura.",
     "mision_6_descripcion": "Encontre todos os animais da floresta!!!",
-    "mision_7_descripcion": "Encontre todas as plantas da floresta!!!"
+    "mision_7_descripcion": "Encontre todas as plantas da floresta!!!",
+    "mision_8_descripcion": "Tuki tuki tuki tuki tuki"
   },
   "contrarreloj": {
     "title_activo": "Não pare",

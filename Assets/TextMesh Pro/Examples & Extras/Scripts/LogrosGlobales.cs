@@ -246,6 +246,10 @@ public class LogrosGlobales : MonoBehaviour
     //NO OBLIGATORIO
     public GameObject imageLogro6;
 
+    //Logro saltar poco
+    //NO OBLIGATORIO
+    public GameObject imageLogro8;
+
     //Logro de nivel
     //state debería variar solo de 0 a 1 ya que se pueden subir varios niveles
     //definir exp
@@ -297,6 +301,7 @@ public class LogrosGlobales : MonoBehaviour
         string mision_5_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_5_nombre");
         string mision_6_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_6_nombre");
         string mision_7_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_7_nombre");
+        string mision_8_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_8_nombre");
 
         string mision_0_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_0_descripcion");
         string mision_1_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_1_descripcion");
@@ -306,6 +311,7 @@ public class LogrosGlobales : MonoBehaviour
         string mision_5_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_5_descripcion");
         string mision_6_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_6_descripcion");
         string mision_7_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_7_descripcion");
+        string mision_8_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_8_descripcion");
 
         /*
          * aqui tambien va lo de los checks
@@ -318,8 +324,10 @@ public class LogrosGlobales : MonoBehaviour
             reqEstaciones = new List<int>() { };
             mision = new Mision(mision_0_nombre, "Completa", requisitosBlo, requisitosComp, requisitosHechos, reqEstaciones, mision_0_descripcion);
             misiones.Add(mision);
-            checks[0].SetActive(false);
-            checks[1].SetActive(true);
+            //checks[0].SetActive(false);
+            //checks[1].SetActive(true);
+            //checks[16].SetActive(false);
+            //checks[17].SetActive(true);
         }
         else
         {
@@ -495,6 +503,28 @@ public class LogrosGlobales : MonoBehaviour
             //Debug.Log(mision.nombre + " " + mision.estado);
         }
 
+        if (playerCtrl.GetComponent<Player>().playerData.misiones[8])
+        {
+            requisitosBlo = new List<string>() { };
+            requisitosComp = new List<string>() { };
+            requisitosHechos = new List<string>() { };
+            reqEstaciones = new List<int>() { };
+            mision = new Mision(mision_8_nombre, "Completa", requisitosBlo, requisitosComp, requisitosHechos, reqEstaciones, mision_8_descripcion);
+            misiones.Add(mision);
+            checks[16].SetActive(false);
+            checks[17].SetActive(true);
+        }
+        else
+        {
+            requisitosBlo = new List<string>() { };
+            requisitosComp = new List<string>() {  };
+            requisitosHechos = new List<string>() { };
+            reqEstaciones = new List<int>() { 1, 2 };
+            mision = new Mision(mision_8_nombre, "Incompleta", requisitosBlo, requisitosComp, requisitosHechos, reqEstaciones, mision_8_descripcion);
+            misiones.Add(mision);
+            //Debug.Log(mision.nombre + " " + mision.estado);
+        }
+
 
         slothPage = 0;
 
@@ -509,6 +539,7 @@ public class LogrosGlobales : MonoBehaviour
         string logro_7_nombre = LanguageManager.Instancia.ObtenerTexto("logros.logro_7_nombre");
         string logro_8_nombre = LanguageManager.Instancia.ObtenerTexto("logros.logro_8_nombre");
         string logro_9_nombre = LanguageManager.Instancia.ObtenerTexto("logros.logro_9_nombre");
+        string logro_10_nombre = LanguageManager.Instancia.ObtenerTexto("logros.logro_10_nombre");
 
         string logro_0_descripcion = LanguageManager.Instancia.ObtenerTexto("logros.logro_0_descripcion");
         string logro_1_descripcion = LanguageManager.Instancia.ObtenerTexto("logros.logro_1_descripcion");
@@ -520,6 +551,7 @@ public class LogrosGlobales : MonoBehaviour
         string logro_7_descripcion = LanguageManager.Instancia.ObtenerTexto("logros.logro_7_descripcion");
         string logro_8_descripcion = LanguageManager.Instancia.ObtenerTexto("logros.logro_8_descripcion");
         string logro_9_descripcion = LanguageManager.Instancia.ObtenerTexto("logros.logro_9_descripcion");
+        string logro_10_descripcion = LanguageManager.Instancia.ObtenerTexto("logros.logro_10_descripcion");
 
         Logro Logro = new LogroUnico(logro_0_nombre, logro_0_descripcion, imageLogro1);
         logros.Add(Logro);
@@ -576,8 +608,16 @@ public class LogrosGlobales : MonoBehaviour
         //logros.Add(Logro);
         //Debug.Log(Logro.descripcion);
         Debug.Log(logros.Count);
+        Logro = new LogroUnico(logro_8_nombre, logro_8_descripcion, imageLogro8);
+        logros.Add(Logro);
+        Debug.Log(Logro.descripcion);
+        if (playerCtrl.GetComponent<Player>().playerData.logros[8] != "")
+        { ProgresarLogro(8, playerCtrl.GetComponent<Player>().playerData.logros[8]); }
 
         RecargarTextos(PlayerPrefs.GetString("idioma"));
+
+        // ProgresarLogro(8);
+
     }
 
     // Update is called once per frame
@@ -627,7 +667,7 @@ public class LogrosGlobales : MonoBehaviour
         PanellistaMedallas.SetActive(true);
         mochilaGo.SetActive(false);
         puntero.SetActive(false);
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 11; i++)
         {
             if (logros[i].estado == 1)
             {
@@ -641,7 +681,7 @@ public class LogrosGlobales : MonoBehaviour
         PanellistaLogros.SetActive(true);
         titulomisiones.SetActive(true);
         mochilaGo.SetActive(false);
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 11; i++)
         {
             if ((i + 4 * slothPage) < misiones.Count)
             {
@@ -699,11 +739,21 @@ public class LogrosGlobales : MonoBehaviour
 
     public void ProgresarMision(int numeromision, string cumplido)
     {
+        Debug.Log("Numero de mision: " + numeromision);
+        if (numeromision == 8)
+        {
+            Debug.Log("Entro al if el numero de mision: " + numeromision);
+            checks[numeromision*2].SetActive(false);
+            checks[numeromision*2+1].SetActive(true);     
+        }
         // Debug.Log("**********************se recibe el nombre " + cumplido);
         tempResult = misiones[numeromision].Progreso(cumplido);
+        Debug.Log("Tempresult de salto: " + tempResult);
 
         if (tempResult)
         {
+
+            Debug.Log("Entro al tempResult");
             /*
              *aqui va lo de los checks
              **/
@@ -940,6 +990,8 @@ public class LogrosGlobales : MonoBehaviour
             logros[8].descripcion = LanguageManager.Instancia.ObtenerTexto("logros.logro_8_descripcion");
             logros[9].nombre = LanguageManager.Instancia.ObtenerTexto("logros.logro_9_nombre");
             logros[9].descripcion = LanguageManager.Instancia.ObtenerTexto("logros.logro_9_descripcion");
+            logros[10].nombre = LanguageManager.Instancia.ObtenerTexto("logros.logro_10_nombre");
+            logros[10].descripcion = LanguageManager.Instancia.ObtenerTexto("logros.logro_10_descripcion");
         }
 
         // Actualizar UI si los paneles están abiertos

@@ -10,6 +10,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof(AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
+        public static event Action OnPlayerJump;
+
+        public int jumpCount = 0;
+        public GameObject logroSist; // Drag the object that has LogrosGlobales here in the Inspector
+        private bool missionCalled = false; // To ensure it only calls once (optional)
+
         // --- NUEVO: Referencia al Animator ---
         [Header("Animaciones")]
         [SerializeField] private Animator m_Animator;
@@ -25,7 +31,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private float m_StickToGroundForce;
         [SerializeField] private float m_GravityMultiplier;
 
-        // [TPS] MouseLook desactivado para evitar el conflicto de rotación
+        // [TPS] MouseLook desactivado para evitar el conflicto de rotaciï¿½n
         [SerializeField] public MouseLook m_MouseLook = null;
 
         [SerializeField] private bool m_UseFovKick;
@@ -40,16 +46,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;
         [SerializeField] private AudioClip m_LandSound;
 
-        // --- [TPS] VARIABLES DE ROTACIÓN MANUAL ---
-        [Header("Configuración TPS")]
+        // --- [TPS] VARIABLES DE ROTACIï¿½N MANUAL ---
+        [Header("Configuraciï¿½n TPS")]
         public Transform cameraPivot;
         public float mouseSensitivity = 2f; // Velocidad del mouse
-        private float rotX = 0f; // Acumulador rotación vertical
-        private float rotY = 0f; // Acumulador rotación horizontal
+        private float rotX = 0f; // Acumulador rotaciï¿½n vertical
+        private float rotY = 0f; // Acumulador rotaciï¿½n horizontal
                                  // -------------------------------------------
 
         private float m_JumpTimestamp = 0; // Para controlar el tiempo entre saltos
-        private float m_MinJumpInterval = 0.25f; // Tiempo mínimo entre saltos
+        private float m_MinJumpInterval = 0.25f; // Tiempo mï¿½nimo entre saltos
 
         private Camera m_Camera;
         public bool m_Jump;
@@ -97,14 +103,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 
-            // --- [TPS] INICIALIZAR ÁNGULOS ---
+            // --- [TPS] INICIALIZAR ï¿½NGULOS ---
             if (cameraPivot == null)
             {
-                Debug.LogError("¡ERROR! Asigna el 'Camera Pivot' en el Inspector.");
+                Debug.LogError("ï¿½ERROR! Asigna el 'Camera Pivot' en el Inspector.");
                 cameraPivot = transform;
             }
 
-            // Tomamos la rotación inicial para que no salte de golpe
+            // Tomamos la rotaciï¿½n inicial para que no salte de golpe
             Vector3 rot = cameraPivot.eulerAngles;
             rotY = rot.y;
             rotX = rot.x;
@@ -131,7 +137,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        // Usamos LateUpdate para la cámara para evitar vibraciones (Jitter)
+        // Usamos LateUpdate para la cï¿½mara para evitar vibraciones (Jitter)
         private void LateUpdate()
         {
             if (canRotate)
@@ -142,7 +148,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void Update()
         {
-            // RotateView se movió a LateUpdate con lógica nueva
+            // RotateView se moviï¿½ a LateUpdate con lï¿½gica nueva
 
 #if UNITY_ANDROID || UNITY_IOS
             if (JumpAxis && !m_Jump && doubleJumpCount < 2) {
@@ -191,8 +197,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             float speed;
             GetInput(out speed);
 
-            // --- [TPS] CÁLCULO DE MOVIMIENTO RELATIVO A CÁMARA ---
-            // Usamos la forward de la cámara
+            // --- [TPS] Cï¿½LCULO DE MOVIMIENTO RELATIVO A Cï¿½MARA ---
+            // Usamos la forward de la cï¿½mara
             Vector3 camForward = m_Camera.transform.forward;
             Vector3 camRight = m_Camera.transform.right;
             camForward.y = 0;
@@ -213,9 +219,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_MoveDir.z = desiredMove.z * speed;
             }
 
-            // --- [TPS] ROTACIÓN DEL CUERPO ---
+            // --- [TPS] ROTACIï¿½N DEL CUERPO ---
             // Solo rotamos el cuerpo si nos movemos. 
-            // ESTO YA NO AFECTARÁ A LA CÁMARA PORQUE LA CÁMARA USA ROTACIÓN GLOBAL EN LATEUPDATE
+            // ESTO YA NO AFECTARï¿½ A LA Cï¿½MARA PORQUE LA Cï¿½MARA USA ROTACIï¿½N GLOBAL EN LATEUPDATE
             if (desiredMove.sqrMagnitude > 0.01f && canMove)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(desiredMove);
@@ -232,6 +238,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     PlayJumpSound();
                     m_Jump = false;
                     m_Jumping = true;
+                    jumpCount++;
+                    Debug.Log("First person Jumps: " + jumpCount);
+
+                    OnPlayerJump?.Invoke();
+                    Debug.Log("EVENT: Player Jump emitted");
+
+
+                    if (jumpCount > 3 && logroSist != null)
+                    {
+                       // logroSist.GetComponent<LogrosGlobales>().ProgresarMision(8, "");
+                    }
                 }
             }
             else
@@ -244,7 +261,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             UpdateCameraPosition(speed);
             UpdateAnimator();
         }
-        // --- NUEVO: Función para controlar la animación ---
+        // --- NUEVO: Funciï¿½n para controlar la animaciï¿½n ---
         private void UpdateAnimator()
         {
             if (m_Animator == null) return;
@@ -257,30 +274,30 @@ namespace UnityStandardAssets.Characters.FirstPerson
             float currentSpeed = horizontalVelocity.magnitude;
 
             // Enviamos el valor al Animator. 
-            // Usamos DampTime (0.1f) para que la transición sea suave y no brusca.
+            // Usamos DampTime (0.1f) para que la transiciï¿½n sea suave y no brusca.
             m_Animator.SetFloat("Speed", currentSpeed, 0.1f, Time.fixedDeltaTime);
 
             m_Animator.SetBool("IsGrounded", m_CharacterController.isGrounded);
         }
         // --------------------------------------------------
-        // --- [TPS] NUEVA LÓGICA DE ROTACIÓN ---
+        // --- [TPS] NUEVA Lï¿½GICA DE ROTACIï¿½N ---
         private void RotateCameraManual()
         {
             // Leer Inputs
             float mouseX = CrossPlatformInputManager.GetAxis("Mouse X") * mouseSensitivity;
             float mouseY = CrossPlatformInputManager.GetAxis("Mouse Y") * mouseSensitivity;
 
-            // Acumular valores (Esto guarda la posición "real" deseada)
+            // Acumular valores (Esto guarda la posiciï¿½n "real" deseada)
             rotY += mouseX;
             rotX -= mouseY;
 
             // Limitar la vista arriba/abajo
             rotX = Mathf.Clamp(rotX, -10f, 60f);
 
-            // APLICAR ROTACIÓN GLOBAL (WORLD SPACE)
-            // Quaternion.Euler crea una rotación absoluta en el mundo.
+            // APLICAR ROTACIï¿½N GLOBAL (WORLD SPACE)
+            // Quaternion.Euler crea una rotaciï¿½n absoluta en el mundo.
             // Al asignar esto a .rotation (y no .localRotation), ignoramos 
-            // completamente si el padre (body) está girando como loco.
+            // completamente si el padre (body) estï¿½ girando como loco.
             cameraPivot.rotation = Quaternion.Euler(rotX, rotY, 0);
         }
         // ----------------------------------------
@@ -289,7 +306,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             m_AudioSource.clip = m_JumpSound;
             m_AudioSource.Play();
-            // --- NUEVO: Activar la animación de salto ---
+            // --- NUEVO: Activar la animaciï¿½n de salto ---
             if (m_Animator != null)
             {
                 m_Animator.SetTrigger("Jump");
@@ -374,6 +391,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (m_CollisionFlags == CollisionFlags.Below) return;
             if (body == null || body.isKinematic) return;
             body.AddForceAtPosition(m_CharacterController.velocity * 0.1f, hit.point, ForceMode.Impulse);
+        }
+
+        void OnGUI()
+        {
+            GUIStyle style = new GUIStyle();
+            style.fontSize = 30;
+            style.normal.textColor = Color.white;
+
+            GUI.Label(new Rect(20, 20, 300, 50), "Saltos: " + jumpCount, style);
         }
     }
 }

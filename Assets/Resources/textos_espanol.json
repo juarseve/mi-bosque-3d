@@ -465,10 +465,12 @@
     "logro_6_descripcion": "Conociste los animales del Bosque",
     "logro_7_nombre": "Guardian de la Flora",
     "logro_7_descripcion": "Conociste las plantas del Bosque",
-    "logro_8_nombre": "Juego terminado",
-    "logro_8_descripcion": "Terminaste el juego ",
-    "logro_9_nombre": "Completo 100%",
-    "logro_9_descripcion": "¡¡¡Completaste todo!!! "
+    "logro_9_nombre": "Juego terminado",
+    "logro_9_descripcion": "Terminaste el juego ",
+    "logro_10_nombre": "Completo 100%",
+    "logro_10_descripcion": "¡¡¡Completaste todo!!! ",
+    "logro_8_nombre": "Guardabosque Responsable",
+    "logro_8_descripcion": "Tu comportamiento como Guardabosque es ejemplar (no saltos)"
   },
   "misiones": {
     "estacion_mision": "Estación: ",
@@ -483,6 +485,7 @@
     "mision_5_nombre": "Planta las semillas",
     "mision_6_nombre": "Amante de la fauna",
     "mision_7_nombre": "Amante de la flora",
+    "mision_8_nombre": "Guardabosque irresponsable",
 
     "mision_0_descripcion": "Muestra iniciativa buscando las especies solicitadas al iniciar.",
     "mision_1_descripcion": "Protege al conejo de los depredadores devolviéndolo a su hogar.",
@@ -491,7 +494,8 @@
     "mision_4_descripcion": "Recicla la basura abandonada por otros visitantes.",
     "mision_5_descripcion": "Planta las semillas encontradas en tu aventura.",
     "mision_6_descripcion": "¡¡¡Encuentra todos los animales del bosque!!!",
-    "mision_7_descripcion": "¡¡¡Encuentra a todos las plantas del bosque!!!"
+    "mision_7_descripcion": "¡¡¡Encuentra a todos las plantas del bosque!!!",
+    "mision_8_descripcion": "Guardabosque irresponsable descripcion"
   },
   "contrarreloj": {
     "title_activo": "No te detengas",

@@ -29,7 +29,7 @@ public class ClickMouse : MonoBehaviour, IInteractable
 
     public string specieName;
     
-    // Flag para evitar doble interacción
+    // Flag para evitar doble interacciï¿½n
     private bool isInteracting = false;
 
     private void Awake()
@@ -67,7 +67,7 @@ public class ClickMouse : MonoBehaviour, IInteractable
         }
     }
     
-    // ============== IMPLEMENTACIÓN DE IInteractable ==============
+    // ============== IMPLEMENTACIï¿½N DE IInteractable ==============
     
     public void OnInteract()
     {
@@ -80,7 +80,7 @@ public class ClickMouse : MonoBehaviour, IInteractable
         }
         finally
         {
-            // Resetear flag después de un pequeño delay
+            // Resetear flag despuï¿½s de un pequeï¿½o delay
             Invoke("ResetInteracting", 0.5f);
         }
     }
@@ -114,12 +114,12 @@ public class ClickMouse : MonoBehaviour, IInteractable
         }
     }
     
-    // ============== LÓGICA DE INTERACCIÓN ==============
+    // ============== Lï¿½GICA DE INTERACCIï¿½N ==============
     
     private void HandleInteraction()
     {
         tempResult = false;
-        Debug.Log("ClickMouse: Interacción iniciada con " + specieName);
+        Debug.Log("ClickMouse: Interacciï¿½n iniciada con " + specieName);
         
         try
         {
@@ -148,6 +148,10 @@ public class ClickMouse : MonoBehaviour, IInteractable
                             logros.ProgresarMision(0, specieName);
                             logros.ProgresarMision(6, specieName);
                         }
+
+                        logroSist.GetComponent<LogrosGlobales>().ProgresarMision(0, specieName);
+                        logroSist.GetComponent<LogrosGlobales>().ProgresarMision(8, specieName);
+                        logroSist.GetComponent<LogrosGlobales>().ProgresarMision(6, specieName);
                     }
                 }
                 else if (isPlant)
@@ -173,6 +177,9 @@ public class ClickMouse : MonoBehaviour, IInteractable
                             logros.ProgresarMision(0, specieName);
                             logros.ProgresarMision(7, specieName);
                         }
+                        logroSist.GetComponent<LogrosGlobales>().ProgresarMision(0, specieName);
+                        logroSist.GetComponent<LogrosGlobales>().ProgresarMision(8, specieName);
+                        logroSist.GetComponent<LogrosGlobales>().ProgresarMision(7, specieName);
                     }
                 }
                 isKnown = true;
@@ -223,11 +230,11 @@ public class ClickMouse : MonoBehaviour, IInteractable
         }
     }
     
-    // ============== GALERÍA ==============
+    // ============== GALERï¿½A ==============
     
     public void ShowGallery()
     {
-        Debug.Log("ClickMouse: Mostrando galería para " + specieName);
+        Debug.Log("ClickMouse: Mostrando galerï¿½a para " + specieName);
         
 #if UNITY_ANDROID || UNITY_IOS
         if (canvasJoy != null)
@@ -309,7 +316,7 @@ public class ClickMouse : MonoBehaviour, IInteractable
             }
             catch (Exception e)
             {
-                Debug.LogWarning("ClickMouse: Error obteniendo estación del pájaro: " + e.Message);
+                Debug.LogWarning("ClickMouse: Error obteniendo estaciï¿½n del pï¿½jaro: " + e.Message);
             }
             
             if (BookPages.instance != null)
@@ -335,7 +342,7 @@ public class ClickMouse : MonoBehaviour, IInteractable
         }
         catch (Exception e)
         {
-            Debug.LogWarning("ClickMouse: Error obteniendo estación: " + e.Message);
+            Debug.LogWarning("ClickMouse: Error obteniendo estaciï¿½n: " + e.Message);
         }
         
         if (BookPages.instance != null)
@@ -343,7 +350,7 @@ public class ClickMouse : MonoBehaviour, IInteractable
             BookPages.instance.registrarEspecie(specieName, estacionId);
         }
         
-        Debug.Log("ClickMouse: Especie registrada: " + specieName + " en estación " + estacionId);
+        Debug.Log("ClickMouse: Especie registrada: " + specieName + " en estaciï¿½n " + estacionId);
     }
 
 

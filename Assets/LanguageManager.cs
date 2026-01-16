@@ -626,6 +626,7 @@ public class LanguageManager : MonoBehaviour
             textos["logros.logro_7_nombre"] = lg.logro_7_nombre;
             textos["logros.logro_8_nombre"] = lg.logro_8_nombre;
             textos["logros.logro_9_nombre"] = lg.logro_9_nombre;
+            textos["logros.logro_10_nombre"] = lg.logro_10_nombre;
 
             textos["logros.logro_0_descripcion"] = lg.logro_0_descripcion;
             textos["logros.logro_1_descripcion"] = lg.logro_1_descripcion;
@@ -637,6 +638,7 @@ public class LanguageManager : MonoBehaviour
             textos["logros.logro_7_descripcion"] = lg.logro_7_descripcion;
             textos["logros.logro_8_descripcion"] = lg.logro_8_descripcion;
             textos["logros.logro_9_descripcion"] = lg.logro_9_descripcion;
+            textos["logros.logro_10_descripcion"] = lg.logro_10_descripcion;
         }
 
         if (datos.misiones != null)
@@ -653,6 +655,7 @@ public class LanguageManager : MonoBehaviour
             textos["misiones.mision_5_nombre"] = ms.mision_5_nombre;
             textos["misiones.mision_6_nombre"] = ms.mision_6_nombre;
             textos["misiones.mision_7_nombre"] = ms.mision_7_nombre;
+            textos["misiones.mision_8_nombre"] = ms.mision_8_nombre;
             textos["misiones.mision_0_descripcion"] = ms.mision_0_descripcion;
             textos["misiones.mision_1_descripcion"] = ms.mision_1_descripcion;
             textos["misiones.mision_2_descripcion"] = ms.mision_2_descripcion;
@@ -661,6 +664,7 @@ public class LanguageManager : MonoBehaviour
             textos["misiones.mision_5_descripcion"] = ms.mision_5_descripcion;
             textos["misiones.mision_6_descripcion"] = ms.mision_6_descripcion;
             textos["misiones.mision_7_descripcion"] = ms.mision_7_descripcion;
+            textos["misiones.mision_8_descripcion"] = ms.mision_8_descripcion;
         }
 
         if (datos.contrarreloj != null)
@@ -1324,6 +1328,7 @@ public class LanguageManager : MonoBehaviour
         public string logro_7_nombre;
         public string logro_8_nombre;
         public string logro_9_nombre;
+        public string logro_10_nombre;
 
         public string logro_0_descripcion;
         public string logro_1_descripcion;
@@ -1335,6 +1340,7 @@ public class LanguageManager : MonoBehaviour
         public string logro_7_descripcion;
         public string logro_8_descripcion;
         public string logro_9_descripcion;
+        public string logro_10_descripcion;
     }
 
     // Misiones
@@ -1352,6 +1358,7 @@ public class LanguageManager : MonoBehaviour
         public string mision_5_nombre;
         public string mision_6_nombre;
         public string mision_7_nombre;
+        public string mision_8_nombre;
         public string mision_0_descripcion;
         public string mision_1_descripcion;
         public string mision_2_descripcion;
@@ -1360,6 +1367,7 @@ public class LanguageManager : MonoBehaviour
         public string mision_5_descripcion;
         public string mision_6_descripcion;
         public string mision_7_descripcion;
+        public string mision_8_descripcion;
     }
 
     [Serializable]

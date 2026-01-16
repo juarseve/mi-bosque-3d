@@ -1,4 +1,4 @@
-  [
+[
   {
     "ChallengeID": 1,
     "codename": "challenge_1",
@@ -13,6 +13,13 @@
         "updatedAt": null,
         "gameLevel": {
           "Name": "Bosque-Estación 4"
+        }
+      },
+      {
+        "GameLevelId": 6,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 5"
         }
       }
     ],
@@ -71,6 +78,20 @@
         "updatedAt": null,
         "gameLevel": {
           "Name": "Bosque-Estación 4"
+        }
+      },
+      {
+        "GameLevelId": 6,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 5"
+        }
+      },
+      {
+        "GameLevelId": 7,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -132,10 +153,10 @@
         }
       },
       {
-        "GameLevelId": 5,
+        "GameLevelId": 7,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -267,13 +288,6 @@
         "gameLevel": {
           "Name": "Bosque-Estación 1"
         }
-      },
-      {
-        "GameLevelId": 3,
-        "updatedAt": null,
-        "gameLevel": {
-          "Name": "Bosque-Estación 2"
-        }
       }
     ],
     "options": [
@@ -326,6 +340,13 @@
     "difficulty": 2,
     "updatedAt": null,
     "gameLevelsChallenges": [
+      {
+        "GameLevelId": 3,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 2"
+        }
+      },
       {
         "GameLevelId": 4,
         "updatedAt": null,
@@ -385,17 +406,17 @@
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
-        "GameLevelId": 4,
+        "GameLevelId": 3,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 3"
+          "Name": "Bosque-Estación 2"
         }
       },
       {
-        "GameLevelId": 5,
+        "GameLevelId": 6,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 5"
         }
       }
     ],
@@ -515,6 +536,13 @@
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
+        "GameLevelId": 3,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 2"
+        }
+      },
+      {
         "GameLevelId": 4,
         "updatedAt": null,
         "gameLevel": {
@@ -572,6 +600,13 @@
     "difficulty": 3,
     "updatedAt": null,
     "gameLevelsChallenges": [
+      {
+        "GameLevelId": 3,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 2"
+        }
+      },
       {
         "GameLevelId": 4,
         "updatedAt": null,
@@ -766,6 +801,13 @@
         "gameLevel": {
           "Name": "Bosque-Estación 4"
         }
+      },
+      {
+        "GameLevelId": 6,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 5"
+        }
       }
     ],
     "options": [
@@ -891,10 +933,10 @@
         }
       },
       {
-        "GameLevelId": 4,
+        "GameLevelId": 3,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 3"
+          "Name": "Bosque-Estación 2"
         }
       }
     ],
@@ -1229,10 +1271,10 @@
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
-        "GameLevelId": 5,
+        "GameLevelId": 7,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -1337,6 +1379,13 @@
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
+        "GameLevelId": 3,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 2"
+        }
+      },
+      {
         "GameLevelId": 4,
         "updatedAt": null,
         "gameLevel": {
@@ -1402,10 +1451,10 @@
         }
       },
       {
-        "GameLevelId": 4,
+        "GameLevelId": 3,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 3"
+          "Name": "Bosque-Estación 2"
         }
       }
     ],
@@ -1459,7 +1508,13 @@
     "difficulty": 1,
     "updatedAt": null,
     "gameLevelsChallenges": [
-
+      {
+        "GameLevelId": 3,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 2"
+        }
+      },
       {
         "GameLevelId": 4,
         "updatedAt": null,
@@ -1518,7 +1573,13 @@
     "difficulty": 2,
     "updatedAt": null,
     "gameLevelsChallenges": [
-
+      {
+        "GameLevelId": 3,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 2"
+        }
+      },
       {
         "GameLevelId": 4,
         "updatedAt": null,
@@ -1577,12 +1638,18 @@
     "difficulty": 3,
     "updatedAt": null,
     "gameLevelsChallenges": [
-
       {
         "GameLevelId": 5,
         "updatedAt": null,
         "gameLevel": {
           "Name": "Bosque-Estación 4"
+        }
+      },
+      {
+        "GameLevelId": 6,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 5"
         }
       }
     ],
@@ -1644,10 +1711,10 @@
         }
       },
       {
-        "GameLevelId": 5,
+        "GameLevelId": 6,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 5"
         }
       }
     ],
@@ -1817,10 +1884,10 @@
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
-        "GameLevelId": 5,
+        "GameLevelId": 7,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -2622,10 +2689,24 @@
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
+        "GameLevelId": 5,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 4"
+        }
+      },
+      {
         "GameLevelId": 6,
         "updatedAt": null,
         "gameLevel": {
           "Name": "Bosque-Estación 5"
+        }
+      },
+      {
+        "GameLevelId": 7,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -2680,10 +2761,24 @@
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
+        "GameLevelId": 5,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 4"
+        }
+      },
+      {
         "GameLevelId": 6,
         "updatedAt": null,
         "gameLevel": {
           "Name": "Bosque-Estación 5"
+        }
+      },
+      {
+        "GameLevelId": 7,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -2738,10 +2833,24 @@
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
+        "GameLevelId": 5,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 4"
+        }
+      },
+      {
         "GameLevelId": 6,
         "updatedAt": null,
         "gameLevel": {
           "Name": "Bosque-Estación 5"
+        }
+      },
+      {
+        "GameLevelId": 7,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -2796,10 +2905,24 @@
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
+        "GameLevelId": 5,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 4"
+        }
+      },
+      {
         "GameLevelId": 6,
         "updatedAt": null,
         "gameLevel": {
           "Name": "Bosque-Estación 5"
+        }
+      },
+      {
+        "GameLevelId": 7,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -2854,10 +2977,24 @@
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
+        "GameLevelId": 5,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 4"
+        }
+      },
+      {
         "GameLevelId": 6,
         "updatedAt": null,
         "gameLevel": {
           "Name": "Bosque-Estación 5"
+        }
+      },
+      {
+        "GameLevelId": 7,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -2912,10 +3049,24 @@
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
+        "GameLevelId": 5,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 4"
+        }
+      },
+      {
         "GameLevelId": 6,
         "updatedAt": null,
         "gameLevel": {
           "Name": "Bosque-Estación 5"
+        }
+      },
+      {
+        "GameLevelId": 7,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -2975,6 +3126,20 @@
         "gameLevel": {
           "Name": "Bosque-Estación 4"
         }
+      },
+      {
+        "GameLevelId": 6,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 5"
+        }
+      },
+      {
+        "GameLevelId": 7,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 6"
+        }
       }
     ],
     "options": [
@@ -3027,13 +3192,25 @@
     "difficulty": 1,
     "updatedAt": null,
     "gameLevelsChallenges": [
-
-
+      {
+        "GameLevelId": 5,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 4"
+        }
+      },
       {
         "GameLevelId": 6,
         "updatedAt": null,
         "gameLevel": {
           "Name": "Bosque-Estación 5"
+        }
+      },
+      {
+        "GameLevelId": 7,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -3093,6 +3270,20 @@
         "gameLevel": {
           "Name": "Bosque-Estación 4"
         }
+      },
+      {
+        "GameLevelId": 6,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 5"
+        }
+      },
+      {
+        "GameLevelId": 7,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 6"
+        }
       }
     ],
     "options": [
@@ -3137,241 +3328,45 @@
     }
   },
   {
-        "ChallengeID": 55,
-        "codename": "challenge_48",
-        "question": "Si veo una fogata encendida en el bosque, ¿qué debo hacer?",
-        "score": 1,
-        "image": "files/W-uVU3JDD21njkIHHKFxu.png",
-        "difficulty": 1,
-        "updatedAt": null,
-        "gameLevelsChallenges": [
-        {
-            "GameLevelId": 7,
-            "updatedAt": null,
-            "gameLevel": {
-            "Name": "Bosque-Estación 6"
-            }
-        }
-
-
-        ],
-        "options": [
-        {
-            "ChallengeOptionId": 217,
-            "codename": "option_1A",
-            "correctOption": false,
-            "text": "Dejarla así, seguro alguien más la apagará.",
-            "image": "files/nSPfF9h16kAehk2WoDuAn.png",
-            "updatedAt": null
-        },
-        {
-            "ChallengeOptionId": 218,
-            "codename": "option_1B",
-            "correctOption": false,
-            "text": "Echarle más leña para que siga encendida.",
-            "image": "files/oFZe8cxuIzWJ3PPPNPIRm.png",
-            "updatedAt": null
-        },
-        {
-            "ChallengeOptionId": 219,
-            "codename": "option_1C",
-            "correctOption": true,
-            "text": "Avisar inmediatamente a un adulto responsable o un guardaparque.",
-            "image": "files/o4ZTYc07DR0WkrsdwLzHl.png",
-            "updatedAt": null
-        },
-        {
-            "ChallengeOptionId": 220,
-            "codename": "option_1D",
-            "correctOption": false,
-            "text": "Intentar apagarla yo solo con mis manos.",
-            "image": "files/2qXwV7ivOJEWkFWZt2B0U.png",
-            "updatedAt": null
-        }
-        ],
-        "feedback": {
-        "ChallengeFeedbackId": 55,
-        "feedback": "Nunca intentes apagarla solo, mejor avisa a un adulto para evitar un incendio.",
-        "image": null,
-        "updatedAt": null
-        }
-    },
-    {
-        "ChallengeID": 56,
-        "codename": "challenge_2",
-        "question": "¿Qué debemos evitar cuando caminemos por el sendero del bosque?",
-        "score": 1,
-        "image": "files/OOzjig6BVMAYPeZGSVGcd.jpg",
-        "difficulty": 1,
-        "updatedAt": null,
-        "gameLevelsChallenges": [
-        {
-            "GameLevelId": 6,
-            "updatedAt": null,
-            "gameLevel": {
-            "Name": "Bosque-Estación 5"
-            }
-        }
-
-        ],
-        "options": [
-        {
-            "ChallengeOptionId": 221,
-            "codename": "option_1A",
-            "correctOption": true,
-            "text": "Botar basura en el bosque.",
-            "image": "files/h8ykrFj1CBXVFPl62vdnb.png",
-            "updatedAt": null
-        },
-        {
-            "ChallengeOptionId": 219,
-            "codename": "option_1B",
-            "correctOption": false,
-            "text": "Seguir las instrucciones del guardabosque y letreros",
-            "image": "files/VPiVQ4Yu0Txd1e5EqCMzL.png",
-            "updatedAt": null
-        },
-        {
-            "ChallengeOptionId": 222,
-            "codename": "option_1C",
-            "correctOption": true,
-            "text": "Caminar despacio para ver por donde pisamos.",
-            "image": "files/AEeiVzGXV-WJOeVIcEXvD.png",
-            "updatedAt": null
-        },
-        {
-            "ChallengeOptionId": 223,
-            "codename": "option_1D",
-            "correctOption": false,
-            "text": "Caminar en silencio para apreciar a las especies. ",
-            "image": "files/77v0C4-wN6nI7Drknl3lg.png",
-            "updatedAt": null
-        }
-        ],
-        "feedback": {
-        "ChallengeFeedbackId": 56,
-        "feedback": "La basura daña a los animales y al bosque. Llévala contigo hasta un basurero.",
-        "image": null,
-        "updatedAt": null
-        }
-    },
-    {
-        "ChallengeID": 57,
-        "codename": "challenge_3",
-        "question": "Si queremos encender una fogata, ¿Qué medidas debemos tomar en cuenta?",
-        "score": 1,
-        "image": "files/hgElRsvczShkww66I9mE6.jpg",
-        "difficulty": 1,
-        "updatedAt": null,
-        "gameLevelsChallenges": [
-        {
-            "GameLevelId": 7,
-            "updatedAt": null,
-            "gameLevel": {
-            "Name": "Bosque-Estación 6"
-            }
-        }
-
-        ],
-        "options": [
-        {
-            "ChallengeOptionId": 224,
-            "codename": "option_1A",
-            "correctOption": true,
-            "text": "Evitar tener vegetación seca alrededor de la fogata.",
-            "image": "files/jhl3S9-mkFRx5D6NWekJg.png",
-            "updatedAt": null
-        },
-        {
-            "ChallengeOptionId": 218,
-            "codename": "option_1B",
-            "correctOption": false,
-            "text": "Dejar encendida la fogata para que los animales se abriguen.",
-            "image": "files/Pn9WSUwdw_bMHs8MYCAyt.png",
-            "updatedAt": null
-        },
-
-        {
-            "ChallengeOptionId": 225,
-            "codename": "option_1D",
-            "correctOption": false,
-            "text": "Ninguna, la fogata se apagará sola despues de varios días.",
-            "image": "files/Uj8cWjQOWy_PX22z9FcYa.png",
-            "updatedAt": null
-        },
-        {
-            "ChallengeOptionId": 219,
-            "codename": "option_1D",
-            "correctOption": true,
-            "text": "Hablar con un adulto responsable para que apague la fogata. ",
-            "image": "files/A5rzqvWz1KX8hbC5yZXwl.jpg",
-            "updatedAt": null
-        }
-        ],
-        "feedback": {
-        "ChallengeFeedbackId": 57,
-        "feedback": "Si hay hojas o ramas secas cerca, el fuego se puede expandir y causar un incendio.",
-        "image": null,
-        "updatedAt": null
-        }
-    },
-    {
-        "ChallengeID": 58,
-        "codename": "challenge_4",
-        "question": "¿Por qué es peligroso dejar botellas de vidrio en el bosque?",
-        "score": 1,
-        "image": "files/A5rzqvWz1KX8hbC5yZXwl.jpg",
-        "difficulty": 1,
-        "updatedAt": null,
-        "gameLevelsChallenges": [
-        {
-            "GameLevelId": 6,
-            "updatedAt": null,
-            "gameLevel": {
-            "Name": "Bosque-Estación 5"
-            }
-        }
-
-        ],
-        "options": [
-        {
-            "ChallengeOptionId": 226,
-            "codename": "option_1A",
-            "correctOption": false,
-            "text": "Porque los animales podrían cortarse.",
-            "image": "files/4G4D4-1UAfzUhw3M719dT.png",
-            "updatedAt": null
-        },
-        {
-            "ChallengeOptionId": 221,
-            "codename": "option_1B",
-            "correctOption": false,
-            "text": "Porque afecta las fotos que tomaré del paisaje del bosque.",
-            "image": "files/d9vSvrub6fJbIy6rbAJdR.png",
-            "updatedAt": null
-        },
-        {
-            "ChallengeOptionId": 229,
-            "codename": "option_1C",
-            "correctOption": true,
-            "text": "Porque el sol puede pasar a través del vidrio y encender el bosque seco. ",
-            "image": "files/qlghP86xPy_iUvAnYQrUZ.png",
-            "updatedAt": null
-        },
-        {
-            "ChallengeOptionId": 228,
-            "codename": "option_1D",
-            "correctOption": false,
-            "text": "No es peligroso, sirve para almacenar agua para los animales.",
-            "image": "files/vURFjIV4mYNhZiQ7tBYjd.png",
-            "updatedAt": null
-        }
-        ],
-        "feedback": {
-        "ChallengeFeedbackId": 58,
-        "feedback": "El vidrio funciona como una lupa y puede provocar un incendio en la vegetación.",
-        "image": null,
-        "updatedAt": null
-        }        
+    "ChallengeID": 55,
+    "codename": "codename",
+    "question": "question",
+    "score": 100,
+    "image": "image",
+    "difficulty": null,
+    "updatedAt": "2022-02-15T19:46:11Z",
+    "gameLevelsChallenges": [],
+    "options": [
+      {
+        "ChallengeOptionId": 217,
+        "codename": "Opcion 1",
+        "correctOption": true,
+        "text": "Gatos",
+        "image": "Gatos image",
+        "updatedAt": "2022-02-15T19:46:11Z"
+      },
+      {
+        "ChallengeOptionId": 218,
+        "codename": "Opcion 2",
+        "correctOption": false,
+        "text": "Gatos",
+        "image": "Gatos image",
+        "updatedAt": "2022-02-15T19:46:11Z"
+      },
+      {
+        "ChallengeOptionId": 219,
+        "codename": "Opcion 3",
+        "correctOption": false,
+        "text": "Gatos",
+        "image": "Gatos image",
+        "updatedAt": "2022-02-15T19:46:11Z"
+      }
+    ],
+    "feedback": {
+      "ChallengeFeedbackId": 55,
+      "feedback": "conteste bien",
+      "image": "feedback image",
+      "updatedAt": "2022-02-15T19:46:11Z"
     }
+  }
 ]

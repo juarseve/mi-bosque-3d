@@ -29,8 +29,8 @@ public class PlayerData
     public int nivel=0;
     public int[] limites = {0, 5, 10, 20, 35, 50, 80};
 
-    public bool[] misiones = {false,false, false, false, false, false, false, false };
-    public string[] logros = { "", "", "", "", "", "", "", "" };
+    public bool[] misiones = {false,false, false, false, false, false, false, false, false };
+    public string[] logros = { "", "", "", "", "", "", "", "", "" };
 
     public DateTime gameStart;
 

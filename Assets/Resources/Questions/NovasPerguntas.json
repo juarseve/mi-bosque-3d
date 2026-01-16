@@ -2,7 +2,7 @@
   {
     "ChallengeID": 1,
     "codename": "challenge_1",
-    "question": "Qual é a dieta do Pinzón Sabanero Azafranado?",
+    "question": "¿Cuál es la dieta del Pinzón Sabanero Azafranado?",
     "score": 1,
     "image": "files/Qe-HtdCBsAlmx4icA0Vy0.jpg",
     "difficulty": 1,
@@ -16,10 +16,10 @@
         }
       },
       {
-        "GameLevelId": 5,
+        "GameLevelId": 6,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 5"
         }
       }
     ],
@@ -36,7 +36,7 @@
         "ChallengeOptionId": 2,
         "codename": "option_1B",
         "correctOption": true,
-        "text": "Grãos e sementes",
+        "text": "Granos y semillas",
         "image": "files/cG4S9G2lWoFZVZ9SOYJNb.png",
         "updatedAt": null
       },
@@ -44,7 +44,7 @@
         "ChallengeOptionId": 3,
         "codename": "option_1C",
         "correctOption": false,
-        "text": "Minhocas",
+        "text": "Lombrices",
         "image": "files/pEKbR_9M19TNvtgf_m9cK.png",
         "updatedAt": null
       },
@@ -52,14 +52,14 @@
         "ChallengeOptionId": 4,
         "codename": "option_1D",
         "correctOption": false,
-        "text": "Insetos",
+        "text": "Insectos",
         "image": "files/t1f1kFRXBJo3VC-VxN3V3.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 1,
-      "feedback": "A dieta do Pinzón Sabanero Azafranado é baseada em grãos e sementes que ele encontra no chão.",
+      "feedback": "La dieta del Pinzón Sabanero Azafranado se basa en granos y semillas que encuentra en el suelo.",
       "image": null,
       "updatedAt": null
     }
@@ -67,7 +67,7 @@
   {
     "ChallengeID": 2,
     "codename": "challenge_2",
-    "question": "Qual é a dieta principal do Gavião-de-costas-cinzentas?",
+    "question": "¿Cuál es la dieta princial del Gavilán Dorsigris?",
     "score": 1,
     "image": "files/-fzFTtx9rpy8aE6pm_Xsd.jpg",
     "difficulty": 2,
@@ -81,17 +81,17 @@
         }
       },
       {
-        "GameLevelId": 5,
+        "GameLevelId": 6,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 5"
         }
       },
       {
-        "GameLevelId": 5,
+        "GameLevelId": 7,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -100,7 +100,7 @@
         "ChallengeOptionId": 5,
         "codename": "option_2A",
         "correctOption": false,
-        "text": "Formigas",
+        "text": "Hormigas",
         "image": "files/8JAE4qzGxFknnYrYvV2NJ.png",
         "updatedAt": null
       },
@@ -116,7 +116,7 @@
         "ChallengeOptionId": 7,
         "codename": "option_2C",
         "correctOption": false,
-        "text": "Baratas",
+        "text": "Cucarachas",
         "image": "files/NzEkeSOUG6gnx1G9MJqLA.png",
         "updatedAt": null
       },
@@ -124,14 +124,14 @@
         "ChallengeOptionId": 8,
         "codename": "option_2D",
         "correctOption": false,
-        "text": "Abelhas",
+        "text": "Abejas",
         "image": "files/3PDldViFxlnkQC5ZHq51N.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 2,
-      "feedback": "A dieta principal do Gavião-de-costas-cinzentas é baseada em roedores.",
+      "feedback": "La dieta principal del Gavilán Dorsigris se basa en roedores.",
       "image": null,
       "updatedAt": null
     }
@@ -139,7 +139,7 @@
   {
     "ChallengeID": 3,
     "codename": "challenge_3",
-    "question": "O Gavião-de-costas-cinzentas costuma planar mantendo as asas...",
+    "question": "El Gavilán Dorsigris planea con regularidad manteniendo sus alas...",
     "score": 1,
     "image": "files/Tj8f_HilJ-dQZSvUMfmfv.jpg",
     "difficulty": 2,
@@ -153,10 +153,10 @@
         }
       },
       {
-        "GameLevelId": 5,
+        "GameLevelId": 7,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -165,7 +165,7 @@
         "ChallengeOptionId": 9,
         "codename": "option_3A",
         "correctOption": false,
-        "text": "Em movimento",
+        "text": "En movimiento",
         "image": "files/lOd36dY-h3aeaViMq0oxl.png",
         "updatedAt": null
       },
@@ -173,7 +173,7 @@
         "ChallengeOptionId": 10,
         "codename": "option_3B",
         "correctOption": false,
-        "text": "Estendidas",
+        "text": "Despleplegadas",
         "image": "files/28WZsZEX8UE5KspLPO5HU.png",
         "updatedAt": null
       },
@@ -181,7 +181,7 @@
         "ChallengeOptionId": 11,
         "codename": "option_3C",
         "correctOption": true,
-        "text": "Retas",
+        "text": "Planas",
         "image": "files/yG_Iab7sRL_Vj4OyITSGt.png",
         "updatedAt": null
       },
@@ -189,14 +189,14 @@
         "ChallengeOptionId": 12,
         "codename": "option_3D",
         "correctOption": false,
-        "text": "Em leque",
+        "text": "En abanico",
         "image": "files/8rJrBtidwt9yBCYyH2yQO.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 3,
-      "feedback": "O Gavião-de-costas-cinzentas costuma empoleirar-se à beira da floresta e planar regularmente, mantendo as asas retas.",
+      "feedback": "El Gavilán Dorsigris posa al descubierto al filo del bosque y planea con regularidad, manteniendo sus alas planas.",
       "image": null,
       "updatedAt": null
     }
@@ -204,7 +204,7 @@
   {
     "ChallengeID": 4,
     "codename": "challenge_4",
-    "question": "Como o Gavião-de-costas-cinzentas plana?",
+    "question": "¿Cómo planea el Gavilán Dorsigris?",
     "score": 1,
     "image": "files/X7_ZNhzA1lx-JPSgwCy7u.jpg",
     "difficulty": 2,
@@ -230,7 +230,7 @@
         "ChallengeOptionId": 13,
         "codename": "option_4A",
         "correctOption": false,
-        "text": "Por muito tempo e a grande altura",
+        "text": "Por mucho tiempo y altura",
         "image": "files/yG_Iab7sRL_Vj4OyITSGt.png",
         "updatedAt": null
       },
@@ -238,7 +238,7 @@
         "ChallengeOptionId": 14,
         "codename": "option_4B",
         "correctOption": false,
-        "text": "Não plana",
+        "text": "No planea",
         "image": "files/W4OqHbTrnwIwnOE5oKBdT.png",
         "updatedAt": null
       },
@@ -246,7 +246,7 @@
         "ChallengeOptionId": 15,
         "codename": "option_4C",
         "correctOption": false,
-        "text": "Em rajadas de tempo",
+        "text": "Por ráfagas de tiempo",
         "image": "files/lOd36dY-h3aeaViMq0oxl.png",
         "updatedAt": null
       },
@@ -254,14 +254,14 @@
         "ChallengeOptionId": 16,
         "codename": "option_4D",
         "correctOption": true,
-        "text": "Por pouco tempo e baixa altura",
+        "text": "Por poco tiempo y altura",
         "image": "files/8rJrBtidwt9yBCYyH2yQO.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 4,
-      "feedback": "O Gavião-de-costas-cinzentas plana por pouco tempo e a baixa altura.",
+      "feedback": "El Gavilán Dorsigris planea por poco tiempo y poca altura.",
       "image": null,
       "updatedAt": null
     }
@@ -269,7 +269,7 @@
   {
     "ChallengeID": 5,
     "codename": "challenge_5",
-    "question": "Que tipo de animal é a iguana?",
+    "question": "¿Qué tipo de animal es la iguana?",
     "score": 1,
     "image": "files/OF1mT_006vPkw1jCOGxDT.jpg",
     "difficulty": 1,
@@ -287,13 +287,6 @@
         "updatedAt": null,
         "gameLevel": {
           "Name": "Bosque-Estación 1"
-        }
-      },
-      {
-        "GameLevelId": 3,
-        "updatedAt": null,
-        "gameLevel": {
-          "Name": "Bosque-Estación 2"
         }
       }
     ],
@@ -326,14 +319,14 @@
         "ChallengeOptionId": 20,
         "codename": "option_5D",
         "correctOption": false,
-        "text": "Nenhuma das anteriores",
+        "text": "Ninguna de las anteriores",
         "image": "files/F8EQh7K79hhs--6m8SUsl.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 5,
-      "feedback": "A iguana é herbívora e, como tal, quase metade de sua alimentação é baseada em vegetais. A fruta também faz parte da sua dieta.",
+      "feedback": "La iguana es herbivora y como tal casi la mitad de su alimentacion se basa en verduras. La fruta tambien forma parte de su dieta.",
       "image": null,
       "updatedAt": null
     }
@@ -341,17 +334,17 @@
   {
     "ChallengeID": 6,
     "codename": "challenge_6",
-    "question": "Qual é a cor da plumagem do Anu-preto?",
+    "question": "¿De qué color es el plumaje del Garrapatero Piquiestriado?",
     "score": 1,
     "image": "files/a3998ozrorSOhkRE4knrl.jpg",
     "difficulty": 2,
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
-        "GameLevelId": 4,
+        "GameLevelId": 3,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 3"
+          "Name": "Bosque-Estación 2"
         }
       },
       {
@@ -367,7 +360,7 @@
         "ChallengeOptionId": 21,
         "codename": "option_6A",
         "correctOption": false,
-        "text": "Branco com preto",
+        "text": "Blanco con negro",
         "image": "files/H5H_l50VvckwxWEZ4RM5d.png",
         "updatedAt": null
       },
@@ -375,7 +368,7 @@
         "ChallengeOptionId": 22,
         "codename": "option_6B",
         "correctOption": false,
-        "text": "Vermelho com listras pretas",
+        "text": "Rojo con rayas negras",
         "image": "files/-kdfKD_pE-uPkZGpm9WOo.png",
         "updatedAt": null
       },
@@ -383,7 +376,7 @@
         "ChallengeOptionId": 23,
         "codename": "option_6C",
         "correctOption": false,
-        "text": "Preto com amarelo",
+        "text": "Negro con amarillo",
         "image": "files/8lKhEGEEubWELSA0EO9Cl.png",
         "updatedAt": null
       },
@@ -391,14 +384,14 @@
         "ChallengeOptionId": 24,
         "codename": "option_6D",
         "correctOption": true,
-        "text": "Preto com tons azuis",
+        "text": "Negro con tonos azules",
         "image": "files/HVRlolohKGquwKoudWrrl.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 6,
-      "feedback": "Sua plumagem é preta com tons azuis, e seu bico é achatado nas laterais com ranhuras alongadas.",
+      "feedback": "Su plumaje es negro con tonos azules, tiene el pico aplastado a los lados con ranuras alargadas.",
       "image": null,
       "updatedAt": null
     }
@@ -406,24 +399,24 @@
   {
     "ChallengeID": 7,
     "codename": "challenge_7",
-    "question": "A Saíra-azul tem seu nome por causa de...",
+    "question": "La Tangara Azuleja lleva su nombre por...",
     "score": 1,
     "image": "files/N-iyrP76u8xlrow423QkI.jpg",
     "difficulty": 2,
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
-        "GameLevelId": 4,
+        "GameLevelId": 3,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 3"
+          "Name": "Bosque-Estación 2"
         }
       },
       {
-        "GameLevelId": 5,
+        "GameLevelId": 6,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 5"
         }
       }
     ],
@@ -432,7 +425,7 @@
         "ChallengeOptionId": 25,
         "codename": "option_7A",
         "correctOption": false,
-        "text": "Suas patas",
+        "text": "Sus patas",
         "image": "files/Pn9WSUwdw_bMHs8MYCAyt.png",
         "updatedAt": null
       },
@@ -440,7 +433,7 @@
         "ChallengeOptionId": 26,
         "codename": "option_7B",
         "correctOption": false,
-        "text": "Seu bico",
+        "text": "Su pico",
         "image": "files/9kJN-9H-ul4DtZrQ_OzIO.png",
         "updatedAt": null
       },
@@ -448,7 +441,7 @@
         "ChallengeOptionId": 27,
         "codename": "option_7C",
         "correctOption": false,
-        "text": "Seus olhos",
+        "text": "Sus ojos",
         "image": "files/9GaOBwv_iYJjXtQXxL6zf.png",
         "updatedAt": null
       },
@@ -456,14 +449,14 @@
         "ChallengeOptionId": 28,
         "codename": "option_7D",
         "correctOption": true,
-        "text": "Sua plumagem",
+        "text": "Su plumaje",
         "image": "files/M7tvB4srEjuWxuBMhJApf.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 7,
-      "feedback": "Esta bela ave que se alimenta principalmente de frutas recebe o nome de Saíra-azul por causa da cor de sua plumagem.",
+      "feedback": "Esta hermosa ave que se alimenta principalmente de frutos lleva el nombre Tangara Azuleja por el color de su plumaje.",
       "image": null,
       "updatedAt": null
     }
@@ -471,7 +464,7 @@
   {
     "ChallengeID": 8,
     "codename": "challenge_8",
-    "question": "Qual é a dieta principal da Saíra-azul?",
+    "question": "¿Cuál es la dieta principal de la Tangara Azuleja",
     "score": 1,
     "image": "files/N-iyrP76u8xlrow423QkI.jpg",
     "difficulty": 1,
@@ -505,7 +498,7 @@
         "ChallengeOptionId": 30,
         "codename": "option_8B",
         "correctOption": false,
-        "text": "Sementes",
+        "text": "Semillas",
         "image": "files/cG4S9G2lWoFZVZ9SOYJNb.png",
         "updatedAt": null
       },
@@ -513,7 +506,7 @@
         "ChallengeOptionId": 31,
         "codename": "option_8C",
         "correctOption": false,
-        "text": "Animais mortos",
+        "text": "Animales muertos",
         "image": "files/Zt9uzDo0B1OkOXJvKUZQa.png",
         "updatedAt": null
       },
@@ -521,14 +514,14 @@
         "ChallengeOptionId": 32,
         "codename": "option_8D",
         "correctOption": false,
-        "text": "Ovos",
+        "text": "Huevos",
         "image": "files/h8ykrFj1CBXVFPl62vdnb.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 8,
-      "feedback": "A dieta principal da Saíra-azul é baseada em frutas, mas ela também se alimenta de néctar e insetos.",
+      "feedback": "La dieta principal de la Tangara Azuleja se basa en frutas, pero también se alimenta de néctar e insectos.",
       "image": null,
       "updatedAt": null
     }
@@ -536,17 +529,17 @@
   {
     "ChallengeID": 9,
     "codename": "challenge_9",
-    "question": "Durante qual momento do dia o Coruja-preta-e-branca está ativa?",
+    "question": "¿Durante qué momento del día está activo el Búho Blanquinegro?",
     "score": 1,
     "image": "files/6aFVgKeRHU6l0OF8PkvS4.jpg",
     "difficulty": 3,
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
-        "GameLevelId": 4,
+        "GameLevelId": 3,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 3"
+          "Name": "Bosque-Estación 2"
         }
       },
       {
@@ -562,7 +555,7 @@
         "ChallengeOptionId": 33,
         "codename": "option_9A",
         "correctOption": false,
-        "text": "De manhã",
+        "text": "En la mañana",
         "image": "files/9JPO3Xe1bd83bQ045OKbL.png",
         "updatedAt": null
       },
@@ -570,7 +563,7 @@
         "ChallengeOptionId": 34,
         "codename": "option_9B",
         "correctOption": false,
-        "text": "De tarde",
+        "text": "En la tarde",
         "image": "files/n_WWQnfj-616DPNfwBkxr.png",
         "updatedAt": null
       },
@@ -578,7 +571,7 @@
         "ChallengeOptionId": 35,
         "codename": "option_9C",
         "correctOption": true,
-        "text": "De noite",
+        "text": "En la noche",
         "image": "files/0MYobpJs2Wxxg6wYbG0Hz.png",
         "updatedAt": null
       },
@@ -586,14 +579,14 @@
         "ChallengeOptionId": 36,
         "codename": "option_9D",
         "correctOption": false,
-        "text": "Está ativa o dia todo",
+        "text": "Está activa todo el dia",
         "image": "files/INQjoIP55QnBwEhMK2kim.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 9,
-      "feedback": "A Coruja-preta-e-branca é uma ave que está ativa apenas durante a noite.",
+      "feedback": "El Búho Blanquinegro es un ave que está activa únicamente durante la noche.",
       "image": null,
       "updatedAt": null
     }
@@ -601,17 +594,17 @@
   {
     "ChallengeID": 10,
     "codename": "challenge_10",
-    "question": "Que movimento a cauda do Araponga-do-cerrado faz?",
+    "question": "¿Qué movimiento hace la cola del Momoto Gritón?",
     "score": 1,
     "image": "files/AaD7PGxUXoSmGkQnLgeKp.jpg",
     "difficulty": 3,
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
-        "GameLevelId": 4,
+        "GameLevelId": 3,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 3"
+          "Name": "Bosque-Estación 2"
         }
       },
       {
@@ -635,7 +628,7 @@
         "ChallengeOptionId": 38,
         "codename": "option_10B",
         "correctOption": false,
-        "text": "Não move a cauda",
+        "text": "No mueve la cola",
         "image": "files/5Ms6OpEXkUeGXReabkmX8.png",
         "updatedAt": null
       },
@@ -651,14 +644,14 @@
         "ChallengeOptionId": 40,
         "codename": "option_10D",
         "correctOption": false,
-        "text": "De um lado para o outro",
+        "text": "De un lado al otro",
         "image": "files/cNKT6c26vWOxVzZQiflcd.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 10,
-      "feedback": "O Araponga-do-cerrado costuma analisar seus arredores fazendo um movimento pendular com a cauda.",
+      "feedback": "El Momoto Gritón suele analizar sus alrededores realizando un movimiento pendular de la cola.",
       "image": null,
       "updatedAt": null
     }
@@ -666,7 +659,7 @@
   {
     "ChallengeID": 11,
     "codename": "challenge_11",
-    "question": "Do que a Garcinha-estriada se alimenta?",
+    "question": "¿De qué se alimenta la Garcilla Estriada?",
     "score": 1,
     "image": "files/zsLMRO1XlLCw7-Op2Mq6q.jpg",
     "difficulty": 2,
@@ -692,7 +685,7 @@
         "ChallengeOptionId": 41,
         "codename": "option_11A",
         "correctOption": false,
-        "text": "Vegetação aquática",
+        "text": "Vegetación acuática",
         "image": "files/AEeiVzGXV-WJOeVIcEXvD.png",
         "updatedAt": null
       },
@@ -700,7 +693,7 @@
         "ChallengeOptionId": 42,
         "codename": "option_11B",
         "correctOption": false,
-        "text": "Ovos",
+        "text": "Huevos",
         "image": "files/h8ykrFj1CBXVFPl62vdnb.png",
         "updatedAt": null
       },
@@ -708,7 +701,7 @@
         "ChallengeOptionId": 43,
         "codename": "option_11C",
         "correctOption": true,
-        "text": "Peixes, anfíbios e invertebrados",
+        "text": "Peces, anfibios e invertebrados",
         "image": "files/VPiVQ4Yu0Txd1e5EqCMzL.png",
         "updatedAt": null
       },
@@ -716,14 +709,14 @@
         "ChallengeOptionId": 44,
         "codename": "option_11D",
         "correctOption": false,
-        "text": "Animais mortos",
+        "text": "Animales muertos",
         "image": "files/Zt9uzDo0B1OkOXJvKUZQa.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 11,
-      "feedback": "A Garcinha-estriada é encontrada em manguezais, estuários e outros corpos de água onde se alimenta de peixes, anfíbios e invertebrados.",
+      "feedback": "La Garcilla Estriada se encuentra en manglares, esteros y otros cuerpos de agua donde se alimenta de peces, anfibios e invertebrados.",
       "image": null,
       "updatedAt": null
     }
@@ -731,7 +724,7 @@
   {
     "ChallengeID": 12,
     "codename": "challenge_12",
-    "question": "Como a Garcinha-estriada caça?",
+    "question": "¿Cómo caza la Garcilla Estriada?",
     "score": 1,
     "image": "files/zsLMRO1XlLCw7-Op2Mq6q.jpg",
     "difficulty": 2,
@@ -757,7 +750,7 @@
         "ChallengeOptionId": 45,
         "codename": "option_12A",
         "correctOption": false,
-        "text": "Subindo em árvores",
+        "text": "Trepada en los árboles",
         "image": "files/mvLUAwBDDyN3smJNea3Ic.png",
         "updatedAt": null
       },
@@ -765,7 +758,7 @@
         "ChallengeOptionId": 46,
         "codename": "option_12B",
         "correctOption": false,
-        "text": "No ar, em pleno voo",
+        "text": "En el aire en pleno vuelo",
         "image": "files/yG_Iab7sRL_Vj4OyITSGt.png",
         "updatedAt": null
       },
@@ -773,7 +766,7 @@
         "ChallengeOptionId": 47,
         "codename": "option_12C",
         "correctOption": false,
-        "text": "Cavando na terra",
+        "text": "Escarbando en la tierra",
         "image": "files/UUQ4Mjma-cB5zRbD-Upva.png",
         "updatedAt": null
       },
@@ -781,14 +774,14 @@
         "ChallengeOptionId": 48,
         "codename": "option_12D",
         "correctOption": true,
-        "text": "De pé ou agachada",
+        "text": "De pie o en cuclillas",
         "image": "files/fz4I51MYeqonX4mk21eSK.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 12,
-      "feedback": "A Garcinha-estriada caça de pé ou agachada, logo fora da água.",
+      "feedback": "La Garcilla Estriada caza de pie o en cuclillas, justo afuera del agua.",
       "image": null,
       "updatedAt": null
     }
@@ -796,7 +789,7 @@
   {
     "ChallengeID": 13,
     "codename": "challenge_13",
-    "question": "Como o Suiriri-de-garganta-listrada é normalmente encontrado?",
+    "question": "¿Cómo se lo halla normalmente al Mosquero Rayado?",
     "score": 1,
     "image": "files/Vu9cGPmUkH7kmdHd15yAv.jpg",
     "difficulty": 2,
@@ -810,10 +803,10 @@
         }
       },
       {
-        "GameLevelId": 5,
+        "GameLevelId": 6,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 5"
         }
       }
     ],
@@ -822,7 +815,7 @@
         "ChallengeOptionId": 49,
         "codename": "option_13A",
         "correctOption": false,
-        "text": "De dia",
+        "text": "De día",
         "image": "files/INQjoIP55QnBwEhMK2kim.png",
         "updatedAt": null
       },
@@ -830,7 +823,7 @@
         "ChallengeOptionId": 50,
         "codename": "option_13B",
         "correctOption": false,
-        "text": "De noite",
+        "text": "De noche",
         "image": "files/0MYobpJs2Wxxg6wYbG0Hz.png",
         "updatedAt": null
       },
@@ -838,7 +831,7 @@
         "ChallengeOptionId": 51,
         "codename": "option_13C",
         "correctOption": true,
-        "text": "Em casal",
+        "text": "En pareja",
         "image": "files/DFnWMoVf4NzQbokFsoUDM.png",
         "updatedAt": null
       },
@@ -846,14 +839,14 @@
         "ChallengeOptionId": 52,
         "codename": "option_13D",
         "correctOption": false,
-        "text": "No inverno",
+        "text": "En época de invierno",
         "image": "files/uxTeeM1-WgnjdKw5hf-03.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 13,
-      "feedback": "O Suiriri-de-garganta-listrada é encontrado sozinho e/ou em casal, geralmente barulhento e conspícuo.",
+      "feedback": "El Mosquero Rayado es hallado solo y/o en pareja, generalmente ruidoso y conspicuo",
       "image": null,
       "updatedAt": null
     }
@@ -861,7 +854,7 @@
   {
     "ChallengeID": 14,
     "codename": "challenge_14",
-    "question": "Qual é a dieta do Suiriri-de-garganta-listrada?",
+    "question": "¿Cuál es la dieta del Mosquero Rayado?",
     "score": 1,
     "image": "files/d1FhEhav-3xsLyK1e1vOd.jpg",
     "difficulty": 1,
@@ -895,7 +888,7 @@
         "ChallengeOptionId": 54,
         "codename": "option_14B",
         "correctOption": true,
-        "text": "Frutas e insetos",
+        "text": "Frutas e insectos",
         "image": "files/M8f03Re5AQs60YzQ0enlT.png",
         "updatedAt": null
       },
@@ -903,7 +896,7 @@
         "ChallengeOptionId": 55,
         "codename": "option_14C",
         "correctOption": false,
-        "text": "Sementes",
+        "text": "Semillas",
         "image": "files/cG4S9G2lWoFZVZ9SOYJNb.png",
         "updatedAt": null
       },
@@ -911,14 +904,14 @@
         "ChallengeOptionId": 56,
         "codename": "option_14D",
         "correctOption": false,
-        "text": "Vegetação aquática",
+        "text": "Vegetación acuática",
         "image": "files/AEeiVzGXV-WJOeVIcEXvD.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 14,
-      "feedback": "A dieta do Suiriri-de-garganta-listrada é baseada em frutas e uma grande variedade de insetos capturados através de voos áereos.",
+      "feedback": "La dieta del Mosquero Rayado se basa en frutas y en una gran variedad de insectos capturados mediante vaivenes aéreos.",
       "image": null,
       "updatedAt": null
     }
@@ -926,7 +919,7 @@
   {
     "ChallengeID": 15,
     "codename": "challenge_15",
-    "question": "Qual é a dieta do Pica-pau?",
+    "question": "¿Cuál es la dieta del Pájaro Carpintero?",
     "score": 1,
     "image": "files/k7rX8SKeEKYNHJTq9tcu0.jpg",
     "difficulty": 1,
@@ -940,10 +933,10 @@
         }
       },
       {
-        "GameLevelId": 4,
+        "GameLevelId": 3,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 3"
+          "Name": "Bosque-Estación 2"
         }
       }
     ],
@@ -952,7 +945,7 @@
         "ChallengeOptionId": 57,
         "codename": "option_15A",
         "correctOption": true,
-        "text": "Insetos",
+        "text": "Insectos",
         "image": "files/t1f1kFRXBJo3VC-VxN3V3.png",
         "updatedAt": null
       },
@@ -960,7 +953,7 @@
         "ChallengeOptionId": 58,
         "codename": "option_15B",
         "correctOption": false,
-        "text": "Sementes",
+        "text": "Semillas",
         "image": "files/cG4S9G2lWoFZVZ9SOYJNb.png",
         "updatedAt": null
       },
@@ -968,7 +961,7 @@
         "ChallengeOptionId": 59,
         "codename": "option_15C",
         "correctOption": false,
-        "text": "Peixes",
+        "text": "Peces",
         "image": "files/VPiVQ4Yu0Txd1e5EqCMzL.png",
         "updatedAt": null
       },
@@ -976,14 +969,14 @@
         "ChallengeOptionId": 60,
         "codename": "option_15D",
         "correctOption": false,
-        "text": "Invertebrados aquáticos",
+        "text": "Invertebrados acuáticos",
         "image": "files/2RFhiUhnrQdb7o65HKumd.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 15,
-      "feedback": "A dieta do Pica-pau é baseada principalmente em insetos que ele captura nos troncos das árvores.",
+      "feedback": "La dieta del Pájaro Carpintero se basa principalmente de insectos que captura en los troncos de los árboles.",
       "image": null,
       "updatedAt": null
     }
@@ -991,7 +984,7 @@
   {
     "ChallengeID": 16,
     "codename": "challenge_16",
-    "question": "Qual é a dieta principal do Beija-flor?",
+    "question": "¿Cuál es la dieta principal del Colibrí?",
     "score": 1,
     "image": "files/OOzjig6BVMAYPeZGSVGcd.jpg",
     "difficulty": 1,
@@ -1017,7 +1010,7 @@
         "ChallengeOptionId": 61,
         "codename": "option_16A",
         "correctOption": false,
-        "text": "Ovos",
+        "text": "Huevos",
         "image": "files/h8ykrFj1CBXVFPl62vdnb.png",
         "updatedAt": null
       },
@@ -1025,7 +1018,7 @@
         "ChallengeOptionId": 62,
         "codename": "option_16B",
         "correctOption": false,
-        "text": "Peixes pequenos",
+        "text": "Peces pequeños",
         "image": "files/VPiVQ4Yu0Txd1e5EqCMzL.png",
         "updatedAt": null
       },
@@ -1033,7 +1026,7 @@
         "ChallengeOptionId": 63,
         "codename": "option_16C",
         "correctOption": false,
-        "text": "Vegetação aquática",
+        "text": "Vegetación acuática",
         "image": "files/AEeiVzGXV-WJOeVIcEXvD.png",
         "updatedAt": null
       },
@@ -1048,7 +1041,7 @@
     ],
     "feedback": {
       "ChallengeFeedbackId": 16,
-      "feedback": "A dieta principal do Beija-flor é baseada em néctar.",
+      "feedback": "La dieta principal del Colibrí se basa en nectar.",
       "image": null,
       "updatedAt": null
     }
@@ -1056,7 +1049,7 @@
   {
     "ChallengeID": 17,
     "codename": "challenge_17",
-    "question": "Onde o Mergulhão-caçador carrega seus filhotes?",
+    "question": "¿Dónde carga el Zambullidor Piquipinto a sus polluelos?",
     "score": 1,
     "image": "files/hgElRsvczShkww66I9mE6.jpg",
     "difficulty": 2,
@@ -1067,7 +1060,7 @@
         "ChallengeOptionId": 65,
         "codename": "option_17A",
         "correctOption": true,
-        "text": "Nas costas",
+        "text": "En la espalda",
         "image": "files/jhl3S9-mkFRx5D6NWekJg.png",
         "updatedAt": null
       },
@@ -1075,7 +1068,7 @@
         "ChallengeOptionId": 66,
         "codename": "option_17B",
         "correctOption": false,
-        "text": "Nas patas",
+        "text": "En las patas",
         "image": "files/Pn9WSUwdw_bMHs8MYCAyt.png",
         "updatedAt": null
       },
@@ -1083,7 +1076,7 @@
         "ChallengeOptionId": 67,
         "codename": "option_17C",
         "correctOption": false,
-        "text": "Debaixo das asas",
+        "text": "Debajo de las alas",
         "image": "files/28WZsZEX8UE5KspLPO5HU.png",
         "updatedAt": null
       },
@@ -1091,14 +1084,14 @@
         "ChallengeOptionId": 68,
         "codename": "option_17D",
         "correctOption": false,
-        "text": "Na cabeça",
+        "text": "En la cabeza",
         "image": "files/Uj8cWjQOWy_PX22z9FcYa.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 17,
-      "feedback": "O Mergulhão-caçador adulto costuma carregar os filhotes em suas costas.",
+      "feedback": "El Zambullidor Piquipinto adulto suele cargar a los polluelos sobre su espalda.",
       "image": null,
       "updatedAt": null
     }
@@ -1106,7 +1099,7 @@
   {
     "ChallengeID": 18,
     "codename": "challenge_18",
-    "question": "Onde o Araponga-da-mata-seca vive?",
+    "question": "¿Dónde habita el Momotido?",
     "score": 1,
     "image": "files/A5rzqvWz1KX8hbC5yZXwl.jpg",
     "difficulty": 2,
@@ -1132,7 +1125,7 @@
         "ChallengeOptionId": 69,
         "codename": "option_18A",
         "correctOption": true,
-        "text": "Floresta seca",
+        "text": "Bosque seco",
         "image": "files/4G4D4-1UAfzUhw3M719dT.png",
         "updatedAt": null
       },
@@ -1140,7 +1133,7 @@
         "ChallengeOptionId": 70,
         "codename": "option_18B",
         "correctOption": false,
-        "text": "Floresta úmida",
+        "text": "Bosque húmedo",
         "image": "files/d9vSvrub6fJbIy6rbAJdR.png",
         "updatedAt": null
       },
@@ -1148,7 +1141,7 @@
         "ChallengeOptionId": 71,
         "codename": "option_18C",
         "correctOption": false,
-        "text": "Corpos de água",
+        "text": "Cuerpos de agua",
         "image": "files/qlghP86xPy_iUvAnYQrUZ.png",
         "updatedAt": null
       },
@@ -1156,14 +1149,14 @@
         "ChallengeOptionId": 72,
         "codename": "option_18D",
         "correctOption": false,
-        "text": "Sub-bosque",
+        "text": "Sotobosque",
         "image": "files/vURFjIV4mYNhZiQ7tBYjd.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 18,
-      "feedback": "O Araponga-da-mata-seca habita principalmente em florestas secas.",
+      "feedback": "El Momotido habita principalmente en los bosques secos.",
       "image": null,
       "updatedAt": null
     }
@@ -1171,7 +1164,7 @@
   {
     "ChallengeID": 19,
     "codename": "challenge_19",
-    "question": "Qual é a dieta principal da Garça-noturna-de-coroa-amarela?",
+    "question": "¿Cuál es la dieta principal de la Garza Nocturna Coroniamarilla?",
     "score": 1,
     "image": "files/G1aQYep2a_DnJQPxR0u1M.jpg",
     "difficulty": 1,
@@ -1182,7 +1175,7 @@
         "ChallengeOptionId": 73,
         "codename": "option_19A",
         "correctOption": true,
-        "text": "Caranguejos",
+        "text": "Cangrejos",
         "image": "files/3bJkXWEGBFJcsKP95BWtb.png",
         "updatedAt": null
       },
@@ -1190,7 +1183,7 @@
         "ChallengeOptionId": 74,
         "codename": "option_19B",
         "correctOption": false,
-        "text": "Peixes",
+        "text": "Peces",
         "image": "files/VPiVQ4Yu0Txd1e5EqCMzL.png",
         "updatedAt": null
       },
@@ -1198,7 +1191,7 @@
         "ChallengeOptionId": 75,
         "codename": "option_19C",
         "correctOption": false,
-        "text": "Polvos",
+        "text": "Pulpos",
         "image": "files/HYcgIEeF8HfHmCGNjAbr_.png",
         "updatedAt": null
       },
@@ -1206,14 +1199,14 @@
         "ChallengeOptionId": 76,
         "codename": "option_19D",
         "correctOption": false,
-        "text": "Lagostas",
+        "text": "Langostas",
         "image": "files/7KFcuHIeP4FrLPjbnryDJ.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 19,
-      "feedback": "A Garça-noturna-de-coroa-amarela habita em manguezais onde se alimenta principalmente de caranguejos.",
+      "feedback": "La Garza Nocturna Coroniamarilla habita en los manglares donde se alimenta principalmente de cangrejos.",
       "image": null,
       "updatedAt": null
     }
@@ -1221,7 +1214,7 @@
   {
     "ChallengeID": 20,
     "codename": "challenge_20",
-    "question": "Onde a Garça-branca-grande vive?",
+    "question": "¿Dónde habita la Garceta Grande?",
     "score": 1,
     "image": "files/L-SfT-xcI5DYIh5fz-GLC.jpg",
     "difficulty": 2,
@@ -1232,7 +1225,7 @@
         "ChallengeOptionId": 77,
         "codename": "option_20A",
         "correctOption": false,
-        "text": "Arbustos decíduos",
+        "text": "Matorrales deciduos",
         "image": "files/kRRJQRwlqvaqbprCD7Vog.png",
         "updatedAt": null
       },
@@ -1240,7 +1233,7 @@
         "ChallengeOptionId": 78,
         "codename": "option_20B",
         "correctOption": false,
-        "text": "Arbustos áridos",
+        "text": "Matorrales áridos",
         "image": "files/Plh7kjP5QSvmRqAjFQ3Gl.png",
         "updatedAt": null
       },
@@ -1248,7 +1241,7 @@
         "ChallengeOptionId": 79,
         "codename": "option_20C",
         "correctOption": true,
-        "text": "Corpos de água",
+        "text": "Cuerpos de agua",
         "image": "files/qlghP86xPy_iUvAnYQrUZ.png",
         "updatedAt": null
       },
@@ -1256,14 +1249,14 @@
         "ChallengeOptionId": 80,
         "codename": "option_20D",
         "correctOption": false,
-        "text": "Floresta úmida",
+        "text": "Bosque húmedo",
         "image": "files/d9vSvrub6fJbIy6rbAJdR.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 20,
-      "feedback": "A Garça-branca-grande é uma espécie gregária que habita em corpos de água doce e salgada.",
+      "feedback": "La Garceta Grande es una especie gregaria que habita en cuerpos de agua dulce y salada.",
       "image": null,
       "updatedAt": null
     }
@@ -1271,17 +1264,17 @@
   {
     "ChallengeID": 21,
     "codename": "challenge_21",
-    "question": "De que se alimenta o Urubu-de-cabeça-vermelha?",
+    "question": "¿De que se alimenta el Gallinazo de Cabeza Roja?",
     "score": 1,
     "image": "files/UaF1nD4Db8TXADB05GHNS.jpg",
     "difficulty": 3,
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
-        "GameLevelId": 5,
+        "GameLevelId": 7,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -1290,7 +1283,7 @@
         "ChallengeOptionId": 81,
         "codename": "option_21A",
         "correctOption": false,
-        "text": "Insetos",
+        "text": "Insectos",
         "image": "files/sD-0bt9Gx-ADIKbP_MeUa.png",
         "updatedAt": null
       },
@@ -1306,7 +1299,7 @@
         "ChallengeOptionId": 83,
         "codename": "option_21C",
         "correctOption": false,
-        "text": "Grãos e Sementes",
+        "text": "Granos y Semillas",
         "image": "files/t_wKRPknWWVMeHl2lYsrS.png",
         "updatedAt": null
       },
@@ -1314,14 +1307,14 @@
         "ChallengeOptionId": 84,
         "codename": "option_21D",
         "correctOption": true,
-        "text": "Animais mortos",
+        "text": "Animales muertos",
         "image": "files/Zt9uzDo0B1OkOXJvKUZQa.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 21,
-      "feedback": "O Urubu-de-cabeça-vermelha é uma espécie necrófaga. Ele localiza os cadáveres de outros animais com sua visão aguçada e seu olfato.",
+      "feedback": "El Gallinazo Cabeza Roja es una especie carroñera. Localiza los cadáveres de otros animales con su aguda visión y su sentido del olfato.",
       "image": null,
       "updatedAt": null
     }
@@ -1329,7 +1322,7 @@
   {
     "ChallengeID": 22,
     "codename": "challenge_22",
-    "question": "Qual é a principal presa do Gavião-caboclo?",
+    "question": "¿Cuál es la presa principal del Halcón Reidor?",
     "score": 1,
     "image": "files/Ptlu8o_pCyhSAZovujxNX.jpg",
     "difficulty": 1,
@@ -1340,7 +1333,7 @@
         "ChallengeOptionId": 85,
         "codename": "option_22A",
         "correctOption": false,
-        "text": "Insetos",
+        "text": "Insectos",
         "image": "files/t1f1kFRXBJo3VC-VxN3V3.png",
         "updatedAt": null
       },
@@ -1348,7 +1341,7 @@
         "ChallengeOptionId": 86,
         "codename": "option_22B",
         "correctOption": false,
-        "text": "Peixes",
+        "text": "Peces",
         "image": "files/VPiVQ4Yu0Txd1e5EqCMzL.png",
         "updatedAt": null
       },
@@ -1356,7 +1349,7 @@
         "ChallengeOptionId": 87,
         "codename": "option_22C",
         "correctOption": true,
-        "text": "Cobras",
+        "text": "Culebras",
         "image": "files/g4oQpB5ZroEmzQaT95ure.png",
         "updatedAt": null
       },
@@ -1371,7 +1364,7 @@
     ],
     "feedback": {
       "ChallengeFeedbackId": 22,
-      "feedback": "A principal presa do Gavião-caboclo são as cobras, que ele golpeia com as patas, corta a cabeça com o bico e depois as come.",
+      "feedback": "La presa principal del Halcón Reidor son las culebras a las cuales golpea con sus patas, les corta la cabeza con su pico y luego se las come.",
       "image": null,
       "updatedAt": null
     }
@@ -1379,12 +1372,19 @@
   {
     "ChallengeID": 23,
     "codename": "challenge_23",
-    "question": "Qual roedor o comportamento da Andorinha se assemelha?",
+    "question": "¿A qué roedor se asemeja el comportamiento de la Golondrina?",
     "score": 1,
     "image": "files/xEdjpBVNOMvDdib-ay50C.jpg",
     "difficulty": 1,
     "updatedAt": null,
     "gameLevelsChallenges": [
+      {
+        "GameLevelId": 3,
+        "updatedAt": null,
+        "gameLevel": {
+          "Name": "Bosque-Estación 2"
+        }
+      },
       {
         "GameLevelId": 4,
         "updatedAt": null,
@@ -1398,7 +1398,7 @@
         "ChallengeOptionId": 89,
         "codename": "option_23A",
         "correctOption": true,
-        "text": "Esquilo",
+        "text": "Ardilla",
         "image": "files/t_wKRPknWWVMeHl2lYsrS.png",
         "updatedAt": null
       },
@@ -1406,7 +1406,7 @@
         "ChallengeOptionId": 90,
         "codename": "option_23B",
         "correctOption": false,
-        "text": "Hamster",
+        "text": "Hámster",
         "image": "files/UM7ebBKehqgvfkwvMLk7P.png",
         "updatedAt": null
       },
@@ -1414,7 +1414,7 @@
         "ChallengeOptionId": 91,
         "codename": "option_23C",
         "correctOption": false,
-        "text": "Rato",
+        "text": "Rata",
         "image": "files/3a2B_ywznZ7PMZZtQqQzW.png",
         "updatedAt": null
       },
@@ -1422,14 +1422,14 @@
         "ChallengeOptionId": 92,
         "codename": "option_23D",
         "correctOption": false,
-        "text": "Coelho",
+        "text": "Conejo",
         "image": "files/WjIrUGyTYdkTwBM9UUe8-.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 23,
-      "feedback": "O comportamento da Andorinha se assemelha ao do esquilo, pois ela prefere se mover saltando de galho em galho com a agilidade e rapidez que essa espécie faz, raramente voando para se locomover.",
+      "feedback": "El comportamiento de la Golondrina se asemeja a la ardilla ya que prefiere trasladarse saltando de rama en rama con la agilidad y rapidez que lo hace dicha especie, rara vez vuela para trasladarse.",
       "image": null,
       "updatedAt": null
     }
@@ -1437,7 +1437,7 @@
   {
     "ChallengeID": 24,
     "codename": "challenge_24",
-    "question": "De que se alimenta o Beija-flor?",
+    "question": "¿De qué se alimenta el Colibrí?",
     "score": 1,
     "image": "files/OOzjig6BVMAYPeZGSVGcd.jpg",
     "difficulty": 1,
@@ -1451,10 +1451,10 @@
         }
       },
       {
-        "GameLevelId": 4,
+        "GameLevelId": 3,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 3"
+          "Name": "Bosque-Estación 2"
         }
       }
     ],
@@ -1471,7 +1471,7 @@
         "ChallengeOptionId": 94,
         "codename": "option_24B",
         "correctOption": false,
-        "text": "Aranhas",
+        "text": "Arañas",
         "image": "files/pL-ZnKLAAB5uf8GKfyqT4.png",
         "updatedAt": null
       },
@@ -1479,7 +1479,7 @@
         "ChallengeOptionId": 95,
         "codename": "option_24C",
         "correctOption": false,
-        "text": "Insetos",
+        "text": "Insectos",
         "image": "files/t1f1kFRXBJo3VC-VxN3V3.png",
         "updatedAt": null
       },
@@ -1487,14 +1487,14 @@
         "ChallengeOptionId": 96,
         "codename": "option_24D",
         "correctOption": true,
-        "text": "Néctar das flores",
+        "text": "Néctar de las flores",
         "image": "files/P6GzFW8EXs7c-bJQDLPak.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 24,
-      "feedback": "O Beija-flor se alimenta do néctar das flores, ajudando na polinização.",
+      "feedback": "El Colibrí se alimenta del nectar de las flores, ayudando en la polinización.",
       "image": null,
       "updatedAt": null
     }
@@ -1502,17 +1502,17 @@
   {
     "ChallengeID": 25,
     "codename": "challenge_25",
-    "question": "De que se alimenta o Trogón-equatoriano?",
+    "question": "¿De qué se alimenta el Trogón ecuatoriano?",
     "score": 1,
     "image": "files/OqDqInw6d5ptiaYQRHs0S.jpg",
     "difficulty": 1,
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
-        "GameLevelId": 4,
+        "GameLevelId": 3,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 3"
+          "Name": "Bosque-Estación 2"
         }
       },
       {
@@ -1528,7 +1528,7 @@
         "ChallengeOptionId": 97,
         "codename": "option_25A",
         "correctOption": false,
-        "text": "Animais mortos",
+        "text": "Animales muertos",
         "image": "files/Zt9uzDo0B1OkOXJvKUZQa.png",
         "updatedAt": null
       },
@@ -1536,7 +1536,7 @@
         "ChallengeOptionId": 98,
         "codename": "option_25B",
         "correctOption": false,
-        "text": "Sementes",
+        "text": "Semillas",
         "image": "files/cG4S9G2lWoFZVZ9SOYJNb.png",
         "updatedAt": null
       },
@@ -1544,7 +1544,7 @@
         "ChallengeOptionId": 99,
         "codename": "option_25C",
         "correctOption": true,
-        "text": "Insetos",
+        "text": "Insectos",
         "image": "files/t1f1kFRXBJo3VC-VxN3V3.png",
         "updatedAt": null
       },
@@ -1552,14 +1552,14 @@
         "ChallengeOptionId": 100,
         "codename": "option_25D",
         "correctOption": false,
-        "text": "Invertebrados aquáticos",
+        "text": "Invertebrados acuáticos",
         "image": "files/2RFhiUhnrQdb7o65HKumd.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 25,
-      "feedback": "O Trogón-equatoriano se alimenta principalmente de insetos, embora também consuma frutas.",
+      "feedback": "El Trogón ecuatoriano se alimenta mayormente de insectos, aunque tambien lo hace de frutas.",
       "image": null,
       "updatedAt": null
     }
@@ -1567,17 +1567,17 @@
   {
     "ChallengeID": 26,
     "codename": "challenge_26",
-    "question": "Onde habita o Coruja-preta-e-branca?",
+    "question": "¿Dónde habita el Buho Blanquinegro?",
     "score": 1,
     "image": "files/XDEfUDWhB7cQVulvGJiJb.jpg",
     "difficulty": 2,
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
-        "GameLevelId": 4,
+        "GameLevelId": 3,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 3"
+          "Name": "Bosque-Estación 2"
         }
       },
       {
@@ -1593,7 +1593,7 @@
         "ChallengeOptionId": 101,
         "codename": "option_26A",
         "correctOption": false,
-        "text": "Matagais áridos",
+        "text": "Matorrales áridos",
         "image": "files/Plh7kjP5QSvmRqAjFQ3Gl.png",
         "updatedAt": null
       },
@@ -1601,7 +1601,7 @@
         "ChallengeOptionId": 102,
         "codename": "option_26B",
         "correctOption": false,
-        "text": "Matagais decíduos",
+        "text": "Matorrales deciduos",
         "image": "files/kRRJQRwlqvaqbprCD7Vog.png",
         "updatedAt": null
       },
@@ -1609,7 +1609,7 @@
         "ChallengeOptionId": 103,
         "codename": "option_26C",
         "correctOption": false,
-        "text": "Jardins",
+        "text": "Jardínes",
         "image": "files/j3yYzJc5z3pTGRV-t_PjG.png",
         "updatedAt": null
       },
@@ -1617,14 +1617,14 @@
         "ChallengeOptionId": 104,
         "codename": "option_26D",
         "correctOption": true,
-        "text": "Florestas Secas",
+        "text": "Bosques Secos",
         "image": "files/4G4D4-1UAfzUhw3M719dT.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 26,
-      "feedback": "O Coruja-preta-e-branca habita principalmente em florestas secas e pode ser avistado à noite.",
+      "feedback": "El Búho Blanquinegro habita principalmente en los bosques secos y se lo puede avistar de noche.",
       "image": null,
       "updatedAt": null
     }
@@ -1632,7 +1632,7 @@
   {
     "ChallengeID": 27,
     "codename": "challenge_27",
-    "question": "Como é o comportamento alimentar do Pica-pau?",
+    "question": "¿Cómo es el comportamiento alimenticio del Pajaro Carpintero?",
     "score": 1,
     "image": "files/e8eziyarCmIQoQmqYYIag.jpg",
     "difficulty": 3,
@@ -1646,10 +1646,10 @@
         }
       },
       {
-        "GameLevelId": 5,
+        "GameLevelId": 6,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 5"
         }
       }
     ],
@@ -1658,7 +1658,7 @@
         "ChallengeOptionId": 105,
         "codename": "option_27A",
         "correctOption": false,
-        "text": "Caça a partir de vegetação flutuante",
+        "text": "Caza desde una vegetación flotante",
         "image": "files/AEeiVzGXV-WJOeVIcEXvD.png",
         "updatedAt": null
       },
@@ -1666,7 +1666,7 @@
         "ChallengeOptionId": 106,
         "codename": "option_27B",
         "correctOption": true,
-        "text": "Escava troncos em busca de alimento",
+        "text": "Esculca troncos en busca de comida",
         "image": "files/mvLUAwBDDyN3smJNea3Ic.png",
         "updatedAt": null
       },
@@ -1674,7 +1674,7 @@
         "ChallengeOptionId": 107,
         "codename": "option_27C",
         "correctOption": false,
-        "text": "Observa sua presa e se joga para pegá-la",
+        "text": "Observa su presa y se lanza para atraparla",
         "image": "files/28WZsZEX8UE5KspLPO5HU.png",
         "updatedAt": null
       },
@@ -1682,14 +1682,14 @@
         "ChallengeOptionId": 108,
         "codename": "option_27D",
         "correctOption": false,
-        "text": "Espera sua presa na beira da água",
+        "text": "Espera a su presa al pie de la orilla",
         "image": "files/fz4I51MYeqonX4mk21eSK.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 27,
-      "feedback": "Com seu bico potente, o Pica-pau escava troncos e galhos em busca de insetos, mas também se alimenta de frutas e insetos que caça no ar.",
+      "feedback": "Con su potente pico el Pajaro Carpintero esculca troncos y ramas en busca de insectos, pero también se alimenta de frutas e insectos que caza en el aire.",
       "image": null,
       "updatedAt": null
     }
@@ -1697,7 +1697,7 @@
   {
     "ChallengeID": 28,
     "codename": "challenge_28",
-    "question": "Qual é a dieta principal do Mosquero-bicudo?",
+    "question": "¿Cuál es la dieta principal del Mosquero Picudo?",
     "score": 1,
     "image": "files/SyZsctgvm8LRDzifMUqX2.jpg",
     "difficulty": 1,
@@ -1711,10 +1711,10 @@
         }
       },
       {
-        "GameLevelId": 5,
+        "GameLevelId": 6,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 5"
         }
       }
     ],
@@ -1723,7 +1723,7 @@
         "ChallengeOptionId": 109,
         "codename": "option_28A",
         "correctOption": true,
-        "text": "Cigarra",
+        "text": "Cigarras",
         "image": "files/vucW5iWIzQJUoH5VyLKa-.png",
         "updatedAt": null
       },
@@ -1731,7 +1731,7 @@
         "ChallengeOptionId": 110,
         "codename": "option_28B",
         "correctOption": false,
-        "text": "Baratas",
+        "text": "Cucarachas",
         "image": "files/NzEkeSOUG6gnx1G9MJqLA.png",
         "updatedAt": null
       },
@@ -1739,7 +1739,7 @@
         "ChallengeOptionId": 111,
         "codename": "option_28C",
         "correctOption": false,
-        "text": "Formigas",
+        "text": "Hormigas",
         "image": "files/8JAE4qzGxFknnYrYvV2NJ.png",
         "updatedAt": null
       },
@@ -1747,14 +1747,14 @@
         "ChallengeOptionId": 112,
         "codename": "option_28D",
         "correctOption": false,
-        "text": "Abelhas",
+        "text": "Abejas",
         "image": "files/3PDldViFxlnkQC5ZHq51N.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 28,
-      "feedback": "O Mosquero-bicudo se alimenta principalmente de insetos grandes como as cigarras, golpeando-as contra um galho ou o chão antes de comê-las. Ele também consome frutas em pequenas quantidades.",
+      "feedback": "El Mosquero Picudo se alimenta principalmente de insectos grandes como las cigarras, golpeándolas contra una rama o el suelo antes de comersela, también consume fruta en pocas cantidades.",
       "image": null,
       "updatedAt": null
     }
@@ -1762,7 +1762,7 @@
   {
     "ChallengeID": 29,
     "codename": "challenge_29",
-    "question": "Em que época do ano o Bico-de-prata é mais abundante?",
+    "question": "¿En qué época del año son más abundantes los Pinzones Pechicarmesí?",
     "score": 1,
     "image": "files/BXTM4ItGintWXghGQHYva.jpg",
     "difficulty": 3,
@@ -1788,7 +1788,7 @@
         "ChallengeOptionId": 113,
         "codename": "option_29A",
         "correctOption": false,
-        "text": "Estação quente",
+        "text": "Época de calor",
         "image": "files/INQjoIP55QnBwEhMK2kim.png",
         "updatedAt": null
       },
@@ -1796,7 +1796,7 @@
         "ChallengeOptionId": 114,
         "codename": "option_29B",
         "correctOption": false,
-        "text": "Estação úmida",
+        "text": "Época húmeda",
         "image": "files/G4SdYIEk3j-v1qc2shLe-.png",
         "updatedAt": null
       },
@@ -1804,7 +1804,7 @@
         "ChallengeOptionId": 115,
         "codename": "option_29C",
         "correctOption": true,
-        "text": "Estação chuvosa",
+        "text": "Época de lluvia",
         "image": "files/uxTeeM1-WgnjdKw5hf-03.png",
         "updatedAt": null
       },
@@ -1812,14 +1812,14 @@
         "ChallengeOptionId": 116,
         "codename": "option_29D",
         "correctOption": false,
-        "text": "Estação seca",
+        "text": "Época seca",
         "image": "files/TucP8FdXst8Su6_cSDcpq.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 29,
-      "feedback": "O Bico-de-prata é mais abundante na estação chuvosa. No resto do ano, ele geralmente anda em bandos com outros tiranídeos e papa-capins.",
+      "feedback": "Los Pinzones Pechicarmesí son más abundantes en la época de lluvia, el resto del año son gregarias usualmente con otros espigueros y semilleros.",
       "image": null,
       "updatedAt": null
     }
@@ -1827,7 +1827,7 @@
   {
     "ChallengeID": 30,
     "codename": "challenge_30",
-    "question": "Que tipo de simbiose o Bico-de-prata realiza com animais de fazenda?",
+    "question": "¿Qué tipo de simbiosis realiza el Vaquero Brilloso con los animales de granja?",
     "score": 1,
     "image": "files/oHVAl-Eq2z4P1BJHAkAmL.jpg",
     "difficulty": 3,
@@ -1869,7 +1869,7 @@
     ],
     "feedback": {
       "ChallengeFeedbackId": 30,
-      "feedback": "O Bico-de-prata habita áreas agrícolas, onde frequentemente monta nos dorsos de vacas, cavalos e ovelhas para se alimentar dos insetos que se aproximam desses animais de fazenda.",
+      "feedback": "El Vaquero Brilloso habita en zonas agrícolas donde a menudo monta los lomos de vacas, caballos y ovejas para alimentarse de los insectos que se acercan a dichos animales de granja.",
       "image": null,
       "updatedAt": null
     }
@@ -1877,17 +1877,17 @@
   {
     "ChallengeID": 31,
     "codename": "challenge_31",
-    "question": "Qual animal não encontramos na Floresta Protetora Prosperina?",
+    "question": "¿Qué animal no encontramos en el Bosque Protector Prosperina?",
     "score": 1,
     "image": "files/ZehUCXePhR45WVdzw_jto.jpg",
     "difficulty": 1,
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
-        "GameLevelId": 5,
+        "GameLevelId": 7,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -1896,7 +1896,7 @@
         "ChallengeOptionId": 121,
         "codename": "option_31A",
         "correctOption": true,
-        "text": "Lhama",
+        "text": "Llama",
         "image": "files/lMJpMHMsaGlZwArrjn0p8.png",
         "updatedAt": null
       },
@@ -1904,7 +1904,7 @@
         "ChallengeOptionId": 122,
         "codename": "option_31B",
         "correctOption": false,
-        "text": "Macaco-aranha",
+        "text": "Mono araña",
         "image": "files/X5sQG10U6SkO_2LE4gP6n.png",
         "updatedAt": null
       },
@@ -1912,7 +1912,7 @@
         "ChallengeOptionId": 123,
         "codename": "option_31C",
         "correctOption": false,
-        "text": "Esquilo",
+        "text": "Ardilla",
         "image": "files/7lEM0-JjcdN6yRaRnvtGX.png",
         "updatedAt": null
       },
@@ -1920,14 +1920,14 @@
         "ChallengeOptionId": 124,
         "codename": "option_31D",
         "correctOption": false,
-        "text": "Coruja",
+        "text": "Búho",
         "image": "files/vs4GevEQLoIjh4ufbvqe-.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 31,
-      "feedback": "A Lhama não é encontrada na Floresta Protetora Prosperina.",
+      "feedback": "La Llama no se encuentra en el Bosque Protector Prosperina.",
       "image": null,
       "updatedAt": null
     }
@@ -1935,7 +1935,7 @@
   {
     "ChallengeID": 32,
     "codename": "challenge_32",
-    "question": "Quais são as principais ameaças em uma floresta seca tropical?",
+    "question": "¿Cuáles son las principales amenazas en un bosque seco tropical?",
     "score": 1,
     "image": "files/ZehUCXePhR45WVdzw_jto.jpg",
     "difficulty": 1,
@@ -1954,7 +1954,7 @@
         "ChallengeOptionId": 125,
         "codename": "option_32A",
         "correctOption": false,
-        "text": "Poluição",
+        "text": "Contaminación",
         "image": "files/beo-qnqJ1w-O-i7wQbMU7.png",
         "updatedAt": null
       },
@@ -1962,7 +1962,7 @@
         "ChallengeOptionId": 126,
         "codename": "option_32B",
         "correctOption": false,
-        "text": "Desmatamento",
+        "text": "Deforestación",
         "image": "files/6Seh2pcJn4ylVCOp5er0X.png",
         "updatedAt": null
       },
@@ -1970,7 +1970,7 @@
         "ChallengeOptionId": 127,
         "codename": "option_32C",
         "correctOption": false,
-        "text": "Incêndios",
+        "text": "Incendios",
         "image": "files/IJ3fc3PQSg_PvFywt_Z0-.png",
         "updatedAt": null
       },
@@ -1985,7 +1985,7 @@
     ],
     "feedback": {
       "ChallengeFeedbackId": 32,
-      "feedback": "Poluição, desmatamento e incêndios são todas ameaças potenciais para a floresta.",
+      "feedback": "Contaminación, deforestación e incendios, son todas potenciales amenazas frente al bosque.",
       "image": null,
       "updatedAt": null
     }
@@ -1993,7 +1993,7 @@
   {
     "ChallengeID": 33,
     "codename": "challenge_33",
-    "question": "Se você encontrar lixo na trilha de uma floresta, o que você faria?",
+    "question": "Si usted se encuentra con una basura en el sendero de un bosque ¿Que haría?",
     "score": 1,
     "image": "files/ZehUCXePhR45WVdzw_jto.jpg",
     "difficulty": 1,
@@ -2012,7 +2012,7 @@
         "ChallengeOptionId": 129,
         "codename": "option_33A",
         "correctOption": false,
-        "text": "Chutá-lo",
+        "text": "Patearla",
         "image": "files/BA6BAslZgHPRqLQMYmYCi.png",
         "updatedAt": null
       },
@@ -2020,7 +2020,7 @@
         "ChallengeOptionId": 130,
         "codename": "option_33B",
         "correctOption": false,
-        "text": "Jogá-lo para fora da trilha",
+        "text": "Arrojarla fuera del sendero",
         "image": "files/hBrH_5542J9jWVXKu_V8Z.png",
         "updatedAt": null
       },
@@ -2028,7 +2028,7 @@
         "ChallengeOptionId": 131,
         "codename": "option_33C",
         "correctOption": true,
-        "text": "Levá-lo para o lixo",
+        "text": "Llevarla al basurero",
         "image": "files/R9C4R6nECTaLKfX2nRQEo.png",
         "updatedAt": null
       },
@@ -2036,14 +2036,14 @@
         "ChallengeOptionId": 132,
         "codename": "option_33D",
         "correctOption": false,
-        "text": "Enterrá-lo",
+        "text": "Enterrarla",
         "image": "files/dFwEfTvbt2OnfBIli4MFH.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 33,
-      "feedback": "Jogar o lixo no lixo apropriado ajuda a reduzir a poluição na Floresta Protetora Prosperina.",
+      "feedback": "Botar la basura en el respectivo basurero ayuda a reducir la contaminación en el Bosque Protector Prosperina.",
       "image": null,
       "updatedAt": null
     }
@@ -2051,7 +2051,7 @@
   {
     "ChallengeID": 34,
     "codename": "challenge_34",
-    "question": "Se você encontrar uma flor linda em uma floresta seca tropical, o que você faria?",
+    "question": "Si usted se encuentra con una flor hermosa en un bosque seco tropical ¿Que haría?",
     "score": 1,
     "image": "files/ZehUCXePhR45WVdzw_jto.jpg",
     "difficulty": 1,
@@ -2070,7 +2070,7 @@
         "ChallengeOptionId": 133,
         "codename": "option_34A",
         "correctOption": false,
-        "text": "Levá-la para casa",
+        "text": "Llevarla a casa",
         "image": "files/ylMLSVfWT2IVau9VxhbIw.png",
         "updatedAt": null
       },
@@ -2078,7 +2078,7 @@
         "ChallengeOptionId": 134,
         "codename": "option_34B",
         "correctOption": true,
-        "text": "Apenas olhar",
+        "text": "Solo mirar",
         "image": "files/77v0C4-wN6nI7Drknl3lg.png",
         "updatedAt": null
       },
@@ -2086,7 +2086,7 @@
         "ChallengeOptionId": 135,
         "codename": "option_34C",
         "correctOption": false,
-        "text": "Escondê-la",
+        "text": "Esconderla",
         "image": "files/mZjph8XVMzEYMSF0TVyFP.png",
         "updatedAt": null
       },
@@ -2094,14 +2094,14 @@
         "ChallengeOptionId": 136,
         "codename": "option_34D",
         "correctOption": false,
-        "text": "Queimá-la",
+        "text": "Quemarla",
         "image": "files/IJ3fc3PQSg_PvFywt_Z0-.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 34,
-      "feedback": "O comportamento correto é observar a flor para não alterar o ecossistema.",
+      "feedback": "El comportamiento correcto es observar a la flor para no alterar el ecosistema.",
       "image": null,
       "updatedAt": null
     }
@@ -2109,7 +2109,7 @@
   {
     "ChallengeID": 35,
     "codename": "challenge_35",
-    "question": "Qual espécie de planta não encontramos na Floresta Protetora Prosperina?",
+    "question": "¿Qué especie de planta no encontramos en el Bosque Protector Prosperina?",
     "score": 1,
     "image": "files/ZehUCXePhR45WVdzw_jto.jpg",
     "difficulty": 3,
@@ -2128,7 +2128,7 @@
         "ChallengeOptionId": 137,
         "codename": "option_35A",
         "correctOption": false,
-        "text": "Paineira",
+        "text": "Ceibo",
         "image": "files/p0Ixje9MtkpC59QEsWSn5.png",
         "updatedAt": null
       },
@@ -2136,7 +2136,7 @@
         "ChallengeOptionId": 138,
         "codename": "option_35B",
         "correctOption": false,
-        "text": "Guaiacá",
+        "text": "Guayacán",
         "image": "files/1JucDeVm2KceOmMzJ-JNN.png",
         "updatedAt": null
       },
@@ -2144,7 +2144,7 @@
         "ChallengeOptionId": 139,
         "codename": "option_35C",
         "correctOption": true,
-        "text": "Pinheiro",
+        "text": "Pino",
         "image": "files/5KfLHN9CNS9L4XArSDBxB.png",
         "updatedAt": null
       },
@@ -2152,14 +2152,14 @@
         "ChallengeOptionId": 140,
         "codename": "option_35D",
         "correctOption": false,
-        "text": "Fernão-sanchez",
+        "text": "Fernán Sánchez",
         "image": "files/IpUdVoIEUirB6qspCAx0Q.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 35,
-      "feedback": "O pinheiro não é encontrado na Floresta Protetora Prosperina.",
+      "feedback": "El pino no se encuentra en el Bosque Protector Prosperina.",
       "image": null,
       "updatedAt": null
     }
@@ -2167,7 +2167,7 @@
   {
     "ChallengeID": 36,
     "codename": "challenge_36",
-    "question": "Em que região habita o Bicho-preguiça?",
+    "question": "¿En qué región habita el Oso Perezoso",
     "score": 1,
     "image": "files/Xr1Y0tVCSwx50ENQVUjID.jpg",
     "difficulty": 1,
@@ -2186,7 +2186,7 @@
         "ChallengeOptionId": 142,
         "codename": "option_36B",
         "correctOption": false,
-        "text": "Serra",
+        "text": "Sierra",
         "image": "files/rZdhtPOWZo4lH8AchDCzT.png",
         "updatedAt": null
       },
@@ -2209,7 +2209,7 @@
     ],
     "feedback": {
       "ChallengeFeedbackId": 36,
-      "feedback": "O Bicho-preguiça é mais comum na região da Costa.",
+      "feedback": "El Oso Perezoso es mas comun en la Region de la Costa.",
       "image": null,
       "updatedAt": null
     }
@@ -2217,7 +2217,7 @@
   {
     "ChallengeID": 37,
     "codename": "challenge_37",
-    "question": "O Bicho-preguiça é mais ativo quando é...",
+    "question": "¿El Oso Perezoso es mas activo cuando es...",
     "score": 1,
     "image": "files/Xr1Y0tVCSwx50ENQVUjID.jpg",
     "difficulty": 1,
@@ -2228,7 +2228,7 @@
         "ChallengeOptionId": 145,
         "codename": "option_37A",
         "correctOption": false,
-        "text": "De manhã",
+        "text": "De Mañana",
         "image": "files/9JPO3Xe1bd83bQ045OKbL.png",
         "updatedAt": null
       },
@@ -2236,7 +2236,7 @@
         "ChallengeOptionId": 146,
         "codename": "option_37B",
         "correctOption": false,
-        "text": "De tarde",
+        "text": "De Tarde",
         "image": "files/n_WWQnfj-616DPNfwBkxr.png",
         "updatedAt": null
       },
@@ -2244,7 +2244,7 @@
         "ChallengeOptionId": 147,
         "codename": "option_37C",
         "correctOption": true,
-        "text": "De noite",
+        "text": "De Noche",
         "image": "files/0MYobpJs2Wxxg6wYbG0Hz.png",
         "updatedAt": null
       },
@@ -2252,14 +2252,14 @@
         "ChallengeOptionId": 148,
         "codename": "option_37D",
         "correctOption": false,
-        "text": "O dia inteiro",
+        "text": "Todo el dia",
         "image": "files/INQjoIP55QnBwEhMK2kim.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 37,
-      "feedback": "O Bicho-preguiça é um animal noturno, o que significa que ele só é ativo à noite.",
+      "feedback": "El Oso Perezoso es un animal nocturno lo que significa que solo es activo cuando es de noche.",
       "image": null,
       "updatedAt": null
     }
@@ -2267,7 +2267,7 @@
   {
     "ChallengeID": 38,
     "codename": "challenge_38",
-    "question": "Em qual província o Macaco-aranha NÃO foi registrado?",
+    "question": "¿En qué provincia NO ha sido registrado el Mono Araña?",
     "score": 1,
     "image": "files/S-RbnNngCSrGoHBEJrdAK.jpg",
     "difficulty": 1,
@@ -2286,7 +2286,7 @@
         "ChallengeOptionId": 150,
         "codename": "option_38B",
         "correctOption": false,
-        "text": "Manabí",
+        "text": "Manabi",
         "image": "files/2qIvv8xHME5X0fNC-mSBy.png",
         "updatedAt": null
       },
@@ -2309,7 +2309,7 @@
     ],
     "feedback": {
       "ChallengeFeedbackId": 38,
-      "feedback": "Esmeraldas, Manabí, Carchi são províncias onde o Macaco-aranha foi oficialmente avistado.",
+      "feedback": "Esmeraldas, Manabi, Carchi son provincias en las que se ha registrado oficialmente un avistamiento del Mono Araña.",
       "image": null,
       "updatedAt": null
     }
@@ -2317,7 +2317,7 @@
   {
     "ChallengeID": 39,
     "codename": "challenge_39",
-    "question": "O que o Macaco-aranha come principalmente?",
+    "question": "¿Qué come principalmente el Mono Araña?",
     "score": 1,
     "image": "files/S-RbnNngCSrGoHBEJrdAK.jpg",
     "difficulty": 1,
@@ -2336,7 +2336,7 @@
         "ChallengeOptionId": 154,
         "codename": "option_39B",
         "correctOption": false,
-        "text": "Insetos",
+        "text": "Insectos",
         "image": "files/NzEkeSOUG6gnx1G9MJqLA.png",
         "updatedAt": null
       },
@@ -2344,7 +2344,7 @@
         "ChallengeOptionId": 155,
         "codename": "option_39C",
         "correctOption": false,
-        "text": "Néctar",
+        "text": "Nectar",
         "image": "files/P6GzFW8EXs7c-bJQDLPak.png",
         "updatedAt": null
       },
@@ -2359,7 +2359,7 @@
     ],
     "feedback": {
       "ChallengeFeedbackId": 39,
-      "feedback": "O Macaco-aranha é um animal frugívoro.",
+      "feedback": "El Mono Araña es un animal Frutariano.",
       "image": null,
       "updatedAt": null
     }
@@ -2367,7 +2367,7 @@
   {
     "ChallengeID": 40,
     "codename": "challenge_40",
-    "question": "De que se alimenta o Esquilo-de-Guayaquil?",
+    "question": "¿De qué se alimenta la Ardilla de Guayaquil?",
     "score": 1,
     "image": "files/a94PGORq_6LIktWYIGIao.jpg",
     "difficulty": 1,
@@ -2401,7 +2401,7 @@
         "ChallengeOptionId": 158,
         "codename": "option_40B",
         "correctOption": false,
-        "text": "Insetos",
+        "text": "Insectos",
         "image": "files/NzEkeSOUG6gnx1G9MJqLA.png",
         "updatedAt": null
       },
@@ -2417,14 +2417,14 @@
         "ChallengeOptionId": 160,
         "codename": "option_40D",
         "correctOption": false,
-        "text": "Ovos",
+        "text": "Huevos",
         "image": "files/W4OqHbTrnwIwnOE5oKBdT.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 40,
-      "feedback": "O Esquilo-de-Guayaquil é um animal frugívoro.",
+      "feedback": "La ardilla de Guayaquil es un animal Frutariano.",
       "image": null,
       "updatedAt": null
     }
@@ -2432,7 +2432,7 @@
   {
     "ChallengeID": 41,
     "codename": "challenge_41",
-    "question": "Em que se baseia principalmente a dieta da Onça-Pintada?",
+    "question": "¿En qué se basa principalmente la dieta del Jaguar?",
     "score": 1,
     "image": "files/15Z4cj4eCjvo_i4ggwVhL.jpg",
     "difficulty": 3,
@@ -2443,7 +2443,7 @@
         "ChallengeOptionId": 161,
         "codename": "option_41A",
         "correctOption": false,
-        "text": "Insetos",
+        "text": "Insectos",
         "image": "files/sD-0bt9Gx-ADIKbP_MeUa.png",
         "updatedAt": null
       },
@@ -2459,7 +2459,7 @@
         "ChallengeOptionId": 163,
         "codename": "option_41C",
         "correctOption": false,
-        "text": "Gados",
+        "text": "Ganos",
         "image": "files/t_wKRPknWWVMeHl2lYsrS.png",
         "updatedAt": null
       },
@@ -2467,14 +2467,14 @@
         "ChallengeOptionId": 164,
         "codename": "option_41D",
         "correctOption": false,
-        "text": "Animais mortos",
+        "text": "Animales muertos",
         "image": "files/Zt9uzDo0B1OkOXJvKUZQa.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 41,
-      "feedback": "A Onça-Pintada é um animal carnívoro, dado que só come carne.",
+      "feedback": "El Jaguar es un animal Carnivoro, dado que solo come Carne.",
       "image": null,
       "updatedAt": null
     }
@@ -2482,7 +2482,7 @@
   {
     "ChallengeID": 42,
     "codename": "challenge_42",
-    "question": "Qual é o principal habitat do Morcego-Frugívoro?",
+    "question": "¿Cuál es el principal hábitat del Murciélago Frutero?",
     "score": 1,
     "image": "files/ueC_PfchKTOEY-6KhsVEH.jpg",
     "difficulty": 3,
@@ -2493,7 +2493,7 @@
         "ChallengeOptionId": 165,
         "codename": "option_42A",
         "correctOption": false,
-        "text": "Sub-bosque",
+        "text": "Sotobosque",
         "image": "files/vURFjIV4mYNhZiQ7tBYjd.png",
         "updatedAt": null
       },
@@ -2501,7 +2501,7 @@
         "ChallengeOptionId": 166,
         "codename": "option_42B",
         "correctOption": false,
-        "text": "Corpos d'Água",
+        "text": "Cuerpos de Agua",
         "image": "files/qlghP86xPy_iUvAnYQrUZ.png",
         "updatedAt": null
       },
@@ -2509,7 +2509,7 @@
         "ChallengeOptionId": 167,
         "codename": "option_42C",
         "correctOption": false,
-        "text": "Floresta Úmida",
+        "text": "Bosque Húmedo",
         "image": "files/d9vSvrub6fJbIy6rbAJdR.png",
         "updatedAt": null
       },
@@ -2517,14 +2517,14 @@
         "ChallengeOptionId": 168,
         "codename": "option_42D",
         "correctOption": true,
-        "text": "Floresta Seca",
+        "text": "Bosque Seco",
         "image": "files/4G4D4-1UAfzUhw3M719dT.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 42,
-      "feedback": "O principal habitat do Morcego-Frugívoro são as Florestas Secas Tropicais e Subtropicais.",
+      "feedback": "El principal hábitat del Murciélago Frutero son los Bosques Secos Tropicales y Semitropicales.",
       "image": null,
       "updatedAt": null
     }
@@ -2532,7 +2532,7 @@
   {
     "ChallengeID": 43,
     "codename": "challenge_43",
-    "question": "Como a UICN considera o Morcego-Frugívoro?",
+    "question": "¿Cómo considera la UNIM al Murciélago Frutero?",
     "score": 1,
     "image": "files/ueC_PfchKTOEY-6KhsVEH.jpg",
     "difficulty": 1,
@@ -2543,7 +2543,7 @@
         "ChallengeOptionId": 169,
         "codename": "option_43A",
         "correctOption": true,
-        "text": "Espécie de Menor Preocupação",
+        "text": "Especie de Preocupacion Menor",
         "image": "files/lXINPgr0S3buTent_AW2B.png",
         "updatedAt": null
       },
@@ -2551,7 +2551,7 @@
         "ChallengeOptionId": 170,
         "codename": "option_43B",
         "correctOption": false,
-        "text": "Espécie Ameaçada",
+        "text": "Especie Amenazada",
         "image": "files/1paltG9OvZ2ahFPcxGK2W.png",
         "updatedAt": null
       },
@@ -2559,7 +2559,7 @@
         "ChallengeOptionId": 171,
         "codename": "option_43C",
         "correctOption": false,
-        "text": "Espécie não Avaliada",
+        "text": "Especie no Evaluada",
         "image": "files/E0dkxWYo-od2Cf6tJISK1.png",
         "updatedAt": null
       },
@@ -2574,7 +2574,7 @@
     ],
     "feedback": {
       "ChallengeFeedbackId": 43,
-      "feedback": "A UICN deu a categoria de Menor Preocupação (LC) ao Morcego-Frugívoro.",
+      "feedback": "UNIM le dio la categoria de Preocupacion Menor (LC) al Murcielago Frutero.",
       "image": null,
       "updatedAt": null
     }
@@ -2582,7 +2582,7 @@
   {
     "ChallengeID": 44,
     "codename": "challenge_44",
-    "question": "De qual região é proveniente o Tamanduá?",
+    "question": "¿De qué región es procedente el Oso Hormiguero?",
     "score": 1,
     "image": "files/iAlTzx3m-Bz3TYnQX9y8x.jpg",
     "difficulty": 1,
@@ -2601,7 +2601,7 @@
         "ChallengeOptionId": 174,
         "codename": "option_44B",
         "correctOption": false,
-        "text": "Serra",
+        "text": "Sierra",
         "image": "files/rZdhtPOWZo4lH8AchDCzT.png",
         "updatedAt": null
       },
@@ -2624,7 +2624,7 @@
     ],
     "feedback": {
       "ChallengeFeedbackId": 44,
-      "feedback": "Os maiores avistamentos de Tamanduá foram realizados na Região da Costa.",
+      "feedback": "Los mayores avistamientos de Oso Hormiguero se han realizado en la Region de la Costa.",
       "image": null,
       "updatedAt": null
     }
@@ -2632,7 +2632,7 @@
   {
     "ChallengeID": 45,
     "codename": "challenge_45",
-    "question": "Como se alimenta o Tamanduá?",
+    "question": "¿Cómo se alimenta el Oso Hormiguero?",
     "score": 1,
     "image": "files/iAlTzx3m-Bz3TYnQX9y8x.jpg",
     "difficulty": 1,
@@ -2643,7 +2643,7 @@
         "ChallengeOptionId": 177,
         "codename": "option_45A",
         "correctOption": true,
-        "text": "Com as Garras",
+        "text": "Con las Garras",
         "image": "files/5LtGGX-CK1X4bcEPY_SS3.png",
         "updatedAt": null
       },
@@ -2651,7 +2651,7 @@
         "ChallengeOptionId": 178,
         "codename": "option_45B",
         "correctOption": false,
-        "text": "Com a Língua",
+        "text": "Con la Lengua",
         "image": "files/l0V8TOjTYNbBfq0TJsczw.png",
         "updatedAt": null
       },
@@ -2659,7 +2659,7 @@
         "ChallengeOptionId": 179,
         "codename": "option_45C",
         "correctOption": false,
-        "text": "Com os Dentes",
+        "text": "Con los Dientes",
         "image": "files/NbN5CrqE4yZjy-uP9xGWw.png",
         "updatedAt": null
       },
@@ -2667,14 +2667,14 @@
         "ChallengeOptionId": 180,
         "codename": "option_45D",
         "correctOption": false,
-        "text": "Com a Cauda",
+        "text": "Con la Cola",
         "image": "files/gPtxBhe-iWg8wV7qU6m2I.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 45,
-      "feedback": "O Tamanduá usa sua língua para caçar as formigas do formigueiro.",
+      "feedback": "El Oso Hormiguero usa su lengua para cazar a las hormigas de su hormiguero.",
       "image": null,
       "updatedAt": null
     }
@@ -2682,17 +2682,17 @@
   {
     "ChallengeID": 46,
     "codename": "challenge_46",
-    "question": "Escolha a frase correta com relação à reciclagem:",
+    "question": "Escoge la frase correcta con respecto al reciclaje:",
     "score": 1,
     "image": "files/W-uVU3JDD21njkIHHKFxu.png",
     "difficulty": 1,
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
-        "GameLevelId": 6,
+        "GameLevelId": 5,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 5"
+          "Name": "Bosque-Estación 4"
         }
       },
       {
@@ -2703,10 +2703,10 @@
         }
       },
       {
-        "GameLevelId": 6,
+        "GameLevelId": 7,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 5"
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -2746,7 +2746,7 @@
     ],
     "feedback": {
       "ChallengeFeedbackId": 46,
-      "feedback": "Os 3R são Reduzir, Reutilizar e Reciclar",
+      "feedback": "Las 3R son Reduce, Reusa y Recicla",
       "image": null,
       "updatedAt": null
     }
@@ -2754,17 +2754,17 @@
   {
     "ChallengeID": 47,
     "codename": "challenge_47",
-    "question": "Qual das seguintes opções não pertence aos 3R?",
+    "question": "¿Cuál de las siguientes opciones no pertenece a las 3R?",
     "score": 1,
     "image": "files/W-uVU3JDD21njkIHHKFxu.png",
     "difficulty": 1,
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
-        "GameLevelId": 6,
+        "GameLevelId": 5,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 5"
+          "Name": "Bosque-Estación 4"
         }
       },
       {
@@ -2775,10 +2775,10 @@
         }
       },
       {
-        "GameLevelId": 6,
+        "GameLevelId": 7,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 5"
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -2787,7 +2787,7 @@
         "ChallengeOptionId": 185,
         "codename": "option_47A",
         "correctOption": false,
-        "text": "Reduzir",
+        "text": "Reduce",
         "image": "files/kNw0jLxIdJshBdggpiXma.png",
         "updatedAt": null
       },
@@ -2795,7 +2795,7 @@
         "ChallengeOptionId": 186,
         "codename": "option_47B",
         "correctOption": false,
-        "text": "Reciclar",
+        "text": "Recicla",
         "image": "files/EqMv8Ot0cgxHGwggeRX1u.png",
         "updatedAt": null
       },
@@ -2803,7 +2803,7 @@
         "ChallengeOptionId": 187,
         "codename": "option_47C",
         "correctOption": true,
-        "text": "Revender",
+        "text": "Revende",
         "image": "files/q6T_oT4MMhjpuvCOpn0M7.png",
         "updatedAt": null
       },
@@ -2811,14 +2811,14 @@
         "ChallengeOptionId": 188,
         "codename": "option_47D",
         "correctOption": false,
-        "text": "Reutilizar",
+        "text": "Reusa",
         "image": "files/tCEMR9BuZNpryZ9ScacsI.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 47,
-      "feedback": "Revender não faz parte dos 3R.",
+      "feedback": "Revende no es parte de las 3R.",
       "image": null,
       "updatedAt": null
     }
@@ -2826,17 +2826,17 @@
   {
     "ChallengeID": 48,
     "codename": "challenge_48",
-    "question": "De que cor é o contêiner para reciclar papel ou papelão?",
+    "question": "¿De qué color es el contenedor para reciclar papel o cartón?",
     "score": 1,
     "image": "files/W-uVU3JDD21njkIHHKFxu.png",
     "difficulty": 1,
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
-        "GameLevelId": 6,
+        "GameLevelId": 5,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 5"
+          "Name": "Bosque-Estación 4"
         }
       },
       {
@@ -2847,10 +2847,10 @@
         }
       },
       {
-        "GameLevelId": 6,
+        "GameLevelId": 7,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 5"
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -2875,7 +2875,7 @@
         "ChallengeOptionId": 191,
         "codename": "option_48C",
         "correctOption": false,
-        "text": "Amarelo",
+        "text": "Amarillo",
         "image": "files/o4ZTYc07DR0WkrsdwLzHl.png",
         "updatedAt": null
       },
@@ -2883,14 +2883,14 @@
         "ChallengeOptionId": 192,
         "codename": "option_48D",
         "correctOption": false,
-        "text": "Vermelho",
+        "text": "Rojo",
         "image": "files/2qXwV7ivOJEWkFWZt2B0U.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 48,
-      "feedback": "O contêiner azul é o indicado para papel e papelão.",
+      "feedback": "El contenedor azul es el indicado para papel y cartón.",
       "image": null,
       "updatedAt": null
     }
@@ -2898,17 +2898,17 @@
   {
     "ChallengeID": 49,
     "codename": "challenge_49",
-    "question": "De que cor é o contêiner para reciclar vidro?",
+    "question": "¿De qué color es el contenedor para reciclar vidrio?",
     "score": 1,
     "image": "files/W-uVU3JDD21njkIHHKFxu.png",
     "difficulty": 1,
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
-        "GameLevelId": 6,
+        "GameLevelId": 5,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 5"
+          "Name": "Bosque-Estación 4"
         }
       },
       {
@@ -2919,10 +2919,10 @@
         }
       },
       {
-        "GameLevelId": 6,
+        "GameLevelId": 7,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 5"
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -2931,7 +2931,7 @@
         "ChallengeOptionId": 193,
         "codename": "option_49A",
         "correctOption": false,
-        "text": "Vermelho",
+        "text": "Rojo",
         "image": "files/2qXwV7ivOJEWkFWZt2B0U.png",
         "updatedAt": null
       },
@@ -2939,7 +2939,7 @@
         "ChallengeOptionId": 194,
         "codename": "option_49B",
         "correctOption": false,
-        "text": "Amarelo",
+        "text": "Amarillo",
         "image": "files/o4ZTYc07DR0WkrsdwLzHl.png",
         "updatedAt": null
       },
@@ -2962,7 +2962,7 @@
     ],
     "feedback": {
       "ChallengeFeedbackId": 49,
-      "feedback": "O contêiner verde é o indicado para vidro.",
+      "feedback": "El contenedor verde es el indicado para vidrio.",
       "image": null,
       "updatedAt": null
     }
@@ -2970,17 +2970,17 @@
   {
     "ChallengeID": 50,
     "codename": "challenge_50",
-    "question": "De que cor é o contêiner para reciclar plástico?",
+    "question": "¿De qué color es el contenedor para reciclar plástico?",
     "score": 1,
     "image": "files/W-uVU3JDD21njkIHHKFxu.png",
     "difficulty": 1,
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
-        "GameLevelId": 6,
+        "GameLevelId": 5,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 5"
+          "Name": "Bosque-Estación 4"
         }
       },
       {
@@ -2991,10 +2991,10 @@
         }
       },
       {
-        "GameLevelId": 6,
+        "GameLevelId": 7,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 5"
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -3003,7 +3003,7 @@
         "ChallengeOptionId": 197,
         "codename": "option_50A",
         "correctOption": true,
-        "text": "Amarelo",
+        "text": "Amarillo",
         "image": "files/o4ZTYc07DR0WkrsdwLzHl.png",
         "updatedAt": null
       },
@@ -3019,7 +3019,7 @@
         "ChallengeOptionId": 199,
         "codename": "option_50C",
         "correctOption": false,
-        "text": "Vermelho",
+        "text": "Rojo",
         "image": "files/2qXwV7ivOJEWkFWZt2B0U.png",
         "updatedAt": null
       },
@@ -3034,7 +3034,7 @@
     ],
     "feedback": {
       "ChallengeFeedbackId": 50,
-      "feedback": "O contêiner amarelo é o indicado para plástico",
+      "feedback": "El contenedor amarillo  es el indicado para plástico",
       "image": null,
       "updatedAt": null
     }
@@ -3042,17 +3042,17 @@
   {
     "ChallengeID": 51,
     "codename": "challenge_51",
-    "question": "O que poderia acontecer se eu jogar um vidro na floresta?",
+    "question": "¿Qué podría pasar si boto un vidrio en el bosque?",
     "score": 1,
     "image": "files/2z2AVZN-K-87uBJJT8Dpy.png",
     "difficulty": 1,
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
-        "GameLevelId": 6,
+        "GameLevelId": 5,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 5"
+          "Name": "Bosque-Estación 4"
         }
       },
       {
@@ -3063,10 +3063,10 @@
         }
       },
       {
-        "GameLevelId": 6,
+        "GameLevelId": 7,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 5"
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -3075,7 +3075,7 @@
         "ChallengeOptionId": 201,
         "codename": "option_51A",
         "correctOption": false,
-        "text": "Desflorestação",
+        "text": "Deforestación",
         "image": "files/6Seh2pcJn4ylVCOp5er0X.png",
         "updatedAt": null
       },
@@ -3091,7 +3091,7 @@
         "ChallengeOptionId": 203,
         "codename": "option_51C",
         "correctOption": true,
-        "text": "Incêndios",
+        "text": "Incendios",
         "image": "files/IJ3fc3PQSg_PvFywt_Z0-.png",
         "updatedAt": null
       },
@@ -3099,14 +3099,14 @@
         "ChallengeOptionId": 204,
         "codename": "option_51D",
         "correctOption": false,
-        "text": "Poluição",
+        "text": "Contaminación",
         "image": "files/beo-qnqJ1w-O-i7wQbMU7.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 51,
-      "feedback": "Deixar vidros jogados é uma das principais causas de incêndio nas florestas.",
+      "feedback": "Dejar vidrios botados es una de las principales causas de incendio en los bosques.",
       "image": null,
       "updatedAt": null
     }
@@ -3114,7 +3114,7 @@
   {
     "ChallengeID": 52,
     "codename": "challenge_52",
-    "question": "Quais são as principais ameaças em uma floresta tropical seca?",
+    "question": "¿Cuáles son las principales amenazas en un bosque seco tropical?",
     "score": 1,
     "image": "files/2z2AVZN-K-87uBJJT8Dpy.png",
     "difficulty": 1,
@@ -3128,17 +3128,17 @@
         }
       },
       {
-        "GameLevelId": 5,
+        "GameLevelId": 6,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 5"
         }
       },
       {
-        "GameLevelId": 5,
+        "GameLevelId": 7,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -3147,7 +3147,7 @@
         "ChallengeOptionId": 205,
         "codename": "option_52A",
         "correctOption": false,
-        "text": "Poluição",
+        "text": "Contaminación",
         "image": "files/beo-qnqJ1w-O-i7wQbMU7.png",
         "updatedAt": null
       },
@@ -3155,7 +3155,7 @@
         "ChallengeOptionId": 206,
         "codename": "option_52B",
         "correctOption": false,
-        "text": "Desflorestação",
+        "text": "Deforestación",
         "image": "files/6Seh2pcJn4ylVCOp5er0X.png",
         "updatedAt": null
       },
@@ -3163,7 +3163,7 @@
         "ChallengeOptionId": 207,
         "codename": "option_52C",
         "correctOption": true,
-        "text": "Incêndios",
+        "text": "Incendios",
         "image": "files/IJ3fc3PQSg_PvFywt_Z0-.png",
         "updatedAt": null
       },
@@ -3178,7 +3178,7 @@
     ],
     "feedback": {
       "ChallengeFeedbackId": 52,
-      "feedback": "Todas as opções mencionadas são riscos comuns em uma floresta tropical seca.",
+      "feedback": "Todas las opciones mencionadas son riesgos comunes en un bosque seco tropical.",
       "image": null,
       "updatedAt": null
     }
@@ -3186,17 +3186,17 @@
   {
     "ChallengeID": 53,
     "codename": "challenge_53",
-    "question": "Quando você termina de comer um lanche, o que deveria fazer com os resíduos?",
+    "question": "Cuando usted termina de comer un bocadillo, ¿qué debería hacer con los desechos?",
     "score": 1,
     "image": "files/2z2AVZN-K-87uBJJT8Dpy.png",
     "difficulty": 1,
     "updatedAt": null,
     "gameLevelsChallenges": [
       {
-        "GameLevelId": 6,
+        "GameLevelId": 5,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 5"
+          "Name": "Bosque-Estación 4"
         }
       },
       {
@@ -3207,10 +3207,10 @@
         }
       },
       {
-        "GameLevelId": 6,
+        "GameLevelId": 7,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 5"
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -3219,7 +3219,7 @@
         "ChallengeOptionId": 209,
         "codename": "option_53A",
         "correctOption": false,
-        "text": "Jogá-lo fora da trilha",
+        "text": "Arrojarla fuera del sendero",
         "image": "files/hBrH_5542J9jWVXKu_V8Z.png",
         "updatedAt": null
       },
@@ -3227,7 +3227,7 @@
         "ChallengeOptionId": 210,
         "codename": "option_53B",
         "correctOption": false,
-        "text": "Enterrá-lo",
+        "text": "Enterrarla",
         "image": "files/dFwEfTvbt2OnfBIli4MFH.png",
         "updatedAt": null
       },
@@ -3235,7 +3235,7 @@
         "ChallengeOptionId": 211,
         "codename": "option_53C",
         "correctOption": false,
-        "text": "Chutá-lo",
+        "text": "Patearla",
         "image": "files/BA6BAslZgHPRqLQMYmYCi.png",
         "updatedAt": null
       },
@@ -3243,14 +3243,14 @@
         "ChallengeOptionId": 212,
         "codename": "option_53D",
         "correctOption": true,
-        "text": "Levá-lo para a lixeira",
+        "text": "Llevarla al basurero",
         "image": "files/R9C4R6nECTaLKfX2nRQEo.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 53,
-      "feedback": "Não se pode jogar lixo nas florestas, deve-se levá-lo até a lixeira mais próxima.",
+      "feedback": "No se puede botar basura en los bosques sino que se debe llevar al basurero más cercano.",
       "image": null,
       "updatedAt": null
     }
@@ -3258,7 +3258,7 @@
   {
     "ChallengeID": 54,
     "codename": "challenge_54",
-    "question": "Se você encontrar um fruto raro em uma floresta tropical seca, o que faria?",
+    "question": "Si usted se encuentra con un fruto raro en un bosque seco tropical, ¿qué haría?",
     "score": 1,
     "image": "files/2z2AVZN-K-87uBJJT8Dpy.png",
     "difficulty": 1,
@@ -3272,17 +3272,17 @@
         }
       },
       {
-        "GameLevelId": 5,
+        "GameLevelId": 6,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 5"
         }
       },
       {
-        "GameLevelId": 5,
+        "GameLevelId": 7,
         "updatedAt": null,
         "gameLevel": {
-          "Name": "Bosque-Estación 4"
+          "Name": "Bosque-Estación 6"
         }
       }
     ],
@@ -3291,7 +3291,7 @@
         "ChallengeOptionId": 213,
         "codename": "option_54A",
         "correctOption": false,
-        "text": "Comê-lo",
+        "text": "Comerlo",
         "image": "files/cVpjJczucV4DcQeOqJCPo.png",
         "updatedAt": null
       },
@@ -3299,7 +3299,7 @@
         "ChallengeOptionId": 214,
         "codename": "option_54B",
         "correctOption": false,
-        "text": "Levá-lo para casa",
+        "text": "Llevarlo a casa",
         "image": "files/ylMLSVfWT2IVau9VxhbIw.png",
         "updatedAt": null
       },
@@ -3307,7 +3307,7 @@
         "ChallengeOptionId": 215,
         "codename": "option_54C",
         "correctOption": true,
-        "text": "Apenas olhar",
+        "text": "Solo mirar",
         "image": "files/77v0C4-wN6nI7Drknl3lg.png",
         "updatedAt": null
       },
@@ -3315,254 +3315,58 @@
         "ChallengeOptionId": 216,
         "codename": "option_54D",
         "correctOption": false,
-        "text": "Escondê-lo",
+        "text": "Esconderlo",
         "image": "files/mZjph8XVMzEYMSF0TVyFP.png",
         "updatedAt": null
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 54,
-      "feedback": "Não se deve ingerir frutas do chão porque podem ser venenosas.",
+      "feedback": "No se debe ingerir frutas del piso porque pueden ser venenosas.",
       "image": null,
       "updatedAt": null
     }
   },
   {
     "ChallengeID": 55,
-    "codename": "challenge_48",
-    "question": "Se eu vir uma fogueira acesa na floresta, o que devo fazer?",
-    "score": 1,
-    "image": "files/W-uVU3JDD21njkIHHKFxu.png",
-    "difficulty": 1,
-    "updatedAt": null,
-    "gameLevelsChallenges": [
-      {
-        "GameLevelId": 7,
-        "updatedAt": null,
-        "gameLevel": {
-          "Name": "Bosque-Estación 6"
-        }
-      }
-
-
-    ],
+    "codename": "codename",
+    "question": "question",
+    "score": 100,
+    "image": "image",
+    "difficulty": null,
+    "updatedAt": "2022-02-15T19:46:11Z",
+    "gameLevelsChallenges": [],
     "options": [
       {
         "ChallengeOptionId": 217,
-        "codename": "option_1A",
-        "correctOption": false,
-        "text": "Deixar assim, com certeza alguém a apagará.",
-        "image": "files/nSPfF9h16kAehk2WoDuAn.png",
-        "updatedAt": null
+        "codename": "Opcion 1",
+        "correctOption": true,
+        "text": "Gatos",
+        "image": "Gatos image",
+        "updatedAt": "2022-02-15T19:46:11Z"
       },
       {
         "ChallengeOptionId": 218,
-        "codename": "option_1B",
+        "codename": "Opcion 2",
         "correctOption": false,
-        "text": "Jogar mais lenha para que continue acesa.",
-        "image": "files/oFZe8cxuIzWJ3PPPNPIRm.png",
-        "updatedAt": null
+        "text": "Gatos",
+        "image": "Gatos image",
+        "updatedAt": "2022-02-15T19:46:11Z"
       },
       {
         "ChallengeOptionId": 219,
-        "codename": "option_1C",
-        "correctOption": true,
-        "text": "Avisar imediatamente a um adulto responsável ou a um guarda-florestal.",
-        "image": "files/o4ZTYc07DR0WkrsdwLzHl.png",
-        "updatedAt": null
-      },
-      {
-        "ChallengeOptionId": 220,
-        "codename": "option_1D",
+        "codename": "Opcion 3",
         "correctOption": false,
-        "text": "Tentar apagá-la sozinho com as minhas mãos.",
-        "image": "files/2qXwV7ivOJEWkFWZt2B0U.png",
-        "updatedAt": null
+        "text": "Gatos",
+        "image": "Gatos image",
+        "updatedAt": "2022-02-15T19:46:11Z"
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 55,
-      "feedback": "Nunca tente apagá-la sozinho, é melhor avisar a um adulto para evitar um incêndio.",
-      "image": null,
-      "updatedAt": null
-    }
-  },
-  {
-    "ChallengeID": 56,
-    "codename": "challenge_2",
-    "question": "O que devemos evitar quando caminhamos pela trilha da floresta?",
-    "score": 1,
-    "image": "files/OOzjig6BVMAYPeZGSVGcd.jpg",
-    "difficulty": 1,
-    "updatedAt": null,
-    "gameLevelsChallenges": [
-      {
-        "GameLevelId": 6,
-        "updatedAt": null,
-        "gameLevel": {
-          "Name": "Bosque-Estación 5"
-        }
-      }
-
-    ],
-    "options": [
-      {
-        "ChallengeOptionId": 221,
-        "codename": "option_1A",
-        "correctOption": true,
-        "text": "Jogar lixo na floresta.",
-        "image": "files/h8ykrFj1CBXVFPl62vdnb.png",
-        "updatedAt": null
-      },
-      {
-        "ChallengeOptionId": 219,
-        "codename": "option_1B",
-        "correctOption": false,
-        "text": "Seguir as instruções do guarda-florestal e placas",
-        "image": "files/VPiVQ4Yu0Txd1e5EqCMzL.png",
-        "updatedAt": null
-      },
-      {
-        "ChallengeOptionId": 222,
-        "codename": "option_1C",
-        "correctOption": true,
-        "text": "Caminhar devagar para ver por onde pisamos.",
-        "image": "files/AEeiVzGXV-WJOeVIcEXvD.png",
-        "updatedAt": null
-      },
-      {
-        "ChallengeOptionId": 223,
-        "codename": "option_1D",
-        "correctOption": false,
-        "text": "Caminhar em silêncio para apreciar as espécies.",
-        "image": "files/77v0C4-wN6nI7Drknl3lg.png",
-        "updatedAt": null
-      }
-    ],
-    "feedback": {
-      "ChallengeFeedbackId": 56,
-      "feedback": "O lixo prejudica os animais e a floresta. Leve-o com você até uma lixeira.",
-      "image": null,
-      "updatedAt": null
-    }
-  },
-  {
-    "ChallengeID": 57,
-    "codename": "challenge_3",
-    "question": "Se quisermos acender uma fogueira, que medidas devemos levar em conta?",
-    "score": 1,
-    "image": "files/hgElRsvczShkww66I9mE6.jpg",
-    "difficulty": 1,
-    "updatedAt": null,
-    "gameLevelsChallenges": [
-      {
-        "GameLevelId": 7,
-        "updatedAt": null,
-        "gameLevel": {
-          "Name": "Bosque-Estación 6"
-        }
-      }
-
-    ],
-    "options": [
-      {
-        "ChallengeOptionId": 224,
-        "codename": "option_1A",
-        "correctOption": true,
-        "text": "Evitar ter vegetação seca ao redor da fogueira.",
-        "image": "files/jhl3S9-mkFRx5D6NWekJg.png",
-        "updatedAt": null
-      },
-      {
-        "ChallengeOptionId": 218,
-        "codename": "option_1B",
-        "correctOption": false,
-        "text": "Dejar a fogueira acesa para que os animais se aqueçam.",
-        "image": "files/Pn9WSUwdw_bMHs8MYCAyt.png",
-        "updatedAt": null
-      },
-
-      {
-        "ChallengeOptionId": 225,
-        "codename": "option_1D",
-        "correctOption": false,
-        "text": "Nenhuma, a fogueira se apagará sozinha depois de vários dias.",
-        "image": "files/Uj8cWjQOWy_PX22z9FcYa.png",
-        "updatedAt": null
-      },
-      {
-        "ChallengeOptionId": 219,
-        "codename": "option_1D",
-        "correctOption": true,
-        "text": "Falar com um adulto responsável para que apague a fogueira.",
-        "image": "files/A5rzqvWz1KX8hbC5yZXwl.jpg",
-        "updatedAt": null
-      }
-    ],
-    "feedback": {
-      "ChallengeFeedbackId": 57,
-      "feedback": "Se houver folhas ou galhos secos por perto, o fogo pode se expandir e causar um incêndio.",
-      "image": null,
-      "updatedAt": null
-    }
-  },
-  {
-    "ChallengeID": 58,
-    "codename": "challenge_4",
-    "question": "Por que é perigoso deixar garrafas de vidro na floresta?",
-    "score": 1,
-    "image": "files/A5rzqvWz1KX8hbC5yZXwl.jpg",
-    "difficulty": 1,
-    "updatedAt": null,
-    "gameLevelsChallenges": [
-      {
-        "GameLevelId": 6,
-        "updatedAt": null,
-        "gameLevel": {
-          "Name": "Bosque-Estación 5"
-        }
-      }
-
-    ],
-    "options": [
-      {
-        "ChallengeOptionId": 226,
-        "codename": "option_1A",
-        "correctOption": false,
-        "text": "Porque os animais poderiam se cortar.",
-        "image": "files/4G4D4-1UAfzUhw3M719dT.png",
-        "updatedAt": null
-      },
-      {
-        "ChallengeOptionId": 221,
-        "codename": "option_1B",
-        "correctOption": false,
-        "text": "Porque afeta as fotos que tiraré da paisagem da floresta.",
-        "image": "files/d9vSvrub6fJbIy6rbAJdR.png",
-        "updatedAt": null
-      },
-      {
-        "ChallengeOptionId": 229,
-        "codename": "option_1C",
-        "correctOption": true,
-        "text": "Porque o sol pode passar através do vidro e incendiar a floresta seca.",
-        "image": "files/qlghP86xPy_iUvAnYQrUZ.png",
-        "updatedAt": null
-      },
-      {
-        "ChallengeOptionId": 228,
-        "codename": "option_1D",
-        "correctOption": false,
-        "text": "Não é perigoso, serve para armazenar água para os animais.",
-        "image": "files/vURFjIV4mYNhZiQ7tBYjd.png",
-        "updatedAt": null
-      }
-    ],
-    "feedback": {
-      "ChallengeFeedbackId": 58,
-      "feedback": "O vidro funciona como uma lupa e pode provocar um incêndio na vegetação.",
-      "image": null,
-      "updatedAt": null
+      "feedback": "conteste bien",
+      "image": "feedback image",
+      "updatedAt": "2022-02-15T19:46:11Z"
     }
   }
 ]
