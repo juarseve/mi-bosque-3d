@@ -530,5 +530,9 @@
     "fernan_sanchez": ">Fernan Sánchez<\nClic en el árbol\npara más información",
     "guasmo": ">Guasmo<\nClic en el árbol\npara más información",
     "guayacan": ">Guayacán<\nClic en el árbol\npara más información"
+  },
+  "trash_classification": {
+    "title": "¡HORA DE RECICLAR!",
+    "sentence": "Necesito tu ayuda para clasificar la basura en los diferentes contenedores. ¿Estás listo para convertirte en un maestro del reciclaje? Abre tu mochila presionando M para comenzar."
   }
 }

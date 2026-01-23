@@ -415,9 +415,7 @@
     "logro_9_nombre": "100% Concluído",
     "logro_9_descripcion": "Você concluiu tudo!!!",
     "logro_10_nombre": "Guarda Florestal Veloz",
-    "logro_10_descripcion": "Você salvou o coelho devolvendo-o para sua toca",
-    "logro_8_nombre": "Guardabosque Responsable",
-    "logro_8_descripcion": "Tu comportamiento como Guardabosque es ejemplar (no saltos)"
+    "logro_10_descripcion": "Você salvou o coelho devolvendo-o para sua toca"
   },
   "misiones": {
     "estacion_mision": "Estação: ",
@@ -477,5 +475,9 @@
     "fernan_sanchez": ">Fernan Sanchez<\nClique na árvore\npara mais informações",
     "guasmo": ">Guasmo<\nClique na árvore\npara mais informações",
     "guayacan": ">Guayacán<\nClique na árvore\npara mais informações"
+  },
+  "trash_classification": {
+    "title": "HORA DE RECICLAR!",
+    "sentence": "Preciso da sua ajuda para separar o lixo nos diferentes contêineres. Você está pronto para se tornar um mestre da reciclagem? Abra sua mochila pressionando M para começar."
   }
 }

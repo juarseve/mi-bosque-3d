@@ -28,14 +28,14 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     itemImage: {fileID: 21300000, guid: 0e0c3412f29f4c0408d9545b36a1b8f1, type: 3}
   - id: 3
-    name: Semilla de Teca
+    name: Teca
     description: Semilla para plantar arbol teca
     isStackable: 1
     itemType: 0
     scrollPos: {x: 0, y: 0}
     itemImage: {fileID: 21300000, guid: 890d0215cee3fc44c8e7600fc4f7357b, type: 3}
   - id: 4
-    name: Semilla de Ceibo
+    name: Ceibo
     description: semilla para plantar arbol Ceibo
     isStackable: 1
     itemType: 0
@@ -63,7 +63,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     itemImage: {fileID: 21300000, guid: 42a578906b747014fa0945e754cfa0b8, type: 3}
   - id: 8
-    name: semilla bototillo
+    name: Bototillo
     description: Semilla del bototillo
     isStackable: 1
     itemType: 0

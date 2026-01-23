@@ -153,6 +153,22 @@ public class Inventory : MonoBehaviour
         return accesoriosInventory.GetChild(id).GetComponent<Slot>();
     }
 
+    /// <summary>
+    /// Retorna la lista de slots del inventario principal
+    /// </summary>
+    public List<SlotInfo> GetSlotInfoList()
+    {
+        return slotInfoList;
+    }
+
+    /// <summary>
+    /// Retorna la lista de slots de accesorios
+    /// </summary>
+    public List<SlotInfo> GetAccesorioSlotInfoList()
+    {
+        return slotAccesorioList;
+    }
+
     public void AddItem(int itemId)
     {
         Debug.LogWarning(itemId);

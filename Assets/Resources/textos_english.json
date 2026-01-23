@@ -475,5 +475,9 @@
     "fernan_sanchez": ">Fernan Sanchez<\nClick on the tree\nfor more information",
     "guasmo": ">Guasmo<\nClick on the tree\nfor more information",
     "guayacan": ">Guayacan<\nClick on the tree\nfor more information"
+  },
+  "trash_classification": {
+    "title": "TIME TO RECYCLE!",
+    "sentence": "I need your help sorting trash into the different bins. Are you ready to become a recycling master? Open your backpack by pressing M to begin."
   }
 }

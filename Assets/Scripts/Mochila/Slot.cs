@@ -10,6 +10,7 @@ public class Slot : MonoBehaviour, IDropHandler
     public Database database;
     public Image itemImage;
     public Text amountText;
+    public Text speciesNameText; // Nuevo: para mostrar el nombre de la especie
     public Text message;
     public GameObject feedback;
 
@@ -29,12 +30,29 @@ public class Slot : MonoBehaviour, IDropHandler
         {
             itemImage.sprite = null;
             itemImage.enabled = false;
+            
+            // Ocultar nombre de especie si el slot está vacío
+            if (speciesNameText != null)
+            {
+                speciesNameText.gameObject.SetActive(false);
+            }
         }
         else
         {
-            
-            itemImage.sprite = database.FindItemInDatabase(slotInfo.itemId).itemImage;
+            Item item = database.FindItemInDatabase(slotInfo.itemId);
+            itemImage.sprite = item.itemImage;
             itemImage.enabled = true;
+            
+            // Mostrar nombre de la especie si es una semilla
+            if (speciesNameText != null && item.itemType == Item.ItemType.SEMILLAS && !string.IsNullOrEmpty(item.name))
+            {
+                speciesNameText.text = item.name;
+                speciesNameText.gameObject.SetActive(true);
+            }
+            else if (speciesNameText != null)
+            {
+                speciesNameText.gameObject.SetActive(false);
+            }
             
             if (slotInfo.amount > 1)
             {

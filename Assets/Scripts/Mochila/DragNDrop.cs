@@ -32,6 +32,10 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     // ===== VARIABLES PARA DRAG VISUAL =====
     private GameObject draggedImageObject;
     private Canvas mainCanvas;
+    
+    // Offset manual para ajustar desfase del ghost
+    public float ghostOffsetX = 0f;
+    public float ghostOffsetY = 0f;
 
     private void Start()
     {
@@ -84,38 +88,95 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         
         if (mainCanvas == null)
         {
+            mainCanvas = GetComponentInParent<Canvas>();
+        }
+        
+        if (mainCanvas == null)
+        {
             Debug.LogError("[DragNDrop] mainCanvas es null - abortando drag");
             return;
         }
 
-        Debug.Log($"[DragNDrop] Iniciando drag - Canvas: {mainCanvas.name}");
+        Debug.Log($"[DragNDrop] OnBeginDrag iniciado - Canvas: {mainCanvas.name}");
+        Debug.Log($"[DragNDrop] Sprite a arrastrar: {myImage.sprite.name}");
 
         // Crear ghost image
         draggedImageObject = new GameObject("DraggedItem_Ghost");
-        draggedImageObject.layer = LayerMask.NameToLayer("UI");
+        draggedImageObject.layer = LayerMask.NameToLayer("Default");
         
-        // Agregar componente Image ANTES de SetParent
+        // Agregar componente Image
         Image ghostImage = draggedImageObject.AddComponent<Image>();
-        ghostImage.sprite = myImage.sprite;
-        ghostImage.color = new Color(myImage.color.r, myImage.color.g, myImage.color.b, 0.8f);
+        
+        // ASEGURAR que el sprite esté asignado
+        if (myImage.sprite != null)
+        {
+            ghostImage.sprite = myImage.sprite;
+            Debug.Log($"[DragNDrop] Sprite asignado al ghost: {ghostImage.sprite.name}");
+        }
+        else
+        {
+            Debug.LogError("[DragNDrop] ✗ myImage.sprite es NULL");
+        }
+        
+        // Color TOTALMENTE VISIBLE - blanco opaco
+        ghostImage.color = new Color(1f, 1f, 1f, 1f);
         ghostImage.raycastTarget = false;
         
-        // Configurar RectTransform ANTES de SetParent
+        // Configurar RectTransform
         RectTransform ghostRT = draggedImageObject.GetComponent<RectTransform>();
-        RectTransform sourceRT = GetComponent<RectTransform>();
-        ghostRT.sizeDelta = sourceRT.sizeDelta;
         
-        // SetParent WORLDSPACE para Screen Space - Overlay
-        ghostRT.SetParent(mainCanvas.transform, true);
+        // Usar tamaño absoluto positivo (80x80 píxeles)
+        ghostRT.sizeDelta = new Vector2(80f, 80f);
+        Debug.Log($"[DragNDrop] Tamaño del ghost fijado: {ghostRT.sizeDelta}");
+        
+        // Parente en el canvas con worldPositionStays=false para que use coordenadas screen-space
+        ghostRT.SetParent(mainCanvas.transform, false);
         ghostRT.SetAsLastSibling();
         
-        // Establecer posición en screen space
-        ghostRT.position = eventData.position;
+        // Configurar pivot en el centro para que el cursor esté en el centro del ghost
+        ghostRT.pivot = new Vector2(0.5f, 0.5f);
         
-        // Escalar
-        ghostRT.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        // Posición inicial - MÉTODO SIMPLIFICADO para Screen Space - Overlay
+        RectTransform canvasRT = mainCanvas.GetComponent<RectTransform>();
         
-        // Ocultar original
+        Debug.Log($"[DragNDrop] Canvas RenderMode: {mainCanvas.renderMode}");
+        Debug.Log($"[DragNDrop] Canvas Size: {canvasRT.sizeDelta}");
+        Debug.Log($"[DragNDrop] Mouse Position (eventData.position): {eventData.position}");
+        
+        // Para Screen Space - Overlay, convertir de screen space a canvas local space
+        Vector2 localPos;
+        if (mainCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
+        {
+            // Método directo para Overlay: restar el centro del canvas
+            localPos = eventData.position - canvasRT.sizeDelta / 2f;
+            Debug.Log($"[DragNDrop] Usando método OVERLAY - localPos: {localPos}");
+        }
+        else
+        {
+            // Para otros modos, usar el método de Unity
+            Camera cam = mainCanvas.renderMode == RenderMode.ScreenSpaceCamera ? mainCanvas.worldCamera : null;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRT, eventData.position, cam, out localPos);
+            Debug.Log($"[DragNDrop] Usando RectTransformUtility - localPos: {localPos}");
+        }
+        
+        ghostRT.anchoredPosition = localPos;
+        
+        Debug.Log($"[DragNDrop] ✓ Ghost posicionado:");
+        Debug.Log($"  - anchoredPosition: {ghostRT.anchoredPosition}");
+        Debug.Log($"  - position (world): {ghostRT.position}");
+        Debug.Log($"  - localPosition: {ghostRT.localPosition}");
+        
+        // Escalar para que sea más visible
+        ghostRT.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        
+        // DEBUGGING: hacer el fondo visible si no tiene sprite
+        if (ghostImage.sprite == null)
+        {
+            ghostImage.color = new Color(1f, 0f, 0f, 1f); // Rojo si no tiene sprite
+            Debug.LogWarning("[DragNDrop] ⚠️ No hay sprite, usando color rojo para debug");
+        }
+        
+        // Ocultar original parcialmente
         Color c = myImage.color;
         c.a = 0.3f;
         myImage.color = c;
@@ -129,7 +190,7 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             mochila.color = c;
         }
         
-        Debug.Log($"[DragNDrop] Ghost creado en posición: {ghostRT.position}");
+        Debug.Log($"[DragNDrop] ✓ Ghost creado - Posición: {ghostRT.position}, Size: {ghostRT.sizeDelta}, Scale: {ghostRT.localScale}");
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -137,25 +198,49 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         if (draggedImageObject != null)
         {
             RectTransform ghostRT = draggedImageObject.GetComponent<RectTransform>();
-            ghostRT.position = eventData.position;
+            if (ghostRT != null && mainCanvas != null)
+            {
+                RectTransform canvasRT = mainCanvas.GetComponent<RectTransform>();
+                Vector2 localPos;
+                
+                if (mainCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
+                {
+                    // Método directo para Overlay
+                    localPos = eventData.position - canvasRT.sizeDelta / 2f;
+                }
+                else
+                {
+                    // Para otros modos
+                    Camera cam = mainCanvas.renderMode == RenderMode.ScreenSpaceCamera ? mainCanvas.worldCamera : null;
+                    RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRT, eventData.position, cam, out localPos);
+                }
+                
+                ghostRT.anchoredPosition = localPos;
+            }
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        Debug.Log($"[DragNDrop] OnEndDrag llamado");
+        
         // Restaurar visual
         Color c = myImage.color;
         c.a = 1f;
         myImage.color = c;
         myImage.raycastTarget = true;
         
-        c = mochila.color;
-        c.a = 1f;
-        mochila.color = c;
+        if (mochila != null)
+        {
+            c = mochila.color;
+            c.a = 1f;
+            mochila.color = c;
+        }
         
         // Destruir ghost
         if (draggedImageObject != null)
         {
+            Debug.Log($"[DragNDrop] ✓ Destruyendo ghost image");
             Destroy(draggedImageObject);
         }
 
@@ -238,42 +323,104 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     private void HandleTrashLogic(Item trash)
     {
-        // Activar primera persona
-        if (!classificationStarted && trashClassificationController != null)
+        // Activar modo clasificación SOLO si no está ya activo
+        if (!classificationStarted && trashClassificationController != null && !trashClassificationController.IsClassifying)
         {
-            trashClassificationController.StartTrashClassification();
-            classificationStarted = true;
-            Debug.Log("[DragNDrop] Modo clasificación activado");
+            // Verificar si todos los desechos fueron recogidos
+            bool allTrashCollected = VerifyAllTrashCollected();
+            
+            // Intentar activar el modo clasificación
+            if (trashClassificationController.TryStartTrashClassification(allTrashCollected))
+            {
+                classificationStarted = true;
+                Debug.Log("[DragNDrop] Modo clasificación activado");
+            }
+            else
+            {
+                // No se cumplen las condiciones
+                string errorMsg = LanguageManager.Instancia.ObtenerTexto("recordatorios.no_puede_clasificar");
+                if (string.IsNullOrEmpty(errorMsg))
+                {
+                    errorMsg = "No puedes clasificar basura aún. Debes estar cerca de los tachos de basura.";
+                }
+                inventory.ShowMessageM(errorMsg);
+                Debug.LogWarning("[DragNDrop] No se pueden cumplir condiciones para clasificación");
+                return;
+            }
         }
 
-        // Raycast al tacho
+        // Raycast al tacho - IGNORAR el TrashZoneCollider (trigger)
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (!Physics.Raycast(ray, out hit))
+        RaycastHit[] hits = Physics.RaycastAll(ray);
+        
+        RaycastHit correctHit = default;
+        bool foundBin = false;
+        
+        // Buscar el primer collider que NO sea el trigger de la zona de basura
+        foreach (RaycastHit h in hits)
         {
-            Debug.Log("[DragNDrop] Raycast no detectó colisión");
+            Debug.Log($"[DragNDrop] Raycast detectó: {h.collider.name} (es trigger: {h.collider.isTrigger})");
+            
+            // Ignorar triggers y el TrashZoneCollider específicamente
+            if (h.collider.isTrigger || h.collider.name == "TrashZoneCollider")
+            {
+                continue;
+            }
+            
+            // Si encontramos un collider que no es trigger, usarlo
+            if (!foundBin)
+            {
+                correctHit = h;
+                foundBin = true;
+                Debug.Log($"[DragNDrop] ✓ Tacho detectado: {h.collider.name}");
+                break;
+            }
+        }
+        
+        if (!foundBin)
+        {
+            Debug.Log("[DragNDrop] ✗ No se detectó ningún tacho (solo se encontró el trigger)");
             return;
         }
 
-        Debug.Log($"[DragNDrop] Raycast detectó: {hit.collider.name}");
+        Debug.Log($"[DragNDrop] Validando contra tacho: {correctHit.collider.name}");
 
-        // Verificar basura correcta
+        // Verificar basura correcta - mapeo basado en nombres de items y tachos
         bool isCorrect = false;
         string messageKey = "";
+        string trashName = trash.name.ToLower();
+        string binName = correctHit.collider.name.ToLower();
 
-        if (trash.id == 5 && hit.collider.name == "BotePapelCarton")
+        Debug.Log($"[DragNDrop] Item: '{trash.name}' ({trash.id}), Tacho: '{correctHit.collider.name}'");
+        Debug.Log($"[DragNDrop] Validando: trashName='{trashName}', binName='{binName}'");
+
+        // Papel y Cartón
+        if ((trashName.Contains("papel") || trashName.Contains("carton") || trash.id == 5) && 
+            (binName.Contains("papel") || binName.Contains("carton")))
         {
             isCorrect = true;
             messageKey = "basura_papel";
+            Debug.Log("[DragNDrop] ✓ PAPEL/CARTÓN validado correctamente");
         }
-        else if (trash.id == 6 && hit.collider.name == "BoteVidrio")
+        // Vidrio
+        else if ((trashName.Contains("vidrio") || trashName.Contains("botella") || trash.id == 6) && 
+                 binName.Contains("vidrio"))
         {
             isCorrect = true;
             messageKey = "basura_vidrio";
+            Debug.Log("[DragNDrop] ✓ VIDRIO validado correctamente");
         }
-        else if (trash.id == 7 && hit.collider.name == "BotePlastico")
+        // Plástico
+        else if ((trashName.Contains("plastico") || trashName.Contains("plastic") || trash.id == 7) && 
+                 binName.Contains("plastico"))
         {
             isCorrect = true;
             messageKey = "basura_plastico";
+            Debug.Log("[DragNDrop] ✓ PLÁSTICO validado correctamente");
+        }
+        else
+        {
+            Debug.Log($"[DragNDrop] ✗ No coincide: '{trash.name}' -> '{correctHit.collider.name}'");
         }
 
         if (isCorrect)
@@ -342,5 +489,42 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         }
 
         destinationSlot = null;
+    }
+
+    /// <summary>
+    /// Verifica si todos los desechos (6 items de basura) han sido recogidos del inventario + accesorios
+    /// </summary>
+    private bool VerifyAllTrashCollected()
+    {
+        int trashCount = 0;
+        
+        // Contar en INVENTARIO PRINCIPAL
+        foreach (SlotInfo slotInfo in inventory.GetSlotInfoList())
+        {
+            if (!slotInfo.isEmpty && database != null)
+            {
+                Item item = database.FindItemInDatabase(slotInfo.itemId);
+                if (item != null && item.itemType == Item.ItemType.BASURA)
+                {
+                    trashCount += slotInfo.amount;
+                }
+            }
+        }
+        
+        // Contar en ACCESORIOS
+        foreach (SlotInfo slotInfo in inventory.GetAccesorioSlotInfoList())
+        {
+            if (!slotInfo.isEmpty && database != null)
+            {
+                Item item = database.FindItemInDatabase(slotInfo.itemId);
+                if (item != null && item.itemType == Item.ItemType.BASURA)
+                {
+                    trashCount += slotInfo.amount;
+                }
+            }
+        }
+
+        Debug.Log($"[DragNDrop] Total de desechos en inventario + accesorios: {trashCount}");
+        return trashCount >= 6;
     }
 }

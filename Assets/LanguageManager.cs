@@ -713,6 +713,14 @@ public class LanguageManager : MonoBehaviour
             textos["arboles.guasmo"] = arboles.guasmo;
             textos["arboles.guayacan"] = arboles.guayacan;
         }
+
+        // Trash Classification
+        if (datos.trash_classification != null)
+        {
+            var tc = datos.trash_classification;
+            textos["trash_classification.title"] = tc.title;
+            textos["trash_classification.sentence"] = tc.sentence;
+        }
     }
 
     // CLASES
@@ -748,6 +756,7 @@ public class LanguageManager : MonoBehaviour
         public Misiones misiones;
         public Contrarreloj contrarreloj;
         public FeedbackPreguntas feedback_preguntas;
+        public TrashClassification trash_classification;
         public Libro libro;
         public Arboles arboles;
     }
@@ -1414,5 +1423,12 @@ public class LanguageManager : MonoBehaviour
         public string fernan_sanchez;
         public string guasmo;
         public string guayacan;
+    }
+
+    [Serializable]
+    public class TrashClassification
+    {
+        public string title;
+        public string sentence;
     }
 }
