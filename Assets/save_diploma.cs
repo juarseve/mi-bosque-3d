@@ -9,6 +9,8 @@ public class save_diploma : MonoBehaviour
     public GameObject notifDiploma;
     public Text route;
     public Image imagenDiploma; // Referencia a la imagen del diploma para cambiar según idioma
+    public Sprite certificadoEspanol;  // Certificado_es.png
+    public Sprite certificadoPortugues; // Certificado_pt.png
     
     // Start is called before the first frame update
     void Start()
@@ -83,29 +85,30 @@ public class save_diploma : MonoBehaviour
 
         // Obtener el idioma actual desde PlayerPrefs
         string idioma = PlayerPrefs.GetString("idioma", "textos_espanol");
-        string certificateName = "Certificado_es"; // Por defecto español
 
-        // Seleccionar el certificado según el idioma
+        // Seleccionar el sprite según el idioma
+        Sprite spriteSeleccionado = certificadoEspanol; // Por defecto español
+
         if (idioma.Contains("portugues") || idioma.Contains("portuguese"))
         {
-            certificateName = "Certificado_pt";
-        }
-        else // Para español e inglés usamos el español
-        {
-            certificateName = "Certificado_es";
-        }
-
-        // Cargar el sprite desde Resources
-        Sprite nuevoSprite = Resources.Load<Sprite>("Sprites/" + certificateName);
-        
-        if (nuevoSprite != null)
-        {
-            imagenDiploma.sprite = nuevoSprite;
-            Debug.Log("Imagen del diploma cambiada a: " + certificateName);
+            spriteSeleccionado = certificadoPortugues;
+            Debug.Log("Certificado en Portugués seleccionado");
         }
         else
         {
-            Debug.LogWarning("No se encontró el sprite: Sprites/" + certificateName);
+            spriteSeleccionado = certificadoEspanol;
+            Debug.Log("Certificado en Español seleccionado");
+        }
+
+        // Cambiar la imagen
+        if (spriteSeleccionado != null)
+        {
+            imagenDiploma.sprite = spriteSeleccionado;
+            Debug.Log("Imagen del diploma cambiada. Idioma: " + idioma);
+        }
+        else
+        {
+            Debug.LogWarning("Sprite seleccionado es null. Verifica que ambos sprites estén asignados en el Inspector");
         }
     }
 

@@ -9987,7 +9987,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &235285280
 Transform:
   m_ObjectHideFlags: 0
@@ -43554,6 +43554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   notifDiploma: {fileID: 589450943}
   route: {fileID: 768389697}
+  imagenDiploma: {fileID: 0}
 --- !u!114 &1002220182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54051,6 +54052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   notifDiploma: {fileID: 589450943}
   route: {fileID: 768389697}
+  imagenDiploma: {fileID: 0}
 --- !u!114 &1171830931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54826,6 +54828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   notifDiploma: {fileID: 589450943}
   route: {fileID: 768389697}
+  imagenDiploma: {fileID: 0}
 --- !u!1 &1181307045
 GameObject:
   m_ObjectHideFlags: 0

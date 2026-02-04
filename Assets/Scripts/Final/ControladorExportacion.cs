@@ -14,6 +14,10 @@ public class ControladorExportacion : MonoBehaviour
     public Text textoNombreJugadorFoto; // El texto en el canvas oculto
     public Image imagenDiploma;        // La imagen del diploma que cambiaremos según idioma
     
+    [Header("Sprites del Certificado según Idioma")]
+    public Sprite certificadoEspanol;  // Certificado_es.png
+    public Sprite certificadoPortugues; // Certificado_pt.png
+    
     [Header("Configuración Foto")]
     public int anchoFoto = 3840; // 4K
     public int altoFoto = 2160;
@@ -40,36 +44,30 @@ public class ControladorExportacion : MonoBehaviour
 
         // Obtener el idioma actual desde PlayerPrefs
         string idioma = PlayerPrefs.GetString("idioma", "textos_espanol");
-        string certificateName = "Certificado_es"; // Por defecto español
 
-        // Seleccionar el certificado según el idioma
+        // Seleccionar el sprite según el idioma
+        Sprite spriteSeleccionado = certificadoEspanol; // Por defecto español
+
         if (idioma.Contains("portugues") || idioma.Contains("portuguese"))
         {
-            certificateName = "Certificado_pt";
-        }
-        else // Para español e inglés usamos el español
-        {
-            certificateName = "Certificado_es";
-        }
-
-        // Cargar el sprite desde Resources o Assets
-        Sprite nuevoSprite = Resources.Load<Sprite>("Sprites/" + certificateName);
-        
-        if (nuevoSprite != null)
-        {
-            imagenDiploma.sprite = nuevoSprite;
-            Debug.Log("Imagen del diploma cambiada a: " + certificateName);
+            spriteSeleccionado = certificadoPortugues;
+            Debug.Log("Certificado en Portugués seleccionado");
         }
         else
         {
-            Debug.LogError("No se encontró el sprite: Sprites/" + certificateName);
-            // Intentar cargar directamente desde Assets si no está en Resources
-            nuevoSprite = Resources.Load<Sprite>("Assets/Sprites/" + certificateName);
-            if (nuevoSprite != null)
-            {
-                imagenDiploma.sprite = nuevoSprite;
-                Debug.Log("Imagen del diploma cambiada a: " + certificateName);
-            }
+            spriteSeleccionado = certificadoEspanol;
+            Debug.Log("Certificado en Español seleccionado");
+        }
+
+        // Cambiar la imagen
+        if (spriteSeleccionado != null)
+        {
+            imagenDiploma.sprite = spriteSeleccionado;
+            Debug.Log("Imagen del diploma cambiada. Idioma: " + idioma);
+        }
+        else
+        {
+            Debug.LogError("Sprite seleccionado es null. Verifica que ambos sprites estén asignados en el Inspector");
         }
     }
 
