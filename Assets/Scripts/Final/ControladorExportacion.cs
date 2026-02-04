@@ -12,6 +12,7 @@ public class ControladorExportacion : MonoBehaviour
     [Header("Referencias UI Oculta (Photo Booth)")]
     public Camera camaraFoto;          // La cámara que creamos en Y=-5000
     public Text textoNombreJugadorFoto; // El texto en el canvas oculto
+    public Image imagenDiploma;        // La imagen del diploma que cambiaremos según idioma
     
     [Header("Configuración Foto")]
     public int anchoFoto = 3840; // 4K
@@ -22,8 +23,54 @@ public class ControladorExportacion : MonoBehaviour
         // 1. Sincronizar datos: Copiamos lo que ve el usuario al certificado oculto
         textoNombreJugadorFoto.text = textoNombreJugadorVisible.text;
 
-        // 2. Iniciar proceso
+        // 2. Cambiar la imagen del diploma según el idioma
+        CambiarImagenDiplomaSegunIdioma();
+
+        // 3. Iniciar proceso
         StartCoroutine(CapturarYGuardar());
+    }
+
+    void CambiarImagenDiplomaSegunIdioma()
+    {
+        if (imagenDiploma == null)
+        {
+            Debug.LogError("Referencia a imagenDiploma no asignada en ControladorExportacion");
+            return;
+        }
+
+        // Obtener el idioma actual desde PlayerPrefs
+        string idioma = PlayerPrefs.GetString("idioma", "textos_espanol");
+        string certificateName = "Certificado_es"; // Por defecto español
+
+        // Seleccionar el certificado según el idioma
+        if (idioma.Contains("portugues") || idioma.Contains("portuguese"))
+        {
+            certificateName = "Certificado_pt";
+        }
+        else // Para español e inglés usamos el español
+        {
+            certificateName = "Certificado_es";
+        }
+
+        // Cargar el sprite desde Resources o Assets
+        Sprite nuevoSprite = Resources.Load<Sprite>("Sprites/" + certificateName);
+        
+        if (nuevoSprite != null)
+        {
+            imagenDiploma.sprite = nuevoSprite;
+            Debug.Log("Imagen del diploma cambiada a: " + certificateName);
+        }
+        else
+        {
+            Debug.LogError("No se encontró el sprite: Sprites/" + certificateName);
+            // Intentar cargar directamente desde Assets si no está en Resources
+            nuevoSprite = Resources.Load<Sprite>("Assets/Sprites/" + certificateName);
+            if (nuevoSprite != null)
+            {
+                imagenDiploma.sprite = nuevoSprite;
+                Debug.Log("Imagen del diploma cambiada a: " + certificateName);
+            }
+        }
     }
 
     IEnumerator CapturarYGuardar()
