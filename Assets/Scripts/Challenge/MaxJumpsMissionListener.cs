@@ -41,10 +41,10 @@ public class MaxJumpsMissionListener : MonoBehaviour
     {
         Debug.Log("Mission failed: too many jumps");
 
+        PlayerPrefs.SetInt("BadBehavior", 1);
         // Mission 8 = "Saltar poco"
         logros.ProgresarLogro(8);
         logros.ProgresarMision(8, "");
-        // or trigger UI / retry logic here
     }
 
     void Awake()
