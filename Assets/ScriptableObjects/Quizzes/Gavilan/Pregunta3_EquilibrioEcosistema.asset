@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12153f438fe37bc47a8217abd69652ed, type: 3}
+  m_Name: Pregunta3_EquilibrioEcosistema
+  m_EditorClassIdentifier: 
+  questionText: "\xBFPor qu\xE9 es importante no retirar animales de su cadena tr\xF3fica
+    (como cazar lagartijas para el gavil\xE1n)?"
+  questionImage: {fileID: 0}
+  options:
+  - text: Porque los animales son amigos en el bosque.
+    image: {fileID: 0}
+  - text: Porque se altera el equilibrio del ecosistema.
+    image: {fileID: 0}
+  - text: "Porque las plantas dejar\xEDan de crecer."
+    image: {fileID: 0}
+  - text: Porque no podremos tomar fotos a los animales.
+    image: {fileID: 0}
+  correctAnswerIndex: 1
+  feedbackText: "Cada organismo tiene una funci\xF3n; si eliminamos un componente
+    de la cadena tr\xF3fica, otros animales pueden quedarse sin comida o algunos insectos
+    pueden convertirse en plagas."
+  feedbackImage: {fileID: 0}

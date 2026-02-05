@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3bd1f6939931a9488511861c54c977e, type: 3}
+  m_Name: QuizGavilan
+  m_EditorClassIdentifier: 
+  quizName: "Test de Sabidur\xEDa - Cadenas Tr\xF3ficas"
+  badgeName: "Medalla del Gavil\xE1n"
+  badgeImage: {fileID: 0}
+  showIntroDialogue: 1
+  introDialogueTitles:
+  - "\xA1Ayuda al Gavil\xE1n!"
+  - "Test de Sabidur\xEDa"
+  - Importante
+  introDialogueSentences:
+  - "\xA1Es hora de ayudar a nuestro amigo emplumado!"
+  - "Con este 'Test de Sabidur\xEDa' sobre las Cadenas Tr\xF3ficas, cada acierto le
+    devolver\xE1 la fuerza necesaria para sanar. Al comprender c\xF3mo funciona la
+    naturaleza, proteges al gavil\xE1n y a todo su ecosistema sin necesidad de intervenir
+    negativamente."
+  - "Recuerda que NO debes alimentar o cazar animales silvestres.\n\nRegla: De las
+    3 preguntas, si al menos 2 se responden bien obtendr\xE1s la medalla del Gavil\xE1n."
+  introDialogueSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  introDialogueExpression: 2
+  questions:
+  - {fileID: 11400000, guid: 19af9bdff08cc024f81739313ec0684c, type: 2}
+  - {fileID: 11400000, guid: 5045037739d722443928dd558a192c7c, type: 2}
+  - {fileID: 11400000, guid: 1cb6b4e87d414064fa88cbbdb2fa6b32, type: 2}
+  minimumCorrectAnswers: 2
+  pointsPerCorrectAnswer: 5
+  showSuccessDialogue: 1
+  successDialogueTitles:
+  - "\xA1Felicidades!"
+  - "\xA1Gavil\xE1n Recuperado!"
+  successDialogueSentences:
+  - "\xA1Excelente trabajo! Has demostrado tu conocimiento sobre las cadenas tr\xF3ficas."
+  - "Gracias a tu sabidur\xEDa, el gavil\xE1n ha recuperado sus fuerzas. \xA1Has obtenido
+    la Medalla del Gavil\xE1n!"
+  successDialogueSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  showFailDialogue: 1
+  failDialogueTitles:
+  - "\xA1Sigue Intentando!"
+  - Consejo
+  failDialogueSentences:
+  - "No te preocupes, el aprendizaje toma tiempo. El gavil\xE1n a\xFAn necesita tu
+    ayuda."
+  - "Sugerencia: Revisa nuevamente el video sobre cadenas tr\xF3ficas para reforzar
+    tu conocimiento."
+  failDialogueSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  helpMessage: "Sugerencia: Reproduce nuevamente el video sobre cadenas tr\xF3ficas
+    si tienes dudas."
+  correctAnswerSound: {fileID: 0}
+  incorrectAnswerSound: {fileID: 0}
+  badgeEarnedSound: {fileID: 0}

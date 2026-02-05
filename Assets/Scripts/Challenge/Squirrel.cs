@@ -26,6 +26,12 @@ public class Squirrel : MonoBehaviour, IInteractable
     public int iteracion = 0;
     public float incremento = 5;
     
+    // Distancia mínima entre el jugador y el nest para completar el desafío
+    public float distanciaParaCompletar = 3f;
+    
+    // Referencia al jugador (FPS Controller)
+    private Transform player;
+    
     // Referencia al puntero para feedback visual
     private GameObject puntero;
     
@@ -40,6 +46,13 @@ public class Squirrel : MonoBehaviour, IInteractable
         animator = this.GetComponent<Animator>();
         timer = _timer;
         puntero = GameObject.Find("Crosshair/Image");
+        
+        // Buscar el jugador (FPS Controller)
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            player = playerObj.transform;
+        }
         
         // Resetear estados al iniciar
         caught = false;
@@ -99,6 +112,18 @@ public class Squirrel : MonoBehaviour, IInteractable
                 img.SetActive(true);
                 skin.SetActive(false);
                 
+                // Verificar si el jugador está lo suficientemente cerca del nest para completar el desafío
+                if (player != null && target != null)
+                {
+                    float distanciaJugadorANest = Vector3.Distance(player.position, target.position);
+                    if (distanciaJugadorANest <= distanciaParaCompletar)
+                    {
+                        Debug.Log("[Squirrel] Jugador llegó al nest con el conejo. Distancia: " + distanciaJugadorANest);
+                        CompletarDesafio();
+                        return;
+                    }
+                }
+                
                 // Timer para soltar el conejo si no llega a tiempo
                 timer -= Time.deltaTime;
                 timeText.text = "" + timer.ToString("f0");
@@ -129,6 +154,42 @@ public class Squirrel : MonoBehaviour, IInteractable
                 }
             }
         }
+    }
+    
+    /// <summary>
+    /// Completa el desafío del conejo cuando el jugador llega al nest
+    /// </summary>
+    private void CompletarDesafio()
+    {
+        clockSound.detener();
+        caught = false;
+        activate = false;
+        reachedNest = true;
+        Nest.home = true;
+        
+        img.SetActive(false);
+        
+        // Desactivar el collider bloqueador
+        GameObject rabbitBlocker = GameObject.FindGameObjectWithTag("Rabbit");
+        if (rabbitBlocker != null)
+        {
+            CapsuleCollider capsule = rabbitBlocker.GetComponent<CapsuleCollider>();
+            if (capsule != null)
+            {
+                capsule.enabled = false;
+            }
+        }
+        
+        // Ocultar recordatorio
+        if (recordatorio != null)
+        {
+            recordatorio.SetActive(false);
+        }
+        
+        // Desactivar el conejo
+        this.gameObject.SetActive(false);
+        
+        Debug.Log("[Squirrel] ¡Desafío completado! El conejo fue llevado a la madriguera.");
     }
     
     /// <summary>
