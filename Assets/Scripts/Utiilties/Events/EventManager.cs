@@ -35,7 +35,7 @@ public class EventManager : MonoBehaviour {
             eventManager.eventDictionary.Remove(eventName);
     }
 
-    public  void TriggerEvent (string eventName)
+    public  void TriggerEvent2 (string eventName)
     {
         UnityEvent thisEvent = null;
         if (eventManager.eventDictionary.TryGetValue (eventName, out thisEvent))
@@ -43,4 +43,27 @@ public class EventManager : MonoBehaviour {
             thisEvent.Invoke ();
         }
     }
+
+    public void TriggerEvent(string eventName)
+    {
+        UnityEvent thisEvent;
+
+        if (eventManager.eventDictionary.TryGetValue(eventName, out thisEvent))
+        {
+            Debug.Log($"Invoking event: {eventName}");
+            Debug.Log($"Listener count: {thisEvent.GetPersistentEventCount()}");
+
+            for (int i = 0; i < thisEvent.GetPersistentEventCount(); i++)
+            {
+                Debug.Log(
+                    $"Listener {i}: " +
+                    thisEvent.GetPersistentTarget(i) + " -> " +
+                    thisEvent.GetPersistentMethodName(i)
+                );
+            }
+
+            thisEvent.Invoke();
+        }
+    }
+
 }

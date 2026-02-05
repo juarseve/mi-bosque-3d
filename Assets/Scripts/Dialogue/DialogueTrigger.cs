@@ -29,6 +29,8 @@ public class DialogueTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             TriggerDialogue();
+
+            //TargetManager.instance.StartTutorial();
         }
     }
 

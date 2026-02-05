@@ -220,7 +220,8 @@ public class DialogueManager : MonoBehaviour
 
         if (currentEventToTrigger != "")
         {
-            EventManager.eventManager.TriggerEvent(currentEventToTrigger);
+            Debug.Log(currentEventToTrigger);
+            //EventManager.eventManager.TriggerEvent(currentEventToTrigger);
         }
         EventManager.StopListening(currentEventToTrigger);
         if (removeDT)
@@ -228,7 +229,9 @@ public class DialogueManager : MonoBehaviour
             Destroy(currentDTGO);
         }
 
-        TriggerTutorial();
+        //TriggerTutorial();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         if (isPreguntas)
         {
@@ -244,7 +247,7 @@ public class DialogueManager : MonoBehaviour
         //characterImage.sprite = personaje_expresiones[2];
     }
 
-    private void TriggerTutorial()
+    public void TriggerTutorial()
     {
         // Disable the player movement (first-person controller) during the tutorial
         firstPersonController.enabled = false;
@@ -281,7 +284,7 @@ public class DialogueManager : MonoBehaviour
                     dialogue.title[i] = traducido;
                 }
                 else
-                    Debug.LogWarning($"No se encontro traducción para la clave de título: {clave}");
+                    Debug.LogWarning($"No se encontro traducciï¿½n para la clave de tï¿½tulo: {clave}");
             }
         }
 
@@ -297,7 +300,7 @@ public class DialogueManager : MonoBehaviour
                 if (!string.IsNullOrEmpty(traducido))
                     dialogue.sentences[i] = traducido;
                 else
-                    Debug.LogWarning($"No se encontro traducción para la clave de frase: {clave}");
+                    Debug.LogWarning($"No se encontro traducciï¿½n para la clave de frase: {clave}");
             }
         }
     }
