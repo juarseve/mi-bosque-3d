@@ -10,35 +10,28 @@ using Newtonsoft.Json.Linq;
 /// <summary>
 /// Quiz del Gavilán - Test de Sabiduría sobre Cadenas Tróficas
 /// El jugador debe responder 3 preguntas y acertar al menos 2 para obtener la insignia
+/// Reutiliza los canvas existentes: "Canvas preguntas con imagenes" y "Canvas feedback"
 /// </summary>
 public class QuizGavilan : MonoBehaviour
 {
-    [Header("UI Referencias")]
-    public GameObject canvasQuiz;
+    [Header("Canvas Existentes (Reutilizados de WallTrigger_2)")]
+    public GameObject canvasPreguntasImagenes;
     public GameObject canvasFeedback;
-    public GameObject canvasResultado;
+    public GameObject controlPanel;
     
-    [Header("Pregunta UI")]
+    [Header("UI Preguntas")]
     public Text preguntaText;
-    public TextMeshProUGUI preguntaTMP;
+    public Text preguntaImagenText;
     public Image imagenPregunta;
     public Button opcionA, opcionB, opcionC, opcionD;
     public Image imagenA, imagenB, imagenC, imagenD;
-    public Text contadorText; // "Pregunta 1/3"
     
-    [Header("Feedback UI")]
-    public Text feedbackText;
+    [Header("UI Feedback")]
     public Image feedbackImagen;
-    public GameObject checkIcon, crossIcon;
-    public GameObject tituloCorrecto, tituloIncorrecto;
-    public Button continuarFeedbackBtn;
+    public GameObject pacoCorrecto, pacoIncorrecto;
     
-    [Header("Resultado Final UI")]
-    public Text resultadoTituloText;
-    public Text resultadoDescripcionText;
-    public Image medallaImagen;
-    public Button continuarResultadoBtn;
-    public GameObject medallaContainer;
+    [Header("UI Contador")]
+    public Text contadorText;
     
     [Header("Audio")]
     public AudioClip correctSound;
@@ -50,17 +43,23 @@ public class QuizGavilan : MonoBehaviour
     public GameObject joystick;
     public GameObject LogroSist;
     public GameObject fpscontroller;
+    public GameObject cage;  // Objeto bloqueador que se destruye al completar
     
     [Header("Diálogos Completado/Pendiente")]
     public GameObject dialogoDesafioCompleto;
     public GameObject dialogoDesafioPendiente;
     
-    // Variables internas
+    [Header("Referencias Adicionales")]
+    public Text cantidadEstrellas;
+    public Text desafioText;
+    public ShowMochila mochila;
+    
     private List<PreguntaObject> preguntas;
     private int preguntaActual = 0;
     private int respuestasCorrectas = 0;
     private PreguntaObject currentQuestion;
     private bool quizCompletado = false;
+    private bool quizEnProgreso = false;
     private int levelId = 4;
     
     public static DateTime inicio;
@@ -68,6 +67,7 @@ public class QuizGavilan : MonoBehaviour
     
     private NotificarLogros NL;
     private GameObject actionLogger;
+    private string currentFeedback;
     
     private void Start()
     {
@@ -79,89 +79,149 @@ public class QuizGavilan : MonoBehaviour
         
         actionLogger = GameObject.Find("ActionLogger");
         
-        // Cargar preguntas del JSON
-        CargarPreguntas();
+        // Buscar LogroSist si no está asignado
+        if (LogroSist == null)
+        {
+            LogroSist = GameObject.Find("SistemaLogros");
+            if (LogroSist != null)
+            {
+                Debug.Log("[QuizGavilan] LogroSist encontrado automáticamente");
+            }
+            else
+            {
+                Debug.LogWarning("[QuizGavilan] No se encontró SistemaLogros, búscalo en el Inspector");
+            }
+        }
         
-        // Ocultar canvas al inicio
-        if (canvasQuiz != null) canvasQuiz.SetActive(false);
-        if (canvasFeedback != null) canvasFeedback.SetActive(false);
-        if (canvasResultado != null) canvasResultado.SetActive(false);
+        // Buscar fpscontroller si no está asignado
+        if (fpscontroller == null)
+        {
+            fpscontroller = GameObject.FindGameObjectWithTag("Player");
+            if (fpscontroller != null)
+            {
+                Debug.Log("[QuizGavilan] fpscontroller encontrado automáticamente");
+            }
+        }
+        
+        CargarPreguntas();
     }
     
-    /// <summary>
-    /// Carga las preguntas del JSON específico del Gavilán
-    /// </summary>
     private void CargarPreguntas()
     {
         string path = "Questions/PreguntasGavilan";
         
-        // Verificar idioma para cargar el archivo correcto
         string idiomaGuardado = PlayerPrefs.GetString("idioma");
         if (idiomaGuardado == "textos_english")
             path = "Questions/QuestionsGavilan";
         else if (idiomaGuardado == "textos_portugues")
             path = "Questions/PerguntasGavilan";
         
+        Debug.Log("[QuizGavilan] Intentando cargar preguntas desde: " + path);
+        
         TextAsset jsonFile = Resources.Load<TextAsset>(path);
         if (jsonFile == null)
         {
-            // Fallback al español si no existe el archivo de idioma
+            Debug.LogWarning("[QuizGavilan] No se encontró el archivo en: " + path + ", intentando con PreguntasGavilan por defecto");
             jsonFile = Resources.Load<TextAsset>("Questions/PreguntasGavilan");
         }
         
         if (jsonFile != null)
         {
-            PreguntaObject[] preguntasArray = JsonHelper.GetJsonArray<PreguntaObject>(jsonFile.text);
-            preguntas = new List<PreguntaObject>(preguntasArray);
-            Debug.Log("[QuizGavilan] Preguntas cargadas: " + preguntas.Count);
+            try
+            {
+                // Intentar detectar y corregir problemas de codificación
+                string jsonText = jsonFile.text;
+                
+                // Verificar si hay caracteres corruptos (? o ?)
+                if (jsonText.Contains("?") || jsonText.Contains("?Cu?l") || jsonText.Contains("tr?ficas"))
+                {
+                    Debug.LogError("[QuizGavilan] ?? PROBLEMA DE CODIFICACIÓN DETECTADO en el JSON");
+                    Debug.LogError("[QuizGavilan] El archivo no está siendo leído correctamente por Unity");
+                    
+                    // Intentar recodificar
+                    byte[] bytes = System.Text.Encoding.Default.GetBytes(jsonText);
+                    jsonText = System.Text.Encoding.UTF8.GetString(bytes);
+                    Debug.Log("[QuizGavilan] Intentando recodificar a UTF-8...");
+                }
+                
+                Debug.Log("[QuizGavilan] Archivo cargado, primeros 300 caracteres: " + jsonText.Substring(0, Mathf.Min(300, jsonText.Length)));
+                
+                PreguntaObject[] preguntasArray = JsonHelper.GetJsonArray<PreguntaObject>(jsonText);
+                preguntas = new List<PreguntaObject>(preguntasArray);
+                
+                Debug.Log("[QuizGavilan] ? Preguntas cargadas correctamente: " + preguntas.Count);
+                
+                // Verificar que las preguntas tengan datos válidos
+                for (int i = 0; i < preguntas.Count; i++)
+                {
+                    var p = preguntas[i];
+                    Debug.Log($"[QuizGavilan] Pregunta {i + 1}: {p.question}");
+                    
+                    if (p.options == null || p.options.Length == 0)
+                    {
+                        Debug.LogError($"[QuizGavilan] ?? La pregunta {i + 1} no tiene opciones!");
+                    }
+                    else
+                    {
+                        Debug.Log($"[QuizGavilan] - Tiene {p.options.Length} opciones");
+                        for (int j = 0; j < p.options.Length; j++)
+                        {
+                            Debug.Log($"[QuizGavilan]   Opción {j}: {p.options[j].text}");
+                        }
+                    }
+                }
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError("[QuizGavilan] ? Error al parsear JSON: " + e.Message);
+                Debug.LogError("[QuizGavilan] Stack trace: " + e.StackTrace);
+                preguntas = new List<PreguntaObject>();
+            }
         }
         else
         {
-            Debug.LogError("[QuizGavilan] No se pudo cargar el archivo de preguntas");
+            Debug.LogError("[QuizGavilan] ? No se pudo cargar el archivo de preguntas desde ninguna ruta");
             preguntas = new List<PreguntaObject>();
         }
     }
     
-    /// <summary>
-    /// Inicia el quiz cuando el jugador interactúa con el trigger
-    /// </summary>
     public void IniciarQuiz()
     {
-        if (quizCompletado || preguntas == null || preguntas.Count == 0)
+        if (quizCompletado || quizEnProgreso || preguntas == null || preguntas.Count == 0)
         {
-            Debug.LogWarning("[QuizGavilan] Quiz ya completado o sin preguntas");
+            Debug.Log("[QuizGavilan] No se puede iniciar quiz");
             return;
         }
         
         Debug.Log("[QuizGavilan] Iniciando Quiz del Gavilán");
         
-        // Registrar inicio
         inicio = DateTime.Now;
         quizIniciado = true;
+        quizEnProgreso = true;
         SendStartRequest();
         
-        // Resetear variables
         preguntaActual = 0;
         respuestasCorrectas = 0;
         
-        // Ocultar joystick en móvil
 #if UNITY_ANDROID || UNITY_IOS
         if (joystick != null) joystick.SetActive(false);
 #endif
         
-        // Pausar juego
         MenuPausa.instance.Pausar();
         GameObject.FindGameObjectWithTag("Player").GetComponent<MouseController>().enabled = false;
         Time.timeScale = 1f;
         
-        // Configurar botones
-        ConfigurarBotones();
+        if (controlPanel != null)
+        {
+            var animator = controlPanel.GetComponent<Animator>();
+            if (animator != null) animator.SetBool("hide", true);
+        }
         
-        // Mostrar primera pregunta
+        ConfigurarBotones();
         MostrarPregunta();
         
-        // Activar canvas
-        canvasQuiz.SetActive(true);
+        if (canvasPreguntasImagenes != null) canvasPreguntasImagenes.SetActive(true);
+        
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         
@@ -170,93 +230,170 @@ public class QuizGavilan : MonoBehaviour
     
     private void ConfigurarBotones()
     {
-        opcionA.onClick.RemoveAllListeners();
-        opcionB.onClick.RemoveAllListeners();
-        opcionC.onClick.RemoveAllListeners();
-        opcionD.onClick.RemoveAllListeners();
-        
-        opcionA.onClick.AddListener(() => SeleccionarRespuesta(0));
-        opcionB.onClick.AddListener(() => SeleccionarRespuesta(1));
-        opcionC.onClick.AddListener(() => SeleccionarRespuesta(2));
-        opcionD.onClick.AddListener(() => SeleccionarRespuesta(3));
-        
-        if (continuarFeedbackBtn != null)
+        if (opcionA != null)
         {
-            continuarFeedbackBtn.onClick.RemoveAllListeners();
-            continuarFeedbackBtn.onClick.AddListener(ContinuarDespuesFeedback);
+            opcionA.onClick.RemoveAllListeners();
+            opcionA.onClick.AddListener(() => SeleccionarRespuesta(0));
         }
-        
-        if (continuarResultadoBtn != null)
+        if (opcionB != null)
         {
-            continuarResultadoBtn.onClick.RemoveAllListeners();
-            continuarResultadoBtn.onClick.AddListener(CerrarResultado);
+            opcionB.onClick.RemoveAllListeners();
+            opcionB.onClick.AddListener(() => SeleccionarRespuesta(1));
+        }
+        if (opcionC != null)
+        {
+            opcionC.onClick.RemoveAllListeners();
+            opcionC.onClick.AddListener(() => SeleccionarRespuesta(2));
+        }
+        if (opcionD != null)
+        {
+            opcionD.onClick.RemoveAllListeners();
+            opcionD.onClick.AddListener(() => SeleccionarRespuesta(3));
         }
     }
     
-    /// <summary>
-    /// Muestra la pregunta actual en la UI
-    /// </summary>
     private void MostrarPregunta()
     {
+        if (preguntas == null || preguntas.Count == 0)
+        {
+            Debug.LogError("[QuizGavilan] ? No hay preguntas disponibles para mostrar!");
+            return;
+        }
+        
         if (preguntaActual >= preguntas.Count)
         {
+            Debug.Log("[QuizGavilan] Todas las preguntas respondidas, mostrando resultado");
             MostrarResultado();
             return;
         }
         
         currentQuestion = preguntas[preguntaActual];
         
-        // Actualizar contador
-        if (contadorText != null)
+        if (currentQuestion == null)
         {
-            contadorText.text = $"Pregunta {preguntaActual + 1}/{preguntas.Count}";
+            Debug.LogError($"[QuizGavilan] ? La pregunta {preguntaActual} es null!");
+            return;
         }
         
-        // Actualizar texto de pregunta
+        Debug.Log($"[QuizGavilan] Mostrando pregunta {preguntaActual + 1}: {currentQuestion.question}");
+        
+        if (contadorText != null)
+        {
+            contadorText.text = "Pregunta " + (preguntaActual + 1) + "/" + preguntas.Count;
+            Debug.Log($"[QuizGavilan] Contador actualizado: {contadorText.text}");
+        }
+        
         if (preguntaText != null)
         {
             preguntaText.text = currentQuestion.question;
+            Debug.Log($"[QuizGavilan] preguntaText actualizado: {preguntaText.text}");
+            Debug.Log($"[QuizGavilan] preguntaText GameObject: {preguntaText.gameObject.name}, activo: {preguntaText.gameObject.activeSelf}");
         }
-        if (preguntaTMP != null)
+        else
+            Debug.LogWarning("[QuizGavilan] ?? preguntaText es null");
+            
+        if (preguntaImagenText != null)
         {
-            preguntaTMP.text = currentQuestion.question;
+            preguntaImagenText.text = currentQuestion.question;
+            Debug.Log($"[QuizGavilan] preguntaImagenText actualizado: {preguntaImagenText.text}");
+            Debug.Log($"[QuizGavilan] preguntaImagenText GameObject: {preguntaImagenText.gameObject.name}, activo: {preguntaImagenText.gameObject.activeSelf}");
         }
+        else
+            Debug.LogWarning("[QuizGavilan] ?? preguntaImagenText es null");
         
-        // Cargar imagen de pregunta
         if (imagenPregunta != null && !string.IsNullOrEmpty(currentQuestion.image))
         {
             Sprite sprite = Resources.Load<Sprite>(currentQuestion.image);
+            if (sprite == null)
+                sprite = Resources.Load<Sprite>("Questions/ImagesGavilan/" + currentQuestion.ChallengeID);
             if (sprite != null)
             {
                 imagenPregunta.sprite = sprite;
                 imagenPregunta.enabled = true;
+                Debug.Log($"[QuizGavilan] Imagen de pregunta cargada: {currentQuestion.image}");
             }
             else
             {
-                imagenPregunta.enabled = false;
+                Debug.LogWarning($"[QuizGavilan] No se encontró imagen para la pregunta: {currentQuestion.image}");
             }
         }
         
-        // Actualizar opciones
-        if (currentQuestion.options != null && currentQuestion.options.Length >= 4)
+        if (currentQuestion.options == null)
         {
-            opcionA.GetComponentInChildren<Text>().text = "A. " + currentQuestion.options[0].text;
-            opcionB.GetComponentInChildren<Text>().text = "B. " + currentQuestion.options[1].text;
-            opcionC.GetComponentInChildren<Text>().text = "C. " + currentQuestion.options[2].text;
-            opcionD.GetComponentInChildren<Text>().text = "D. " + currentQuestion.options[3].text;
+            Debug.LogError("[QuizGavilan] ? Las opciones de la pregunta son null!");
+            return;
+        }
+        
+        if (currentQuestion.options.Length < 4)
+        {
+            Debug.LogError($"[QuizGavilan] ? La pregunta solo tiene {currentQuestion.options.Length} opciones, se requieren 4!");
+            return;
+        }
+        
+        if (currentQuestion.options.Length >= 4)
+        {
+            if (opcionA != null)
+            {
+                var textA = opcionA.GetComponentInChildren<Text>();
+                if (textA != null)
+                {
+                    textA.text = "A. " + currentQuestion.options[0].text;
+                    Debug.Log($"[QuizGavilan] Opción A actualizada: {textA.text}");
+                }
+                else
+                    Debug.LogWarning("[QuizGavilan] ?? No se encontró Text en opcionA");
+            }
+            else
+                Debug.LogWarning("[QuizGavilan] ?? opcionA es null");
+                
+            if (opcionB != null)
+            {
+                var textB = opcionB.GetComponentInChildren<Text>();
+                if (textB != null)
+                {
+                    textB.text = "B. " + currentQuestion.options[1].text;
+                    Debug.Log($"[QuizGavilan] Opción B actualizada: {textB.text}");
+                }
+            }
+            else
+                Debug.LogWarning("[QuizGavilan] ?? opcionB es null");
+                
+            if (opcionC != null)
+            {
+                var textC = opcionC.GetComponentInChildren<Text>();
+                if (textC != null)
+                {
+                    textC.text = "C. " + currentQuestion.options[2].text;
+                    Debug.Log($"[QuizGavilan] Opción C actualizada: {textC.text}");
+                }
+            }
+            else
+                Debug.LogWarning("[QuizGavilan] ?? opcionC es null");
+                
+            if (opcionD != null)
+            {
+                var textD = opcionD.GetComponentInChildren<Text>();
+                if (textD != null)
+                {
+                    textD.text = "D. " + currentQuestion.options[3].text;
+                    Debug.Log($"[QuizGavilan] Opción D actualizada: {textD.text}");
+                }
+            }
+            else
+                Debug.LogWarning("[QuizGavilan] ?? opcionD es null");
             
-            // Cargar imágenes de opciones
             CargarImagenOpcion(imagenA, currentQuestion.options[0].image);
             CargarImagenOpcion(imagenB, currentQuestion.options[1].image);
             CargarImagenOpcion(imagenC, currentQuestion.options[2].image);
             CargarImagenOpcion(imagenD, currentQuestion.options[3].image);
         }
         
-        // Habilitar botones
-        opcionA.interactable = true;
-        opcionB.interactable = true;
-        opcionC.interactable = true;
-        opcionD.interactable = true;
+        if (opcionA != null) opcionA.interactable = true;
+        if (opcionB != null) opcionB.interactable = true;
+        if (opcionC != null) opcionC.interactable = true;
+        if (opcionD != null) opcionD.interactable = true;
+        
+        Debug.Log("[QuizGavilan] ? Pregunta mostrada correctamente");
     }
     
     private void CargarImagenOpcion(Image imagen, string path)
@@ -273,101 +410,116 @@ public class QuizGavilan : MonoBehaviour
                 return;
             }
         }
-        imagen.enabled = false;
+        
+        Sprite defaultSprite = Resources.Load<Sprite>("Questions/Images/default.");
+        if (defaultSprite != null)
+            imagen.sprite = defaultSprite;
     }
     
-    /// <summary>
-    /// Procesa la respuesta seleccionada por el jugador
-    /// </summary>
     private void SeleccionarRespuesta(int indice)
     {
         if (currentQuestion == null || currentQuestion.options == null) return;
         
-        // Deshabilitar botones mientras procesa
-        opcionA.interactable = false;
-        opcionB.interactable = false;
-        opcionC.interactable = false;
-        opcionD.interactable = false;
+        if (opcionA != null) opcionA.interactable = false;
+        if (opcionB != null) opcionB.interactable = false;
+        if (opcionC != null) opcionC.interactable = false;
+        if (opcionD != null) opcionD.interactable = false;
         
         bool esCorrecta = currentQuestion.options[indice].correctOption;
-        string respuestaTexto = currentQuestion.options[indice].text;
         
-        // Log de acción
         if (actionLogger != null)
         {
             var logger = actionLogger.GetComponent<ActionLogger>();
             if (logger != null && logger.actionLogger != null)
-            {
                 logger.actionLogger.agregarAccion(currentQuestion.question, esCorrecta ? "correcta" : "incorrecta");
-            }
         }
+        
+        currentFeedback = currentQuestion.feedback != null ? currentQuestion.feedback.feedback : "";
         
         if (esCorrecta)
         {
             respuestasCorrectas++;
-            if (correctSound != null)
-            {
+            if (correctSound != null && AudioSourceSFX.instance != null)
                 AudioSourceSFX.instance.PlaySound(correctSound);
-            }
-            MostrarFeedback(true, currentQuestion.feedback.feedback);
         }
         else
         {
-            if (incorrectSound != null)
-            {
+            if (incorrectSound != null && AudioSourceSFX.instance != null)
                 AudioSourceSFX.instance.PlaySound(incorrectSound);
-            }
-            MostrarFeedback(false, currentQuestion.feedback.feedback);
         }
+        
+        MostrarFeedback(esCorrecta);
     }
     
-    /// <summary>
-    /// Muestra el feedback después de cada respuesta
-    /// </summary>
-    private void MostrarFeedback(bool correcto, string feedback)
+    private void MostrarFeedback(bool correcto)
     {
-        canvasQuiz.SetActive(false);
-        canvasFeedback.SetActive(true);
+        if (canvasPreguntasImagenes != null)
+            canvasPreguntasImagenes.SetActive(false);
         
-        if (tituloCorrecto != null) tituloCorrecto.SetActive(correcto);
-        if (tituloIncorrecto != null) tituloIncorrecto.SetActive(!correcto);
-        if (checkIcon != null) checkIcon.SetActive(correcto);
-        if (crossIcon != null) crossIcon.SetActive(!correcto);
-        
-        if (feedbackText != null)
+        if (canvasFeedback != null)
         {
-            feedbackText.text = feedback;
+            var tituloCorrecto = canvasFeedback.transform.Find("Titulo correcto");
+            if (tituloCorrecto != null) tituloCorrecto.gameObject.SetActive(correcto);
+            
+            var subtituloCorrecto = canvasFeedback.transform.Find("Subtitulo correcto");
+            if (subtituloCorrecto != null) subtituloCorrecto.gameObject.SetActive(correcto);
+            
+            var tituloIncorrecto = canvasFeedback.transform.Find("Titulo incorrecto");
+            if (tituloIncorrecto != null) tituloIncorrecto.gameObject.SetActive(!correcto);
+            
+            var feedbackTextObj = canvasFeedback.transform.Find("Feedback");
+            if (feedbackTextObj != null)
+            {
+                var feedbackText = feedbackTextObj.GetComponent<Text>();
+                if (feedbackText != null) feedbackText.text = currentFeedback;
+            }
+            
+            var checkObj = canvasFeedback.transform.Find("check");
+            if (checkObj != null) checkObj.gameObject.SetActive(correcto);
+            
+            var crossObj = canvasFeedback.transform.Find("cross");
+            if (crossObj != null) crossObj.gameObject.SetActive(!correcto);
+            
+            if (feedbackImagen != null && currentQuestion != null)
+            {
+                Sprite sprite = Resources.Load<Sprite>("Questions/ImagesGavilan/" + currentQuestion.ChallengeID);
+                if (sprite != null) feedbackImagen.sprite = sprite;
+            }
+            
+            var buttonObj = canvasFeedback.transform.Find("Button");
+            if (buttonObj != null)
+            {
+                var button = buttonObj.GetComponent<Button>();
+                if (button != null)
+                {
+                    button.onClick.RemoveAllListeners();
+                    button.onClick.AddListener(ContinuarDespuesFeedback);
+                }
+            }
+            
+            canvasFeedback.SetActive(true);
         }
         
-        // Imagen de feedback
-        if (feedbackImagen != null && currentQuestion != null)
-        {
-            string imagePath = "Questions/ImagesGavilan/" + currentQuestion.ChallengeID;
-            Sprite sprite = Resources.Load<Sprite>(imagePath);
-            if (sprite != null)
-            {
-                feedbackImagen.sprite = sprite;
-                feedbackImagen.enabled = true;
-            }
-            else
-            {
-                feedbackImagen.enabled = false;
-            }
-        }
+        if (pacoCorrecto != null) pacoCorrecto.SetActive(correcto);
+        if (pacoIncorrecto != null) pacoIncorrecto.SetActive(!correcto);
+        
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     
-    /// <summary>
-    /// Continúa a la siguiente pregunta después del feedback
-    /// </summary>
     private void ContinuarDespuesFeedback()
     {
-        canvasFeedback.SetActive(false);
+        if (canvasFeedback != null)
+            canvasFeedback.SetActive(false);
+        
         preguntaActual++;
         
         if (preguntaActual < preguntas.Count)
         {
-            canvasQuiz.SetActive(true);
+            ConfigurarBotones();
             MostrarPregunta();
+            if (canvasPreguntasImagenes != null)
+                canvasPreguntasImagenes.SetActive(true);
         }
         else
         {
@@ -375,140 +527,298 @@ public class QuizGavilan : MonoBehaviour
         }
     }
     
-    /// <summary>
-    /// Muestra el resultado final del quiz
-    /// </summary>
     private void MostrarResultado()
     {
-        canvasQuiz.SetActive(false);
-        canvasFeedback.SetActive(false);
-        canvasResultado.SetActive(true);
-        
+        quizEnProgreso = false;
         bool ganoMedalla = respuestasCorrectas >= preguntasParaGanar;
+        
+        Debug.Log($"[QuizGavilan] ========== RESULTADO DEL QUIZ ==========");
+        Debug.Log($"[QuizGavilan] Respuestas correctas: {respuestasCorrectas}/{preguntas.Count}");
+        Debug.Log($"[QuizGavilan] Mínimo requerido: {preguntasParaGanar}");
+        Debug.Log($"[QuizGavilan] ¿Ganó medalla?: {ganoMedalla}");
+        Debug.Log($"[QuizGavilan] ======================================");
         
         if (ganoMedalla)
         {
-            // ¡Victoria!
-            if (victoriaSound != null)
-            {
+            Debug.Log("[QuizGavilan] ¡QUIZ APROBADO! Reproduciendo sonido de victoria y completando desafío...");
+            if (victoriaSound != null && AudioSourceSFX.instance != null)
                 AudioSourceSFX.instance.PlaySound(victoriaSound);
-            }
             
-            if (resultadoTituloText != null)
-            {
-                resultadoTituloText.text = "¡Felicidades!";
-            }
-            if (resultadoDescripcionText != null)
-            {
-                resultadoDescripcionText.text = $"Has respondido {respuestasCorrectas} de {preguntas.Count} preguntas correctamente.\n\n¡Has ganado la Medalla del Gavilán!\n\nAhora comprendes la importancia de las cadenas tróficas y cómo proteger el ecosistema.";
-            }
-            if (medallaContainer != null)
-            {
-                medallaContainer.SetActive(true);
-            }
-            
-            // Otorgar logro
             CompletarDesafio();
         }
         else
         {
-            // No ganó la medalla
-            if (resultadoTituloText != null)
-            {
-                resultadoTituloText.text = "¡Sigue intentando!";
-            }
-            if (resultadoDescripcionText != null)
-            {
-                resultadoDescripcionText.text = $"Has respondido {respuestasCorrectas} de {preguntas.Count} preguntas correctamente.\n\nNecesitas al menos {preguntasParaGanar} respuestas correctas para ganar la medalla.\n\nTe recomendamos ver el video nuevamente para aprender más sobre las cadenas tróficas.";
-            }
-            if (medallaContainer != null)
-            {
-                medallaContainer.SetActive(false);
-            }
+            Debug.Log("[QuizGavilan] Quiz no aprobado. El jugador puede intentar de nuevo.");
         }
         
+        MostrarDialogoResultado(ganoMedalla);
         quizCompletado = ganoMedalla;
+        
+        Debug.Log($"[QuizGavilan] quizCompletado = {quizCompletado}");
     }
     
-    /// <summary>
-    /// Completa el desafío y otorga la insignia
-    /// </summary>
+    private void MostrarDialogoResultado(bool victoria)
+    {
+        if (canvasFeedback != null)
+        {
+            var tituloCorrecto = canvasFeedback.transform.Find("Titulo correcto");
+            if (tituloCorrecto != null)
+            {
+                tituloCorrecto.gameObject.SetActive(victoria);
+                var text = tituloCorrecto.GetComponent<Text>();
+                if (text != null) text.text = victoria ? "¡FELICIDADES!" : "¡Sigue intentando!";
+            }
+            
+            var subtituloCorrecto = canvasFeedback.transform.Find("Subtitulo correcto");
+            if (subtituloCorrecto != null)
+            {
+                subtituloCorrecto.gameObject.SetActive(victoria);
+                var text = subtituloCorrecto.GetComponent<Text>();
+                if (text != null) text.text = victoria ? "¡Has ganado la Medalla del Gavilán!" : "";
+            }
+            
+            var tituloIncorrecto = canvasFeedback.transform.Find("Titulo incorrecto");
+            if (tituloIncorrecto != null) tituloIncorrecto.gameObject.SetActive(!victoria);
+            
+            var feedbackTextObj = canvasFeedback.transform.Find("Feedback");
+            if (feedbackTextObj != null)
+            {
+                var feedbackText = feedbackTextObj.GetComponent<Text>();
+                if (feedbackText != null)
+                {
+                    if (victoria)
+                        feedbackText.text = "Has respondido " + respuestasCorrectas + " de " + preguntas.Count + " preguntas correctamente.\n\nAhora comprendes la importancia de las cadenas tróficas.\n\nRecuerda: NO debes alimentar o cazar animales silvestres.";
+                    else
+                        feedbackText.text = "Has respondido " + respuestasCorrectas + " de " + preguntas.Count + " preguntas correctamente.\n\nNecesitas al menos " + preguntasParaGanar + " respuestas correctas.\n\nTe recomendamos ver el video nuevamente.";
+                }
+            }
+            
+            var checkObj = canvasFeedback.transform.Find("check");
+            if (checkObj != null) checkObj.gameObject.SetActive(victoria);
+            
+            var crossObj = canvasFeedback.transform.Find("cross");
+            if (crossObj != null) crossObj.gameObject.SetActive(!victoria);
+            
+            var buttonObj = canvasFeedback.transform.Find("Button");
+            if (buttonObj != null)
+            {
+                var button = buttonObj.GetComponent<Button>();
+                if (button != null)
+                {
+                    button.onClick.RemoveAllListeners();
+                    button.onClick.AddListener(CerrarResultado);
+                }
+            }
+            
+            if (pacoCorrecto != null) pacoCorrecto.SetActive(victoria);
+            if (pacoIncorrecto != null) pacoIncorrecto.SetActive(!victoria);
+            
+            canvasFeedback.SetActive(true);
+        }
+    }
+    
     private void CompletarDesafio()
     {
-        Debug.Log("[QuizGavilan] ¡Desafío completado! Otorgando insignia del Gavilán.");
+        Debug.Log("[QuizGavilan] ¡Desafío completado!");
+        
+        // ========================================
+        // PASO 1: DESBLOQUEAR EL PASO (CRÍTICO - SIEMPRE SE EJECUTA)
+        // ========================================
+        if (cage != null)
+        {
+            Debug.Log("[QuizGavilan] Destruyendo cage para desbloquear el paso");
+            Destroy(cage);
+        }
+        else
+        {
+            Debug.LogWarning("[QuizGavilan] cage no está asignado. El paso no se desbloqueará!");
+        }
+        
+        // Actualizar Player Data (crítico) - CON VERIFICACIÓN
+        if (Player.instance != null && Player.instance.playerData != null)
+        {
+            // Verificar que el array de misiones tenga suficiente tamaño
+            if (Player.instance.playerData.misiones != null && Player.instance.playerData.misiones.Length > 2)
+            {
+                Player.instance.playerData.misiones[2] = true;
+                Debug.Log("[QuizGavilan] PlayerData actualizado: misiones[2] = true");
+            }
+            else
+            {
+                Debug.LogWarning("[QuizGavilan] El array de misiones no tiene suficientes elementos. Tamaño: " + (Player.instance.playerData.misiones?.Length ?? 0));
+            }
+            
+            // Verificar que el array de logros tenga suficiente tamaño
+            if (Player.instance.playerData.logros != null && Player.instance.playerData.logros.Length > 2)
+            {
+                Player.instance.playerData.logros[2] = DateTime.Now.ToString();
+                Debug.Log("[QuizGavilan] PlayerData actualizado: logros[2] = " + Player.instance.playerData.logros[2]);
+            }
+            else
+            {
+                Debug.LogWarning("[QuizGavilan] El array de logros no tiene suficientes elementos. Tamaño: " + (Player.instance.playerData.logros?.Length ?? 0));
+            }
+        }
+        else
+        {
+            Debug.LogWarning("[QuizGavilan] Player.instance o playerData es null");
+        }
         
         // Actualizar diálogos
         if (dialogoDesafioPendiente != null) dialogoDesafioPendiente.SetActive(false);
         if (dialogoDesafioCompleto != null) dialogoDesafioCompleto.SetActive(true);
         
-        // Dar experiencia
+        // Dar experiencia si es posible
         if (fpscontroller != null)
         {
-            fpscontroller.GetComponent<Player>().gainEXP(4);
+            var player = fpscontroller.GetComponent<Player>();
+            if (player != null) 
+            {
+                player.gainEXP(4);
+                Debug.Log("[QuizGavilan] EXP otorgado: +4");
+            }
         }
         
-        // Progresar logro (índice 2 es el del Gavilán según el sistema actual)
+        // Iniciar siguiente desafío
+        ChallengePass5.inicio = DateTime.Now;
+        
+        // ========================================
+        // PASO 2: LOGROS Y MEDALLAS (OPCIONAL - SI EXISTE LogroSist)
+        // ========================================
         if (LogroSist != null)
         {
             LogrosGlobales logros = LogroSist.GetComponent<LogrosGlobales>();
-            logros.ProgresarLogro(2);
-            logros.ProgresarMision(2, "Test Cadenas Tróficas");
-            
-            // Registrar en servidor
-            Mision mision = logros.misiones[2];
-            Player.instance.playerData.misiones[2] = true;
-            Player.instance.playerData.logros[2] = DateTime.Now.ToString();
-            
-            if (!GameManager.OfflineMode)
+            if (logros != null)
             {
-                Peticiones.instance.registerPlayerMission(mision.nombre, Player.instance.playerData, inicio.ToString("yyyy-MM-dd hh:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-                Peticiones.instance.registerFinishMission(Player.instance.playerData, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), this.levelId);
-                Peticiones.instance.registerPlayerPrize(logros.logros[2].nombre, Player.instance.playerData);
+                // Verificar que las listas estén inicializadas
+                if (logros.logros != null && logros.logros.Count > 2 && logros.misiones != null && logros.misiones.Count > 2)
+                {
+                    Debug.Log("[QuizGavilan] LogrosGlobales encontrado, registrando logro y misión");
+                    
+                    try
+                    {
+                        // Progresar logro y misión
+                        logros.ProgresarLogro(2);
+                        logros.ProgresarMision(2, "Test Cadenas Tróficas");
+                        
+                        // Actualizar UI de estrellas/desafíos
+                        if (cantidadEstrellas != null && desafioText != null)
+                        {
+                            int x = 0, y = 0;
+                            int.TryParse(cantidadEstrellas.text, out x);
+                            int.TryParse(desafioText.text, out y);
+                            cantidadEstrellas.text = (x + 10).ToString();
+                            desafioText.text = (y + 1).ToString();
+                        }
+                        
+                        // Registrar en servidor
+                        Mision mision = logros.misiones[2];
+                        
+                        if (!GameManager.OfflineMode)
+                        {
+                            Debug.Log("[QuizGavilan] Registrando misión completada (online)");
+                            Peticiones.instance.registerPlayerMission(mision.nombre, Player.instance.playerData, inicio.ToString("yyyy-MM-dd hh:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                            Peticiones.instance.registerFinishMission(Player.instance.playerData, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), levelId);
+                            Peticiones.instance.registerPlayerPrize(logros.logros[2].nombre, Player.instance.playerData);
+                        }
+                        else
+                        {
+                            Debug.Log("[QuizGavilan] Registrando misión completada (offline)");
+                            var acObj = GameObject.Find("ActionLogger");
+                            if (acObj != null)
+                            {
+                                ActionLogger ac = acObj.GetComponent<ActionLogger>();
+                                if (ac != null && ac.actionLogger != null)
+                                {
+                                    ac.actionLogger.online = false;
+                                    ac.actionLogger.agregarPeticion("mision", mision.nombre, Player.instance.playerData.Token, inicio.ToString("yyyy-MM-dd hh:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                                    ac.actionLogger.agregarPeticion("finish mision", "" + levelId, Player.instance.playerData.Token, null, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                                    ac.actionLogger.agregarPeticion("prize", logros.logros[2].nombre, Player.instance.playerData.Token, inicio.ToString("yyyy-MM-dd hh:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                                }
+                            }
+                        }
+                        
+                        CreateStadistics();
+                    }
+                    catch (System.Exception e)
+                    {
+                        Debug.LogWarning("[QuizGavilan] Error al registrar logros/misiones: " + e.Message);
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("[QuizGavilan] LogrosGlobales no está completamente inicializado. Logros: " + (logros.logros?.Count ?? 0) + ", Misiones: " + (logros.misiones?.Count ?? 0));
+                }
             }
             else
             {
-                ActionLogger ac = GameObject.Find("ActionLogger").GetComponent<ActionLogger>();
-                ac.actionLogger.online = false;
-                ac.actionLogger.agregarPeticion("mision", mision.nombre, Player.instance.playerData.Token, inicio.ToString("yyyy-MM-dd hh:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-                ac.actionLogger.agregarPeticion("finish mision", "" + this.levelId, Player.instance.playerData.Token, null, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-                ac.actionLogger.agregarPeticion("prize", logros.logros[2].nombre, Player.instance.playerData.Token, inicio.ToString("yyyy-MM-dd hh:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                Debug.LogWarning("[QuizGavilan] No se encontró componente LogrosGlobales en LogroSist");
             }
         }
+        else
+        {
+            Debug.LogWarning("[QuizGavilan] LogroSist no está asignado. Se omitirá el registro de logros/medallas.");
+        }
         
-        // Crear estadísticas
-        CreateStadistics();
-        
-        // Iniciar siguiente misión
-        ChallengePass5.inicio = DateTime.Now;
+        Debug.Log("[QuizGavilan] Desafío completado exitosamente - PASO DESBLOQUEADO");
     }
     
-    /// <summary>
-    /// Cierra el resultado y vuelve al juego
-    /// </summary>
     private void CerrarResultado()
     {
-        canvasResultado.SetActive(false);
+        Debug.Log("[QuizGavilan] Cerrando resultado del quiz");
+        
+        if (canvasFeedback != null) canvasFeedback.SetActive(false);
+        if (canvasPreguntasImagenes != null) canvasPreguntasImagenes.SetActive(false);
         
 #if UNITY_ANDROID || UNITY_IOS
         if (joystick != null) joystick.SetActive(true);
 #endif
         
-        Time.timeScale = 1f;
-        MenuPausa.instance.Reanudar();
-        
-        var player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
+        if (controlPanel != null)
         {
-            player.GetComponent<MouseController>().enabled = true;
+            var animator = controlPanel.GetComponent<Animator>();
+            if (animator != null) animator.SetBool("hide", false);
+        }
+        
+        Time.timeScale = 1f;
+        
+        // Reanudar con verificación de seguridad
+        if (MenuPausa.instance != null)
+        {
+            try
+            {
+                MenuPausa.instance.Reanudar();
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogWarning("[QuizGavilan] Error al reanudar MenuPausa: " + e.Message);
+            }
+        }
+        
+        // Reactivar el mouse controller con verificación
+        try
+        {
+            var player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                var mouseController = player.GetComponent<MouseController>();
+                if (mouseController != null) 
+                {
+                    mouseController.enabled = true;
+                }
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogWarning("[QuizGavilan] Error al reactivar MouseController: " + e.Message);
         }
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        
+        Debug.Log("[QuizGavilan] Quiz cerrado correctamente");
     }
     
-    /// <summary>
-    /// Envía la petición de inicio de misión al servidor
-    /// </summary>
     public void SendStartRequest()
     {
         try
@@ -517,74 +827,69 @@ public class QuizGavilan : MonoBehaviour
             {
                 JObject res = Peticiones.instance.registerStartMission("Bosque-Estación 4", Player.instance.playerData, inicio.ToString("yyyy-MM-dd hh:mm:ss"));
                 if (res != null && res["payload"] != null && res["payload"]["GameLevelInstanceId"] != null)
-                {
                     levelId = (int)res["payload"]["GameLevelInstanceId"];
-                }
             }
             else
             {
-                ActionLogger ac = GameObject.Find("ActionLogger").GetComponent<ActionLogger>();
-                ac.actionLogger.online = false;
-                ac.actionLogger.agregarPeticion("start mision", "Bosque-Estación 4", Player.instance.playerData.Token, inicio.ToString("yyyy-MM-dd hh:mm:ss"), null);
+                var acObj = GameObject.Find("ActionLogger");
+                if (acObj != null)
+                {
+                    ActionLogger ac = acObj.GetComponent<ActionLogger>();
+                    if (ac != null && ac.actionLogger != null)
+                    {
+                        ac.actionLogger.online = false;
+                        ac.actionLogger.agregarPeticion("start mision", "Bosque-Estación 4", Player.instance.playerData.Token, inicio.ToString("yyyy-MM-dd hh:mm:ss"), null);
+                    }
+                }
             }
         }
         catch (Exception e)
         {
-            Debug.Log("[QuizGavilan] Error al registrar inicio de nivel: " + e.Message);
+            Debug.Log("[QuizGavilan] Error al registrar inicio: " + e.Message);
         }
     }
     
-    /// <summary>
-    /// Crea las estadísticas del desafío completado
-    /// </summary>
     public void CreateStadistics()
     {
         try
         {
+            if (LogroSist == null) return;
+            var logrosGlobales = LogroSist.GetComponent<LogrosGlobales>();
+            if (logrosGlobales == null || logrosGlobales.misiones == null || logrosGlobales.misiones.Count <= 2) return;
+            
             StadisticsData.Stadistics tmp1 = new StadisticsData.Stadistics("mission_data");
-            string name = LogroSist.GetComponent<LogrosGlobales>().misiones[2].nombre;
-            StadisticsData.DataMission dat1 = new StadisticsData.DataMission(inicio, name);
+            StadisticsData.DataMission dat1 = new StadisticsData.DataMission(inicio, logrosGlobales.misiones[2].nombre);
             tmp1.data = dat1;
-            string json = JsonConvert.SerializeObject(tmp1, Formatting.Indented);
-            GameManager.instance.CallEnumerator(json);
+            GameManager.instance.CallEnumerator(JsonConvert.SerializeObject(tmp1, Formatting.Indented));
             GameManager.estas.lista.Add(tmp1);
             
             StadisticsData.Stadistics tmp2 = new StadisticsData.Stadistics("experiencie_data");
             StadisticsData.DataExperiencie dat2 = new StadisticsData.DataExperiencie(4);
             tmp2.data = dat2;
-            string json2 = JsonConvert.SerializeObject(tmp2, Formatting.Indented);
-            GameManager.instance.CallEnumerator(json2);
+            GameManager.instance.CallEnumerator(JsonConvert.SerializeObject(tmp2, Formatting.Indented));
             GameManager.estas.lista.Add(tmp2);
             
-            StadisticsData.Stadistics tmp3 = new StadisticsData.Stadistics("prize_data");
-            string prize = LogroSist.GetComponent<LogrosGlobales>().logros[2].nombre;
-            StadisticsData.DataPrize dat3 = new StadisticsData.DataPrize(prize);
-            tmp3.data = dat3;
-            string json3 = JsonConvert.SerializeObject(tmp3, Formatting.Indented);
-            GameManager.instance.CallEnumerator(json3);
-            GameManager.estas.lista.Add(tmp3);
+            if (logrosGlobales.logros != null && logrosGlobales.logros.Count > 2)
+            {
+                StadisticsData.Stadistics tmp3 = new StadisticsData.Stadistics("prize_data");
+                StadisticsData.DataPrize dat3 = new StadisticsData.DataPrize(logrosGlobales.logros[2].nombre);
+                tmp3.data = dat3;
+                GameManager.instance.CallEnumerator(JsonConvert.SerializeObject(tmp3, Formatting.Indented));
+                GameManager.estas.lista.Add(tmp3);
+            }
         }
         catch (Exception e)
         {
-            Debug.LogWarning("[QuizGavilan] Error creando estadísticas: " + e.Message);
+            Debug.LogWarning("[QuizGavilan] Error estadísticas: " + e.Message);
         }
     }
     
-    /// <summary>
-    /// Método público para verificar si el quiz ya fue completado
-    /// </summary>
-    public bool EstaCompletado()
-    {
-        return quizCompletado;
-    }
+    public bool EstaCompletado() { return quizCompletado; }
     
-    /// <summary>
-    /// Resetea el quiz para permitir reintentos
-    /// </summary>
     public void ResetearQuiz()
     {
         preguntaActual = 0;
         respuestasCorrectas = 0;
-        quizCompletado = false;
+        quizEnProgreso = false;
     }
 }

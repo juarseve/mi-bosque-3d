@@ -11,7 +11,7 @@ public class Final : MonoBehaviour
 {
 
     public Estacion station;
-    public GameObject stationScreen, panelPersonaje, canvasDialogo, Panel, mira, certificadoCanvas,Contenido;
+    public GameObject stationScreen, panelPersonaje, canvasDialogo, Panel, mira, certificadoCanvas, Contenido;
     public Text dialogoPersonaje;
     public Sprite medalla;
     private string texto, nestrellas, ndesafios, nestaciones;
@@ -62,7 +62,7 @@ public class Final : MonoBehaviour
         ndesafios = "\n- Misiones completados correctamente " + Player.instance.playerData.numDesafiosCompletados.ToString() + " de 7";
         //nestaciones = "\n \n - Estaciones visitadas " + stations.ToString() + " de 6";
         final = texto + nestrellas + ndesafios + nestaciones;
-        final2 = "Durante toda tu aventura:\nDescubriste especies.\nAyudaste al conejo bebé llegar a su madriguera.\nReuniste comida para el gavilán\nApagaste un incendio.";
+        final2 = "Durante toda tu aventura:\nDescubriste especies.\nAyudaste al conejo bebé llegar a su madriguera.\nCompletaste el Test de Sabiduría sobre Cadenas Tróficas.\nApagaste un incendio.";
         final3 = "Reciclaste basura de nuestro bosque.\nNos ayudaste a reforestar.\nPor esto y mucho más...";
         final4 = Player.instance.playerData.nombre + " eres acreedor de la medalla de protector del Bosque La Prosperina.\nRecuerda siempre cuidar de los diversos ecosistemas del planeta.\nSigue así, campeón.";
         Dialogue dialogue = new Dialogue();

@@ -2,7 +2,7 @@
   {
     "ChallengeID": 1001,
     "codename": "gavilan_q1",
-    "question": "¿Cuál es el primer eslabón en la mayoría de las cadenas tróficas, el cual produce su propio alimento usando la luz del sol?",
+    "question": "\u00BFCu\u00E1l es el primer eslab\u00F3n en la mayor\u00EDa de las cadenas tr\u00F3ficas, el cual produce su propio alimento usando la luz del sol?",
     "score": 10,
     "image": "Questions/ImagesGavilan/pregunta1",
     "difficulty": 1,
@@ -27,7 +27,7 @@
         "ChallengeOptionId": 10012,
         "codename": "gavilan_q1_b",
         "correctOption": false,
-        "text": "Depredadores (como el gavilán)",
+        "text": "Depredadores (como el gavil\u00E1n)",
         "image": "Questions/ImagesGavilan/gavilan",
         "updatedAt": "2024-01-01"
       },
@@ -50,7 +50,7 @@
     ],
     "feedback": {
       "ChallengeFeedbackId": 1001,
-      "feedback": "Las plantas inician la cadena al transformar la energía solar en materia orgánica que servirá de alimento para otros.",
+      "feedback": "Las plantas inician la cadena al transformar la energ\u00EDa solar en materia org\u00E1nica que servir\u00E1 de alimento para otros.",
       "image": "",
       "updatedAt": "2024-01-01"
     }
@@ -58,7 +58,7 @@
   {
     "ChallengeID": 1002,
     "codename": "gavilan_q2",
-    "question": "En el bosque, si un gavilán se alimenta de un ratón que comió semillas, ¿qué posición ocupa el gavilán en esta cadena?",
+    "question": "En el bosque, si un gavil\u00E1n se alimenta de un rat\u00F3n que comi\u00F3 semillas, \u00BFqu\u00E9 posici\u00F3n ocupa el gavil\u00E1n en esta cadena?",
     "score": 10,
     "image": "Questions/ImagesGavilan/pregunta2",
     "difficulty": 1,
@@ -106,7 +106,7 @@
     ],
     "feedback": {
       "ChallengeFeedbackId": 1002,
-      "feedback": "Al comerse a un herbívoro (el ratón), el gavilán se convierte en el segundo nivel de consumidores en esta secuencia.",
+      "feedback": "Al comerse a un herb\u00EDvoro (el rat\u00F3n), el gavil\u00E1n se convierte en el segundo nivel de consumidores en esta secuencia.",
       "image": "",
       "updatedAt": "2024-01-01"
     }
@@ -114,7 +114,7 @@
   {
     "ChallengeID": 1003,
     "codename": "gavilan_q3",
-    "question": "¿Por qué es importante no retirar animales de su cadena trófica (como cazar lagartijas para el gavilán)?",
+    "question": "\u00BFPor qu\u00E9 es importante no retirar animales de su cadena tr\u00F3fica (como cazar lagartijas para el gavil\u00E1n)?",
     "score": 10,
     "image": "Questions/ImagesGavilan/pregunta3",
     "difficulty": 1,
@@ -147,7 +147,7 @@
         "ChallengeOptionId": 10033,
         "codename": "gavilan_q3_c",
         "correctOption": false,
-        "text": "Porque las plantas dejarían de crecer.",
+        "text": "Porque las plantas dejar\u00EDan de crecer.",
         "image": "Questions/ImagesGavilan/bosque_pocos_arboles",
         "updatedAt": "2024-01-01"
       },
@@ -162,7 +162,7 @@
     ],
     "feedback": {
       "ChallengeFeedbackId": 1003,
-      "feedback": "Cada organismo tiene una función; si eliminamos un componente de la cadena trófica, otros animales pueden quedarse sin comida o algunos insectos pueden convertirse en plagas.",
+      "feedback": "Cada organismo tiene una funci\u00F3n; si eliminamos un componente de la cadena tr\u00F3fica, otros animales pueden quedarse sin comida o algunos insectos pueden convertirse en plagas.",
       "image": "",
       "updatedAt": "2024-01-01"
     }

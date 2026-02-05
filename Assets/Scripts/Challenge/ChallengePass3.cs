@@ -16,39 +16,56 @@ public class ChallengePass3 : MonoBehaviour
     private int levelId = 2;
     bool act=true;
 
-    //public GameObject actionLogger;
-
     public static DateTime inicio;
+    
+    // Flag para verificar si LogrosGlobales está inicializado
+    private bool logrosInicializados = false;
 
-    /*void Start()
-    {
-        actionLogger = GameObject.Find("ActionLogger");
-        
-    }*/
     void Update()
     {
-        
-        if (Nest.home && act)
+        // Verificar si LogrosGlobales está inicializado antes de usarlo
+        if (!logrosInicializados && LogroSist != null)
         {
-            //actionLogger.GetComponent<ActionLogger>().actionLogger.agregarAccion("Finish Bosque mision", "" + 2);
-            LogroSist.GetComponent<LogrosGlobales>().ProgresarLogro(1);
+            LogrosGlobales logrosGlobales = LogroSist.GetComponent<LogrosGlobales>();
+            if (logrosGlobales != null && logrosGlobales.logros != null && logrosGlobales.logros.Count > 1 && logrosGlobales.misiones != null && logrosGlobales.misiones.Count > 1)
+            {
+                logrosInicializados = true;
+                Debug.Log("[ChallengePass3] LogrosGlobales inicializado correctamente");
+            }
+            else
+            {
+                // Aún no está inicializado, esperar al siguiente frame
+                return;
+            }
+        }
+        
+        if (Nest.home && act && logrosInicializados)
+        {
+            act = false; // Marcar inmediatamente para evitar múltiples ejecuciones
+            
+            Debug.Log("[ChallengePass3] Completando misión del conejo");
+            
+            // Seguir el mismo patrón que ChallengePass4 y ChallengePass5
             fpscontroller.GetComponent<Player>().gainEXP(3);
+            LogroSist.GetComponent<LogrosGlobales>().ProgresarLogro(1);
             LogroSist.GetComponent<LogrosGlobales>().ProgresarMision(1, "Devolver el conejo a su madriguera");
+            
             dialogoDesafioPendiente.SetActive(false);
             dialogoDesafioCompleto.SetActive(true);
+            
             Player.instance.playerData.misiones[1] = true;
             Mision mision = (LogroSist.GetComponent<LogrosGlobales>()).misiones[1];
+            
             ChallengePass4.inicio = DateTime.Now;
+            
             if (!GameManager.OfflineMode)
             {
                 Debug.Log("el level id es ----------------- " + this.levelId);
-                Debug.Log("Intento con online1");
                 Peticiones.instance.registerPlayerMission(mision.nombre, Player.instance.playerData, inicio.ToString("yyyy-MM-dd hh:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
                 Peticiones.instance.registerFinishMission(Player.instance.playerData, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), this.levelId);
             }
             else
             {
-
                 ActionLogger ac = GameObject.Find("ActionLogger").GetComponent<ActionLogger>();
                 if (!GameManager.OfflineMode)
                 {
@@ -69,14 +86,13 @@ public class ChallengePass3 : MonoBehaviour
             }
 
             Player.instance.playerData.logros[1] = DateTime.Now.ToString();
+            
             if (!GameManager.OfflineMode)
             {
-                Debug.Log("Intento con online1");
                 Peticiones.instance.registerPlayerPrize((LogroSist.GetComponent<LogrosGlobales>()).logros[1].nombre, Player.instance.playerData);
             }
             else
             {
-
                 ActionLogger ac = GameObject.Find("ActionLogger").GetComponent<ActionLogger>();
                 if (!GameManager.OfflineMode)
                 {
@@ -94,12 +110,11 @@ public class ChallengePass3 : MonoBehaviour
                     Debug.Log("act logger component not found");
                 }
             }
+            
             haloNest.SetActive(false);
             recordatorio.SetActive(false);
             audioVocals.reproducirAlt();
-            act=false;
             CreateStadistics();
-            
         }
     }
 
@@ -120,7 +135,6 @@ public class ChallengePass3 : MonoBehaviour
             }
             else
             {
-
                 ActionLogger ac = GameObject.Find("ActionLogger").GetComponent<ActionLogger>();
                 if (!GameManager.OfflineMode)
                 {
@@ -138,7 +152,6 @@ public class ChallengePass3 : MonoBehaviour
                     Debug.Log("act logger component not found");
                 }
             }
-
         }
         catch
         {
@@ -146,7 +159,8 @@ public class ChallengePass3 : MonoBehaviour
         }
     }
 
-    public void CreateStadistics(){
+    public void CreateStadistics()
+    {
         StadisticsData.Stadistics tmp1 = new StadisticsData.Stadistics("mission_data");
         string name = LogroSist.GetComponent<LogrosGlobales>().misiones[1].nombre;
         StadisticsData.DataMission dat1 = new StadisticsData.DataMission(inicio,name);
@@ -159,7 +173,7 @@ public class ChallengePass3 : MonoBehaviour
         StadisticsData.DataExperiencie dat2 = new StadisticsData.DataExperiencie(5);
         tmp2.data = dat2;
         string json2 = JsonConvert.SerializeObject(tmp2,Formatting.Indented);
-        GameManager.instance.CallEnumerator(json);
+        GameManager.instance.CallEnumerator(json2);
         GameManager.estas.lista.Add(tmp2);
         //
         StadisticsData.Stadistics tmp3 = new StadisticsData.Stadistics("prize_data");

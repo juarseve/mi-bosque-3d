@@ -1,4 +1,4 @@
-{
+﻿{
   "botones": {
     "retroceder": "RETROCEDER",
     "continuar": "CONTINUAR",
@@ -352,22 +352,16 @@
     "recordatorio": "Atrapa al conejo bebé devuelvelo a su madriguera a tiempo."
   },
   "fourth_challenge": {
-    "title_suelo": "RECUERDA",
-    "sentence_suelo": "¡Mira al suelo! Las especies son muy importantes para la vida en el bosque, ¡no las pises sin cuidado!",
-
-    "title_0": "Ayuda emplumada",
-    "title_1": "Entrega el alimento",
-    "title_2": "Entrega de comida",
-
-    "sentence_0": "Nuestro amigo el Gavilán Dorsigris, se ha lastimado una de sus alas y no puede conseguir su alimento por si solo.",
-    "sentence_1": "Para este reto debes BUSCAR dos ratones y una salamandra. Presta atención, es posible que los escuches cuando estés cerca.\n\nPara solicitar ayuda presiona la letra P.",
-    "sentence_2": "Una vez que has capturado el alimento, debes colocarlos en la zona indicada dando clic.\n\nEste es un ejemplo de cadena trófica de las especies y cómo se alimentan.",
-
-    "title_completado": "¡Lo haz hecho muy bien!",
-    "sentence_completado": "Gracias por cazar el alimento para el Gavilán Dorsigris, estamos seguros que se recuperará pronto y podrá cazar solo. En un bosque real evita acercarte a su alimento.",
-    "title_pendiente": "No lo defraudes",
-    "sentence_pendiente": "COLECTA el alimento y DEJALO en la zona designada usando tu CLIC.\nNuestro amigo cuenta contigo para recuperarse. Busca en los alerededores, seguro encuentras lo que necesita."
-  },
+    
+                             "title_suelo":  "Test de Sabidur\u00EDa",
+                             "sentence_suelo":  "\u00A1Es hora de ayudar a nuestro amigo emplumado!\n\nCon este \"Test de Sabidur\u00EDa\" sobre las Cadenas Tr\u00F3ficas, cada acierto le devolver\u00E1 la fuerza necesaria para sanar.\n\nAl comprender c\u00F3mo funciona la naturaleza, proteges al gavil\u00E1n y a todo su ecosistema sin necesidad de intervenir negativamente.\n\nRecuerda que NO debes alimentar o cazar animales silvestres.",
+                             "title_0":  "Test de Sabidur\u00EDa",
+                             "sentence_0":  "\u00A1Es hora de ayudar a nuestro amigo emplumado!\n\nCon este \"Test de Sabidur\u00EDa\" sobre las Cadenas Tr\u00F3ficas, cada acierto le devolver\u00E1 la fuerza necesaria para sanar.\n\nAl comprender c\u00F3mo funciona la naturaleza, proteges al gavil\u00E1n y a todo su ecosistema sin necesidad de intervenir negativamente.\n\nRecuerda que NO debes alimentar o cazar animales silvestres.",
+                             "title_completado":  "\u00A1Felicidades, Guardabosque Sabio!",
+                             "sentence_completado":  "Has completado exitosamente el Test de Sabidur\u00EDa sobre Cadenas Tr\u00F3ficas.\n\nAhora comprendes c\u00F3mo funciona la naturaleza y la importancia de proteger el equilibrio del ecosistema.\n\nGracias a tu conocimiento, ayudaste al gavil\u00E1n sin intervenir negativamente en su h\u00E1bitat.",
+                             "title_pendiente":  "\u00A1No te rindas!",
+                             "sentence_pendiente":  "El gavil\u00E1n necesita tu ayuda.\n\nCompleta el Test de Sabidur\u00EDa sobre Cadenas Tr\u00F3ficas para obtener la medalla.\n\nRecuerda: necesitas responder correctamente al menos 2 de 3 preguntas.\n\nSi necesitas ayuda, puedes ver el video nuevamente."
+                         },
   "fifth_challenge": {
     "title_vidrio": "¡Cuidado!",
     "sentence_vidrio": "El vidrio al sol funciona como una lupa y puede encender las hojas secas. Recógelo siempre para evitar incendios y cuidar el planeta.",
