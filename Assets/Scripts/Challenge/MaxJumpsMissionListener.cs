@@ -27,7 +27,9 @@ public class MaxJumpsMissionListener : MonoBehaviour
 
         Debug.Log("Listener RECEIVED jump");
         jumpCount++;
-    
+        if (jumpCount == 1) {
+            logros.ProgresarLogro(20);
+        }
         if (jumpCount > maxJumps)
         {
             missionFailed = true;

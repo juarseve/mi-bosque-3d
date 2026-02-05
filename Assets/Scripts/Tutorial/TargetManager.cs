@@ -11,11 +11,8 @@ public class TargetManager : MonoBehaviour
     // Singleton instance
     public static TargetManager instance;
 
-    int currentTarget;
-
     public string[] message;
     public Text text;
-    int index;
 
     public FirstPersonController player;
 
@@ -30,12 +27,6 @@ public class TargetManager : MonoBehaviour
     public GameObject keyboardImage;
     public GameObject keyboardRun;
     public GameObject keyboardJump;
-
-    bool canNext = true;
-
-    bool islooked;
-
-    bool isDone;
 
     public bool salto = false;
     public bool bandera = false;
@@ -61,14 +52,6 @@ public class TargetManager : MonoBehaviour
             message[i] = LanguageManager.Instancia.ObtenerTexto("tutorial.dialogo_" + i);
         }
 
-    }
-
-    void Start()
-    {
-    }
-
-    void Update()
-    {
     }
 
     void SetPlayerControl(bool enabled)
@@ -104,7 +87,7 @@ public class TargetManager : MonoBehaviour
         SetPlayerControl(true);
         panel.SetActive(true);
         keyboardImage.SetActive(true);
-        text.text = "Use WASD to move";
+        text.text = "Usa las teclas WASD para moverte";
 
         StartCoroutine(WaitForMovement());
     }
@@ -129,7 +112,7 @@ public class TargetManager : MonoBehaviour
     void ShowRunStep()
     {
         currentStep = TutorialStep.Run;
-        text.text = "Hold Shift to run";
+        text.text = "Manten presionado Shift para correr";
         keyboardRun.SetActive(true);
         StartCoroutine(WaitForRun());
     }
@@ -160,7 +143,7 @@ public class TargetManager : MonoBehaviour
     void ShowJumpStep()
     {
         currentStep = TutorialStep.Jump;
-        text.text = "Press Space to jump";
+        text.text = "Presiona la tecla Espacio para saltar";
         keyboardJump.SetActive(true);
         StartCoroutine(WaitForJump());
     }

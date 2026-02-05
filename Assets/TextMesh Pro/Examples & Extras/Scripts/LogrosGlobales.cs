@@ -710,6 +710,17 @@ public class LogrosGlobales : MonoBehaviour
 
     public bool ProgresarLogro(int numeroLogro)
     {
+        if (numeroLogro == 20) {
+            // notificaciones.transform.Find("Titulo").gameObject.SetActive(false);
+            for (int i = 0; i < notificaciones.transform.childCount; i++)
+            {
+                Debug.Log(notificaciones.transform.GetChild(i).name);
+            }
+
+            notificaciones.SetActive(true);
+            countdown = 4;
+            notificaciones.GetComponent<NotificarLogros>().Encolar("Recordatorio No Saltar", "Primer Aviso: es peligroso saltar, no saltes.", logros[8].imagen);
+        }
         //Debug.Log("**********************logros:" + logros.Count);
         tempResult = logros[numeroLogro].Progreso();
         //Debug.Log("**********************en progresar logro inicio es " + tempResult);

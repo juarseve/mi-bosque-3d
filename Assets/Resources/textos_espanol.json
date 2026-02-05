@@ -311,7 +311,7 @@
     "sentence_0": "¡Hola soy Paco! Y te doy la bienvenida al Bosque Protector Prosperina.",
     "sentence_1": "Explora y proteje el bosque y sus especies para convertirte en un Guardabosque.",
     "sentence_2": "Para interactuar con objetos y aprender sobre los animales y las plantas del bosque, céntralos en el PUNTO DE MIRA en tu pantalla y hazles CLIC.",
-    "sentence_3": "En una visita real al bosque necesitas la ayuda de un GUÍA quien te informará de la ruta, y que existen zonas que podrían ser peligrosas.",
+    "sentence_3": "En una visita real al bosque necesitas la ayuda de un GUÍA quien te informará de la ruta, y que existen zonas que podrían ser peligrosas. Recuerda buen comportamiento, no saltar ni correr.",
     "sentence_4": "Para familiarizarte con el bosque, tu primera misión será encontrar 3 especies: una ardilla, una iguana y un pechiche."
   },
   "conseguir_libro": {
@@ -530,9 +530,5 @@
     "fernan_sanchez": ">Fernan Sánchez<\nClic en el árbol\npara más información",
     "guasmo": ">Guasmo<\nClic en el árbol\npara más información",
     "guayacan": ">Guayacán<\nClic en el árbol\npara más información"
-  },
-  "trash_classification": {
-    "title": "¡HORA DE RECICLAR!",
-    "sentence": "Necesito tu ayuda para clasificar la basura en los diferentes contenedores. ¿Estás listo para convertirte en un maestro del reciclaje? Abre tu mochila presionando M para comenzar."
   }
 }
