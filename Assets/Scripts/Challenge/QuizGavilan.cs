@@ -107,6 +107,22 @@ public class QuizGavilan : MonoBehaviour
         CargarPreguntas();
     }
     
+    private void OnEnable()
+    {
+        LanguageEvents.OnLanguageChanged += RecargarPreguntasPorIdioma;
+    }
+    
+    private void OnDisable()
+    {
+        LanguageEvents.OnLanguageChanged -= RecargarPreguntasPorIdioma;
+    }
+    
+    private void RecargarPreguntasPorIdioma(string nuevoIdioma)
+    {
+        Debug.Log("[QuizGavilan] ?? Recargando preguntas del Gavilán para idioma: " + nuevoIdioma);
+        CargarPreguntas();
+    }
+    
     private void CargarPreguntas()
     {
         string path = "Questions/PreguntasGavilan";

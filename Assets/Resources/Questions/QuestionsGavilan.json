@@ -1,0 +1,170 @@
+[
+  {
+    "ChallengeID": 1001,
+    "codename": "gavilan_q1",
+    "question": "What is the first link in most food chains, which produces its own food using sunlight?",
+    "score": 10,
+    "image": "Questions/ImagesGavilan/pregunta1",
+    "difficulty": 1,
+    "updatedAt": "2024-01-01",
+    "Category": "CadenaTrofica",
+    "gameLevelsChallenges": [
+      {
+        "GameLevelId": 4,
+        "updatedAt": "2024-01-01"
+      }
+    ],
+    "options": [
+      {
+        "ChallengeOptionId": 10011,
+        "codename": "gavilan_q1_a",
+        "correctOption": true,
+        "text": "Producers (such as plants or flowers)",
+        "image": "Questions/ImagesGavilan/Productores",
+        "updatedAt": "2024-01-01"
+      },
+      {
+        "ChallengeOptionId": 10012,
+        "codename": "gavilan_q1_b",
+        "correctOption": false,
+        "text": "Predators (such as the hawk)",
+        "image": "Questions/ImagesGavilan/Gavilan",
+        "updatedAt": "2024-01-01"
+      },
+      {
+        "ChallengeOptionId": 10013,
+        "codename": "gavilan_q1_c",
+        "correctOption": false,
+        "text": "Primary consumers (such as insects)",
+        "image": "Questions/ImagesGavilan/consumidores primerios (insectos)",
+        "updatedAt": "2024-01-01"
+      },
+      {
+        "ChallengeOptionId": 10014,
+        "codename": "gavilan_q1_d",
+        "correctOption": false,
+        "text": "Decomposers (such as fungi)",
+        "image": "Questions/ImagesGavilan/Descomponedores (hongos)",
+        "updatedAt": "2024-01-01"
+      }
+    ],
+    "feedback": {
+      "ChallengeFeedbackId": 1001,
+      "feedback": "Plants start the chain by transforming solar energy into organic matter that will serve as food for others.",
+      "image": "Questions/ImagesGavilan/Productores",
+      "updatedAt": "2024-01-01"
+    }
+  },
+  {
+    "ChallengeID": 1002,
+    "codename": "gavilan_q2",
+    "question": "In the forest, if a hawk eats a mouse that ate seeds, what position does the hawk occupy in this chain?",
+    "score": 10,
+    "image": "Questions/ImagesGavilan/pregunta2",
+    "difficulty": 1,
+    "updatedAt": "2024-01-01",
+    "Category": "CadenaTrofica",
+    "gameLevelsChallenges": [
+      {
+        "GameLevelId": 4,
+        "updatedAt": "2024-01-01"
+      }
+    ],
+    "options": [
+      {
+        "ChallengeOptionId": 10021,
+        "codename": "gavilan_q2_a",
+        "correctOption": false,
+        "text": "Decomposer",
+        "image": "Questions/ImagesGavilan/Gavilan",
+        "updatedAt": "2024-01-01"
+      },
+      {
+        "ChallengeOptionId": 10022,
+        "codename": "gavilan_q2_b",
+        "correctOption": false,
+        "text": "Primary consumer",
+        "image": "Questions/ImagesGavilan/Gavilan",
+        "updatedAt": "2024-01-01"
+      },
+      {
+        "ChallengeOptionId": 10023,
+        "codename": "gavilan_q2_c",
+        "correctOption": false,
+        "text": "Primary producer",
+        "image": "Questions/ImagesGavilan/Gavilan",
+        "updatedAt": "2024-01-01"
+      },
+      {
+        "ChallengeOptionId": 10024,
+        "codename": "gavilan_q2_d",
+        "correctOption": true,
+        "text": "Secondary consumer",
+        "image": "Questions/ImagesGavilan/Gavilan",
+        "updatedAt": "2024-01-01"
+      }
+    ],
+    "feedback": {
+      "ChallengeFeedbackId": 1002,
+      "feedback": "By eating a herbivore (the mouse), the hawk becomes the second level of consumers in this sequence.",
+      "image": "Questions/ImagesGavilan/Gavilan",
+      "updatedAt": "2024-01-01"
+    }
+  },
+  {
+    "ChallengeID": 1003,
+    "codename": "gavilan_q3",
+    "question": "Why is it important not to remove animals from their food chain (such as hunting lizards for the hawk)?",
+    "score": 10,
+    "image": "Questions/ImagesGavilan/pregunta3",
+    "difficulty": 1,
+    "updatedAt": "2024-01-01",
+    "Category": "CadenaTrofica",
+    "gameLevelsChallenges": [
+      {
+        "GameLevelId": 4,
+        "updatedAt": "2024-01-01"
+      }
+    ],
+    "options": [
+      {
+        "ChallengeOptionId": 10031,
+        "codename": "gavilan_q3_a",
+        "correctOption": false,
+        "text": "Because animals are friends in the forest.",
+        "image": "Questions/ImagesGavilan/mejores amigos",
+        "updatedAt": "2024-01-01"
+      },
+      {
+        "ChallengeOptionId": 10032,
+        "codename": "gavilan_q3_b",
+        "correctOption": true,
+        "text": "Because the ecosystem's balance is altered.",
+        "image": "Questions/ImagesGavilan/Bosque en problemas",
+        "updatedAt": "2024-01-01"
+      },
+      {
+        "ChallengeOptionId": 10033,
+        "codename": "gavilan_q3_c",
+        "correctOption": false,
+        "text": "Because plants would stop growing.",
+        "image": "Questions/ImagesGavilan/Bosque con pocos arboles",
+        "updatedAt": "2024-01-01"
+      },
+      {
+        "ChallengeOptionId": 10034,
+        "codename": "gavilan_q3_d",
+        "correctOption": false,
+        "text": "Because we won't be able to take photos of the animals.",
+        "image": "Questions/ImagesGavilan/Turistas en un bosque",
+        "updatedAt": "2024-01-01"
+      }
+    ],
+    "feedback": {
+      "ChallengeFeedbackId": 1003,
+      "feedback": "Each organism has a function; if we eliminate a component of the food chain, other animals may run out of food or some insects may become pests.",
+      "image": "Questions/ImagesGavilan/Bosque en problemas",
+      "updatedAt": "2024-01-01"
+    }
+  }
+]
