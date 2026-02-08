@@ -1085,7 +1085,7 @@ Transform:
   - {fileID: 1727751167}
   - {fileID: 1128441215}
   m_Father: {fileID: 193071751}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &22643178
 GameObject:
@@ -1932,7 +1932,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &48736869
 Transform:
   m_ObjectHideFlags: 0
@@ -7304,7 +7304,7 @@ MonoBehaviour:
           m_MethodName: DesactivarEvento
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 236006159}
+            m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -8025,7 +8025,7 @@ PrefabInstance:
     - target: {fileID: 8296282929582002892, guid: c9c704636f09fbe4fa928e86c71e2822,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8296282929582002892, guid: c9c704636f09fbe4fa928e86c71e2822,
         type: 3}
@@ -8134,7 +8134,7 @@ PrefabInstance:
         type: 3}
       propertyPath: listadoDestruir.Array.data[2]
       value: 
-      objectReference: {fileID: 236006159}
+      objectReference: {fileID: 0}
     - target: {fileID: 8296282929582002895, guid: c9c704636f09fbe4fa928e86c71e2822,
         type: 3}
       propertyPath: listadoDestruir.Array.data[3]
@@ -8426,7 +8426,6 @@ Transform:
   - {fileID: 2082050396}
   - {fileID: 322409296}
   - {fileID: 251529948}
-  - {fileID: 236006160}
   - {fileID: 18397517}
   - {fileID: 973869140}
   - {fileID: 180973095}
@@ -8449,7 +8448,7 @@ MonoBehaviour:
   ID: 4
   eventosActDesc:
   - {fileID: 18397516}
-  - {fileID: 236006159}
+  - {fileID: 0}
   spawn: {fileID: 322409295}
   activos: 0101
 --- !u!1001 &193480839
@@ -9275,7 +9274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &235285280
 Transform:
   m_ObjectHideFlags: 0
@@ -9319,96 +9318,6 @@ MonoBehaviour:
   - {fileID: 265120565}
   spawn: {fileID: 2005078280}
   activos: 0101
---- !u!1 &236006159
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1929496457879940, guid: dacecf7a5a5f089468269841ab1045bf,
-    type: 3}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 236006160}
-  - component: {fileID: 236006163}
-  - component: {fileID: 236006162}
-  m_Layer: 12
-  m_Name: PreguntasEstacion4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &236006160
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4095661568295176, guid: dacecf7a5a5f089468269841ab1045bf,
-    type: 3}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 236006159}
-  m_LocalRotation: {x: -0.020082202, y: 0.7245703, z: -0.012946644, w: 0.6887867}
-  m_LocalPosition: {x: -2.44, y: 4.44, z: 15.85}
-  m_LocalScale: {x: 0.20000008, y: 4, z: 18.000122}
-  m_Children: []
-  m_Father: {fileID: 193071751}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -0.51000005, y: 46.677002, z: -2.69}
---- !u!114 &236006162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 236006159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3f2ac64f7fb17f4e81348219292d91f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasAnim: {fileID: 1705269798}
-  canvasPreguntasImagenes: {fileID: 597985799}
-  canvasFeedback: {fileID: 84805604}
-  pacoCorrecto: {fileID: 483177996}
-  pacoIncorrecto: {fileID: 1639572000}
-  controlPanel: {fileID: 1474856398}
-  cantidadEstrellas: {fileID: 2050545056}
-  pregunta: {fileID: 450066900}
-  desafio: {fileID: 1177076736}
-  preguntaImagen: {fileID: 872859015}
-  Title: {fileID: 252391367}
-  "titlePeque\xF1o": {fileID: 803346132}
-  dialogo: {fileID: 677019088}
-  m_opcionAImagenes: {fileID: 2048743948}
-  m_opcionBImagenes: {fileID: 429704834}
-  m_opcionCImagenes: {fileID: 57522345}
-  m_opcionDImagenes: {fileID: 1987700832}
-  m_ImagenA: {fileID: 182385901}
-  m_ImagenB: {fileID: 152109290}
-  m_ImagenC: {fileID: 1053567272}
-  m_ImagenD: {fileID: 1557174960}
-  f_Imagen: {fileID: 1807359736}
-  n_estacion: 4
-  imagen: {fileID: 1807359736}
-  nombreEvento: DesactivarP4
-  correct: {fileID: 8300000, guid: 80062d745a5dd4c4fbbe27e3b181b734, type: 3}
-  incorrect: {fileID: 8300000, guid: 5b9cbc4eb17cc9746a6ecfafca6873ac, type: 3}
-  joystick: {fileID: 1686677600}
-  mochila: {fileID: 1104053941}
-  actionLogger: {fileID: 0}
---- !u!65 &236006163
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 65508705655347124, guid: dacecf7a5a5f089468269841ab1045bf,
-    type: 3}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 236006159}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &237444867
 GameObject:
   m_ObjectHideFlags: 0
@@ -10523,6 +10432,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 272258885}
   m_CullTransparentMesh: 0
+--- !u!114 &275806878 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3480317398773624671, guid: 4c66d3f3626d0d34d9ef33cfa403410b,
+    type: 3}
+  m_PrefabInstance: {fileID: 808151031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &282019096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20113,7 +20034,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_WalkSpeed
-      value: 50
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_RunSpeed
@@ -41002,7 +40923,7 @@ PrefabInstance:
     - target: {fileID: 8761967458599212819, guid: 6af4ed757ed56b045bf2a968327aab68,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8761967458599212819, guid: 6af4ed757ed56b045bf2a968327aab68,
         type: 3}
@@ -49982,7 +49903,7 @@ Transform:
   m_LocalScale: {x: 0.20000008, y: 4, z: 18.000055}
   m_Children: []
   m_Father: {fileID: 193071751}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -0.40600002, y: -48.079002, z: 2.219}
 --- !u!114 &1169046458
 MonoBehaviour:
@@ -50001,7 +49922,7 @@ MonoBehaviour:
   controlPanel: {fileID: 1474856398}
   preguntaText: {fileID: 872859015}
   preguntaImagenText: {fileID: 872859015}
-  imagenPregunta: {fileID: 182385901}
+  imagenPregunta: {fileID: 275806878}
   opcionA: {fileID: 2048743948}
   opcionB: {fileID: 429704834}
   opcionC: {fileID: 57522345}
@@ -50010,7 +49931,7 @@ MonoBehaviour:
   imagenB: {fileID: 152109290}
   imagenC: {fileID: 1053567272}
   imagenD: {fileID: 1557174960}
-  feedbackImagen: {fileID: 1949513065}
+  feedbackImagen: {fileID: 1807359736}
   pacoCorrecto: {fileID: 483177996}
   pacoIncorrecto: {fileID: 1639572000}
   contadorText: {fileID: 1636923385}
@@ -50022,6 +49943,7 @@ MonoBehaviour:
   LogroSist: {fileID: 0}
   fpscontroller: {fileID: 1299061560}
   cage: {fileID: 0}
+  desafioGameObject: {fileID: 1727751166}
   dialogoDesafioCompleto: {fileID: 1727751166}
   dialogoDesafioPendiente: {fileID: 964714834}
   cantidadEstrellas: {fileID: 2050545056}
@@ -86086,7 +86008,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1715500056
 Transform:
   m_ObjectHideFlags: 0
