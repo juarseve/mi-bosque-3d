@@ -44,6 +44,7 @@ public class QuizGavilan : MonoBehaviour
     public GameObject LogroSist;
     public GameObject fpscontroller;
     public GameObject cage;  // Objeto bloqueador que se destruye al completar
+    public GameObject desafioGameObject;  // GameObject "Desafio4" que se destruye al completar
     
     [Header("Diálogos Completado/Pendiente")]
     public GameObject dialogoDesafioCompleto;
@@ -149,7 +150,7 @@ public class QuizGavilan : MonoBehaviour
                 PreguntaObject[] preguntasArray = JsonHelper.GetJsonArray<PreguntaObject>(jsonText);
                 preguntas = new List<PreguntaObject>(preguntasArray);
                 
-                Debug.Log("[QuizGavilan] ? Preguntas cargadas correctamente: " + preguntas.Count);
+                Debug.Log("[QuizGavilan] ?Preguntas cargadas correctamente: " + preguntas.Count);
                 
                 // Verificar que las preguntas tengan datos válidos
                 for (int i = 0; i < preguntas.Count; i++)
@@ -398,22 +399,85 @@ public class QuizGavilan : MonoBehaviour
     
     private void CargarImagenOpcion(Image imagen, string path)
     {
-        if (imagen == null) return;
+        if (imagen == null)
+        {
+            Debug.LogWarning("[QuizGavilan] Imagen es null, no se puede cargar");
+            return;
+        }
         
         if (!string.IsNullOrEmpty(path))
         {
+            Debug.Log($"[QuizGavilan] ?? Intentando cargar imagen de opción: '{path}'");
+            
+            // Intentar cargar el sprite con el path original
             Sprite sprite = Resources.Load<Sprite>(path);
+            
+            // Si no se encuentra, intentar con variantes del nombre
+            if (sprite == null && path.Contains("Gavilan"))
+            {
+                Debug.LogWarning($"[QuizGavilan] ?? No se encontró '{path}', intentando variantes...");
+                
+                // Intentar con acento
+                string pathConAcento = path.Replace("Gavilan", "Gavilán");
+                sprite = Resources.Load<Sprite>(pathConAcento);
+                if (sprite != null) Debug.Log($"[QuizGavilan] ? Encontrado con acento: '{pathConAcento}'");
+                
+                // Intentar con espacios
+                if (sprite == null)
+                {
+                    string pathConEspacio1 = path.Replace("Gavilan", "Gavilán 1");
+                    sprite = Resources.Load<Sprite>(pathConEspacio1);
+                    if (sprite != null) Debug.Log($"[QuizGavilan] ? Encontrado: '{pathConEspacio1}'");
+                }
+                
+                if (sprite == null)
+                {
+                    string pathConEspacio2 = path.Replace("Gavilan", "Gavilán 2");
+                    sprite = Resources.Load<Sprite>(pathConEspacio2);
+                    if (sprite != null) Debug.Log($"[QuizGavilan] ? Encontrado: '{pathConEspacio2}'");
+                }
+                
+                if (sprite == null)
+                {
+                    string pathConEspacio3 = path.Replace("Gavilan", "Gavilán 3");
+                    sprite = Resources.Load<Sprite>(pathConEspacio3);
+                    if (sprite != null) Debug.Log($"[QuizGavilan] ? Encontrado: '{pathConEspacio3}'");
+                }
+            }
+            
             if (sprite != null)
             {
                 imagen.sprite = sprite;
                 imagen.enabled = true;
+                imagen.gameObject.SetActive(true);
+                Debug.Log($"[QuizGavilan] ? Imagen de opción cargada exitosamente");
                 return;
             }
+            else
+            {
+                Debug.LogWarning($"[QuizGavilan] ?? No se encontró sprite en ninguna variante de: {path}");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("[QuizGavilan] Path de imagen vacío");
         }
         
-        Sprite defaultSprite = Resources.Load<Sprite>("Questions/Images/default.");
+        // Si no se pudo cargar, intentar cargar imagen por defecto
+        Sprite defaultSprite = Resources.Load<Sprite>("Questions/Images/default");
         if (defaultSprite != null)
+        {
             imagen.sprite = defaultSprite;
+            imagen.enabled = true;
+            imagen.gameObject.SetActive(true);
+            Debug.Log("[QuizGavilan] Usando imagen por defecto");
+        }
+        else
+        {
+            // Si no hay imagen, ocultar el componente
+            imagen.enabled = false;
+            Debug.LogWarning("[QuizGavilan] No se pudo cargar ninguna imagen, ocultando componente");
+        }
     }
     
     private void SeleccionarRespuesta(int indice)
@@ -448,10 +512,10 @@ public class QuizGavilan : MonoBehaviour
                 AudioSourceSFX.instance.PlaySound(incorrectSound);
         }
         
-        MostrarFeedback(esCorrecta);
+        MostrarFeedback(esCorrecta, indice);
     }
     
-    private void MostrarFeedback(bool correcto)
+    private void MostrarFeedback(bool correcto, int indiceSeleccionado)
     {
         if (canvasPreguntasImagenes != null)
             canvasPreguntasImagenes.SetActive(false);
@@ -480,10 +544,78 @@ public class QuizGavilan : MonoBehaviour
             var crossObj = canvasFeedback.transform.Find("cross");
             if (crossObj != null) crossObj.gameObject.SetActive(!correcto);
             
+            // Cargar la imagen de la respuesta correcta en el feedback
             if (feedbackImagen != null && currentQuestion != null)
             {
-                Sprite sprite = Resources.Load<Sprite>("Questions/ImagesGavilan/" + currentQuestion.ChallengeID);
-                if (sprite != null) feedbackImagen.sprite = sprite;
+                Sprite feedbackSprite = null;
+                string feedbackImagePath = null;
+                
+                // Intentar cargar la imagen del feedback primero
+                if (currentQuestion.feedback != null && !string.IsNullOrEmpty(currentQuestion.feedback.image))
+                {
+                    feedbackImagePath = currentQuestion.feedback.image;
+                    Debug.Log($"[QuizGavilan] ?? Intentando cargar feedback desde feedback.image: '{feedbackImagePath}'");
+                    feedbackSprite = Resources.Load<Sprite>(feedbackImagePath);
+                    
+                    // Intentar variantes si contiene "Gavilan"
+                    if (feedbackSprite == null && feedbackImagePath.Contains("Gavilan"))
+                    {
+                        feedbackSprite = TryLoadGavilanVariants(feedbackImagePath);
+                    }
+                    
+                    if (feedbackSprite != null)
+                    {
+                        Debug.Log($"[QuizGavilan] ? Imagen de feedback cargada desde feedback.image");
+                    }
+                }
+                
+                // Si no hay imagen en feedback, buscar la imagen de la respuesta correcta
+                if (feedbackSprite == null && currentQuestion.options != null)
+                {
+                    foreach (var option in currentQuestion.options)
+                    {
+                        if (option.correctOption && !string.IsNullOrEmpty(option.image))
+                        {
+                            feedbackImagePath = option.image;
+                            Debug.Log($"[QuizGavilan] ?? Intentando cargar feedback desde opción correcta: '{feedbackImagePath}'");
+                            feedbackSprite = Resources.Load<Sprite>(feedbackImagePath);
+                            
+                            // Intentar variantes si contiene "Gavilan"
+                            if (feedbackSprite == null && feedbackImagePath.Contains("Gavilan"))
+                            {
+                                feedbackSprite = TryLoadGavilanVariants(feedbackImagePath);
+                            }
+                            
+                            if (feedbackSprite != null)
+                            {
+                                Debug.Log($"[QuizGavilan] ? Imagen de feedback cargada desde opción correcta");
+                                break;
+                            }
+                        }
+                    }
+                }
+                
+                // Si aún no hay imagen, intentar con el ChallengeID (fallback)
+                if (feedbackSprite == null)
+                {
+                    feedbackImagePath = "Questions/ImagesGavilan/" + currentQuestion.ChallengeID;
+                    Debug.Log($"[QuizGavilan] ?? Intentando cargar feedback desde ChallengeID: '{feedbackImagePath}'");
+                    feedbackSprite = Resources.Load<Sprite>(feedbackImagePath);
+                    if (feedbackSprite != null)
+                    {
+                        Debug.Log($"[QuizGavilan] ? Imagen de feedback cargada desde ChallengeID (fallback)");
+                    }
+                }
+                
+                if (feedbackSprite != null)
+                {
+                    feedbackImagen.sprite = feedbackSprite;
+                    feedbackImagen.enabled = true;
+                }
+                else
+                {
+                    Debug.LogWarning($"[QuizGavilan] ?? No se pudo cargar ninguna imagen para el feedback. Último path intentado: '{feedbackImagePath}'");
+                }
             }
             
             var buttonObj = canvasFeedback.transform.Find("Button");
@@ -505,6 +637,45 @@ public class QuizGavilan : MonoBehaviour
         
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+    
+    // Método auxiliar para intentar cargar variantes del Gavilán
+    private Sprite TryLoadGavilanVariants(string originalPath)
+    {
+        Debug.Log($"[QuizGavilan] ?? Intentando variantes de Gavilán para: '{originalPath}'");
+        
+        // Intentar con acento
+        string pathConAcento = originalPath.Replace("Gavilan", "Gavilán");
+        Sprite sprite = Resources.Load<Sprite>(pathConAcento);
+        if (sprite != null)
+        {
+            Debug.Log($"[QuizGavilan] ? Encontrado con acento: '{pathConAcento}'");
+            return sprite;
+        }
+        
+        // Intentar con "Gavilán 1", "Gavilán 2", "Gavilán 3"
+        for (int i = 1; i <= 3; i++)
+        {
+            string pathVariante = originalPath.Replace("Gavilan", $"Gavilán {i}");
+            sprite = Resources.Load<Sprite>(pathVariante);
+            if (sprite != null)
+            {
+                Debug.Log($"[QuizGavilan] ? Encontrado: '{pathVariante}'");
+                return sprite;
+            }
+        }
+        
+        // Intentar con "depredador (gavilan)"
+        string pathDepredador = originalPath.Replace("Gavilan", "depredador (gavilan)");
+        sprite = Resources.Load<Sprite>(pathDepredador);
+        if (sprite != null)
+        {
+            Debug.Log($"[QuizGavilan] ? Encontrado como depredador: '{pathDepredador}'");
+            return sprite;
+        }
+        
+        Debug.LogWarning($"[QuizGavilan] ?? No se encontró ninguna variante de Gavilán");
+        return null;
     }
     
     private void ContinuarDespuesFeedback()
@@ -599,6 +770,26 @@ public class QuizGavilan : MonoBehaviour
             var crossObj = canvasFeedback.transform.Find("cross");
             if (crossObj != null) crossObj.gameObject.SetActive(!victoria);
             
+            // Cargar la imagen del Gavilán para la pantalla final
+            if (feedbackImagen != null)
+            {
+                Debug.Log("[QuizGavilan] ?? Cargando imagen del Gavilán para pantalla final");
+                
+                // Intentar cargar el Gavilán con variantes
+                Sprite gavilanSprite = TryLoadGavilanVariants("Questions/ImagesGavilan/Gavilan");
+                
+                if (gavilanSprite != null)
+                {
+                    feedbackImagen.sprite = gavilanSprite;
+                    feedbackImagen.enabled = true;
+                    Debug.Log("[QuizGavilan] ? Imagen del Gavilán cargada en pantalla de resultados");
+                }
+                else
+                {
+                    Debug.LogWarning("[QuizGavilan] ?? No se pudo cargar la imagen del Gavilán para la pantalla de resultados");
+                }
+            }
+            
             var buttonObj = canvasFeedback.transform.Find("Button");
             if (buttonObj != null)
             {
@@ -632,6 +823,17 @@ public class QuizGavilan : MonoBehaviour
         else
         {
             Debug.LogWarning("[QuizGavilan] cage no está asignado. El paso no se desbloqueará!");
+        }
+        
+        // Destruir el GameObject Desafio4
+        if (desafioGameObject != null)
+        {
+            Debug.Log("[QuizGavilan] Destruyendo GameObject Desafio4");
+            Destroy(desafioGameObject);
+        }
+        else
+        {
+            Debug.LogWarning("[QuizGavilan] desafioGameObject no está asignado.");
         }
         
         // Actualizar Player Data (crítico) - CON VERIFICACIÓN

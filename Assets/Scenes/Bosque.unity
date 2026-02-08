@@ -19701,6 +19701,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Polo 1.1
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: aeeeb7d807fc36f4bbb0f4efe1efdd68,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4f38ae8ac9675ec459af5df214a048ed, type: 2}
     - target: {fileID: -4216859302048453862, guid: aeeeb7d807fc36f4bbb0f4efe1efdd68,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19771,11 +19776,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.52
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: aeeeb7d807fc36f4bbb0f4efe1efdd68,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 4f38ae8ac9675ec459af5df214a048ed, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aeeeb7d807fc36f4bbb0f4efe1efdd68, type: 3}
 --- !u!1 &526783474
@@ -42464,6 +42464,8 @@ MonoBehaviour:
   notifDiploma: {fileID: 589450943}
   route: {fileID: 768389697}
   imagenDiploma: {fileID: 0}
+  certificadoEspanol: {fileID: 0}
+  certificadoPortugues: {fileID: 0}
 --- !u!114 &1002220182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50019,6 +50021,7 @@ MonoBehaviour:
   joystick: {fileID: 0}
   LogroSist: {fileID: 0}
   fpscontroller: {fileID: 1299061560}
+  cage: {fileID: 0}
   dialogoDesafioCompleto: {fileID: 1727751166}
   dialogoDesafioPendiente: {fileID: 964714834}
   cantidadEstrellas: {fileID: 2050545056}
@@ -50081,6 +50084,8 @@ MonoBehaviour:
   notifDiploma: {fileID: 589450943}
   route: {fileID: 768389697}
   imagenDiploma: {fileID: 0}
+  certificadoEspanol: {fileID: 0}
+  certificadoPortugues: {fileID: 0}
 --- !u!114 &1171830931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50857,6 +50862,8 @@ MonoBehaviour:
   notifDiploma: {fileID: 589450943}
   route: {fileID: 768389697}
   imagenDiploma: {fileID: 0}
+  certificadoEspanol: {fileID: 0}
+  certificadoPortugues: {fileID: 0}
 --- !u!1 &1181307045
 GameObject:
   m_ObjectHideFlags: 0

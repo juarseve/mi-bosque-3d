@@ -20,7 +20,7 @@
         "codename": "gavilan_q1_a",
         "correctOption": true,
         "text": "Productores (como plantas o flores)",
-        "image": "Questions/ImagesGavilan/productores",
+        "image": "Questions/ImagesGavilan/Productores",
         "updatedAt": "2024-01-01"
       },
       {
@@ -28,7 +28,7 @@
         "codename": "gavilan_q1_b",
         "correctOption": false,
         "text": "Depredadores (como el gavil\u00E1n)",
-        "image": "Questions/ImagesGavilan/gavilan",
+        "image": "Questions/ImagesGavilan/Gavilan",
         "updatedAt": "2024-01-01"
       },
       {
@@ -36,7 +36,7 @@
         "codename": "gavilan_q1_c",
         "correctOption": false,
         "text": "Consumidores primarios (como los insectos)",
-        "image": "Questions/ImagesGavilan/insectos",
+        "image": "Questions/ImagesGavilan/consumidores primerios (insectos)",
         "updatedAt": "2024-01-01"
       },
       {
@@ -44,14 +44,14 @@
         "codename": "gavilan_q1_d",
         "correctOption": false,
         "text": "Descomponedores (como hongos)",
-        "image": "Questions/ImagesGavilan/hongos",
+        "image": "Questions/ImagesGavilan/Descomponedores (hongos)",
         "updatedAt": "2024-01-01"
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 1001,
       "feedback": "Las plantas inician la cadena al transformar la energ\u00EDa solar en materia org\u00E1nica que servir\u00E1 de alimento para otros.",
-      "image": "",
+      "image": "Questions/ImagesGavilan/Productores",
       "updatedAt": "2024-01-01"
     }
   },
@@ -76,7 +76,7 @@
         "codename": "gavilan_q2_a",
         "correctOption": false,
         "text": "Descomponedor",
-        "image": "Questions/ImagesGavilan/gavilan",
+        "image": "Questions/ImagesGavilan/Gavilan",
         "updatedAt": "2024-01-01"
       },
       {
@@ -84,7 +84,7 @@
         "codename": "gavilan_q2_b",
         "correctOption": false,
         "text": "Consumidor primario",
-        "image": "Questions/ImagesGavilan/gavilan",
+        "image": "Questions/ImagesGavilan/Gavilan",
         "updatedAt": "2024-01-01"
       },
       {
@@ -92,7 +92,7 @@
         "codename": "gavilan_q2_c",
         "correctOption": false,
         "text": "Productor primario",
-        "image": "Questions/ImagesGavilan/gavilan",
+        "image": "Questions/ImagesGavilan/Gavilan",
         "updatedAt": "2024-01-01"
       },
       {
@@ -100,14 +100,14 @@
         "codename": "gavilan_q2_d",
         "correctOption": true,
         "text": "Consumidor secundario",
-        "image": "Questions/ImagesGavilan/gavilan",
+        "image": "Questions/ImagesGavilan/Gavilan",
         "updatedAt": "2024-01-01"
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 1002,
       "feedback": "Al comerse a un herb\u00EDvoro (el rat\u00F3n), el gavil\u00E1n se convierte en el segundo nivel de consumidores en esta secuencia.",
-      "image": "",
+      "image": "Questions/ImagesGavilan/Gavilan",
       "updatedAt": "2024-01-01"
     }
   },
@@ -132,7 +132,7 @@
         "codename": "gavilan_q3_a",
         "correctOption": false,
         "text": "Porque los animales son amigos en el bosque.",
-        "image": "Questions/ImagesGavilan/animales_amigos",
+        "image": "Questions/ImagesGavilan/mejores amigos",
         "updatedAt": "2024-01-01"
       },
       {
@@ -140,7 +140,7 @@
         "codename": "gavilan_q3_b",
         "correctOption": true,
         "text": "Porque se altera el equilibrio del ecosistema.",
-        "image": "Questions/ImagesGavilan/bosque_problemas",
+        "image": "Questions/ImagesGavilan/Bosque en problemas",
         "updatedAt": "2024-01-01"
       },
       {
@@ -148,7 +148,7 @@
         "codename": "gavilan_q3_c",
         "correctOption": false,
         "text": "Porque las plantas dejar\u00EDan de crecer.",
-        "image": "Questions/ImagesGavilan/bosque_pocos_arboles",
+        "image": "Questions/ImagesGavilan/Bosque con pocos arboles",
         "updatedAt": "2024-01-01"
       },
       {
@@ -156,14 +156,14 @@
         "codename": "gavilan_q3_d",
         "correctOption": false,
         "text": "Porque no podremos tomar fotos a los animales.",
-        "image": "Questions/ImagesGavilan/turistas",
+        "image": "Questions/ImagesGavilan/Turistas en un bosque",
         "updatedAt": "2024-01-01"
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 1003,
       "feedback": "Cada organismo tiene una funci\u00F3n; si eliminamos un componente de la cadena tr\u00F3fica, otros animales pueden quedarse sin comida o algunos insectos pueden convertirse en plagas.",
-      "image": "",
+      "image": "Questions/ImagesGavilan/Bosque en problemas",
       "updatedAt": "2024-01-01"
     }
   }
