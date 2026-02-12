@@ -69,6 +69,7 @@ public class Galery : MonoBehaviour
         }
 
         cuerpo.text = tree.Gallery[imagenActual].Description;
+        Debug.Log(cuerpo.text);
         LoadImageOffLine(tree.Gallery[imagenActual].Id);
         LoadAudioOffline();
         createSpecieStadistic();
