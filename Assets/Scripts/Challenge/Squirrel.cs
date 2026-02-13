@@ -14,7 +14,7 @@ public class Squirrel : MonoBehaviour, IInteractable
 
     // Estados estáticos para comunicación con Nest y ChallengePass3
     public static bool caught = false;  // El conejo está siendo llevado
-    public static bool activate = false; // El desafío está activo
+    public static bool activate = true; // El desafío está activo
 
     public GameObject img;
     public Text timeText;
@@ -102,7 +102,7 @@ public class Squirrel : MonoBehaviour, IInteractable
 
             // Timer para soltar el conejo si no llega a tiempo
             timer -= Time.deltaTime;
-            
+
             // Actualizar el texto del timer (solo mostrar si es positivo)
             if (timer > 0)
             {
@@ -135,7 +135,7 @@ public class Squirrel : MonoBehaviour, IInteractable
     private void SoltarConejo()
     {
         Debug.Log("[Squirrel] Soltando conejo - Se acabó el tiempo");
-        
+
         clockSound.detener();
         caught = false;
 
@@ -152,10 +152,10 @@ public class Squirrel : MonoBehaviour, IInteractable
 
         img.SetActive(false);
         iteracion++;
-        
+
         // Resetear el timer para el próximo intento
         timer = _timer + iteracion * incremento;
-        
+
         skin.SetActive(true);
         recordatorio.SetActive(false);
 
@@ -207,12 +207,12 @@ public class Squirrel : MonoBehaviour, IInteractable
     {
         // Marcar como capturado inmediatamente
         caught = true;
-        
+
         // Resetear el timer con el tiempo correspondiente a esta iteración
         timer = _timer + iteracion * incremento;
-        
+
         Debug.Log("[Squirrel] Conejo capturado. Tienes " + timer + " segundos para llevarlo a la madriguera");
-        
+
         // Iniciar el sonido del reloj
         clockSound.reproducir();
 

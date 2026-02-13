@@ -10,18 +10,18 @@ public class Nest : MonoBehaviour, IInteractable
     public Text message;
     private bool active = true;
     public GameObject recordatorio;
-    
+
     [Header("Configuración de Distancia")]
     [Tooltip("Objeto de referencia para calcular la distancia (generalmente el jugador o cámara)")]
     public Transform objetoReferencia;
-    
+
     [Tooltip("Distancia máxima del jugador al nest para completar el desafío (en metros)")]
     public float maxDistance = 10f;
-    
+
     [Header("Configuración del Conejo")]
     [Tooltip("Transform del conejo (Squirrel) para verificar su distancia al nest")]
     public Transform squirrelTransform;
-    
+
     [Tooltip("Distancia mínima del conejo al nest para considerarlo en posición")]
     public float distanciaConejoCerca = 2f;
 
@@ -34,7 +34,7 @@ public class Nest : MonoBehaviour, IInteractable
     void Start()
     {
         puntero = GameObject.Find("Crosshair/Image");
-        
+
         // Si no se asignó en el inspector, intentar buscar el jugador automáticamente
         if (objetoReferencia == null)
         {
@@ -49,7 +49,7 @@ public class Nest : MonoBehaviour, IInteractable
                 Debug.LogError("[Nest] objetoReferencia no asignado y no se encontró GameObject con tag 'Player'!");
             }
         }
-        
+
         // Si no se asignó el squirrel, intentar buscarlo
         if (squirrelTransform == null)
         {
@@ -60,11 +60,11 @@ public class Nest : MonoBehaviour, IInteractable
                 Debug.LogWarning("[Nest] squirrelTransform no asignado. Usando el GameObject con tag 'Squirrel' automáticamente.");
             }
         }
-        
+
         // Resetear el estado al iniciar
         home = false;
     }
-    
+
     void Update()
     {
         // Verificar continuamente si se deben cumplir las condiciones para completar el desafío
@@ -72,10 +72,10 @@ public class Nest : MonoBehaviour, IInteractable
         {
             // Verificar si el conejo está cerca del nest
             bool conejoEnPosicion = VerificarDistanciaConejo();
-            
+
             // Verificar si el jugador está en rango
             bool jugadorEnRango = VerificarDistanciaJugador();
-            
+
             // Si AMBAS condiciones se cumplen, completar el desafío
             if (conejoEnPosicion && jugadorEnRango)
             {
@@ -105,13 +105,13 @@ public class Nest : MonoBehaviour, IInteractable
                 Debug.Log("[Nest] El jugador está demasiado lejos. Distancia actual: " + GetDistanceToJugador() + "m, máximo permitido: " + maxDistance + "m");
                 return;
             }
-            
+
             if (!VerificarDistanciaConejo())
             {
                 Debug.Log("[Nest] El conejo está demasiado lejos. Distancia actual: " + GetDistanceToConejo() + "m, máximo permitido: " + distanciaConejoCerca + "m");
                 return;
             }
-            
+
             isInteracting = true;
             Debug.Log("[Nest] ¡Completando misión del conejo por interacción!");
 
@@ -139,7 +139,7 @@ public class Nest : MonoBehaviour, IInteractable
             }
         }
     }
-    
+
     /// <summary>
     /// Verifica si el jugador está dentro del rango de distancia permitido
     /// </summary>
@@ -151,11 +151,11 @@ public class Nest : MonoBehaviour, IInteractable
             Debug.LogError("[Nest] No se puede verificar distancia del jugador: objetoReferencia no está asignado");
             return false;
         }
-        
+
         float distance = Vector3.Distance(transform.position, objetoReferencia.position);
         return distance <= maxDistance;
     }
-    
+
     /// <summary>
     /// Verifica si el conejo está dentro del rango de distancia al nest
     /// </summary>
@@ -167,11 +167,11 @@ public class Nest : MonoBehaviour, IInteractable
             Debug.LogError("[Nest] No se puede verificar distancia del conejo: squirrelTransform no está asignado");
             return false;
         }
-        
+
         float distance = Vector3.Distance(transform.position, squirrelTransform.position);
         return distance <= distanciaConejoCerca;
     }
-    
+
     /// <summary>
     /// Obtiene la distancia actual al jugador (para debugging)
     /// </summary>
@@ -182,10 +182,10 @@ public class Nest : MonoBehaviour, IInteractable
         {
             return float.MaxValue;
         }
-        
+
         return Vector3.Distance(transform.position, objetoReferencia.position);
     }
-    
+
     /// <summary>
     /// Obtiene la distancia actual al conejo (para debugging)
     /// </summary>
@@ -196,7 +196,7 @@ public class Nest : MonoBehaviour, IInteractable
         {
             return float.MaxValue;
         }
-        
+
         return Vector3.Distance(transform.position, squirrelTransform.position);
     }
 
@@ -210,13 +210,13 @@ public class Nest : MonoBehaviour, IInteractable
             Debug.Log("[Nest] CompletarMision llamado pero la misión ya estaba completada");
             return;
         }
-        
+
         Debug.Log("[Nest] Iniciando CompletarMision");
-        
+
         // Marcar como completado inmediatamente
         home = true;
         active = false;
-        
+
         // IMPORTANTE: Primero desactivar activate para detener el Update() del conejo
         // Luego marcar caught como false
         Squirrel.activate = false;
@@ -275,7 +275,7 @@ public class Nest : MonoBehaviour, IInteractable
         {
             return;
         }
-        
+
         // Verificar distancias antes de mostrar el puntero
         if (!VerificarDistanciaJugador() || !VerificarDistanciaConejo())
         {
@@ -336,9 +336,9 @@ public class Nest : MonoBehaviour, IInteractable
             feedback.SetActive(false);
         }
     }
-    
+
     // ============== DEBUGGING (Solo para Unity Editor) ==============
-    
+
 #if UNITY_EDITOR
     /// <summary>
     /// Dibuja el rango de distancia en el editor para visualizar
@@ -348,20 +348,20 @@ public class Nest : MonoBehaviour, IInteractable
         // Dibujar el rango de distancia permitido para el JUGADOR (verde)
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, maxDistance);
-        
+
         // Dibujar el rango de distancia requerido para el CONEJO (azul)
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, distanciaConejoCerca);
-        
+
         // Si hay un objeto de referencia asignado (jugador), dibujar línea hacia él
         if (objetoReferencia != null)
         {
             float distance = Vector3.Distance(transform.position, objetoReferencia.position);
-            
+
             // Color verde si está en rango, rojo si está fuera
             Gizmos.color = distance <= maxDistance ? Color.green : Color.red;
             Gizmos.DrawLine(transform.position, objetoReferencia.position);
-            
+
             // Dibujar una esfera pequeña en el jugador
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(objetoReferencia.position, 0.5f);
@@ -373,21 +373,21 @@ public class Nest : MonoBehaviour, IInteractable
             if (player != null)
             {
                 float distance = Vector3.Distance(transform.position, player.transform.position);
-                
+
                 Gizmos.color = distance <= maxDistance ? Color.cyan : Color.magenta;
                 Gizmos.DrawLine(transform.position, player.transform.position);
             }
         }
-        
+
         // Si hay un squirrel asignado, dibujar línea hacia él
         if (squirrelTransform != null)
         {
             float distance = Vector3.Distance(transform.position, squirrelTransform.position);
-            
+
             // Color cyan si está en rango, magenta si está fuera
             Gizmos.color = distance <= distanciaConejoCerca ? Color.cyan : Color.magenta;
             Gizmos.DrawLine(transform.position, squirrelTransform.position);
-            
+
             // Dibujar una esfera pequeña en el conejo
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(squirrelTransform.position, 0.5f);
