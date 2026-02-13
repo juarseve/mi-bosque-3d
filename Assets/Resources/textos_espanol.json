@@ -442,7 +442,7 @@
   },
   "logros": {
     "info_medalla": "Obtenida: ",
-    "title_logro": "LOGRO DESBLOQUEADO!!!",
+    "title_logro": "AVISO",
     "logro_0_nombre": "Guardabosque Explorador",
     "logro_0_descripcion": "Has encontrado las especies solicitadas",
     "logro_1_nombre": "Guardabosque Veloz",
@@ -463,8 +463,8 @@
     "logro_9_descripcion": "Terminaste el juego ",
     "logro_10_nombre": "Completo 100%",
     "logro_10_descripcion": "¡¡¡Completaste todo!!! ",
-    "logro_8_nombre": "Guardabosque Responsable",
-    "logro_8_descripcion": "Tu comportamiento como Guardabosque es ejemplar (no saltos)"
+    "logro_8_nombre": "Guardabosque irresponsable",
+    "logro_8_descripcion": "Mal comportamiento como guardabosque. NO SALTAR"
   },
   "misiones": {
     "estacion_mision": "Estación: ",
