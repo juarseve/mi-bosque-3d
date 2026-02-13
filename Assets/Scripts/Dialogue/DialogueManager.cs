@@ -219,7 +219,7 @@ public class DialogueManager : MonoBehaviour
         if (currentEventToTrigger != "")
         {
             Debug.Log(currentEventToTrigger);
-            //EventManager.eventManager.TriggerEvent(currentEventToTrigger);
+            EventManager.eventManager.TriggerEvent(currentEventToTrigger);
         }
         EventManager.StopListening(currentEventToTrigger);
         if (removeDT)
@@ -282,7 +282,7 @@ public class DialogueManager : MonoBehaviour
                     dialogue.title[i] = traducido;
                 }
                 else
-                    Debug.LogWarning($"No se encontro traducci�n para la clave de t�tulo: {clave}");
+                    Debug.LogWarning($"No se encontro traducción para la clave de título: {clave}");
             }
         }
 
@@ -298,7 +298,7 @@ public class DialogueManager : MonoBehaviour
                 if (!string.IsNullOrEmpty(traducido))
                     dialogue.sentences[i] = traducido;
                 else
-                    Debug.LogWarning($"No se encontro traducci�n para la clave de frase: {clave}");
+                    Debug.LogWarning($"No se encontro traducción para la clave de frase: {clave}");
             }
         }
     }
