@@ -44,6 +44,10 @@ public class dialogo_puente : MonoBehaviour
     public void terminarDialogo()
     {
         btnSig.SetActive(false);
+        cuadrodiag.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         Debug.Log("eeee");
     }
 

@@ -210,7 +210,9 @@ public class ShowMochila : MonoBehaviour
         preguntaScreen.SetActive(false);
         medallasScreen.SetActive(false);
         mochilaGo.SetActive(true);
-       
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;       
         IsBackPack = false;
         isInfo = false;
     }

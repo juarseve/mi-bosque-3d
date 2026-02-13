@@ -210,8 +210,6 @@ public class DialogueManager : MonoBehaviour
         animatorDesafio.SetBool("IsOpen", false);
         MenuPausa.instance.Reanudar();
         mouseController.enabled = true;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
         firstPersonController.enabled = true;
         isDialogueActive = false;
         typedSentence = false;

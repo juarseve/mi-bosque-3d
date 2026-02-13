@@ -99,6 +99,9 @@ public class ShowBook : MonoBehaviour
         bookCanvas.gameObject.SetActive(false);
         salidaLibro.SetActive(false);
 
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         isCanvasActive = false;
     }
 
