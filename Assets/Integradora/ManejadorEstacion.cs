@@ -67,6 +67,7 @@ public class ManejadorEstacion : MonoBehaviour
     {
         GameObject objeto;
         ClickMouse clic;
+        BoxCollider[] boxColliders;
         //limitesEstacion limites;
         for (int i = 0; i < listaInstanciar.Length; i++)
         {
@@ -82,40 +83,65 @@ public class ManejadorEstacion : MonoBehaviour
                     }
                 }*/
 
-                    if (objeto.name.Contains("Especies"))
+                if (objeto.name.Contains("Especies"))
                 {
                     foreach (Transform child in objeto.transform)
                     {
                         clic = child.transform.GetComponent<ClickMouse>();
-                        clic.Panel= Panel;
-                        clic.Galeria = Galeria;
-                        clic.Panel3 = Panel3;
-                        clic.logroSist = logroSist;
-                        clic.fpscontroller = fpscontroller;
-                        clic.canvasJoy = canvasJoy;
-                        //clic.GaleryScript = GaleryScript;
-                        if (clic.isPlant)
+                        if (clic != null)
                         {
-                            child.transform.GetComponent<Seeds>().semillasAnim=animSemilla;
-                        }
-                        if (child.name== "Squirrel")
-                        {
-                            clic.CuadroChallengeDos = ardillacaja;
-                        }
-                        if (child.name == "Iguana")
-                        {
-                            clic.CuadroChallengeDos = iguanacaja;
-                        }
-                        if (child.name == "Pechiche")
-                        {
-                            clic.CuadroChallengeDos = pechichecaja;
+                            clic.Panel= Panel;
+                            clic.Galeria = Galeria;
+                            clic.Panel3 = Panel3;
+                            clic.logroSist = logroSist;
+                            clic.fpscontroller = fpscontroller;
+                            clic.canvasJoy = canvasJoy;
+                            //clic.GaleryScript = GaleryScript;
+                            if (clic.isPlant)
+                            {
+                                child.transform.GetComponent<Seeds>().semillasAnim=animSemilla;
+                            }
+                            if (child.name== "Squirrel")
+                            {
+                                clic.CuadroChallengeDos = ardillacaja;
+                            }
+                            if (child.name == "Iguana")
+                            {
+                                clic.CuadroChallengeDos = iguanacaja;
+                            }
+                            if (child.name == "Pechiche")
+                            {
+                                clic.CuadroChallengeDos = pechichecaja;
+                            }
+                            
+                            // **FIX PARA DESAFÍO 1**: Asegurar que TODOS los BoxColliders del Ceibo tengan isTrigger = false
+                            if (child.name.Contains("Ceibo"))
+                            {
+                                // Obtener TODOS los BoxColliders (puede tener múltiples)
+                                boxColliders = child.GetComponents<BoxCollider>();
+                                
+                                if (boxColliders != null && boxColliders.Length > 0)
+                                {
+                                    Debug.Log("[ManejadorEstacion] Ceibo encontrado con " + boxColliders.Length + " BoxCollider(s)");
+                                    
+                                    for (int j = 0; j < boxColliders.Length; j++)
+                                    {
+                                        boxColliders[j].isTrigger = false;
+                                        Debug.Log("[ManejadorEstacion] Configurado Ceibo BoxCollider #" + (j + 1) + " isTrigger = false");
+                                    }
+                                }
+                                else
+                                {
+                                    Debug.LogWarning("[ManejadorEstacion] Ceibo no tiene BoxColliders en " + child.name);
+                                }
+                            }
                         }
                     }
                 }
             }
             catch (Exception e)
             {
-                Debug.Log("error instanciando estacion");
+                Debug.Log("error instanciando estacion: " + e.Message);
             }
         }
         
