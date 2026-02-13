@@ -167,59 +167,7 @@ public class MouseController : MonoBehaviour
         }
     }
     
-    void OnGUI()
-    {
-        if (!showDebugInfo) return;
-        
-        GUIStyle style = new GUIStyle();
-        style.fontSize = 14;
-        style.normal.textColor = Color.white;
-        
-        GUIStyle headerStyle = new GUIStyle();
-        headerStyle.fontSize = 16;
-        headerStyle.fontStyle = FontStyle.Bold;
-        headerStyle.normal.textColor = Color.yellow;
-        
-        float y = 10;
-        float lineHeight = 20;
-        
-        GUI.Label(new Rect(10, y, 400, lineHeight), "=== SISTEMA DE INTERACCIÓN ===", headerStyle);
-        y += lineHeight + 5;
-        
-        if (interactionDetector != null)
-        {
-            GUI.Label(new Rect(10, y, 400, lineHeight), "Radio: " + interactionDetector.detectionRadius, style);
-            y += lineHeight;
-            
-            GUI.Label(new Rect(10, y, 400, lineHeight), "En rango: " + (interactionDetector.HasInteractableInRange() ? "SÍ" : "NO"), style);
-            y += lineHeight;
-            
-            GameObject focused = interactionDetector.GetFocusedObject();
-            string focusedName = focused != null ? focused.name : "Ninguno";
-            GUI.Label(new Rect(10, y, 400, lineHeight), "Enfocado: " + focusedName, style);
-            y += lineHeight + 10;
-            
-            // Estado del desafío del conejo
-            GUI.Label(new Rect(10, y, 400, lineHeight), "=== DESAFÍO DEL CONEJO ===", headerStyle);
-            y += lineHeight + 5;
-            
-            GUI.Label(new Rect(10, y, 400, lineHeight), "Desafío activo: " + (Squirrel.activate ? "SÍ" : "NO"), style);
-            y += lineHeight;
-            
-            string caughtColor = Squirrel.caught ? "<color=green>SÍ</color>" : "<color=red>NO</color>";
-            GUI.Label(new Rect(10, y, 400, lineHeight), "Conejo capturado: " + (Squirrel.caught ? "SÍ" : "NO"), style);
-            y += lineHeight;
-            
-            GUI.Label(new Rect(10, y, 400, lineHeight), "Misión completada: " + (Nest.home ? "SÍ" : "NO"), style);
-            y += lineHeight + 10;
-            
-            GUI.Label(new Rect(10, y, 400, lineHeight), "Presiona E para interactuar", style);
-        }
-        else
-        {
-            GUI.Label(new Rect(10, y, 400, lineHeight), "ERROR: InteractionDetector no configurado", style);
-        }
-    }
+    
 
     void OnApplicationFocus(bool ApplicationIsBack)
     {
