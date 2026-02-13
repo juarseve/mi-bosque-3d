@@ -491,11 +491,11 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "                                STAFF\n\nProject Director        \n\nProject
-    Producer\n\nProject Coordinator          \n\n\n\n                         PROGRAMMERS\n\nGAMEPLAY
-    DESIGN         \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLEVEL
+    Producer\n\nProject Coordinator          \n\n\n\n                         PROGRAMMERS\n\n\nGAMEPLAY
+    DESIGN\n\n\n\n         \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLEVEL
     DESIGN                   \n\n\n\n\n\n                                  ART\n\nDESIGN
-    ART\n\n\n\n\n\n\n\n\n\nAUDIO & VIDEO\n\n\n\n\n\nANIMATIONS       \n\n\n\n\n\n\n\n
-    \                             SUPPORT\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
+    ART\n\n\n\n\n\n\n\n\n\n\n\nAUDIO & VIDEO\n\n\n\n\n\nANIMATIONS\n       \n\n\n\n\n\n\n\n
+    \                             SUPPORT\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
     \                         SPECIAL THANKS\n\n\nESCUELA SUPERIOR POLITECNICA DEL
     LITORAL\n\nMUY ILUSTRE MUNICIPALIDAD DE GUAYAQUIL\n\n"
 --- !u!222 &171354972
@@ -2685,6 +2685,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 94a35a294dea1ad47ae3f36096436cea, type: 2}
+    - target: {fileID: -557450602825020773, guid: ee32bf15f5800fa42b2079d7ab7d6c8e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 70455e33b8c679742b382ec163764a6e, type: 2}
     - target: {fileID: -4095696544730200901, guid: ee32bf15f5800fa42b2079d7ab7d6c8e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2710,11 +2715,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 6622272ee27738145a81994dcc721c20, type: 2}
-    - target: {fileID: -557450602825020773, guid: ee32bf15f5800fa42b2079d7ab7d6c8e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 70455e33b8c679742b382ec163764a6e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee32bf15f5800fa42b2079d7ab7d6c8e, type: 3}
 --- !u!4 &793802144 stripped
@@ -8685,22 +8685,24 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\n\n\nRodrigo Saraguro\n\nRocio Mera\n\nAndrea Pino\n\n\n\n\n\n\n\nAndres
-    Castro\nAllison Brito\nAnibal Gamboa\nAnthony Herrera\nAngie Argudo\nAlfred coloma\nCarlos
-    Carvajal\nAlvaro Valarezo\nDaniel Arroyo\nDavid Santistevan\nDayse Maroto\nEdwars
-    Sabando\nEduardo Tigse\nErick Cordova\nErcik Pulla\nFernando Vaca\nFranklin Magallanes\nGabriel
-    Del Pino\nHenry Siavichay\nIsmael Aviles\nJordy Medina\nJose Escobar\nJose Morales\nJose
-    Reyes\nJoel Torres\nJosue Cobos\nJuan Jimenez\nJuan Laso\nJuan Nebel\nJuan Vallejo\nLeonardo
-    Mendoza\nLuis Carrasco\nLuis Salazar\nMiguel Parras\nMiguel Rivas\nMatheus L\xF3pez\nNicole
-    Alvarez\nOscar Guaman\nPablo Delgado\nPedro Mendoza\nRichard Robayo\nRoberto Mena\nYsabel
-    Atiencia\nYsrael Larco\nJulio Guerrero\nDaniel Villamar\n\n\n\nAlfred Coloma\nErick
-    Pulla\nYsrael Larco\n\n\n\n\n\n\n\nAldrin Tobar\nDomenica Aguilera\nEdwin Rodas\nJonathan
-    Guerrero\nMiguel Cercado\nMikaela Espinoza\nRicardo Ibarra\nStephanie Moscoso\n\n\n\nCarlos
-    Alvarado\nElba Requena\nMaria Alvarez\nMaria Kalil\n\n\n\nAlfonso Chaw\nAdriana
-    Navarrete\nAngelica Rivera\nGeorgina Manzano\nYsrael Larco\n\n\n\n\n\nClaudia
-    Rodriguez\nChristel Penafiel\nHector Alvarado\nHenry Munoz\nJose Gaibor\nJose
-    Moscoso\nKarla Sosa\nKeyla Intriago\nMilena Pozo\nNancy Sierra\nNathaly Tomala\nOswaldo
-    Molina\nSamantha Ortiz\nTatiana Castillo\nViancca Ramos\n\n\n"
+  m_Text: "\n\n\nRodrigo Saraguro\n\nRocio Mera\n\nErick Lavid\nAndrea Pino\n\n\n\n\n\n\n\nAndres
+    Castro\nAllison Brito\nAnibal Gamboa\nAnthony Herrera\nAngie Argudo\nAlfred Coloma\nCarlos
+    Carvajal\nAlvaro Valarezo\nDaniel Arroyo\nDavid Santistevan\nDavid Luna\nDayse
+    Maroto\nEdwars Sabando\nEduardo Tigse\nErick Cordova\nErcik Pulla\nFernando Vaca\nFranklin
+    Magallanes\nGabriel Del Pino\nHenry Siavichay\nIsmael Aviles\nJordy Medina\nJose
+    Escobar\nJose Morales\nJose Reyes\nJoel Torres\nJosue Cobos\nJuan Jimenez\nJuan
+    Laso\nJuan Nebel\nJuan Severino\nJuan Vallejo\nLeonardo Mendoza\nLuis Carrasco\nLuis
+    Salazar\nMiguel Parras\nMiguel Rivas\nMatheus L\xF3pez\nNicole Alvarez\nOscar
+    Guaman\nPablo Delgado\nPedro Mendoza\nRandy Rivera\nRichard Robayo\nRoberto Mena\nRommel
+    Marcillo\nYsabel Atiencia\nYsrael Larco\nJulio Guerrero\nDaniel Villamar\n\n\n\nAlfred
+    Coloma\nErick Pulla\nSheyla Cevallos\nYsrael Larco\n\n\n\n\n\nAldrin Tobar\nDomenica
+    Aguilera\nEdwin Rodas\nJonathan Guerrero\nJuan Salas\nMiguel Cercado\nMikaela
+    Espinoza\nRicardo Ibarra\nStephanie Moscoso\n\n\n\n\n\nCarlos Alvarado\nElba Requena\nMaria
+    Alvarez\nMaria Kalil\n\n\n\nAlfonso Chaw\nAdriana Navarrete\nAngelica Rivera\nGeorgina
+    Manzano\nJuan Orellana\nLuis Delgadillo\nYsrael Larco\n\n\n\n\n\nClaudia Rodriguez\nChristel
+    Penafiel\nHector Alvarado\nHenry Munoz\nJose Gaibor\nJose Moscoso\nKarla Sosa\nKeyla
+    Intriago\nMilena Pozo\nNancy Sierra\nNathaly Tomala\nOswaldo Molina\nSamantha
+    Ortiz\nTatiana Castillo\nViancca Ramos\n\n\n\n\n"
 --- !u!222 &1141105514
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10671,11 +10673,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: e91febfa6f9758446834e75e7eb356b1,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 5655e935fbd64ef4cbae0ca8f98cfa86, type: 2}
     - target: {fileID: -4216859302048453862, guid: e91febfa6f9758446834e75e7eb356b1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10746,6 +10743,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.63
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: e91febfa6f9758446834e75e7eb356b1,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5655e935fbd64ef4cbae0ca8f98cfa86, type: 2}
     - target: {fileID: 149132738463056512, guid: e91febfa6f9758446834e75e7eb356b1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -21398,6 +21400,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 94a35a294dea1ad47ae3f36096436cea, type: 2}
+    - target: {fileID: -557450602825020773, guid: ee32bf15f5800fa42b2079d7ab7d6c8e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 70455e33b8c679742b382ec163764a6e, type: 2}
     - target: {fileID: -4095696544730200901, guid: ee32bf15f5800fa42b2079d7ab7d6c8e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -21423,11 +21430,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 9797ae718087f0344b7786a2287ff575, type: 2}
-    - target: {fileID: -557450602825020773, guid: ee32bf15f5800fa42b2079d7ab7d6c8e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 70455e33b8c679742b382ec163764a6e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee32bf15f5800fa42b2079d7ab7d6c8e, type: 3}
 --- !u!1 &1820763798
@@ -22042,11 +22044,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: e91febfa6f9758446834e75e7eb356b1,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: f3284c6f0c4330f4bb2de914c5cbca0b, type: 2}
     - target: {fileID: -4216859302048453862, guid: e91febfa6f9758446834e75e7eb356b1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22117,12 +22114,17 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.65
       objectReference: {fileID: 0}
-    - target: {fileID: -9031847153834083818, guid: e91febfa6f9758446834e75e7eb356b1,
+    - target: {fileID: -6057140222963153312, guid: e91febfa6f9758446834e75e7eb356b1,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f3284c6f0c4330f4bb2de914c5cbca0b, type: 2}
+    - target: {fileID: 5612562406627915508, guid: e91febfa6f9758446834e75e7eb356b1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6622272ee27738145a81994dcc721c20, type: 2}
-    - target: {fileID: 5612562406627915508, guid: e91febfa6f9758446834e75e7eb356b1,
+    - target: {fileID: -9031847153834083818, guid: e91febfa6f9758446834e75e7eb356b1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
