@@ -751,12 +751,7 @@ public class LogrosGlobales : MonoBehaviour
     public void ProgresarMision(int numeromision, string cumplido)
     {
         Debug.Log("Numero de mision: " + numeromision);
-        if (numeromision == 8)
-        {
-            Debug.Log("Entro al if el numero de mision: " + numeromision);
-            checks[numeromision*2].SetActive(false);
-            checks[numeromision*2+1].SetActive(true);     
-        }
+
         // Debug.Log("**********************se recibe el nombre " + cumplido);
         tempResult = misiones[numeromision].Progreso(cumplido);
         Debug.Log("Tempresult de salto: " + tempResult);

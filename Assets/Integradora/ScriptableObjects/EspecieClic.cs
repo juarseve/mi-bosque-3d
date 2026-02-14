@@ -93,7 +93,6 @@ public class EspecieClic : ScriptableObject
                     {
                         Debug.Log("**********************se manda el nombre " + specieName);
                         logroSist.GetComponent<LogrosGlobales>().ProgresarMision(0, specieName);
-                        logroSist.GetComponent<LogrosGlobales>().ProgresarMision(8, specieName);
                         logroSist.GetComponent<LogrosGlobales>().ProgresarMision(6, specieName);
                         fpscontroller.GetComponent<Player>().gainEXP(1);
                     }
@@ -113,7 +112,6 @@ public class EspecieClic : ScriptableObject
                     {
                         Debug.Log("**********************se manda el nombre " + specieName);
                         logroSist.GetComponent<LogrosGlobales>().ProgresarMision(0, specieName);
-                        logroSist.GetComponent<LogrosGlobales>().ProgresarMision(8, specieName);
                         logroSist.GetComponent<LogrosGlobales>().ProgresarMision(7, specieName);
                         fpscontroller.GetComponent<Player>().gainEXP(1);
                     }

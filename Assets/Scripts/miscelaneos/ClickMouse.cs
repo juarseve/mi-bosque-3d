@@ -150,7 +150,6 @@ public class ClickMouse : MonoBehaviour, IInteractable
                         }
 
                         logroSist.GetComponent<LogrosGlobales>().ProgresarMision(0, specieName);
-                        logroSist.GetComponent<LogrosGlobales>().ProgresarMision(8, specieName);
                         logroSist.GetComponent<LogrosGlobales>().ProgresarMision(6, specieName);
                     }
                 }
@@ -178,7 +177,6 @@ public class ClickMouse : MonoBehaviour, IInteractable
                             logros.ProgresarMision(7, specieName);
                         }
                         logroSist.GetComponent<LogrosGlobales>().ProgresarMision(0, specieName);
-                        logroSist.GetComponent<LogrosGlobales>().ProgresarMision(8, specieName);
                         logroSist.GetComponent<LogrosGlobales>().ProgresarMision(7, specieName);
                     }
                 }

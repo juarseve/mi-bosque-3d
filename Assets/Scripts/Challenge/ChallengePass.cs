@@ -160,7 +160,6 @@ public class ChallengePass : MonoBehaviour
     {
         //actionLogger.GetComponent<ActionLogger>().actionLogger.agregarAccion("Finish Bosque mision", "" + 1);
         LogroSist.GetComponent<LogrosGlobales>().ProgresarLogro(0);
-        LogroSist.GetComponent<LogrosGlobales>().ProgresarLogro(8);
         
         fpscontroller.GetComponent<Player>().gainEXP(3);
         if (!GameManager.OfflineMode)
