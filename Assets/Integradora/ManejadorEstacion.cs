@@ -68,6 +68,7 @@ public class ManejadorEstacion : MonoBehaviour
         GameObject objeto;
         ClickMouse clic;
         BoxCollider[] boxColliders;
+        Rigidbody rb;
         //limitesEstacion limites;
         for (int i = 0; i < listaInstanciar.Length; i++)
         {
@@ -108,6 +109,23 @@ public class ManejadorEstacion : MonoBehaviour
                             if (child.name == "Iguana")
                             {
                                 clic.CuadroChallengeDos = iguanacaja;
+                                
+                                // **FIX PARA DESAFÍO 1**: Asegurar que la Iguana tenga freeze position en todos los ejes
+                                rb = child.GetComponent<Rigidbody>();
+                                if (rb != null)
+                                {
+                                    rb.constraints = RigidbodyConstraints.FreezePositionX | 
+                                                    RigidbodyConstraints.FreezePositionY | 
+                                                    RigidbodyConstraints.FreezePositionZ |
+                                                    RigidbodyConstraints.FreezeRotationX | 
+                                                    RigidbodyConstraints.FreezeRotationY | 
+                                                    RigidbodyConstraints.FreezeRotationZ;
+                                    Debug.Log("[ManejadorEstacion] Iguana Rigidbody configurado con freeze position y rotation en todos los ejes");
+                                }
+                                else
+                                {
+                                    Debug.LogWarning("[ManejadorEstacion] Iguana no tiene Rigidbody en " + child.name);
+                                }
                             }
                             if (child.name == "Pechiche")
                             {

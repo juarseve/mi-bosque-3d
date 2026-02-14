@@ -29,7 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Memoria.unity
     guid: 7515a2f2192e1fa4f9f406ab22f918cc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial.unity
     guid: 386647def1d08814eb0a354728939cfd
   - enabled: 1
@@ -39,6 +39,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Final.unity
     guid: 7bbdc96f68f9f9a49bd5bf3f8533f796
   - enabled: 0
-    path: Assets/Scenes/MenuIdioma.unity
-    guid: 570aceb570477f64b9e943b1906c4100
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
