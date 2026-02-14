@@ -390,6 +390,7 @@ public class WallTrigger_2 : MonoBehaviour
                 {
                     button.onClick.RemoveAllListeners();
                     button.onClick.AddListener(CloseFeedbackCanvas);
+                    button.interactable = true; // Asegurar que el botón esté habilitado
                 }
             }
             

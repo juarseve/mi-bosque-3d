@@ -298,7 +298,20 @@ public class CargarPreguntas : MonoBehaviour
         /*canvasFeedback.transform.Find("check").gameObject.SetActive(false);
         canvasFeedback.transform.Find("cross").gameObject.SetActive(true);*/
         f_Imagen.sprite = Resources.Load<Sprite>(q.image);
-        canvasFeedback.transform.Find("Button").gameObject.GetComponent<Button>().onClick.AddListener(CloseFeedbackCanvas);
+        
+        // Configurar botón de continuar correctamente
+        var buttonObj = canvasFeedback.transform.Find("Button");
+        if (buttonObj != null)
+        {
+            var button = buttonObj.gameObject.GetComponent<Button>();
+            if (button != null)
+            {
+                button.onClick.RemoveAllListeners();
+                button.onClick.AddListener(CloseFeedbackCanvas);
+                button.interactable = true; // Asegurar que el botón esté habilitado
+            }
+        }
+        
         canvasFeedback.transform.localPosition.Set(33.28f, -0.8f, 0);
         Debug.Log("marca");
         canvasFeedback.SetActive(true);
@@ -347,7 +360,20 @@ public class CargarPreguntas : MonoBehaviour
         /*canvasFeedback.transform.Find("check").gameObject.SetActive(true);
         canvasFeedback.transform.Find("cross").gameObject.SetActive(false);*/
         f_Imagen.sprite = Resources.Load<Sprite>(q.image);
-        canvasFeedback.transform.Find("Button").gameObject.GetComponent<Button>().onClick.AddListener(CloseFeedbackCanvas);
+        
+        // Configurar botón de continuar correctamente
+        var buttonObj = canvasFeedback.transform.Find("Button");
+        if (buttonObj != null)
+        {
+            var button = buttonObj.gameObject.GetComponent<Button>();
+            if (button != null)
+            {
+                button.onClick.RemoveAllListeners();
+                button.onClick.AddListener(CloseFeedbackCanvas);
+                button.interactable = true; // Asegurar que el botón esté habilitado
+            }
+        }
+        
         canvasFeedback.transform.localPosition.Set(33.28f, -0.8f, 0);
         Debug.Log("marca");
         canvasFeedback.SetActive(true);
