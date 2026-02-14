@@ -392,7 +392,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (body == null || body.isKinematic) return;
             body.AddForceAtPosition(m_CharacterController.velocity * 0.1f, hit.point, ForceMode.Impulse);
         }
-
+        /*
         void OnGUI()
         {
             GUIStyle style = new GUIStyle();
@@ -400,6 +400,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             style.normal.textColor = Color.white;
 
             GUI.Label(new Rect(20, 20, 300, 50), "Saltos: " + jumpCount, style);
-        }
+        }*/
     }
 }
