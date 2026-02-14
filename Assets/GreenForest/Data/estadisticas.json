@@ -3,14 +3,14 @@
     {
       "gameId": "001",
       "playerId": "",
-      "level": 1,
+      "level": 7,
       "dataType": "game_data",
-      "FechaInterna": "13/2/2026 21:42:22",
+      "FechaInterna": "13/2/2026 22:17:38",
       "data": {
-        "Start_Date": "13/2/2026 21:42:10",
-        "End_Date": "13/2/2026 21:42:22",
-        "duration": 0,
-        "score": 0,
+        "Start_Date": "13/2/2026 22:15:53",
+        "End_Date": "13/2/2026 22:17:38",
+        "duration": 2,
+        "score": 580,
         "NumberImages": 0
       }
     }
