@@ -70,6 +70,7 @@ public class ManejadorEstacion : MonoBehaviour
         BoxCollider[] boxColliders;
         BoxCollider boxCollider;
         Rigidbody rb;
+        CapsuleCollider capsuleCollider;
         //limitesEstacion limites;
         for (int i = 0; i < listaInstanciar.Length; i++)
         {
@@ -96,6 +97,10 @@ public class ManejadorEstacion : MonoBehaviour
                         // **NUEVO**: Asegurar que cada hijo de Especies tenga un BoxCollider con isTrigger = false
                         AsegurarBoxCollider(child.gameObject);
                         
+                        // **NUEVO**: Configurar layer "Collectables" (layer 10) para todas las especies
+                        child.gameObject.layer = 10;
+                        Debug.Log("[ManejadorEstacion] " + child.name + " configurado en layer 10 (Collectables)");
+                        
                         clic = child.transform.GetComponent<ClickMouse>();
                         if (clic != null)
                         {
@@ -118,22 +123,8 @@ public class ManejadorEstacion : MonoBehaviour
                             {
                                 clic.CuadroChallengeDos = iguanacaja;
                                 
-                                // **FIX PARA DESAFÍO 1**: Asegurar que la Iguana tenga freeze position en todos los ejes
-                                rb = child.GetComponent<Rigidbody>();
-                                if (rb != null)
-                                {
-                                    rb.constraints = RigidbodyConstraints.FreezePositionX | 
-                                                    RigidbodyConstraints.FreezePositionY | 
-                                                    RigidbodyConstraints.FreezePositionZ |
-                                                    RigidbodyConstraints.FreezeRotationX | 
-                                                    RigidbodyConstraints.FreezeRotationY | 
-                                                    RigidbodyConstraints.FreezeRotationZ;
-                                    Debug.Log("[ManejadorEstacion] Iguana Rigidbody configurado con freeze position y rotation en todos los ejes");
-                                }
-                                else
-                                {
-                                    Debug.LogWarning("[ManejadorEstacion] Iguana no tiene Rigidbody en " + child.name);
-                                }
+                                // **FIX COMPLETO PARA IGUANA**: Configurar transform, rigidbody y colliders
+                                ConfigurarIguana(child);
                             }
                             if (child.name == "Pechiche")
                             {
@@ -171,6 +162,108 @@ public class ManejadorEstacion : MonoBehaviour
             }
         }
         
+    }
+    
+    /// <summary>
+    /// Configura completamente la Iguana con transform, rigidbody y colliders según especificaciones
+    /// </summary>
+    /// <param name="iguanaTransform">Transform de la Iguana</param>
+    private void ConfigurarIguana(Transform iguanaTransform)
+    {
+        GameObject iguana = iguanaTransform.gameObject;
+        
+        // **1. CONFIGURAR TRANSFORM**
+        // Position: (-4.838098, -1.466103, 6.076778)
+        iguana.transform.localPosition = new Vector3(-4.838098f, -1.466103f, 6.076778f);
+        
+        // Rotation: (1.002, -114.228, 13.302)
+        iguana.transform.localRotation = Quaternion.Euler(1.002f, -114.228f, 13.302f);
+        
+        // Scale: (2, 2, 2)
+        iguana.transform.localScale = new Vector3(2f, 2f, 2f);
+        
+        Debug.Log("[ManejadorEstacion] Iguana Transform configurado - Pos: " + iguana.transform.localPosition + 
+                  ", Rot: " + iguana.transform.localRotation.eulerAngles + ", Scale: " + iguana.transform.localScale);
+        
+        // **2. CONFIGURAR RIGIDBODY**
+        Rigidbody rb = iguana.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.mass = 1f;
+            rb.drag = 0f;
+            rb.angularDrag = 0.05f;
+            rb.useGravity = true;
+            rb.isKinematic = false;
+            rb.interpolation = RigidbodyInterpolation.None;
+            rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
+            
+            // Freeze Position en todos los ejes (X, Y, Z)
+            // Freeze Rotation en todos los ejes (X, Y, Z)
+            rb.constraints = RigidbodyConstraints.FreezePositionX | 
+                            RigidbodyConstraints.FreezePositionY | 
+                            RigidbodyConstraints.FreezePositionZ |
+                            RigidbodyConstraints.FreezeRotationX | 
+                            RigidbodyConstraints.FreezeRotationY | 
+                            RigidbodyConstraints.FreezeRotationZ;
+            
+            Debug.Log("[ManejadorEstacion] Iguana Rigidbody configurado con freeze position y rotation en todos los ejes");
+        }
+        else
+        {
+            Debug.LogWarning("[ManejadorEstacion] Iguana no tiene Rigidbody en " + iguana.name);
+        }
+        
+        // **3. CONFIGURAR CAPSULE COLLIDER**
+        CapsuleCollider capsuleCollider = iguana.GetComponent<CapsuleCollider>();
+        if (capsuleCollider != null)
+        {
+            capsuleCollider.isTrigger = false;
+            capsuleCollider.material = null; // SmallFriction (si tienes el material, asignarlo aquí)
+            capsuleCollider.center = new Vector3(0f, 0.05f, -0.11f);
+            capsuleCollider.radius = 0.1f;
+            capsuleCollider.height = 0.8f;
+            capsuleCollider.direction = 2; // Z-Axis
+            
+            Debug.Log("[ManejadorEstacion] Iguana CapsuleCollider configurado - Center: " + capsuleCollider.center + 
+                      ", Radius: " + capsuleCollider.radius + ", Height: " + capsuleCollider.height);
+        }
+        else
+        {
+            // Si no existe, crear uno
+            capsuleCollider = iguana.AddComponent<CapsuleCollider>();
+            capsuleCollider.isTrigger = false;
+            capsuleCollider.center = new Vector3(0f, 0.05f, -0.11f);
+            capsuleCollider.radius = 0.1f;
+            capsuleCollider.height = 0.8f;
+            capsuleCollider.direction = 2; // Z-Axis
+            
+            Debug.Log("[ManejadorEstacion] Iguana CapsuleCollider CREADO y configurado");
+        }
+        
+        // **4. CONFIGURAR BOX COLLIDER**
+        BoxCollider boxCollider = iguana.GetComponent<BoxCollider>();
+        if (boxCollider != null)
+        {
+            boxCollider.isTrigger = false;
+            boxCollider.material = null; // None (Physic Material)
+            boxCollider.center = new Vector3(0f, 0.04f, 0f);
+            boxCollider.size = new Vector3(0.23f, 0.09f, 0.61f);
+            
+            Debug.Log("[ManejadorEstacion] Iguana BoxCollider configurado - Center: " + boxCollider.center + 
+                      ", Size: " + boxCollider.size);
+        }
+        else
+        {
+            // Si no existe, crear uno
+            boxCollider = iguana.AddComponent<BoxCollider>();
+            boxCollider.isTrigger = false;
+            boxCollider.center = new Vector3(0f, 0.04f, 0f);
+            boxCollider.size = new Vector3(0.23f, 0.09f, 0.61f);
+            
+            Debug.Log("[ManejadorEstacion] Iguana BoxCollider CREADO y configurado");
+        }
+        
+        Debug.Log("[ManejadorEstacion] ✓✓✓ Iguana completamente configurada ✓✓✓");
     }
     
     /// <summary>
