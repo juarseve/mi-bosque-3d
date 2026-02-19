@@ -247,7 +247,7 @@
   },
   "recordatorios": {
     "recordatorio_3": "Catch the rabbit and return it to the burrow ",
-    "recordatorio_4": "Find two mice and a salamander and leave them in the area ",
+    "recordatorio_4": "Talk to Polo and answer the questions",
     "recordatorio_5": "A place to get water... and a container to carry it in...",
     "recordatorio_6": "Pick up the trash and put it in the trash cans",
     "recordatorio_7": "Sow the seeds you collected in the greenhouse",
@@ -313,18 +313,14 @@
     "recordatorio": "Catch the baby rabbit and return it to its burrow in time."
   },
   "fourth_challenge": {
-    "title_suelo": "REMEMBER",
-    "sentence_suelo": "Look at the ground! The species are very important for life in the forest, don't step on them carelessly!",
-    "title_0": "Feathered help",
-    "title_1": "Deliver the food",
-    "title_2": "Food delivery",
-    "sentence_0": "Our friend the Gray-backed Hawk, has injured one of its wings and cannot get its food by itself.",
-    "sentence_1": "For this challenge you must FIND two mice and a salamander. Pay attention, it's possible you can hear them when you're close.\n\nTo request help press the letter P.",
-    "sentence_2": "Once you have captured the food, you must place them in the indicated area by clicking.\n\nThis is an example of the trophic chain of the species and how they feed.",
-    "title_completado": "You have done very well!",
-    "sentence_completado": "Thanks for hunting the food for the Gray-backed Hawk, we are sure it will recover soon and can hunt alone. In a real forest avoid getting close to their food.",
-    "title_pendiente": "Don't let it down",
-    "sentence_pendiente": "COLLECT the food and LEAVE it in the designated area using your CLICK.\nOur friend is counting on you to recover. Look in the surroundings, you will surely find what it needs."
+    "title_suelo": "Wisdom Test",
+    "sentence_suelo": "It's time to help our feathered friend!\n\nWith this \"Wisdom Test\" about Trophic Chains, each correct answer will restore the strength needed to heal.\n\nBy understanding how nature works, you protect the hawk and its entire ecosystem without the need for negative intervention.\n\nRemember that you should NOT feed or hunt wild animals.",
+    "title_0": "Wisdom Test",
+    "sentence_0": "It's time to help our feathered friend!\n\nWith this \"Wisdom Test\" about Trophic Chains, each correct answer will restore the strength needed to heal.\n\nBy understanding how nature works, you protect the hawk and its entire ecosystem without the need for negative intervention.\n\nRemember that you should NOT feed or hunt wild animals.",
+    "title_completado": "Congratulations, Wise Ranger!",
+    "sentence_completado": "You have successfully completed the Wisdom Test on Trophic Chains.\n\nNow you understand how nature works and the importance of protecting the balance of the ecosystem.\n\nThanks to your knowledge, you helped the hawk without negatively interfering with its habitat.",
+    "title_pendiente": "Don't give up!",
+    "sentence_pendiente": "The hawk needs your help.\n\nComplete the Wisdom Test on Trophic Chains to get the medal.\n\nRemember: you need to answer at least 2 out of 3 questions correctly.\n\nIf you need help, you can watch the video again."
   },
   "fifth_challenge": {
     "title_vidrio": "Careful!",
@@ -398,8 +394,8 @@
     "logro_0_descripcion": "You have found the requested species",
     "logro_1_nombre": "Swift Forest Ranger",
     "logro_1_descripcion": "You saved the rabbit by returning it to its burrow",
-    "logro_2_nombre": "Gourmet Forest Ranger",
-    "logro_2_descripcion": "You have helped find food",
+    "logro_2_nombre": "Wise Ranger",
+    "logro_2_descripcion": "You answered Polo's questions",
     "logro_3_nombre": "Firefighter Forest Ranger",
     "logro_3_descripcion": "You have prevented a fire",
     "logro_4_nombre": "Ecologist Forest Ranger",
@@ -434,7 +430,7 @@
 
     "mision_0_descripcion": "Show initiative by finding the requested species at the start.",
     "mision_1_descripcion": "Protect the rabbit from predators by returning it to its home.",
-    "mision_2_descripcion": "Find food for the injured hawk by following the sounds of nature.",
+    "mision_2_descripcion": "Talk to Polo and answer at least 2 questions correctly",
     "mision_3_descripcion": "Save the forest from a potential wildfire.",
     "mision_4_descripcion": "Recycle the trash left by other visitors.",
     "mision_5_descripcion": "Plant the seeds you found on your adventure.",
