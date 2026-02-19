@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.UI;
 
 public class ShowMochila : MonoBehaviour
 {
@@ -23,6 +24,14 @@ public class ShowMochila : MonoBehaviour
     public GameObject preguntaScreen;
     public GameObject misionesScreen;
     public GameObject infoScreen;
+    
+    // Referencias para el toggle visual de la mochila con imágenes
+    public Image seedsButtonImage;
+    public Image accesoriesButtonImage;
+    public Sprite seedsButtonActive;      // Imagen cuando Semillas está activo
+    public Sprite seedsButtonInactive;    // Imagen cuando Semillas está inactivo
+    public Sprite accesoriesButtonActive;   // Imagen cuando Accesorios está activo
+    public Sprite accesoriesButtonInactive; // Imagen cuando Accesorios está inactivo
 
     public static bool IsBackPack = false;
     public static bool isInfo = false;
@@ -77,6 +86,28 @@ public class ShowMochila : MonoBehaviour
 #endif
         Player.instance.playerData.mochilaDesbloqueada = true;
         NL = GameObject.Find("NotifLogros").GetComponent<NotificarLogros>();
+        
+        // Inicializar las imágenes de los botones de la mochila
+        // Por defecto, Semillas está activo
+        InitializeMochilaButtons();
+    }
+    
+    /// <summary>
+    /// Inicializa las imágenes de los botones de Semillas y Accesorios
+    /// </summary>
+    private void InitializeMochilaButtons()
+    {
+        if (seedsButtonImage != null && seedsButtonActive != null)
+        {
+            // Semillas por defecto activo
+            seedsButtonImage.sprite = seedsButtonActive;
+        }
+        
+        if (accesoriesButtonImage != null && accesoriesButtonInactive != null)
+        {
+            // Accesorios inactivo por defecto
+            accesoriesButtonImage.sprite = accesoriesButtonInactive;
+        }
     }
 
     // Asegura que los íconos del HUD estén visibles (llamable desde GameManager tras cargar una partida)
@@ -222,6 +253,9 @@ public class ShowMochila : MonoBehaviour
         seedsPanel.SetActive(false);
         accesoryPanel.SetActive(true);
         DragNDrop.isAccesory = true;
+        
+        // Actualizar imágenes de los botones
+        UpdateMochilaButtonImages(false); // false = Accesorios activo
     }
 
     public void OnSeedsPanelShow()
@@ -229,6 +263,26 @@ public class ShowMochila : MonoBehaviour
         seedsPanel.SetActive(true);
         accesoryPanel.SetActive(false);
         DragNDrop.isAccesory = false;
+        
+        // Actualizar imágenes de los botones
+        UpdateMochilaButtonImages(true); // true = Semillas activo
+    }
+    
+    /// <summary>
+    /// Actualiza las imágenes de los botones de Semillas y Accesorios
+    /// </summary>
+    /// <param name="isSeedsActive">true si Semillas debe estar activo, false si Accesorios</param>
+    private void UpdateMochilaButtonImages(bool isSeedsActive)
+    {
+        if (seedsButtonImage != null)
+        {
+            seedsButtonImage.sprite = isSeedsActive ? seedsButtonActive : seedsButtonInactive;
+        }
+        
+        if (accesoriesButtonImage != null)
+        {
+            accesoriesButtonImage.sprite = isSeedsActive ? accesoriesButtonInactive : accesoriesButtonActive;
+        }
     }
     public void mochilaInt( bool abrir)
     {

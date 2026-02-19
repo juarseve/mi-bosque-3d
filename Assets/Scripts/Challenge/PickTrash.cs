@@ -13,7 +13,7 @@ public class PickTrash : MonoBehaviour, IInteractable
     public GameObject jugador;
 
     float timeElapsed = 0;
-    float lerpDuration = 1f;
+    float lerpDuration = 0.5f;
     Vector3 startValue;
     Vector3 endValue;
     bool movimiento = false;
@@ -71,7 +71,7 @@ public class PickTrash : MonoBehaviour, IInteractable
             // Iniciar la recogida
             RecogerBasura();
             
-            Invoke("ResetInteracting", 1f);
+            Invoke("ResetInteracting", 0.5f);
         }
     }
     
@@ -119,7 +119,7 @@ public class PickTrash : MonoBehaviour, IInteractable
         }
         
         startValue = this.transform.position;
-        endValue = jugador.transform.position + new Vector3(0, -5, 0);
+        endValue = this.transform.position;
         
         // Destruir el collider para que no se pueda volver a interactuar
         BoxCollider boxCollider = this.gameObject.GetComponent<BoxCollider>();

@@ -2886,7 +2886,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0011847309}
+  m_AnchoredPosition: {x: 0, y: 0.0030251266}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &82227862
@@ -4571,7 +4571,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4288958976
-  m_Size: 5
+  m_Size: 3
 --- !u!1001 &129150543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8830,6 +8830,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205974264}
   m_CullTransparentMesh: 0
+--- !u!1 &211325603 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3923617205325072672, guid: 1f7d17053ff3a9345a2f030b5dcbbea5,
+    type: 3}
+  m_PrefabInstance: {fileID: 3923617204428994896}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &211325609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211325603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636a36e8881ac3a4b823d0d30623738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: 1e519e98f7ae7c9469a2e35f893037d1, type: 3}
+  hotspot: {x: 16, y: 16}
+  useSystemCursor: 0
 --- !u!1 &215155358 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1969506690038558, guid: 65ef68f3ca4cc7f4aa4fdee7422c6d9a,
@@ -12873,7 +12894,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4288958976
-  m_Size: 5
+  m_Size: 3
 --- !u!114 &342611875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12936,6 +12957,7 @@ GameObject:
   - component: {fileID: 343594563}
   - component: {fileID: 343594562}
   - component: {fileID: 343594561}
+  - component: {fileID: 343594564}
   m_Layer: 5
   m_Name: IguanaCajaTexto
   m_TagString: Untagged
@@ -13019,6 +13041,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343594559}
   m_CullTransparentMesh: 0
+--- !u!114 &343594564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343594559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa6a4815aa2b2b4eb8ecda04b2f17e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredStation: 1
 --- !u!1 &345007494
 GameObject:
   m_ObjectHideFlags: 0
@@ -15325,7 +15360,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 296, y: 17}
-  m_SizeDelta: {x: 150, y: 56}
+  m_SizeDelta: {x: 140, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &399173782
 MonoBehaviour:
@@ -15403,7 +15438,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: af323a46a75bd334db33fab7c76668bb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 571ff59c1f05bb24db5b16a7b08a3d22, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18626,8 +18661,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -22718,6 +22753,7 @@ GameObject:
   - component: {fileID: 560940995}
   - component: {fileID: 560940994}
   - component: {fileID: 560940993}
+  - component: {fileID: 560940996}
   m_Layer: 5
   m_Name: BasuraCajaTexto
   m_TagString: Untagged
@@ -22801,6 +22837,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560940991}
   m_CullTransparentMesh: 0
+--- !u!114 &560940996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560940991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa6a4815aa2b2b4eb8ecda04b2f17e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredStation: 5
 --- !u!1001 &563200212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28719,7 +28768,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4288958976
-  m_Size: 5
+  m_Size: 3
 --- !u!1 &706568058
 GameObject:
   m_ObjectHideFlags: 0
@@ -29963,6 +30012,7 @@ GameObject:
   - component: {fileID: 736816231}
   - component: {fileID: 736816234}
   - component: {fileID: 736816232}
+  - component: {fileID: 736816233}
   m_Layer: 0
   m_Name: LogrosBG
   m_TagString: Untagged
@@ -30049,6 +30099,21 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &736816233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736816230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636a36e8881ac3a4b823d0d30623738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: 1e519e98f7ae7c9469a2e35f893037d1, type: 3}
+  hotspot: {x: 16, y: 16}
+  useSystemCursor: 0
 --- !u!222 &736816234
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30068,6 +30133,7 @@ GameObject:
   - component: {fileID: 743135144}
   - component: {fileID: 743135146}
   - component: {fileID: 743135145}
+  - component: {fileID: 743135147}
   m_Layer: 0
   m_Name: Desafios
   m_TagString: Untagged
@@ -30162,6 +30228,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743135143}
   m_CullTransparentMesh: 0
+--- !u!114 &743135147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743135143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636a36e8881ac3a4b823d0d30623738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: 1e519e98f7ae7c9469a2e35f893037d1, type: 3}
+  hotspot: {x: 16, y: 16}
+  useSystemCursor: 0
 --- !u!1 &743854242
 GameObject:
   m_ObjectHideFlags: 0
@@ -30342,6 +30423,7 @@ GameObject:
   - component: {fileID: 750895094}
   - component: {fileID: 750895093}
   - component: {fileID: 750895095}
+  - component: {fileID: 750895096}
   m_Layer: 5
   m_Name: Boton Cerrar
   m_TagString: Untagged
@@ -30461,6 +30543,21 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &750895096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750895091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636a36e8881ac3a4b823d0d30623738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: 1e519e98f7ae7c9469a2e35f893037d1, type: 3}
+  hotspot: {x: 16, y: 16}
+  useSystemCursor: 0
 --- !u!1001 &752684598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31108,6 +31205,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioToPlay: {fileID: 8300000, guid: ea99a0869e84d6249a46c1b3109b5662, type: 3}
+--- !u!114 &762774621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762774615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636a36e8881ac3a4b823d0d30623738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: 1e519e98f7ae7c9469a2e35f893037d1, type: 3}
+  hotspot: {x: 16, y: 16}
+  useSystemCursor: 0
 --- !u!1 &768389695
 GameObject:
   m_ObjectHideFlags: 0
@@ -31798,6 +31910,7 @@ GameObject:
   - component: {fileID: 789903011}
   - component: {fileID: 789903014}
   - component: {fileID: 789903012}
+  - component: {fileID: 789903013}
   m_Layer: 0
   m_Name: MisionesBG
   m_TagString: Untagged
@@ -31884,6 +31997,21 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &789903013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789903010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636a36e8881ac3a4b823d0d30623738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: 1e519e98f7ae7c9469a2e35f893037d1, type: 3}
+  hotspot: {x: 16, y: 16}
+  useSystemCursor: 0
 --- !u!222 &789903014
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -32199,6 +32327,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 803346130}
   m_CullTransparentMesh: 0
+--- !u!1 &805571952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4601335975474419624, guid: 4c66d3f3626d0d34d9ef33cfa403410b,
+    type: 3}
+  m_PrefabInstance: {fileID: 808151031}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &805571958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805571952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636a36e8881ac3a4b823d0d30623738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: 1e519e98f7ae7c9469a2e35f893037d1, type: 3}
+  hotspot: {x: 16, y: 16}
+  useSystemCursor: 0
 --- !u!1 &805772656
 GameObject:
   m_ObjectHideFlags: 0
@@ -38427,6 +38576,7 @@ GameObject:
   - component: {fileID: 882702171}
   - component: {fileID: 882702169}
   - component: {fileID: 882702170}
+  - component: {fileID: 882702173}
   m_Layer: 0
   m_Name: BotonCerrar
   m_TagString: Untagged
@@ -38559,6 +38709,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 882702167}
   m_CullTransparentMesh: 0
+--- !u!114 &882702173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882702167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636a36e8881ac3a4b823d0d30623738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: 1e519e98f7ae7c9469a2e35f893037d1, type: 3}
+  hotspot: {x: 16, y: 16}
+  useSystemCursor: 0
 --- !u!1 &885143145
 GameObject:
   m_ObjectHideFlags: 0
@@ -38734,6 +38899,7 @@ GameObject:
   - component: {fileID: 898730646}
   - component: {fileID: 898730645}
   - component: {fileID: 898730644}
+  - component: {fileID: 898730647}
   m_Layer: 5
   m_Name: CerrarLibro (1)
   m_TagString: Untagged
@@ -38864,6 +39030,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898730642}
   m_CullTransparentMesh: 0
+--- !u!114 &898730647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898730642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636a36e8881ac3a4b823d0d30623738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: 1e519e98f7ae7c9469a2e35f893037d1, type: 3}
+  hotspot: {x: 16, y: 16}
+  useSystemCursor: 0
 --- !u!1 &911183388
 GameObject:
   m_ObjectHideFlags: 0
@@ -47259,6 +47440,15 @@ MonoBehaviour:
   preguntaScreen: {fileID: 864256751}
   misionesScreen: {fileID: 808151032}
   infoScreen: {fileID: 1509402554}
+  seedsButtonImage: {fileID: 1062140173}
+  accesoriesButtonImage: {fileID: 399173783}
+  seedsButtonActive: {fileID: 21300000, guid: af323a46a75bd334db33fab7c76668bb, type: 3}
+  seedsButtonInactive: {fileID: 21300000, guid: 571ff59c1f05bb24db5b16a7b08a3d22,
+    type: 3}
+  accesoriesButtonActive: {fileID: 21300000, guid: af323a46a75bd334db33fab7c76668bb,
+    type: 3}
+  accesoriesButtonInactive: {fileID: 21300000, guid: 571ff59c1f05bb24db5b16a7b08a3d22,
+    type: 3}
   profile: {fileID: 7059356095027888728}
   cerrarMochila: {fileID: 1897542979}
   CanvasPlayerGUI: {fileID: 1686677600}
@@ -50982,6 +51172,7 @@ GameObject:
   - component: {fileID: 1176149296}
   - component: {fileID: 1176149295}
   - component: {fileID: 1176149294}
+  - component: {fileID: 1176149297}
   m_Layer: 5
   m_Name: ArdillaCajaTexto
   m_TagString: Untagged
@@ -51065,6 +51256,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176149292}
   m_CullTransparentMesh: 0
+--- !u!114 &1176149297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176149292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa6a4815aa2b2b4eb8ecda04b2f17e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredStation: 1
 --- !u!1 &1176734914
 GameObject:
   m_ObjectHideFlags: 0
@@ -51886,15 +52090,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4261936370815586, guid: 90c05f8deed8940408dacffe39ac83ce, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.92836607
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4261936370815586, guid: 90c05f8deed8940408dacffe39ac83ce, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.92836607
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4261936370815586, guid: 90c05f8deed8940408dacffe39ac83ce, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.92836624
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 23315665932172656, guid: 90c05f8deed8940408dacffe39ac83ce,
         type: 3}
@@ -59107,7 +59311,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4288958976
-  m_Size: 5
+  m_Size: 3
 --- !u!1 &1263961207
 GameObject:
   m_ObjectHideFlags: 0
@@ -61690,7 +61894,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4288958976
-  m_Size: 5
+  m_Size: 3
 --- !u!1 &1322693880 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5546158195109819115, guid: 4c66d3f3626d0d34d9ef33cfa403410b,
@@ -67306,6 +67510,7 @@ GameObject:
   - component: {fileID: 1420044100}
   - component: {fileID: 1420044103}
   - component: {fileID: 1420044101}
+  - component: {fileID: 1420044102}
   m_Layer: 0
   m_Name: PerfilBG
   m_TagString: Untagged
@@ -67392,6 +67597,21 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1420044102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420044099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636a36e8881ac3a4b823d0d30623738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: 1e519e98f7ae7c9469a2e35f893037d1, type: 3}
+  hotspot: {x: 16, y: 16}
+  useSystemCursor: 0
 --- !u!222 &1420044103
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -67653,15 +67873,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4261936370815586, guid: 90c05f8deed8940408dacffe39ac83ce, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.92836607
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4261936370815586, guid: 90c05f8deed8940408dacffe39ac83ce, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.92836607
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4261936370815586, guid: 90c05f8deed8940408dacffe39ac83ce, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.92836624
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 23315665932172656, guid: 90c05f8deed8940408dacffe39ac83ce,
         type: 3}
@@ -76875,15 +77095,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4161084484716844, guid: 28aeb2a4fbfc23e4690286e16e6a332b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.027048
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4161084484716844, guid: 28aeb2a4fbfc23e4690286e16e6a332b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4.0270495
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4161084484716844, guid: 28aeb2a4fbfc23e4690286e16e6a332b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4.027049
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 1856593017827706, guid: 28aeb2a4fbfc23e4690286e16e6a332b, type: 3}
       propertyPath: m_Layer
@@ -80622,6 +80842,7 @@ GameObject:
   - component: {fileID: 1616200158}
   - component: {fileID: 1616200157}
   - component: {fileID: 1616200156}
+  - component: {fileID: 1616200159}
   m_Layer: 5
   m_Name: PepicheCajaTexto
   m_TagString: Untagged
@@ -80705,6 +80926,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1616200154}
   m_CullTransparentMesh: 0
+--- !u!114 &1616200159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616200154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa6a4815aa2b2b4eb8ecda04b2f17e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredStation: 1
 --- !u!1 &1617825195
 GameObject:
   m_ObjectHideFlags: 0
@@ -82864,15 +83098,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4161084484716844, guid: 28aeb2a4fbfc23e4690286e16e6a332b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.0270476
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4161084484716844, guid: 28aeb2a4fbfc23e4690286e16e6a332b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4.02705
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4161084484716844, guid: 28aeb2a4fbfc23e4690286e16e6a332b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4.0270505
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 1856593017827706, guid: 28aeb2a4fbfc23e4690286e16e6a332b, type: 3}
       propertyPath: m_Layer
@@ -87496,6 +87730,7 @@ GameObject:
   - component: {fileID: 1733535589}
   - component: {fileID: 1733535588}
   - component: {fileID: 1733535587}
+  - component: {fileID: 1733535590}
   m_Layer: 5
   m_Name: CerrarLibro
   m_TagString: Untagged
@@ -87626,6 +87861,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733535585}
   m_CullTransparentMesh: 0
+--- !u!114 &1733535590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733535585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636a36e8881ac3a4b823d0d30623738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: 1e519e98f7ae7c9469a2e35f893037d1, type: 3}
+  hotspot: {x: 16, y: 16}
+  useSystemCursor: 0
 --- !u!1 &1734897536
 GameObject:
   m_ObjectHideFlags: 0
@@ -88077,6 +88327,7 @@ GameObject:
   - component: {fileID: 1742199237}
   - component: {fileID: 1742199236}
   - component: {fileID: 1742199239}
+  - component: {fileID: 1742199240}
   m_Layer: 0
   m_Name: BotonCerrar
   m_TagString: Untagged
@@ -88242,6 +88493,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioToPlay: {fileID: 8300000, guid: ea99a0869e84d6249a46c1b3109b5662, type: 3}
+--- !u!114 &1742199240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742199234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636a36e8881ac3a4b823d0d30623738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: 1e519e98f7ae7c9469a2e35f893037d1, type: 3}
+  hotspot: {x: 16, y: 16}
+  useSystemCursor: 0
 --- !u!1 &1747181453
 GameObject:
   m_ObjectHideFlags: 0
@@ -88505,8 +88771,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -88836,7 +89102,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1020285833}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999792
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -90920,6 +91186,27 @@ Transform:
   m_Father: {fileID: 1715500056}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1857434576 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2944304522696131015, guid: 513a82b30b49a5d4d8327105fae767ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 1348361801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1857434582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857434576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636a36e8881ac3a4b823d0d30623738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: 1e519e98f7ae7c9469a2e35f893037d1, type: 3}
+  hotspot: {x: 16, y: 16}
+  useSystemCursor: 0
 --- !u!1 &1858161689
 GameObject:
   m_ObjectHideFlags: 0
@@ -96759,15 +97046,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4261936370815586, guid: 90c05f8deed8940408dacffe39ac83ce, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.92836607
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4261936370815586, guid: 90c05f8deed8940408dacffe39ac83ce, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.92836607
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4261936370815586, guid: 90c05f8deed8940408dacffe39ac83ce, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.92836624
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 23315665932172656, guid: 90c05f8deed8940408dacffe39ac83ce,
         type: 3}
@@ -97283,6 +97570,7 @@ GameObject:
   - component: {fileID: 1897542983}
   - component: {fileID: 1897542982}
   - component: {fileID: 1897542981}
+  - component: {fileID: 1897542984}
   m_Layer: 0
   m_Name: CerraMochila
   m_TagString: Untagged
@@ -97413,6 +97701,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897542979}
   m_CullTransparentMesh: 0
+--- !u!114 &1897542984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897542979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636a36e8881ac3a4b823d0d30623738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: 1e519e98f7ae7c9469a2e35f893037d1, type: 3}
+  hotspot: {x: 16, y: 16}
+  useSystemCursor: 0
 --- !u!1 &1900139193
 GameObject:
   m_ObjectHideFlags: 0
@@ -100001,15 +100304,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4261936370815586, guid: 90c05f8deed8940408dacffe39ac83ce, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.92836607
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4261936370815586, guid: 90c05f8deed8940408dacffe39ac83ce, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.92836607
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4261936370815586, guid: 90c05f8deed8940408dacffe39ac83ce, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.92836624
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 23315665932172656, guid: 90c05f8deed8940408dacffe39ac83ce,
         type: 3}
@@ -103392,7 +103695,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4288958976
-  m_Size: 5
+  m_Size: 3
 --- !u!1 &2068433107
 GameObject:
   m_ObjectHideFlags: 0
@@ -108005,6 +108308,7 @@ GameObject:
   - component: {fileID: 3807061302651460041}
   - component: {fileID: 1408078970}
   - component: {fileID: 1408078971}
+  - component: {fileID: 3807061302651460048}
   m_Layer: 5
   m_Name: ButtonDer
   m_TagString: Untagged
@@ -108012,6 +108316,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3807061302651460048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3807061302651460047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636a36e8881ac3a4b823d0d30623738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: 1e519e98f7ae7c9469a2e35f893037d1, type: 3}
+  hotspot: {x: 16, y: 16}
+  useSystemCursor: 0
 --- !u!224 &3807061302790946960
 RectTransform:
   m_ObjectHideFlags: 0
@@ -108202,6 +108521,7 @@ GameObject:
   - component: {fileID: 3807061303727336317}
   - component: {fileID: 1944401937}
   - component: {fileID: 1944401938}
+  - component: {fileID: 3807061303727336308}
   m_Layer: 5
   m_Name: ButtonIzq
   m_TagString: Untagged
@@ -108209,6 +108529,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3807061303727336308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3807061303727336307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636a36e8881ac3a4b823d0d30623738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: 1e519e98f7ae7c9469a2e35f893037d1, type: 3}
+  hotspot: {x: 16, y: 16}
+  useSystemCursor: 0
 --- !u!224 &3807061303727336316
 RectTransform:
   m_ObjectHideFlags: 0
@@ -110864,6 +111199,7 @@ GameObject:
   - component: {fileID: 7059356094157021979}
   - component: {fileID: 7059356094157021980}
   - component: {fileID: 7059356094157021981}
+  - component: {fileID: 7059356094157021984}
   m_Layer: 0
   m_Name: RetrocesoBtn
   m_TagString: Untagged
@@ -110871,6 +111207,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7059356094157021984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059356094157021983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636a36e8881ac3a4b823d0d30623738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCursor: {fileID: 2800000, guid: 1e519e98f7ae7c9469a2e35f893037d1, type: 3}
+  hotspot: {x: 16, y: 16}
+  useSystemCursor: 0
 --- !u!222 &7059356094337311978
 CanvasRenderer:
   m_ObjectHideFlags: 0

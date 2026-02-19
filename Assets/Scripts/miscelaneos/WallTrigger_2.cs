@@ -139,6 +139,18 @@ public class WallTrigger_2 : MonoBehaviour
         //mira.SetActive(false);
         Time.timeScale = 1f;
 
+        // Limpiar listeners previos para evitar múltiples llamadas
+        m_opcionAImagenes.onClick.RemoveAllListeners();
+        m_opcionBImagenes.onClick.RemoveAllListeners();
+        m_opcionCImagenes.onClick.RemoveAllListeners();
+        m_opcionDImagenes.onClick.RemoveAllListeners();
+        
+        // Asegurar que los botones estén habilitados
+        m_opcionAImagenes.interactable = true;
+        m_opcionBImagenes.interactable = true;
+        m_opcionCImagenes.interactable = true;
+        m_opcionDImagenes.interactable = true;
+
         m_opcionAImagenes.onClick.AddListener(delegate { Wrapper(value_A,opt1); });
         m_opcionBImagenes.onClick.AddListener(delegate { Wrapper(value_B, opt2); });
         m_opcionCImagenes.onClick.AddListener(delegate { Wrapper(value_C, opt3); });
@@ -147,15 +159,17 @@ public class WallTrigger_2 : MonoBehaviour
 
 
         yield return new WaitForSeconds(0.2f);
-;
 
         canvasPreguntasImagenes.SetActive(true);
+        
+        // Forzar actualización del canvas
+        Canvas.ForceUpdateCanvases();
         
         // Asegurar que el cursor esté visible y desbloqueado para la interfaz
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         
-        Debug.Log("WALL TRIGGER 2 SCRIPT");
+        Debug.Log("WALL TRIGGER 2 SCRIPT - Botones habilitados y listeners añadidos");
         Debug.Log("END ENUM PREG");
         NL.cerrar();
     }
