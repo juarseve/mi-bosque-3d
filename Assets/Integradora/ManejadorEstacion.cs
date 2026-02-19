@@ -68,6 +68,7 @@ public class ManejadorEstacion : MonoBehaviour
         GameObject objeto;
         ClickMouse clic;
         BoxCollider[] boxColliders;
+        BoxCollider boxCollider;
         Rigidbody rb;
         //limitesEstacion limites;
         for (int i = 0; i < listaInstanciar.Length; i++)
@@ -75,6 +76,10 @@ public class ManejadorEstacion : MonoBehaviour
             try
             {
                objeto= Instantiate(listaInstanciar[i], desface, rotacion, this.gameObject.transform);
+               
+                // **NUEVO**: Asegurar que el objeto raíz tenga un BoxCollider con isTrigger = false
+                AsegurarBoxCollider(objeto);
+                
                 /*if (objeto.name.Contains("entrada-salida"))
                 {
                     foreach (Transform child in objeto.transform)
@@ -88,6 +93,9 @@ public class ManejadorEstacion : MonoBehaviour
                 {
                     foreach (Transform child in objeto.transform)
                     {
+                        // **NUEVO**: Asegurar que cada hijo de Especies tenga un BoxCollider con isTrigger = false
+                        AsegurarBoxCollider(child.gameObject);
+                        
                         clic = child.transform.GetComponent<ClickMouse>();
                         if (clic != null)
                         {
@@ -163,6 +171,39 @@ public class ManejadorEstacion : MonoBehaviour
             }
         }
         
+    }
+    
+    /// <summary>
+    /// Asegura que un GameObject tenga al menos un BoxCollider con isTrigger = false
+    /// Si no tiene BoxCollider, lo crea. Si tiene, configura isTrigger = false en todos.
+    /// </summary>
+    /// <param name="obj">GameObject a verificar/modificar</param>
+    private void AsegurarBoxCollider(GameObject obj)
+    {
+        if (obj == null) return;
+        
+        // Obtener todos los BoxColliders del objeto (sin incluir hijos)
+        BoxCollider[] boxColliders = obj.GetComponents<BoxCollider>();
+        
+        if (boxColliders == null || boxColliders.Length == 0)
+        {
+            // No tiene BoxCollider, crear uno nuevo
+            BoxCollider nuevoBoxCollider = obj.AddComponent<BoxCollider>();
+            nuevoBoxCollider.isTrigger = false;
+            Debug.Log("[ManejadorEstacion] BoxCollider creado en " + obj.name + " con isTrigger = false");
+        }
+        else
+        {
+            // Ya tiene BoxColliders, asegurar que todos tengan isTrigger = false
+            foreach (BoxCollider bc in boxColliders)
+            {
+                if (bc.isTrigger)
+                {
+                    bc.isTrigger = false;
+                    Debug.Log("[ManejadorEstacion] BoxCollider en " + obj.name + " configurado a isTrigger = false");
+                }
+            }
+        }
     }
 
     void destruir()
