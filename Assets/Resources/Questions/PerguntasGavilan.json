@@ -2,7 +2,7 @@
   {
     "ChallengeID": 1001,
     "codename": "gavilan_q1",
-    "question": "Qual é o primeiro elo na maioria das cadeias alimentares, que produz seu próprio alimento usando a luz solar?",
+    "question": "Qual \u00E9 o primeiro elo na maioria das cadeias alimentares, que produz seu pr\u00F3prio alimento usando a luz solar?",
     "score": 10,
     "image": "Questions/ImagesGavilan/pregunta1",
     "difficulty": 1,
@@ -27,7 +27,7 @@
         "ChallengeOptionId": 10012,
         "codename": "gavilan_q1_b",
         "correctOption": false,
-        "text": "Predadores (como o gavião)",
+        "text": "Predadores (como o gavil\u00E3o)",
         "image": "Questions/ImagesGavilan/Gavilan",
         "updatedAt": "2024-01-01"
       },
@@ -35,7 +35,7 @@
         "ChallengeOptionId": 10013,
         "codename": "gavilan_q1_c",
         "correctOption": false,
-        "text": "Consumidores primários (como insetos)",
+        "text": "Consumidores prim\u00E1rios (como insetos)",
         "image": "Questions/ImagesGavilan/consumidores primerios (insectos)",
         "updatedAt": "2024-01-01"
       },
@@ -50,7 +50,7 @@
     ],
     "feedback": {
       "ChallengeFeedbackId": 1001,
-      "feedback": "As plantas iniciam a cadeia transformando a energia solar em matéria orgânica que servirá de alimento para outros.",
+      "feedback": "As plantas iniciam a cadeia transformando a energia solar em mat\u00E9ria org\u00E2nica que servir\u00E1 de alimento para outros.",
       "image": "Questions/ImagesGavilan/Productores",
       "updatedAt": "2024-01-01"
     }
@@ -58,7 +58,7 @@
   {
     "ChallengeID": 1002,
     "codename": "gavilan_q2",
-    "question": "Na floresta, se um gavião come um rato que comeu sementes, qual posição o gavião ocupa nesta cadeia?",
+    "question": "Na floresta, se um gavil\u00E3o come um rato que comeu sementes, qual posi\u00E7\u00E3o o gavil\u00E3o ocupa nesta cadeia?",
     "score": 10,
     "image": "Questions/ImagesGavilan/pregunta2",
     "difficulty": 1,
@@ -83,7 +83,7 @@
         "ChallengeOptionId": 10022,
         "codename": "gavilan_q2_b",
         "correctOption": false,
-        "text": "Consumidor primário",
+        "text": "Consumidor prim\u00E1rio",
         "image": "Questions/ImagesGavilan/Gavilan",
         "updatedAt": "2024-01-01"
       },
@@ -91,7 +91,7 @@
         "ChallengeOptionId": 10023,
         "codename": "gavilan_q2_c",
         "correctOption": false,
-        "text": "Produtor primário",
+        "text": "Produtor prim\u00E1rio",
         "image": "Questions/ImagesGavilan/Gavilan",
         "updatedAt": "2024-01-01"
       },
@@ -99,14 +99,14 @@
         "ChallengeOptionId": 10024,
         "codename": "gavilan_q2_d",
         "correctOption": true,
-        "text": "Consumidor secundário",
+        "text": "Consumidor secund\u00E1rio",
         "image": "Questions/ImagesGavilan/Gavilan",
         "updatedAt": "2024-01-01"
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 1002,
-      "feedback": "Ao comer um herbívoro (o rato), o gavião se torna o segundo nível de consumidores nesta sequência.",
+      "feedback": "Ao comer um herb\u00EDvoro (o rato), o gavil\u00E3o se torna o segundo n\u00EDvel de consumidores nesta sequ\u00EAncia.",
       "image": "Questions/ImagesGavilan/Gavilan",
       "updatedAt": "2024-01-01"
     }
@@ -114,7 +114,7 @@
   {
     "ChallengeID": 1003,
     "codename": "gavilan_q3",
-    "question": "Por que é importante não remover animais de sua cadeia alimentar (como caçar lagartos para o gavião)?",
+    "question": "Por que \u00E9 importante n\u00E3o remover animais de sua cadeia alimentar (como ca\u00E7ar lagartos para o gavil\u00E3o)?",
     "score": 10,
     "image": "Questions/ImagesGavilan/pregunta3",
     "difficulty": 1,
@@ -131,7 +131,7 @@
         "ChallengeOptionId": 10031,
         "codename": "gavilan_q3_a",
         "correctOption": false,
-        "text": "Porque os animais são amigos na floresta.",
+        "text": "Porque os animais s\u00E3o amigos na floresta.",
         "image": "Questions/ImagesGavilan/mejores amigos",
         "updatedAt": "2024-01-01"
       },
@@ -139,7 +139,7 @@
         "ChallengeOptionId": 10032,
         "codename": "gavilan_q3_b",
         "correctOption": true,
-        "text": "Porque o equilíbrio do ecossistema é alterado.",
+        "text": "Porque o equil\u00EDbrio do ecossistema \u00E9 alterado.",
         "image": "Questions/ImagesGavilan/Bosque en problemas",
         "updatedAt": "2024-01-01"
       },
@@ -155,14 +155,14 @@
         "ChallengeOptionId": 10034,
         "codename": "gavilan_q3_d",
         "correctOption": false,
-        "text": "Porque não poderemos tirar fotos dos animais.",
+        "text": "Porque n\u00E3o poderemos tirar fotos dos animais.",
         "image": "Questions/ImagesGavilan/Turistas en un bosque",
         "updatedAt": "2024-01-01"
       }
     ],
     "feedback": {
       "ChallengeFeedbackId": 1003,
-      "feedback": "Cada organismo tem uma função; se eliminarmos um componente da cadeia alimentar, outros animais podem ficar sem comida ou alguns insetos podem se tornar pragas.",
+      "feedback": "Cada organismo tem uma fun\u00E7\u00E3o; se eliminarmos um componente da cadeia alimentar, outros animais podem ficar sem comida ou alguns insetos podem se tornar pragas.",
       "image": "Questions/ImagesGavilan/Bosque en problemas",
       "updatedAt": "2024-01-01"
     }
