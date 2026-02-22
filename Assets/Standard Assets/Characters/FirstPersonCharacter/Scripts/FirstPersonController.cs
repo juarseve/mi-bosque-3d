@@ -10,6 +10,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof(AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
+        public enum PlayerMode
+        {
+            Normal,
+            Cinematic,
+            UI
+        }
+
+        private PlayerMode currentMode = PlayerMode.Normal;
+
         public static event Action OnPlayerJump;
 
         public int jumpCount = 0;
@@ -140,7 +149,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Usamos LateUpdate para la c�mara para evitar vibraciones (Jitter)
         private void LateUpdate()
         {
-            if (canRotate)
+            if (currentMode == PlayerMode.Normal)
             {
                 RotateCameraManual();
             }
@@ -283,6 +292,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // --- [TPS] NUEVA L�GICA DE ROTACI�N ---
         private void RotateCameraManual()
         {
+            if (!canRotate) return;
             // Leer Inputs
             float mouseX = CrossPlatformInputManager.GetAxis("Mouse X") * mouseSensitivity;
             float mouseY = CrossPlatformInputManager.GetAxis("Mouse Y") * mouseSensitivity;
@@ -401,5 +411,44 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             GUI.Label(new Rect(20, 20, 300, 50), "Saltos: " + jumpCount, style);
         }*/
+
+        public void ForceLook(float x, float y)
+        {
+            rotX = x;
+            rotY = y;
+            cameraPivot.rotation = Quaternion.Euler(rotX, rotY, 0);
+        }
+
+        public void SetMode(PlayerMode mode)
+        {
+            currentMode = mode;
+
+            switch (mode)
+            {
+                case PlayerMode.Normal:
+                    canMove = true;
+                    canRotate = true;
+                    //Cursor.lockState = CursorLockMode.Locked;
+                    //Cursor.visible = false;
+                    break;
+
+                case PlayerMode.Cinematic:
+                    canMove = false;
+                    canRotate = false;
+
+                    // Stop movement immediately
+                    //m_MoveDir = Vector3.zero;
+
+                    break;
+                case PlayerMode.UI:
+                    canMove = false;
+                    canRotate = false;
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    break;
+            }
+            m_MoveDir = Vector3.zero;
+        }
+
     }
 }
