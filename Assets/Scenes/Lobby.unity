@@ -53006,6 +53006,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5163857713681817050, guid: dcb036f163ed770438eb82069d77a1bb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dcb036f163ed770438eb82069d77a1bb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -76735,7 +76740,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 170732917}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1252840805
+--- !u!65 &1252840808
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
