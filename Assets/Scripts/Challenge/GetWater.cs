@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GetWater : MonoBehaviour, IInteractable
+public class GetWater : MonoBehaviour
 {
+    [Header("Referencias UI")]
     public GameObject panelwater;
     public GameObject panelbalde;
     public Text time;
@@ -12,104 +13,139 @@ public class GetWater : MonoBehaviour, IInteractable
     public GameObject agua;
     public GameObject pendienteGO;
     
-    private GameObject puntero;
+    [Header("Debug")]
+    public bool mostrarLogs = true;
     
-    // Flag para evitar interacción múltiple
-    private bool isInteracting = false;
+    // Flag para evitar recolección múltiple
     private bool alreadyCollected = false;
-
+    
+    // Verificar que sea trigger
     private void Start()
     {
-        puntero = GameObject.Find("Crosshair/Image");
-    }
-
-    // ============== IMPLEMENTACIÓN DE IInteractable ==============
-    
-    public void OnInteract()
-    {
-        if (isInteracting || alreadyCollected) return;
-        
-        Debug.Log("[GetWater] OnInteract llamado");
-        
-        if (!(MenuPausa.IsPaused || MenuPausa.IsPausedByOtherCanvas))
+        // Verificar que el collider sea trigger
+        Collider collider = GetComponent<Collider>();
+        if (collider != null && !collider.isTrigger)
         {
-            isInteracting = true;
-            
-            // Reproducir animación de interacción
-            if (InteractionDetector.instance != null)
-            {
-                InteractionDetector.instance.PlayInteractionAnimation();
-            }
-            
-            // Recoger agua
-            RecogerAgua();
-            
-            Invoke("ResetInteracting", 1f);
-        }
-    }
-    
-    private void ResetInteracting()
-    {
-        isInteracting = false;
-    }
-    
-    public void OnLookAt()
-    {
-        if (alreadyCollected) return;
-        
-        if (puntero != null)
-        {
-            Puntero p = puntero.GetComponent<Puntero>();
-            if (p != null)
-            {
-                p.puntero(); // Mostrar icono de interacción cuando mira al agua
-            }
+            Debug.LogWarning("[GetWater] ⚠️ El Collider NO está marcado como Trigger. Activándolo automáticamente.");
+            collider.isTrigger = true;
         }
         
-        Debug.Log("[GetWater] OnLookAt - Mostrando feedback visual");
-    }
-    
-    public void OnLookAway()
-    {
-        if (puntero != null)
+        if (mostrarLogs)
         {
-            Puntero p = puntero.GetComponent<Puntero>();
-            if (p != null)
-            {
-                p.mira(); // Restaurar puntero normal
-            }
+            Debug.Log("[GetWater] ✅ Inicializado. Esperando que el jugador entre al trigger con el balde.");
         }
     }
-    
-    // ============== LÓGICA DE RECOLECCIÓN ==============
     
     /// <summary>
-    /// Lógica principal para recoger agua
+    /// Se llama automáticamente cuando el jugador entra al trigger del agua
+    /// </summary>
+    private void OnTriggerEnter(Collider other)
+    {
+        // Verificar que sea el jugador
+        if (!other.CompareTag("Player"))
+        {
+            return;
+        }
+        
+        // Verificar que no se haya recolectado ya
+        if (alreadyCollected)
+        {
+            if (mostrarLogs)
+            {
+                Debug.Log("[GetWater] ℹ️ Agua ya recolectada anteriormente");
+            }
+            return;
+        }
+        
+        // Verificar que el tiempo no sea "0"
+        if (time != null && time.text == "0")
+        {
+            if (mostrarLogs)
+            {
+                Debug.Log("[GetWater] ⏱️ El tiempo se acabó, no se puede recoger agua");
+            }
+            return;
+        }
+        
+        // Verificar que el jugador tenga el balde
+        if (panelbalde == null || !panelbalde.activeSelf)
+        {
+            if (mostrarLogs)
+            {
+                Debug.Log("[GetWater] ❌ El jugador NO tiene el balde. No se puede recoger agua.");
+            }
+            
+            // Mostrar mensaje de que necesita el balde
+            if (recordatorio != null)
+            {
+                LanguageManager lm = LanguageManager.Instancia;
+                string txt = lm != null ? lm.ObtenerTexto("recordatorios.help_fogata_4") : "Aún nos falta conseguir agua! Hay un lago cerca del pozo, sigue buscando!";
+                recordatorio.text = txt;
+            }
+            
+            return;
+        }
+        
+        // ✅ TODAS LAS CONDICIONES CUMPLIDAS - RECOGER AGUA AUTOMÁTICAMENTE
+        RecogerAgua();
+    }
+    
+    /// <summary>
+    /// Lógica principal para recoger agua automáticamente
     /// </summary>
     private void RecogerAgua()
     {
-        LanguageManager lm = LanguageManager.Instancia;
-        string txt0 = lm.ObtenerTexto("recordatorios.help_fogata_0");
-        string txt1 = lm.ObtenerTexto("recordatorios.help_fogata_1");
-        string txt2 = lm.ObtenerTexto("recordatorios.help_fogata_2");
-
-        if (time.text != "0" && (panelbalde.activeSelf == true))
+        if (mostrarLogs)
         {
-            // **IMPORTANTE**: Activar el GameObject del agua pero ocultarlo visualmente
+            Debug.Log("[GetWater] 💧 ¡Recogiendo agua del lago!");
+        }
+        
+        // Obtener textos traducidos
+        LanguageManager lm = LanguageManager.Instancia;
+        string txt0 = lm != null ? lm.ObtenerTexto("recordatorios.help_fogata_0") : "Rápido, corre a la fogata y apágala!";
+        string txt1 = lm != null ? lm.ObtenerTexto("recordatorios.help_fogata_1") : "No hay tiempo que perder! Apaga la fogata ahora que tienes el agua!";
+
+        // **IMPORTANTE**: Activar el GameObject del agua pero ocultarlo visualmente
+        if (agua != null)
+        {
             agua.SetActive(true);
             OcultarAguaVisualmente();
-            
-            panelbalde.SetActive(false);
-            recordatorio.text = txt0;
-            panelwater.SetActive(true);
-            pendienteGO.GetComponent<DialogueTrigger>().dialogue.sentences[0] = txt1;
-            
-            alreadyCollected = true;
-            Debug.Log("[GetWater] Agua recogida - GameObject activo pero invisible");
         }
-        else if (time.text != "0" && (panelbalde.activeSelf == false) && (panelwater.activeSelf == false))
+        
+        // Ocultar panel del balde (ya no se necesita)
+        if (panelbalde != null)
         {
-            recordatorio.text = txt2;
+            panelbalde.SetActive(false);
+        }
+        
+        // Actualizar recordatorio
+        if (recordatorio != null)
+        {
+            recordatorio.text = txt0;
+        }
+        
+        // Mostrar panel de agua (indicador de que tiene agua)
+        if (panelwater != null)
+        {
+            panelwater.SetActive(true);
+        }
+        
+        // Actualizar diálogo pendiente
+        if (pendienteGO != null)
+        {
+            DialogueTrigger trigger = pendienteGO.GetComponent<DialogueTrigger>();
+            if (trigger != null && trigger.dialogue != null && trigger.dialogue.sentences != null && trigger.dialogue.sentences.Length > 0)
+            {
+                trigger.dialogue.sentences[0] = txt1;
+            }
+        }
+        
+        // Marcar como recolectado
+        alreadyCollected = true;
+        
+        if (mostrarLogs)
+        {
+            Debug.Log("[GetWater] ✅ Agua recogida exitosamente. GameObject activo pero invisible.");
         }
     }
     
@@ -118,82 +154,99 @@ public class GetWater : MonoBehaviour, IInteractable
     /// </summary>
     private void OcultarAguaVisualmente()
     {
-        if (agua != null)
+        if (agua == null)
         {
-            // Desactivar todos los MeshRenderer del agua y sus hijos
-            MeshRenderer[] meshRenderers = agua.GetComponentsInChildren<MeshRenderer>();
-            foreach (MeshRenderer mr in meshRenderers)
+            if (mostrarLogs)
             {
-                mr.enabled = false;
+                Debug.LogWarning("[GetWater] ⚠️ No se ha asignado el GameObject 'agua' en el Inspector");
             }
-
-            // Desactivar todos los SkinnedMeshRenderer del agua y sus hijos
-            SkinnedMeshRenderer[] skinnedRenderers = agua.GetComponentsInChildren<SkinnedMeshRenderer>();
-            foreach (SkinnedMeshRenderer smr in skinnedRenderers)
-            {
-                smr.enabled = false;
-            }
-            
-            // Ocultar particle systems si existen (burbujas, splash, etc.)
-            ParticleSystem[] particleSystems = agua.GetComponentsInChildren<ParticleSystem>();
-            foreach (ParticleSystem ps in particleSystems)
-            {
-                ps.Stop();
-                var emission = ps.emission;
-                emission.enabled = false;
-            }
-            
-            // Desactivar cualquier Renderer adicional
-            Renderer[] allRenderers = agua.GetComponentsInChildren<Renderer>();
-            foreach (Renderer r in allRenderers)
-            {
-                r.enabled = false;
-            }
-
-            Debug.Log("[GetWater] Agua ocultada visualmente (renderers desactivados)");
+            return;
         }
-        else
+        
+        // Desactivar todos los MeshRenderer del agua y sus hijos
+        MeshRenderer[] meshRenderers = agua.GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer mr in meshRenderers)
         {
-            Debug.LogWarning("[GetWater] No se ha asignado el GameObject 'agua' en el Inspector");
+            mr.enabled = false;
+        }
+
+        // Desactivar todos los SkinnedMeshRenderer del agua y sus hijos
+        SkinnedMeshRenderer[] skinnedRenderers = agua.GetComponentsInChildren<SkinnedMeshRenderer>();
+        foreach (SkinnedMeshRenderer smr in skinnedRenderers)
+        {
+            smr.enabled = false;
+        }
+        
+        // Ocultar particle systems si existen (burbujas, splash, etc.)
+        ParticleSystem[] particleSystems = agua.GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem ps in particleSystems)
+        {
+            ps.Stop();
+            var emission = ps.emission;
+            emission.enabled = false;
+        }
+        
+        // Desactivar cualquier Renderer adicional
+        Renderer[] allRenderers = agua.GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in allRenderers)
+        {
+            r.enabled = false;
+        }
+
+        if (mostrarLogs)
+        {
+            Debug.Log("[GetWater] 🙈 Agua ocultada visualmente (renderers desactivados)");
         }
     }
     
-    // ============== MÉTODO PÚBLICO PARA COMPATIBILIDAD ==============
+    // ============== MÉTODOS PÚBLICOS PARA COMPATIBILIDAD ==============
     
     /// <summary>
     /// Método público para llamar desde otros scripts (mantiene compatibilidad)
     /// </summary>
     public void recogerAgua()
     {
-        RecogerAgua();
-    }
-
-    // ============== COMPATIBILIDAD CON MOUSE (LEGACY) ==============
-    
-    private void OnMouseDown()
-    {
-        // Solo usar si no hay InteractionDetector activo o como fallback
-        if (InteractionDetector.instance == null && !alreadyCollected)
-        {
-            if (!(MenuPausa.IsPaused || MenuPausa.IsPausedByOtherCanvas))
-            {
-                RecogerAgua();
-            }
-        }
-    }
-    
-    // ============== MOUSE HOVER (LEGACY) ==============
-    
-    private void OnMouseEnter()
-    {
         if (!alreadyCollected)
         {
-            OnLookAt();
+            RecogerAgua();
         }
     }
     
-    private void OnMouseExit()
+    /// <summary>
+    /// Resetea el estado para permitir recoger agua nuevamente
+    /// </summary>
+    public void ResetearEstado()
     {
-        OnLookAway();
+        alreadyCollected = false;
+        
+        if (mostrarLogs)
+        {
+            Debug.Log("[GetWater] 🔄 Estado reseteado. Se puede recoger agua nuevamente.");
+        }
     }
+
+    #if UNITY_EDITOR
+    /// <summary>
+    /// Dibuja el área del trigger en el editor
+    /// </summary>
+    private void OnDrawGizmos()
+    {
+        Collider col = GetComponent<Collider>();
+        if (col != null && col.isTrigger)
+        {
+            Gizmos.color = alreadyCollected ? Color.green : Color.cyan;
+            Gizmos.DrawWireCube(transform.position, col.bounds.size);
+        }
+    }
+    
+    private void OnDrawGizmosSelected()
+    {
+        Collider col = GetComponent<Collider>();
+        if (col != null && col.isTrigger)
+        {
+            Gizmos.color = new Color(0, 1, 1, 0.3f); // Cyan transparente
+            Gizmos.DrawCube(transform.position, col.bounds.size);
+        }
+    }
+    #endif
 }
