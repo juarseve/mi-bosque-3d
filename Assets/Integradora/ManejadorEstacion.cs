@@ -151,6 +151,13 @@ public class ManejadorEstacion : MonoBehaviour
                                 clic.CuadroChallengeDos = pechichecaja;
                             }
                             
+                            // **NUEVO: CONFIGURAR OSO PEREZOSO**
+                            if (child.name.Contains("oso perezoso") || child.name.Contains("Sloth") || child.name.Contains("perezoso"))
+                            {
+                                Debug.Log("[ManejadorEstacion] 🦥 Oso Perezoso detectado en Manejador " + idManejador);
+                                ConfigurarOsoPerezoso(child);
+                            }
+                            
                             // **FIX PARA DESAFÍO 1**: Asegurar que TODOS los BoxColliders del Ceibo tengan isTrigger = false
                             if (child.name.Contains("Ceibo"))
                             {
@@ -338,7 +345,7 @@ public class ManejadorEstacion : MonoBehaviour
     {
         
         for (int i = 0; i < listadoDestruir.Length; i++)
-            {
+        {
             
             try
              {
@@ -386,4 +393,53 @@ public class ManejadorEstacion : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Configura completamente el Oso Perezoso con transform, rigidbody y colliders según las coordenadas especificadas
+    /// </summary>
+    /// <param name="osoTransform">Transform del Oso Perezoso</param>
+    private void ConfigurarOsoPerezoso(Transform osoTransform)
+    {
+        GameObject oso = osoTransform.gameObject;
+        
+        Debug.Log("[ManejadorEstacion] 🦥 ✓ Configurando Oso Perezoso en Manejador " + idManejador);
+        
+        // **1. CONFIGURAR TRANSFORM SEGÚN INSPECTOR**
+        // Position: X: -12.98, Y: 2.719, Z: 12.9
+        oso.transform.localPosition = new Vector3(-12.98f, 2.719f, 12.9f);
+        
+        // Rotation: X: 0, Y: -272.1, Z: 0
+        oso.transform.localRotation = Quaternion.Euler(0f, -272.1f, 0f);
+        
+        // Scale: X: 0.4457071, Y: 0.4457071, Z: 0.4457071
+        oso.transform.localScale = new Vector3(0.4457071f, 0.4457071f, 0.4457071f);
+        
+        Debug.Log("[ManejadorEstacion] 🦥 Oso Perezoso Transform configurado:");
+        Debug.Log($"[ManejadorEstacion]    - Position: {oso.transform.localPosition}");
+        Debug.Log($"[ManejadorEstacion]    - Rotation: {oso.transform.localRotation.eulerAngles}");
+        Debug.Log($"[ManejadorEstacion]    - Scale: {oso.transform.localScale}");
+        
+        // **2. CONFIGURAR RIGIDBODY (si existe)**
+        Rigidbody rb = oso.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            // Configurar como kinematic para que no se mueva con física
+            rb.isKinematic = true;
+            rb.useGravity = false;
+            
+            Debug.Log("[ManejadorEstacion] 🦥 Oso Perezoso Rigidbody configurado como kinematic");
+        }
+        else
+        {
+            Debug.Log("[ManejadorEstacion] 🦥 Oso Perezoso no tiene Rigidbody (normal para objetos estáticos)");
+        }
+        
+        // **3. ASEGURAR COLLIDER PARA INTERACCIÓN**
+        AsegurarBoxCollider(oso);
+        
+        // **4. CONFIGURAR LAYER**
+        oso.layer = 10; // Layer "Collectables"
+        Debug.Log("[ManejadorEstacion] 🦥 Oso Perezoso configurado en layer 10 (Collectables)");
+        
+        Debug.Log("[ManejadorEstacion] 🦥 ✓✓✓ Oso Perezoso completamente configurado ✓✓✓");
+    }
 }
