@@ -2,68 +2,67 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Detector de proximidad para objetos interactuables.
-/// Usa Physics.OverlapSphere para detectar objetos cercanos (más confiable que triggers).
+/// Detector de interacción basado en Raycast desde la cámara.
+/// Usa Physics.Raycast para detectar el objeto que está directamente en el centro de la pantalla.
 /// </summary>
 public class InteractionDetector : MonoBehaviour
 {
-    [Header("Configuración")]
-    [Tooltip("Radio de detección de objetos interactuables")]
-    public float detectionRadius = 25f;
-    
-    [Tooltip("Ángulo máximo desde la dirección de la cámara para considerar un objeto 'enfrentado'")]
-    [Range(0f, 180f)]
-    public float maxAngle = 90f;
-    
+    [Header("Configuración de Raycast")]
+    [Tooltip("Distancia máxima del raycast para detectar objetos")]
+    public float maxRaycastDistance = 25f;
+
     [Tooltip("Referencia a la cámara del jugador")]
     public Camera playerCamera;
-    
+
     [Tooltip("LayerMask para filtrar objetos interactuables")]
     public LayerMask interactableLayer;
-    
+
     [Header("Animación de Interacción")]
     [Tooltip("Animator del personaje para reproducir animación al interactuar")]
     public Animator playerAnimator;
-    
+
     [Tooltip("Nombre del trigger de animación de interacción normal (ej. presionar botón)")]
     public string interactionAnimTrigger = "Interact";
-    
+
     [Tooltip("Nombre del trigger de animación de recoger/pickup (ej. recoger conejo)")]
     public string pickupAnimTrigger = "Pickup";
-    
+
     [Tooltip("AnimationClip de interacción normal (opcional - asignar 'buttong pushing')")]
     public AnimationClip interactionAnimation;
-    
+
     [Tooltip("AnimationClip de pickup (opcional - asignar animación de recoger del suelo)")]
     public AnimationClip pickupAnimation;
-    
+
     [Header("Debug")]
     [Tooltip("Mostrar información de debug en consola")]
     public bool showDebugLogs = true;
-    
+
     [Tooltip("Mostrar Gizmos siempre (no solo cuando está seleccionado)")]
     public bool alwaysShowGizmos = true;
-    
-    // Lista de objetos interactuables detectados este frame
-    private List<GameObject> detectedObjects = new List<GameObject>();
-    
+
+    [Tooltip("Color del rayo cuando NO hay objeto interactuable")]
+    public Color rayColorNoHit = Color.red;
+
+    [Tooltip("Color del rayo cuando HAY objeto interactuable")]
+    public Color rayColorHit = Color.green;
+
     // Objeto actualmente enfocado
     private IInteractable currentFocused;
     private GameObject currentFocusedObject;
-    
+
     // Referencia al puntero para feedback visual
     private GameObject puntero;
     private Puntero punteroScript;
-    
+
     // Singleton para acceso fácil
     public static InteractionDetector instance;
-    
+
     // Info de debug
-    private int lastDetectedCount = 0;
     private string lastFocusedName = "Ninguno";
-    
+    private RaycastHit lastHit;
+    private bool lastHadHit = false;
+
     // Flag para controlar qué animación reproducir
-    // true = ya se reprodujo una animación personalizada, no reproducir la default
     private bool animationHandled = false;
 
     void Awake()
@@ -71,7 +70,7 @@ public class InteractionDetector : MonoBehaviour
         instance = this;
         Debug.Log("[InteractionDetector] Awake - Inicializando en: " + gameObject.name);
     }
-    
+
     void Start()
     {
         // Buscar la cámara si no está asignada
@@ -87,7 +86,7 @@ public class InteractionDetector : MonoBehaviour
                 Debug.LogError("[InteractionDetector] ERROR: No se encontró cámara principal!");
             }
         }
-        
+
         // Buscar el Animator del personaje si no está asignado
         if (playerAnimator == null)
         {
@@ -106,7 +105,7 @@ public class InteractionDetector : MonoBehaviour
                     parent = parent.parent;
                 }
             }
-            
+
             if (playerAnimator != null)
             {
                 Debug.Log("[InteractionDetector] Animator encontrado: " + playerAnimator.gameObject.name);
@@ -116,7 +115,7 @@ public class InteractionDetector : MonoBehaviour
                 Debug.LogWarning("[InteractionDetector] No se encontró Animator del personaje");
             }
         }
-        
+
         // Buscar el puntero
         puntero = GameObject.Find("Crosshair/Image");
         if (puntero != null)
@@ -128,11 +127,12 @@ public class InteractionDetector : MonoBehaviour
         {
             Debug.LogWarning("[InteractionDetector] No se encontró el puntero (Crosshair/Image)");
         }
-        
-        Debug.Log("[InteractionDetector] Iniciado correctamente. Radio: " + detectionRadius + ", Ángulo: " + maxAngle);
+
+        Debug.Log("[InteractionDetector] Iniciado correctamente - Modo: RAYCAST desde cámara");
+        Debug.Log("[InteractionDetector] Distancia máxima: " + maxRaycastDistance);
         Debug.Log("[InteractionDetector] Layer mask: " + interactableLayer.value);
     }
-    
+
     void Update()
     {
         // Verificar si el juego no está pausado
@@ -140,20 +140,17 @@ public class InteractionDetector : MonoBehaviour
         {
             return;
         }
-        
-        // Detectar objetos interactuables cercanos usando OverlapSphere
-        DetectNearbyInteractables();
-        
-        // Encontrar el mejor objeto interactuable
-        UpdateFocusedInteractable();
-        
+
+        // Detectar objeto interactuable con Raycast
+        UpdateRaycastInteractable();
+
         // Detectar input de interacción
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (showDebugLogs) Debug.Log("[InteractionDetector] Tecla E presionada");
             TryInteract();
         }
-        
+
         // Mantener compatibilidad con clic del mouse
         if (Input.GetButtonDown("Fire1"))
         {
@@ -161,106 +158,75 @@ public class InteractionDetector : MonoBehaviour
             TryInteract();
         }
     }
-    
+
     /// <summary>
-    /// Detecta objetos interactuables cercanos usando Physics.OverlapSphere
+    /// Detecta objetos interactuables usando Raycast desde el centro de la pantalla
     /// </summary>
-    void DetectNearbyInteractables()
+    void UpdateRaycastInteractable()
     {
-        detectedObjects.Clear();
-        
-        // Usar OverlapSphere para detectar todos los colliders en el radio
-        // Si layerMask es 0 o -1, buscar en todas las layers
-        Collider[] colliders;
-        if (interactableLayer.value == 0)
-        {
-            colliders = Physics.OverlapSphere(transform.position, detectionRadius);
-        }
-        else
-        {
-            colliders = Physics.OverlapSphere(transform.position, detectionRadius, interactableLayer);
-        }
-        
-        foreach (Collider col in colliders)
-        {
-            // Verificar si tiene IInteractable
-            IInteractable interactable = col.GetComponent<IInteractable>();
-            if (interactable != null)
-            {
-                detectedObjects.Add(col.gameObject);
-            }
-        }
-        
-        // Debug log si cambió la cantidad
-        if (showDebugLogs && detectedObjects.Count != lastDetectedCount)
-        {
-            Debug.Log("[InteractionDetector] Objetos detectados: " + detectedObjects.Count);
-            foreach (var obj in detectedObjects)
-            {
-                Debug.Log("  - " + obj.name);
-            }
-            lastDetectedCount = detectedObjects.Count;
-        }
-    }
-    
-    /// <summary>
-    /// Actualiza cuál es el objeto interactuable enfocado actualmente
-    /// </summary>
-    void UpdateFocusedInteractable()
-    {
-        if (detectedObjects.Count == 0)
-        {
-            SetFocused(null, null);
-            return;
-        }
-        
         if (playerCamera == null)
         {
             Debug.LogError("[InteractionDetector] No hay cámara asignada!");
             return;
         }
-        
-        IInteractable bestInteractable = null;
-        GameObject bestObject = null;
-        float bestScore = float.MinValue;
-        
-        Vector3 cameraForward = playerCamera.transform.forward;
-        Vector3 cameraPosition = playerCamera.transform.position;
-        
-        foreach (GameObject obj in detectedObjects)
+
+        // Crear un rayo desde el centro de la pantalla
+        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        RaycastHit hit;
+
+        bool hasHit;
+
+        // Hacer raycast con o sin layer mask
+        if (interactableLayer.value == 0)
         {
-            if (obj == null) continue;
-            
-            Vector3 directionToObject = (obj.transform.position - cameraPosition).normalized;
-            
-            // Calcular el ángulo entre la dirección de la cámara y la dirección al objeto
-            float angle = Vector3.Angle(cameraForward, directionToObject);
-            
-            // Solo considerar objetos dentro del ángulo máximo
-            if (angle <= maxAngle)
+            // Sin filtro de layer (todas las layers)
+            hasHit = Physics.Raycast(ray, out hit, maxRaycastDistance);
+        }
+        else
+        {
+            // Con filtro de layer
+            hasHit = Physics.Raycast(ray, out hit, maxRaycastDistance, interactableLayer);
+        }
+
+        // Guardar info para debug gizmos
+        lastHadHit = hasHit;
+        if (hasHit)
+        {
+            lastHit = hit;
+        }
+
+        IInteractable newFocused = null;
+        GameObject newFocusedObject = null;
+
+        if (hasHit)
+        {
+            // Verificar si tiene IInteractable
+            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+
+            if (interactable != null)
             {
-                // Calcular distancia desde el detector (personaje)
-                float distance = Vector3.Distance(transform.position, obj.transform.position);
-                
-                // Calcular score: priorizar objetos más alineados con la cámara y más cercanos
-                float angleScore = 1f - (angle / maxAngle);
-                float distanceScore = 1f - (distance / detectionRadius);
-                
-                // Combinar scores (dar más peso al ángulo)
-                float totalScore = (angleScore * 0.7f) + (distanceScore * 0.3f);
-                
-                if (totalScore > bestScore)
+                newFocused = interactable;
+                newFocusedObject = hit.collider.gameObject;
+
+                if (showDebugLogs && newFocusedObject != currentFocusedObject)
                 {
-                    bestScore = totalScore;
-                    bestInteractable = obj.GetComponent<IInteractable>();
-                    bestObject = obj;
+                    Debug.Log("[InteractionDetector] Raycast detectó objeto interactuable: " + newFocusedObject.name + " a " + hit.distance.ToString("F2") + " unidades");
+                }
+            }
+            else
+            {
+                // Hit con objeto no interactuable
+                if (showDebugLogs && currentFocusedObject != null)
+                {
+                    Debug.Log("[InteractionDetector] Raycast hit objeto SIN IInteractable: " + hit.collider.name);
                 }
             }
         }
-        
-        SetFocused(bestInteractable, bestObject);
+
+        // Actualizar el objeto enfocado
+        SetFocused(newFocused, newFocusedObject);
     }
-    
+
     /// <summary>
     /// Establece el objeto enfocado actual y maneja los callbacks visuales
     /// </summary>
@@ -268,15 +234,15 @@ public class InteractionDetector : MonoBehaviour
     {
         // Si es el mismo objeto, no hacer nada
         if (currentFocusedObject == newFocusedObject) return;
-        
+
         string newName = newFocusedObject != null ? newFocusedObject.name : "Ninguno";
-        
+
         if (showDebugLogs && newName != lastFocusedName)
         {
             Debug.Log("[InteractionDetector] Cambio de foco: " + lastFocusedName + " -> " + newName);
             lastFocusedName = newName;
         }
-        
+
         // Notificar al anterior que dejamos de mirarlo
         if (currentFocused != null)
         {
@@ -289,11 +255,11 @@ public class InteractionDetector : MonoBehaviour
                 Debug.LogWarning("[InteractionDetector] Error en OnLookAway: " + e.Message);
             }
         }
-        
+
         // Actualizar referencias
         currentFocused = newFocused;
         currentFocusedObject = newFocusedObject;
-        
+
         // Notificar al nuevo que lo estamos mirando
         if (currentFocused != null)
         {
@@ -313,7 +279,7 @@ public class InteractionDetector : MonoBehaviour
             RestaurarPuntero();
         }
     }
-    
+
     /// <summary>
     /// Restaura el puntero al estado normal
     /// </summary>
@@ -332,7 +298,7 @@ public class InteractionDetector : MonoBehaviour
             }
         }
     }
-    
+
     /// <summary>
     /// Reproduce la animación de interacción normal (presionar botón, etc.)
     /// Solo se reproduce si no se ha manejado otra animación
@@ -341,9 +307,9 @@ public class InteractionDetector : MonoBehaviour
     {
         // Marcar que se manejó la animación
         animationHandled = true;
-        
+
         if (playerAnimator == null) return;
-        
+
         if (!string.IsNullOrEmpty(interactionAnimTrigger))
         {
             try
@@ -353,7 +319,7 @@ public class InteractionDetector : MonoBehaviour
             }
             catch (System.Exception e) { Debug.LogWarning("[InteractionDetector] Error: " + e.Message); }
         }
-        
+
         if (interactionAnimation != null)
         {
             try
@@ -363,7 +329,7 @@ public class InteractionDetector : MonoBehaviour
             catch (System.Exception e) { Debug.LogWarning("[InteractionDetector] Error: " + e.Message); }
         }
     }
-    
+
     /// <summary>
     /// Reproduce la animación de pickup (recoger algo del suelo)
     /// Marca que la animación fue manejada para evitar reproducir la animación por defecto
@@ -372,13 +338,13 @@ public class InteractionDetector : MonoBehaviour
     {
         // Marcar que ya se manejó la animación (evita que se reproduzca la default después)
         animationHandled = true;
-        
+
         if (playerAnimator == null)
         {
             Debug.LogWarning("[InteractionDetector] No hay Animator para pickup");
             return;
         }
-        
+
         if (!string.IsNullOrEmpty(pickupAnimTrigger))
         {
             try
@@ -388,7 +354,7 @@ public class InteractionDetector : MonoBehaviour
             }
             catch (System.Exception e) { Debug.LogWarning("[InteractionDetector] Error: " + e.Message); }
         }
-        
+
         if (pickupAnimation != null)
         {
             try
@@ -398,7 +364,7 @@ public class InteractionDetector : MonoBehaviour
             catch (System.Exception e) { Debug.LogWarning("[InteractionDetector] Error: " + e.Message); }
         }
     }
-    
+
     /// <summary>
     /// Intenta interactuar con el objeto enfocado
     /// </summary>
@@ -406,17 +372,16 @@ public class InteractionDetector : MonoBehaviour
     {
         // Resetear flag de animación al inicio de cada interacción
         animationHandled = false;
-        
+
         if (currentFocused != null && currentFocusedObject != null)
         {
             Debug.Log("[InteractionDetector] ¡INTERACTUANDO con " + currentFocusedObject.name + "!");
-            
+
             try
             {
                 // Llamar al objeto para que maneje su lógica
-                // Si el objeto necesita una animación específica, llamará a PlayPickupAnimation() o PlayInteractionAnimation()
                 currentFocused.OnInteract();
-                
+
                 // Solo reproducir animación por defecto si el objeto NO manejó ninguna animación
                 if (!animationHandled)
                 {
@@ -441,7 +406,7 @@ public class InteractionDetector : MonoBehaviour
             }
         }
     }
-    
+
     /// <summary>
     /// Obtiene el objeto actualmente enfocado (para uso externo)
     /// </summary>
@@ -449,15 +414,15 @@ public class InteractionDetector : MonoBehaviour
     {
         return currentFocusedObject;
     }
-    
+
     /// <summary>
-    /// Verifica si hay algún objeto interactuable en rango
+    /// Verifica si hay algún objeto interactuable en el raycast
     /// </summary>
     public bool HasInteractableInRange()
     {
-        return detectedObjects.Count > 0;
+        return currentFocusedObject != null;
     }
-    
+
     /// <summary>
     /// Dibuja gizmos siempre para debug
     /// </summary>
@@ -466,7 +431,7 @@ public class InteractionDetector : MonoBehaviour
         if (!alwaysShowGizmos) return;
         DrawDebugGizmos();
     }
-    
+
     /// <summary>
     /// Dibuja gizmos cuando está seleccionado
     /// </summary>
@@ -474,65 +439,52 @@ public class InteractionDetector : MonoBehaviour
     {
         DrawDebugGizmos();
     }
-    
+
     /// <summary>
     /// Dibuja los gizmos de debug
     /// </summary>
     void DrawDebugGizmos()
     {
-        // Dibujar el radio de detección
-        Gizmos.color = new Color(1f, 1f, 0f, 0.3f);
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
-        
-        // Dibujar esfera sólida más pequeña para ver el centro
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position, 0.1f);
-        
-        // Dibujar el cono de visión si hay cámara
         Camera cam = playerCamera != null ? playerCamera : Camera.main;
-        if (cam != null)
+        if (cam == null) return;
+
+        // Crear un rayo desde el centro de la pantalla
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+
+        if (Application.isPlaying && lastHadHit)
         {
-            Gizmos.color = Color.cyan;
-            Vector3 forward = cam.transform.forward * detectionRadius;
-            
-            // Línea central
-            Gizmos.DrawRay(transform.position, forward);
-            
-            // Líneas del cono (horizontal)
-            Quaternion leftRot = Quaternion.AngleAxis(-maxAngle, Vector3.up);
-            Quaternion rightRot = Quaternion.AngleAxis(maxAngle, Vector3.up);
-            Gizmos.color = new Color(0f, 1f, 1f, 0.5f);
-            Gizmos.DrawRay(transform.position, leftRot * forward);
-            Gizmos.DrawRay(transform.position, rightRot * forward);
-            
-            // Líneas del cono (vertical)
-            Quaternion upRot = Quaternion.AngleAxis(-maxAngle, cam.transform.right);
-            Quaternion downRot = Quaternion.AngleAxis(maxAngle, cam.transform.right);
-            Gizmos.DrawRay(transform.position, upRot * forward);
-            Gizmos.DrawRay(transform.position, downRot * forward);
-        }
-        
-        // Dibujar líneas a objetos detectados
-        if (Application.isPlaying)
-        {
-            // Líneas rojas a objetos en rango pero no enfocados
-            Gizmos.color = Color.red;
-            foreach (var obj in detectedObjects)
-            {
-                if (obj != null && obj != currentFocusedObject)
-                {
-                    Gizmos.DrawLine(transform.position, obj.transform.position);
-                    Gizmos.DrawWireSphere(obj.transform.position, 0.3f);
-                }
-            }
-            
-            // Línea verde al objeto enfocado
+            // Dibujar rayo en verde hasta el objeto hit
+            Gizmos.color = rayColorHit;
+            Gizmos.DrawLine(ray.origin, lastHit.point);
+
+            // Dibujar esfera en el punto de impacto
+            Gizmos.DrawWireSphere(lastHit.point, 0.2f);
+
+            // Si es interactuable, dibujar esfera más grande
             if (currentFocusedObject != null)
             {
                 Gizmos.color = Color.green;
-                Gizmos.DrawLine(transform.position, currentFocusedObject.transform.position);
                 Gizmos.DrawWireSphere(currentFocusedObject.transform.position, 0.5f);
+                Gizmos.DrawLine(lastHit.point, currentFocusedObject.transform.position);
             }
+
+            // Dibujar línea punteada hasta el final de la distancia máxima
+            Gizmos.color = new Color(0f, 1f, 0f, 0.3f);
+            Gizmos.DrawLine(lastHit.point, ray.origin + ray.direction * maxRaycastDistance);
         }
+        else
+        {
+            // Dibujar rayo en rojo (no hay hit o no está en play mode)
+            Gizmos.color = rayColorNoHit;
+            Gizmos.DrawLine(ray.origin, ray.origin + ray.direction * maxRaycastDistance);
+        }
+
+        // Dibujar esfera en el origen del rayo
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(ray.origin, 0.1f);
+
+        // Dibujar indicador de distancia máxima
+        Gizmos.color = new Color(1f, 1f, 0f, 0.5f);
+        Gizmos.DrawWireSphere(ray.origin + ray.direction * maxRaycastDistance, 0.3f);
     }
 }

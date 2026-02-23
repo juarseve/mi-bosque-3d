@@ -3,15 +3,37 @@
     {
       "gameId": "001",
       "playerId": "",
-      "level": 4,
-      "dataType": "game_data",
-      "FechaInterna": "19/2/2026 18:39:04",
+      "level": 1,
+      "dataType": "specie_data",
+      "FechaInterna": "23/2/2026 13:14:53",
       "data": {
-        "Start_Date": "19/2/2026 18:38:11",
-        "End_Date": "19/2/2026 18:39:04",
+        "specieId": "21",
+        "show_desc_date": "23/2/2026 13:14:53"
+      }
+    },
+    {
+      "gameId": "001",
+      "playerId": "",
+      "level": 1,
+      "dataType": "specie_data",
+      "FechaInterna": "23/2/2026 13:14:55",
+      "data": {
+        "specieId": "23",
+        "show_desc_date": "23/2/2026 13:14:55"
+      }
+    },
+    {
+      "gameId": "001",
+      "playerId": "",
+      "level": 1,
+      "dataType": "game_data",
+      "FechaInterna": "23/2/2026 13:15:00",
+      "data": {
+        "Start_Date": "23/2/2026 13:14:42",
+        "End_Date": "23/2/2026 13:15:00",
         "duration": 1,
         "score": 0,
-        "NumberImages": 0
+        "NumberImages": 2
       }
     }
   ]
