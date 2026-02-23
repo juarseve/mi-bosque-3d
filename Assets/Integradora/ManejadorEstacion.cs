@@ -92,8 +92,19 @@ public class ManejadorEstacion : MonoBehaviour
 
                 if (objeto.name.Contains("Especies"))
                 {
+                    // **IMPORTANTE**: Lista para almacenar objetos a destruir (no se puede destruir en foreach)
+                    List<Transform> objetosADestruir = new List<Transform>();
+                    
                     foreach (Transform child in objeto.transform)
                     {
+                        // **VALIDACIÓN CRÍTICA**: Destruir Iguana si NO estamos en Manejador 1
+                        if (child.name == "Iguana" && idManejador != 1)
+                        {
+                            Debug.Log("[ManejadorEstacion] ❌ Iguana detectada en Manejador " + idManejador + " - SERÁ DESTRUIDA (solo debe existir en Manejador 1)");
+                            objetosADestruir.Add(child);
+                            continue; // Saltar al siguiente hijo, no procesar esta Iguana
+                        }
+                        
                         // **NUEVO**: Asegurar que cada hijo de Especies tenga un BoxCollider con isTrigger = false
                         AsegurarBoxCollider(child.gameObject);
                         
@@ -124,7 +135,16 @@ public class ManejadorEstacion : MonoBehaviour
                                 clic.CuadroChallengeDos = iguanacaja;
                                 
                                 // **FIX COMPLETO PARA IGUANA**: Configurar transform, rigidbody y colliders
-                                ConfigurarIguana(child);
+                                // ⚠️ SOLO EN MANEJADOR 1 (Estación 1)
+                                if (idManejador == 1)
+                                {
+                                    ConfigurarIguana(child);
+                                }
+                                else
+                                {
+                                    // Este código NO debería ejecutarse nunca porque destruimos la Iguana arriba
+                                    Debug.LogWarning("[ManejadorEstacion] ⚠️ Este código no debería ejecutarse - Iguana en Manejador " + idManejador);
+                                }
                             }
                             if (child.name == "Pechiche")
                             {
@@ -154,6 +174,18 @@ public class ManejadorEstacion : MonoBehaviour
                             }
                         }
                     }
+                    
+                    // **DESTRUIR OBJETOS MARCADOS**: Ahora que terminó el foreach, destruir objetos
+                    foreach (Transform objetoADestruir in objetosADestruir)
+                    {
+                        Debug.Log("[ManejadorEstacion] 🗑️ Destruyendo: " + objetoADestruir.name + " del Manejador " + idManejador);
+                        Destroy(objetoADestruir.gameObject);
+                    }
+                    
+                    if (objetosADestruir.Count > 0)
+                    {
+                        Debug.Log("[ManejadorEstacion] ✓ Total de objetos destruidos en Manejador " + idManejador + ": " + objetosADestruir.Count);
+                    }
                 }
             }
             catch (Exception e)
@@ -166,11 +198,14 @@ public class ManejadorEstacion : MonoBehaviour
     
     /// <summary>
     /// Configura completamente la Iguana con transform, rigidbody y colliders según especificaciones
+    /// ⚠️ SOLO SE DEBE LLAMAR EN MANEJADOR 1 (Estación 1)
     /// </summary>
     /// <param name="iguanaTransform">Transform de la Iguana</param>
     private void ConfigurarIguana(Transform iguanaTransform)
     {
         GameObject iguana = iguanaTransform.gameObject;
+        
+        Debug.Log("[ManejadorEstacion] ✓ Configurando Iguana en Manejador " + idManejador + " (Estación 1)");
         
         // **1. CONFIGURAR TRANSFORM**
         // Position: (-4.838098, -1.466103, 6.076778)
@@ -263,7 +298,7 @@ public class ManejadorEstacion : MonoBehaviour
             Debug.Log("[ManejadorEstacion] Iguana BoxCollider CREADO y configurado");
         }
         
-        Debug.Log("[ManejadorEstacion] ✓✓✓ Iguana completamente configurada ✓✓✓");
+        Debug.Log("[ManejadorEstacion] ✓✓✓ Iguana completamente configurada en Manejador 1 ✓✓✓");
     }
     
     /// <summary>
