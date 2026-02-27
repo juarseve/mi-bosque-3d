@@ -278,6 +278,7 @@
     "caja_pechiche": "Pechiche"
   },
   "recordatorios": {
+    "recordatorio_1": "Encuentra a las especies ",
     "recordatorio_3": "Atrapa al conejo y regrésalo a la madriguera ",
     "recordatorio_4": "Habla con polo, y responde las preguntas",
     "recordatorio_5": "Un lugar de donde sacar agua... y un recipiente para llevarla...",
@@ -495,7 +496,7 @@
     "title_activo": "No te detengas",
     "contenido_activo": "Bienvenido al modo Contrarreloj, debes ser rápido y ágil, tendrás 5 minutos para completar todos los retos del Bosque Protector. ¡Mucha Suerte!",
     "title_despedida": "Excelente intento",
-    "contenido_despedida": "Parece que saliste del modo CONTRARRELOJ. Siempre puedes volver a jugarlo desde el menú PAUSA.",
+    "contenido_despedida": "Parece que saliste del modo CONTRARRELOG. Siempre puedes volver a jugarlo desde el menú PAUSA.",
     "title_perdida": "TIEMPOOO",
     "contenido_perdida": "El tiempo se ha terminado, fue un grandioso intento, recuerda siempre CORRER para poder completar el desafío en el límite. \nVolverás al inicio del Bosque."
   },

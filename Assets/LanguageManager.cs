@@ -414,6 +414,7 @@ public class LanguageManager : MonoBehaviour
         if (datos.recordatorios != null)
         {
             var rec = datos.recordatorios;
+            textos["recordatorios.recordatorio_1"] = rec.recordatorio_1;
             textos["recordatorios.recordatorio_3"] = rec.recordatorio_3;
             textos["recordatorios.recordatorio_4"] = rec.recordatorio_4;
             textos["recordatorios.recordatorio_5"] = rec.recordatorio_5;
@@ -1124,6 +1125,7 @@ public class LanguageManager : MonoBehaviour
     [Serializable]
     public class Recordatorios
     {
+        public string recordatorio_1;
         public string recordatorio_3;
         public string recordatorio_4;
         public string recordatorio_5;
