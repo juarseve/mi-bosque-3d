@@ -2000,7 +2000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &48736869
 Transform:
   m_ObjectHideFlags: 0
@@ -4095,6 +4095,8 @@ MonoBehaviour:
   holding: {fileID: 957991322}
   agua: {fileID: 0}
   pendienteGO: {fileID: 845729766}
+  verificarColliderEnStart: 1
+  mostrarLogsDetallados: 1
 --- !u!65 &110938265
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4106,7 +4108,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3641721, y: 0.97445524, z: 1.2104564}
+  m_Size: {x: 1.42, y: 2.05, z: 1.26}
   m_Center: {x: -0.64733154, y: 0.15028119, z: -0.21149348}
 --- !u!1001 &111786883
 PrefabInstance:
@@ -8655,7 +8657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &193071751
 Transform:
   m_ObjectHideFlags: 0
@@ -9539,7 +9541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &235285280
 Transform:
   m_ObjectHideFlags: 0
@@ -12836,7 +12838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &338562483
 Transform:
   m_ObjectHideFlags: 0
@@ -40973,6 +40975,7 @@ MonoBehaviour:
   recordatorio: {fileID: 735608373}
   agua: {fileID: 1434987798}
   pendienteGO: {fileID: 845729766}
+  mostrarLogs: 1
 --- !u!65 &951550704
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -76993,7 +76996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1519116617
 Transform:
   m_ObjectHideFlags: 0
@@ -107561,7 +107564,7 @@ BoxCollider:
   m_GameObject: {fileID: 1359642344607263517}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 44.18, y: 103.4, z: 67.87}
   m_Center: {x: -1.4990344, y: 0.2659843, z: -0.18924008}
