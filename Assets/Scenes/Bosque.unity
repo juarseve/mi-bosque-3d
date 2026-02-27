@@ -518,6 +518,7 @@ MonoBehaviour:
   isAnimal: 1
   isPlant: 0
   isKnown: 0
+  isDynamicSeedOnly: 0
   logroSist: {fileID: 600469480}
   fpscontroller: {fileID: 1299061560}
   canvasJoy: {fileID: 1686677600}
@@ -2953,7 +2954,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0050255703}
+  m_AnchoredPosition: {x: 0, y: -0.004902765}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &82227862
@@ -6409,6 +6410,7 @@ MonoBehaviour:
   isAnimal: 0
   isPlant: 1
   isKnown: 0
+  isDynamicSeedOnly: 0
   logroSist: {fileID: 600469480}
   fpscontroller: {fileID: 1299061560}
   canvasJoy: {fileID: 1686677600}
@@ -6454,6 +6456,8 @@ MonoBehaviour:
   id: 3
   semillasAnim: {fileID: 467436431}
   padreSemillas: {fileID: 0}
+  galeriaPanel: {fileID: 0}
+  panelUI: {fileID: 0}
 --- !u!1 &168864829
 GameObject:
   m_ObjectHideFlags: 0
@@ -13281,6 +13285,7 @@ MonoBehaviour:
   isAnimal: 1
   isPlant: 0
   isKnown: 0
+  isDynamicSeedOnly: 0
   logroSist: {fileID: 600469480}
   fpscontroller: {fileID: 1299061560}
   canvasJoy: {fileID: 1686677600}
@@ -43907,6 +43912,10 @@ MonoBehaviour:
   - Tirano Tropical
   - Mosquero Rayado
   visible: 0
+  panel3Ref: {fileID: 0}
+  ardillaCajaRef: {fileID: 0}
+  iguanaCajaRef: {fileID: 0}
+  pechicheCajaRef: {fileID: 0}
 --- !u!114 &1004792863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66128,6 +66137,7 @@ MonoBehaviour:
   isAnimal: 1
   isPlant: 0
   isKnown: 0
+  isDynamicSeedOnly: 0
   logroSist: {fileID: 600469480}
   fpscontroller: {fileID: 1299061560}
   canvasJoy: {fileID: 0}
@@ -66896,6 +66906,7 @@ MonoBehaviour:
   isAnimal: 1
   isPlant: 0
   isKnown: 0
+  isDynamicSeedOnly: 0
   logroSist: {fileID: 600469480}
   fpscontroller: {fileID: 1299061560}
   canvasJoy: {fileID: 0}
@@ -89669,7 +89680,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1020285833}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999267
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -99882,6 +99893,7 @@ MonoBehaviour:
   isAnimal: 1
   isPlant: 0
   isKnown: 0
+  isDynamicSeedOnly: 0
   logroSist: {fileID: 600469480}
   fpscontroller: {fileID: 1299061560}
   canvasJoy: {fileID: 1686677600}
@@ -105702,6 +105714,7 @@ MonoBehaviour:
   isAnimal: 0
   isPlant: 1
   isKnown: 0
+  isDynamicSeedOnly: 0
   logroSist: {fileID: 600469480}
   fpscontroller: {fileID: 1299061560}
   canvasJoy: {fileID: 1686677600}
@@ -105747,6 +105760,8 @@ MonoBehaviour:
   id: 4
   semillasAnim: {fileID: 467436431}
   padreSemillas: {fileID: 0}
+  galeriaPanel: {fileID: 0}
+  panelUI: {fileID: 0}
 --- !u!1 &2097202199
 GameObject:
   m_ObjectHideFlags: 0
@@ -106654,6 +106669,10 @@ PrefabInstance:
       propertyPath: semillasAnim
       value: 
       objectReference: {fileID: 467436431}
+    - target: {fileID: 1767110428, guid: 65ef68f3ca4cc7f4aa4fdee7422c6d9a, type: 3}
+      propertyPath: id
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 492060379, guid: 65ef68f3ca4cc7f4aa4fdee7422c6d9a, type: 3}
     - {fileID: 248503650, guid: 65ef68f3ca4cc7f4aa4fdee7422c6d9a, type: 3}

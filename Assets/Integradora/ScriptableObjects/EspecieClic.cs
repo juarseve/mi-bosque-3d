@@ -55,6 +55,10 @@ public class EspecieClic : ScriptableObject
         Panel3.SetActive(false);
         GaleryScript.name = specieName;
         GaleryScript.visible = true;
+        // Asignar referencia directa a Panel3 para que Limpiar() pueda reactivarlo
+        GaleryScript.panel3Ref = Panel3;
+        // Asignar referencias a las cajas de objetivos
+        AsignarCajasAGalery();
         //La siguiente linea se encarga de registrar un elemento en el libro.
         registrarEspecieId();
         CerrarCuadroChallengeDos();
@@ -171,7 +175,22 @@ public class EspecieClic : ScriptableObject
         {
             CuadroChallengeDos.SetActive(false);
         }
-
-
+    }
+    
+    /// <summary>
+    /// Busca y asigna las referencias de las 3 cajas objetivo al script Galery
+    /// </summary>
+    private void AsignarCajasAGalery()
+    {
+        GameObject ardillaCaja = GameObject.Find("ArdillaCaja");
+        GameObject iguanaCaja = GameObject.Find("IguanaCaja");
+        GameObject pechicheCaja = GameObject.Find("PechicheCaja");
+        
+        if (GaleryScript != null)
+        {
+            if (ardillaCaja != null) GaleryScript.ardillaCajaRef = ardillaCaja;
+            if (iguanaCaja != null) GaleryScript.iguanaCajaRef = iguanaCaja;
+            if (pechicheCaja != null) GaleryScript.pechicheCajaRef = pechicheCaja;
+        }
     }
 }

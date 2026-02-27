@@ -17,6 +17,7 @@ public class ClickMouse : MonoBehaviour, IInteractable
     public bool isAnimal;
     public bool isPlant;
     public bool isKnown;
+    public bool isDynamicSeedOnly = false; // Flag para árboles dinámicos que solo dan semillas sin marcar misiones
     public GameObject logroSist;
     public GameObject fpscontroller;
     public GameObject canvasJoy = null;
@@ -119,38 +120,50 @@ public class ClickMouse : MonoBehaviour, IInteractable
     private void HandleInteraction()
     {
         tempResult = false;
-        Debug.Log("ClickMouse: Interacci�n iniciada con " + specieName);
+        Debug.Log("ClickMouse: Interacción iniciada con " + specieName + " | isKnown=" + isKnown + ", isDynamicSeedOnly=" + isDynamicSeedOnly);
         
         try
         {
-            if (!isKnown)
+            // Si es un árbol dinámico solo para semillas (como Bototillo dinámico),
+            // abrimos la galería pero NO marcamos misiones
+            if (!isDynamicSeedOnly && !isKnown)
             {
+                // MARCAR COMO CONOCIDO INMEDIATAMENTE para evitar doble procesamiento en clicks rápidos
+                isKnown = true;
+                Debug.Log("[ClickMouse] Marcando isKnown=true para " + specieName);
+                
                 if (isAnimal)
                 {
                     if (!string.IsNullOrEmpty(specieName))
                     {
                         Debug.Log("ClickMouse: Procesando animal " + specieName);
+                        Debug.Log("[DEBUG] logroSist is null? " + (logroSist == null));
                         if (logroSist != null)
                         {
                             LogrosGlobales logros = logroSist.GetComponent<LogrosGlobales>();
-                            if (logros != null && logros.misiones[6].requisitos.Contains(specieName))
+                            Debug.Log("[DEBUG] logros is null? " + (logros == null));
+                            if (logros != null)
                             {
-                                tempResult = logros.ProgresarLogro(6);
-                                if (fpscontroller != null)
+                                Debug.Log("[DEBUG] logros.misiones is null? " + (logros.misiones == null));
+                                Debug.Log("[DEBUG] logros.misiones.Count = " + (logros.misiones != null ? logros.misiones.Count.ToString() : "null"));
+                                if (logros.misiones != null && logros.misiones.Count > 6 && logros.misiones[6] != null && logros.misiones[6].requisitos != null && logros.misiones[6].requisitos.Contains(specieName))
                                 {
-                                    Player player = fpscontroller.GetComponent<Player>();
-                                    if (player != null)
+                                    tempResult = logros.ProgresarLogro(6);
+                                    if (fpscontroller != null)
                                     {
-                                        player.gainEXP(1);
+                                        Player player = fpscontroller.GetComponent<Player>();
+                                        if (player != null)
+                                        {
+                                            player.gainEXP(1);
+                                        }
                                     }
                                 }
+                                Debug.Log("[ClickMouse] Animal: Llamando ProgresarMision(0, '" + specieName + "')");
+                                logros.ProgresarMision(0, specieName);
+                                Debug.Log("[ClickMouse] Animal: Llamando ProgresarMision(6, '" + specieName + "')");
+                                logros.ProgresarMision(6, specieName);
                             }
-                            logros.ProgresarMision(0, specieName);
-                            logros.ProgresarMision(6, specieName);
                         }
-
-                        logroSist.GetComponent<LogrosGlobales>().ProgresarMision(0, specieName);
-                        logroSist.GetComponent<LogrosGlobales>().ProgresarMision(6, specieName);
                     }
                 }
                 else if (isPlant)
@@ -158,10 +171,16 @@ public class ClickMouse : MonoBehaviour, IInteractable
                     if (!string.IsNullOrEmpty(specieName))
                     {
                         Debug.Log("ClickMouse: Procesando planta " + specieName);
+                        Debug.Log("[DEBUG] logroSist is null? " + (logroSist == null));
                         if (logroSist != null)
                         {
                             LogrosGlobales logros = logroSist.GetComponent<LogrosGlobales>();
-                            if (logros != null && logros.misiones[7].requisitos.Contains(specieName))
+                            Debug.Log("[DEBUG] logros is null? " + (logros == null));
+                            if (logros != null)
+                            {
+                                Debug.Log("[DEBUG] logros.misiones is null? " + (logros.misiones == null));
+                                Debug.Log("[DEBUG] logros.misiones.Count = " + (logros.misiones != null ? logros.misiones.Count.ToString() : "null"));
+                                if (logros.misiones != null && logros.misiones.Count > 7 && logros.misiones[7] != null && logros.misiones[7].requisitos != null && logros.misiones[7].requisitos.Contains(specieName))
                             {
                                 if (fpscontroller != null)
                                 {
@@ -171,16 +190,24 @@ public class ClickMouse : MonoBehaviour, IInteractable
                                         player.gainEXP(1);
                                     }
                                 }
-                                tempResult = logros.ProgresarLogro(7);
+                                    tempResult = logros.ProgresarLogro(7);
+                                }
+                                Debug.Log("[ClickMouse] Planta: Llamando ProgresarMision(0, '" + specieName + "')");
+                                logros.ProgresarMision(0, specieName);
+                                Debug.Log("[ClickMouse] Planta: Llamando ProgresarMision(7, '" + specieName + "')");
+                                logros.ProgresarMision(7, specieName);
                             }
-                            logros.ProgresarMision(0, specieName);
-                            logros.ProgresarMision(7, specieName);
                         }
-                        logroSist.GetComponent<LogrosGlobales>().ProgresarMision(0, specieName);
-                        logroSist.GetComponent<LogrosGlobales>().ProgresarMision(7, specieName);
                     }
                 }
-                isKnown = true;
+            }
+            else if (isDynamicSeedOnly)
+            {
+                Debug.Log("ClickMouse: Árbol dinámico solo para semillas - abriendo galería sin marcar misiones");
+            }
+            else if (isKnown)
+            {
+                Debug.Log("ClickMouse: Especie ya conocida (" + specieName + ") - saltando procesamiento de misiones");
             }
 
             if (actionLogger != null)
@@ -273,6 +300,16 @@ public class ClickMouse : MonoBehaviour, IInteractable
             {
                 GaleryScript.name = specieName;
                 GaleryScript.visible = true;
+                // Asignar referencia directa a Panel3 para que Limpiar() pueda reactivarlo
+                GaleryScript.panel3Ref = Panel3;
+                // Asignar referencias a las cajas de objetivos (si están asignadas en esta especie)
+                // Nota: Solo las especies objetivo (Ardilla, Iguana, Pechiche) tendrán CuadroChallengeDos asignado
+                if (CuadroChallengeDos != null)
+                {
+                    // Determinar a qué especie pertenece esta caja y asignarla al Galery
+                    // Esto permite que Limpiar() sepa qué cajas reactivar
+                    AsignarCajasAGalery();
+                }
             }
         }
         
@@ -426,6 +463,27 @@ public class ClickMouse : MonoBehaviour, IInteractable
         if (CuadroChallengeDos != null)
         {
             CuadroChallengeDos.SetActive(false);
+        }
+    }
+    
+    /// <summary>
+    /// Busca y asigna las referencias de las 3 cajas objetivo al script Galery
+    /// para que pueda reactivarlas después de cerrar la galería
+    /// </summary>
+    private void AsignarCajasAGalery()
+    {
+        // Buscar las cajas de objetivos en la escena
+        GameObject ardillaCaja = GameObject.Find("ArdillaCaja");
+        GameObject iguanaCaja = GameObject.Find("IguanaCaja");
+        GameObject pechicheCaja = GameObject.Find("PechicheCaja");
+        
+        if (GaleryScript != null)
+        {
+            if (ardillaCaja != null) GaleryScript.ardillaCajaRef = ardillaCaja;
+            if (iguanaCaja != null) GaleryScript.iguanaCajaRef = iguanaCaja;
+            if (pechicheCaja != null) GaleryScript.pechicheCajaRef = pechicheCaja;
+            
+            Debug.Log("[ClickMouse] Referencias de cajas asignadas a Galery");
         }
     }
 }

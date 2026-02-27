@@ -27,6 +27,11 @@ public class ChallengePass : MonoBehaviour
     public GameObject LogroSist;
 
     public GameObject fpscontroller;
+    
+    // OPTIMIZACIÓN: Flag para evitar ejecutar lógica de finalización múltiples veces
+    private bool misionYaFinalizada = false;
+    // OPTIMIZACIÓN: Cache de Panel3 para evitar GameObject.Find() cada frame
+    private GameObject panel3Cache;
 
     //public GameObject actionLogger;
 
@@ -43,8 +48,50 @@ public class ChallengePass : MonoBehaviour
 
     private void Update()
     {
+        // OPTIMIZACIÓN: Si la misión ya fue finalizada, solo actualizar UI y salir
+        if (misionYaFinalizada)
+        {
+            if (dialogoDesafioPendiente != null) dialogoDesafioPendiente.SetActive(false);
+            if (dialogoDesafioCompleto != null) dialogoDesafioCompleto.SetActive(true);
+            return;
+        }
         
-        restric = ardilla.activeSelf || iguana.activeSelf || pepiche.activeSelf;
+        // NUEVO: Verificar si la misión 0 está completa en lugar de verificar UI boxes
+        // Esto evita falsos positivos cuando Panel3 se oculta temporalmente (ej: al abrir galería)
+        bool misionCompletada = false;
+        
+        if (Player.instance != null && Player.instance.playerData != null)
+        {
+            if (Player.instance.playerData.misiones != null && Player.instance.playerData.misiones.Length > 0)
+            {
+                misionCompletada = Player.instance.playerData.misiones[0];
+            }
+        }
+        
+        // FALLBACK: Si no hay datos de misión, usar el método antiguo (verificar cajas)
+        // Pero solo si Panel3 está activo (no durante visualización de galería)
+        bool usarFallback = false;
+        
+        // OPTIMIZACIÓN: Cachear Panel3 en la primera búsqueda
+        if (panel3Cache == null)
+        {
+            panel3Cache = GameObject.Find("Panel3");
+        }
+        
+        if (panel3Cache != null && panel3Cache.activeInHierarchy)
+        {
+            usarFallback = true;
+        }
+        
+        if (usarFallback && !misionCompletada)
+        {
+            restric = ardilla.activeSelf || iguana.activeSelf || pepiche.activeSelf;
+        }
+        else
+        {
+            // Si la misión está completa, marcar restric como false
+            restric = !misionCompletada;
+        }
 
         if (ardilla.activeSelf != iguana.activeSelf || iguana.activeSelf != pepiche.activeSelf ||ardilla.activeSelf != pepiche.activeSelf)
         {
@@ -53,60 +100,68 @@ public class ChallengePass : MonoBehaviour
 
         if (!restric == true)
         {
+            // CRÍTICO: Marcar como finalizada ANTES de ejecutar operaciones pesadas
+            misionYaFinalizada = true;
+            
             dialogoDesafioPendiente.SetActive(false);
             dialogoDesafioCompleto.SetActive(true);
 
             int[] numbers = { 0, 8 };
 
             foreach (int number in numbers) 
-                {
+            {
                 Player.instance.playerData.misiones[number] = true;
-                // Debug.Log($"Cambiando mision 8 a estado: {Player.instance.playerData.misiones[8]}");
                 LogrosGlobales LogrosGlobales = LogroSist.GetComponent<LogrosGlobales>();
                 Mision mision = LogrosGlobales.misiones[number];
                 
                 Player.instance.playerData.logros[number] = DateTime.Now.ToString();
+            }
+            
+            // OPTIMIZACIÓN: Mover StartCoroutine y peticiones FUERA del foreach
+            // y solo ejecutar si empezado && !sent
+            if (empezado && !sent)
+            {
+                Debug.Log("enviando estadísticas de final de misión...");
+                LogrosGlobales LogrosGlobales = LogroSist.GetComponent<LogrosGlobales>();
                 
-
-                if (empezado){
-                    StartCoroutine(ShowFeedback());
-                    if (!sent)
+                // Procesar misión 0
+                Mision mision0 = LogrosGlobales.misiones[0];
+                Debug.Log(Peticiones.instance.registerPlayerMission(mision0.nombre, Player.instance.playerData, inicio.ToString("yyyy-MM-dd hh:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")));
+                
+                if (!GameManager.OfflineMode)
+                {
+                    Debug.Log("Intento con online1");
+                    Peticiones.instance.registerPlayerPrize(LogrosGlobales.logros[0].nombre, Player.instance.playerData);
+                }
+                else
+                {
+                    ActionLogger ac = GameObject.Find("ActionLogger").GetComponent<ActionLogger>();
+                    if (!GameManager.OfflineMode)
                     {
-                        Debug.Log("enviando estadísticas de final de misión...");
-                        Debug.Log(Peticiones.instance.registerPlayerMission(mision.nombre, Player.instance.playerData, inicio.ToString("yyyy-MM-dd hh:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")));
-                        if (!GameManager.OfflineMode)
-                        {
-                            Debug.Log("Intento con online1");
-                            Peticiones.instance.registerPlayerPrize(LogroSist.GetComponent<LogrosGlobales>().logros[number].nombre, Player.instance.playerData);
-                        }
-                        else
-                        {
+                        ac.actionLogger.agregarAccion("Settings", "Offline");
+                    }
 
-                            ActionLogger ac = GameObject.Find("ActionLogger").GetComponent<ActionLogger>();
-                            if (!GameManager.OfflineMode)
-                            {
-                                ac.actionLogger.agregarAccion("Settings", "Offline");
-                            }
-
-                            ac.actionLogger.online = false;
-                            ac.actionLogger.agregarPeticion("prize", "" + LogroSist.GetComponent<LogrosGlobales>().logros[number].nombre, Player.instance.playerData.Token, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-                            try
-                            {
-                                ac.GetComponent<ActionLogger>().actionLogger.online = false;
-                            }
-                            catch (Exception e)
-                            {
-                                Debug.Log("act logger component not found");
-                            }
-                        }
-                        sent = true;
-                        ChallengePass3.inicio = DateTime.Now;
+                    ac.actionLogger.online = false;
+                    ac.actionLogger.agregarPeticion("prize", "" + LogrosGlobales.logros[0].nombre, Player.instance.playerData.Token, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                    try
+                    {
+                        ac.GetComponent<ActionLogger>().actionLogger.online = false;
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.Log("act logger component not found");
                     }
                 }
+                
+                sent = true;
+                ChallengePass3.inicio = DateTime.Now;
+                
+                // CRÍTICO: StartCoroutine al FINAL, una sola vez
+                StartCoroutine(ShowFeedback());
             }
         }
-        else {
-
+        else 
+        {
             dialogoDesafioPendiente.SetActive(true);
             dialogoDesafioCompleto.SetActive(false);
         }

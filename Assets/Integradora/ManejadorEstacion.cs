@@ -151,6 +151,48 @@ public class ManejadorEstacion : MonoBehaviour
                                 clic.CuadroChallengeDos = pechichecaja;
                             }
                             
+                            // **FIX PARA BOTOTILLO DINÁMICO**: Asignar referencias globales y destruir ClickMouse
+                            if (child.name.Contains("Bototillo") && idManejador != 1)
+                            {
+                                Debug.Log("[ManejadorEstacion] Bototillo dinamico - configurando referencias globales");
+                                
+                                Seeds seedsScript = child.GetComponent<Seeds>();
+                                if (seedsScript != null)
+                                {
+                                    // Buscar GameObjects globales en la escena con múltiples estrategias
+                                    GameObject galeriaObj = GameObject.Find("Galeria");
+                                    if (galeriaObj == null) 
+                                    {
+                                        GameObject canvas = GameObject.Find("Canvas");
+                                        if (canvas != null)
+                                            galeriaObj = canvas.transform.Find("Galeria") != null ? canvas.transform.Find("Galeria").gameObject : null;
+                                    }
+                                    
+                                    GameObject panelObj = GameObject.Find("Panel");
+                                    if (panelObj == null)
+                                    {
+                                        GameObject canvas = GameObject.Find("Canvas");
+                                        if (canvas != null)
+                                            panelObj = canvas.transform.Find("Panel") != null ? canvas.transform.Find("Panel").gameObject : null;
+                                    }
+                                    
+                                    // Buscar SemillasAnim para la animación
+                                    GameObject semillasAnimObj = GameObject.Find("SemillasAnim");
+                                    
+                                    seedsScript.galeriaPanel = galeriaObj;
+                                    seedsScript.panelUI = panelObj;
+                                    if (semillasAnimObj != null)
+                                    {
+                                        Animator anim = semillasAnimObj.GetComponent<Animator>();
+                                        if (anim != null) seedsScript.semillasAnim = anim;
+                                    }
+                                    
+                                    Debug.Log("[ManejadorEstacion] Referencias asignadas a Bototillo: Galeria=" + (galeriaObj != null ? galeriaObj.name : "NULL") + ", Panel=" + (panelObj != null ? panelObj.name : "NULL") + ", Animator=" + (seedsScript.semillasAnim != null ? "SI" : "NO"));
+                                }
+                                
+                                DestroyImmediate(clic);
+                            }
+                            
                             // **NUEVO: CONFIGURAR OSO PEREZOSO**
                             if (child.name.Contains("oso perezoso") || child.name.Contains("Sloth") || child.name.Contains("perezoso"))
                             {

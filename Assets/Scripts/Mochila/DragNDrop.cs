@@ -283,6 +283,23 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         {
             PlantSeed("Ceibo_planta", seed, "Semilla1");
         }
+        else if (seed.id == 15)
+        {
+            // Guasmo ahora usa id 15 porque 5 está ocupado por papel en la DB
+            string col = colliderName.ToLower();
+            if (col == "guasmo_semilla" || col.Contains("guasmo"))
+            {
+                PlantSeed("Guasmo_planta", seed, "Semilla1");
+            }
+        }
+        else if (seed.id == 14)
+        {
+            string col = colliderName.ToLower();
+            if (col == "fernansanchez_semilla" || col == "fernan_sanchez_semilla" || col.Contains("fernan"))
+            {
+                PlantSeed("FernanSanchez_planta", seed, "Semilla2");
+            }
+        }
         else if (seed.id == 8 && colliderName == "Bototillo_Semilla")
         {
             PlantSeed("Bototillo_planta", seed, "Semilla2");
@@ -298,6 +315,14 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         else if (seed.id == 11 && colliderName == "Jacaranda_Semilla")
         {
             PlantSeed("Jacaranda_planta", seed, "Semilla1");
+        }
+        else if (seed.id == 5 && colliderName == "Guasmo_Semilla")
+        {
+            PlantSeed("Guasmo_planta", seed, "NombreMision");
+        }
+        else if (seed.id == 14 && colliderName == "FernanSanchez_Semilla")
+        {
+            PlantSeed("FernanSanchez_planta", seed, "NombreMision");
         }
     }
 

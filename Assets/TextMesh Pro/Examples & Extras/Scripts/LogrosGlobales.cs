@@ -43,37 +43,62 @@ public class Mision
 
     public bool Progreso(string requisito)
     {
-        //Debug.Log("**********************se recibe 2 el nombre " + requisito);
+        Debug.Log("[Mision] ================================================");
+        Debug.Log("[Mision] Progreso llamado - Mision: " + nombre);
+        Debug.Log("[Mision] Requisito recibido: '" + requisito + "'");
+        Debug.Log("[Mision] Estado actual: " + estado);
+        Debug.Log("[Mision] Requisitos pendientes ANTES: [" + string.Join(", ", requisitos.ToArray()) + "] (Count=" + requisitos.Count + ")");
+        Debug.Log("[Mision] Requisitos hechos ANTES: [" + string.Join(", ", requisitosHechos.ToArray()) + "] (Count=" + requisitosHechos.Count + ")");
+        
         if (estado != "Completa")
         {
             if (estado == "Bloqueada")
             {
-                //Debug.Log("**********************se remueve el bloqueo " + requisito);
-
                 requisitosBlock.Remove(requisito);
                 if (requisitosBlock.Count == 0)
                 {
                     estado = "Incompleta";
+                    Debug.Log("[Mision] Estado cambiado a Incompleta");
                 }
             }
             else
             {
-                //Debug.Log("**********************se remueve el requisito " + requisito);
-
                 if (requisitos.Contains(requisito))
                 {
+                    Debug.Log("[Mision] ✓✓✓ Requisito '" + requisito + "' SÍ está en lista de requisitos");
                     requisitosHechos.Add(requisito);
+                    Debug.Log("[Mision] Agregado a requisitosHechos");
+                }
+                else
+                {
+                    Debug.Log("[Mision] ✗✗✗ Requisito '" + requisito + "' NO está en lista de requisitos - NO se agregará a hechos");
                 }
 
-                requisitos.Remove(requisito);
+                bool wasRemoved = requisitos.Remove(requisito);
+                Debug.Log("[Mision] requisitos.Remove('" + requisito + "') resultado: " + (wasRemoved ? "REMOVIDO" : "NO ESTABA EN LISTA"));
+                Debug.Log("[Mision] Requisitos pendientes DESPUÉS: [" + string.Join(", ", requisitos.ToArray()) + "] (Count=" + requisitos.Count + ")");
+                Debug.Log("[Mision] Requisitos hechos DESPUÉS: [" + string.Join(", ", requisitosHechos.ToArray()) + "] (Count=" + requisitosHechos.Count + ")");
+                
                 if (requisitos.Count == 0)
                 {
                     estado = "Completa";
+                    Debug.Log("[Mision] =====================================");
+                    Debug.Log("[Mision] *** MISIÓN COMPLETADA: " + nombre + " ***");
+                    Debug.Log("[Mision] =====================================");
                     return true;
                 }
+                else
+                {
+                    Debug.Log("[Mision] Misión AÚN NO completada - faltan " + requisitos.Count + " requisitos");
+                }
             }
-
         }
+        else
+        {
+            Debug.Log("[Mision] Misión ya estaba COMPLETA - ignorando llamada");
+        }
+        
+        Debug.Log("[Mision] ================================================");
         return false;
     }
 
@@ -218,6 +243,8 @@ public class LogrosGlobales : MonoBehaviour
 
     public List<Logro> logros = new List<Logro>();
     public List<Mision> misiones = new List<Mision>();
+    
+    private bool misionesInicializadas = false;
 
     //logros individuales tienen nombre y descripcion, 
     //estado negativo faltan requisitos, 0 incompleto, 1 completo pero no mostrado, 2 completo y mostrado
@@ -274,49 +301,112 @@ public class LogrosGlobales : MonoBehaviour
 
     //checks
     public List<GameObject> checks = new List<GameObject>();
+    
+    // Helper para acceso seguro a checks
+    private void SetCheckSafe(int index, bool active)
+    {
+        if (checks != null && index >= 0 && index < checks.Count)
+        {
+            checks[index].SetActive(active);
+        }
+        else
+        {
+            Debug.LogWarning("[LogrosGlobales] Intento de acceder a checks[" + index + "] pero la lista tiene " + (checks != null ? checks.Count.ToString() : "0") + " elementos");
+        }
+    }
 
-    // Start is called before the first frame update
+    // Start se ejecuta después de Awake de todos los componentes, garantizando que LanguageManager esté listo
     void Start()
     {
+        Debug.Log("[LogrosGlobales] ===== START INICIADO =====");
+        
+        // Verificar si LanguageManager está listo
+        if (LanguageManager.Instancia == null)
+        {
+            Debug.LogWarning("[LogrosGlobales] LanguageManager no está listo en Start() - diferiendo inicialización a Update()");
+            misionesInicializadas = false;
+            return;
+        }
+        
+        InicializarMisiones();
+    }
+    
+    private void InicializarMisiones()
+    {
+        if (misionesInicializadas) return;
+        
+        Debug.Log("[LogrosGlobales] Iniciando InicializarMisiones()...");
+        
+        try
+        {
+            tempResult = false;
+            //estados Bloqueado Completa Incompleta Oculto
 
-        tempResult = false;
-        //estados Bloqueado Completa Incompleta Oculto
+            List<string> requisitosBlo;
+            List<string> requisitosComp;
+            List<string> requisitosHechos;
+            List<int> reqEstaciones;
+            Mision mision;
 
-        List<string> requisitosBlo;
-        List<string> requisitosComp;
-        List<string> requisitosHechos;
-        List<int> reqEstaciones;
-        Mision mision;
+            Debug.Log("[LogrosGlobales] Intentando acceder a LanguageManager...");
+            // LanguageManager
+            string estacion_mision = LanguageManager.Instancia.ObtenerTexto("misiones.estacion_mision");
+            string req_mision = LanguageManager.Instancia.ObtenerTexto("misiones.req_mision");
+            string req_completados_mision = LanguageManager.Instancia.ObtenerTexto("misiones.req_completados_mision");
 
-        // LanguageManager
-        string estacion_mision = LanguageManager.Instancia.ObtenerTexto("misiones.estacion_mision");
-        string req_mision = LanguageManager.Instancia.ObtenerTexto("misiones.req_mision");
-        string req_completados_mision = LanguageManager.Instancia.ObtenerTexto("misiones.req_completados_mision");
+            Debug.Log("[LogrosGlobales] LanguageManager OK - Obteniendo nombres de misiones...");
+            string mision_0_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_0_nombre");
+            string mision_1_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_1_nombre");
+            string mision_2_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_2_nombre");
+            string mision_3_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_3_nombre");
+            string mision_4_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_4_nombre");
+            string mision_5_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_5_nombre");
+            string mision_6_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_6_nombre");
+            string mision_7_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_7_nombre");
+            string mision_8_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_8_nombre");
 
-        string mision_0_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_0_nombre");
-        string mision_1_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_1_nombre");
-        string mision_2_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_2_nombre");
-        string mision_3_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_3_nombre");
-        string mision_4_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_4_nombre");
-        string mision_5_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_5_nombre");
-        string mision_6_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_6_nombre");
-        string mision_7_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_7_nombre");
-        string mision_8_nombre = LanguageManager.Instancia.ObtenerTexto("misiones.mision_8_nombre");
+            Debug.Log("[LogrosGlobales] Nombres OK - Obteniendo descripciones...");
+            string mision_0_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_0_descripcion");
+            string mision_1_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_1_descripcion");
+            string mision_2_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_2_descripcion");
+            string mision_3_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_3_descripcion");
+            string mision_4_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_4_descripcion");
+            string mision_5_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_5_descripcion");
+            string mision_6_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_6_descripcion");
+            string mision_7_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_7_descripcion");
+            string mision_8_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_8_descripcion");
 
-        string mision_0_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_0_descripcion");
-        string mision_1_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_1_descripcion");
-        string mision_2_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_2_descripcion");
-        string mision_3_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_3_descripcion");
-        string mision_4_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_4_descripcion");
-        string mision_5_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_5_descripcion");
-        string mision_6_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_6_descripcion");
-        string mision_7_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_7_descripcion");
-        string mision_8_descripcion = LanguageManager.Instancia.ObtenerTexto("misiones.mision_8_descripcion");
-
-        /*
-         * aqui tambien va lo de los checks
-         */
-        if (playerCtrl.GetComponent<Player>().playerData.misiones[0])
+            Debug.Log("[LogrosGlobales] Descripciones OK - Checkeando playerCtrl...");
+            Debug.Log("[LogrosGlobales] playerCtrl is null? " + (playerCtrl == null));
+            
+            // Cache Player component to avoid repeated GetComponent calls and null checks
+            Player player = null;
+            if (playerCtrl != null)
+            {
+                player = playerCtrl.GetComponent<Player>();
+                Debug.Log("[LogrosGlobales] player is null? " + (player == null));
+                if (player != null)
+                {
+                    Debug.Log("[LogrosGlobales] player.playerData is null? " + (player.playerData == null));
+                }
+            }
+            
+            Debug.Log("[LogrosGlobales] Iniciando creación de misiones...");
+            
+            // Validar que el array de misiones tenga el tamaño correcto (9 elementos)
+            if (player != null && player.playerData != null)
+            {
+                if (player.playerData.misiones == null || player.playerData.misiones.Length < 9)
+                {
+                    Debug.LogWarning("[LogrosGlobales] Array de misiones tiene tamaño incorrecto (" + (player.playerData.misiones != null ? player.playerData.misiones.Length.ToString() : "null") + "). Reinicializando a 9 elementos.");
+                    player.playerData.misiones = new bool[9];
+                }
+            }
+            
+            /*
+             * aqui tambien va lo de los checks
+             */
+            if (player != null && player.playerData != null && player.playerData.misiones[0])
         {
             requisitosBlo = new List<string>() { };
             requisitosComp = new List<string>() { };
@@ -340,7 +430,7 @@ public class LogrosGlobales : MonoBehaviour
             //Debug.Log(mision.nombre + " " + mision.estado);
         }
 
-        if (playerCtrl.GetComponent<Player>().playerData.misiones[1])
+        if (player != null && player.playerData != null && player.playerData.misiones[1])
         {
             requisitosBlo = new List<string>() { };
             requisitosComp = new List<string>() { };
@@ -348,8 +438,8 @@ public class LogrosGlobales : MonoBehaviour
             reqEstaciones = new List<int>() { };
             mision = new Mision(mision_1_nombre, "Completa", requisitosBlo, requisitosComp, requisitosHechos, reqEstaciones, mision_1_descripcion);
             misiones.Add(mision);
-            checks[2].SetActive(false);
-            checks[3].SetActive(true);
+            SetCheckSafe(2, false);
+            SetCheckSafe(3, true);
         }
         else
         {
@@ -364,7 +454,7 @@ public class LogrosGlobales : MonoBehaviour
         }
 
 
-        if (playerCtrl.GetComponent<Player>().playerData.misiones[2])
+        if (player != null && player.playerData != null && player.playerData.misiones[2])
         {
             requisitosBlo = new List<string>() { };
             requisitosComp = new List<string>() { };
@@ -372,8 +462,8 @@ public class LogrosGlobales : MonoBehaviour
             reqEstaciones = new List<int>() { };
             mision = new Mision(mision_2_nombre, "Completa", requisitosBlo, requisitosComp, requisitosHechos, reqEstaciones, mision_2_descripcion);
             misiones.Add(mision);
-            checks[4].SetActive(false);
-            checks[5].SetActive(true);
+            SetCheckSafe(4, false);
+            SetCheckSafe(5, true);
         }
         else
         {
@@ -387,7 +477,7 @@ public class LogrosGlobales : MonoBehaviour
             //Debug.Log(mision.nombre + " " + mision.estado);
         }
 
-        if (playerCtrl.GetComponent<Player>().playerData.misiones[3])
+        if (player != null && player.playerData != null && player.playerData.misiones[3])
         {
             requisitosBlo = new List<string>() { };
             requisitosComp = new List<string>() { };
@@ -395,8 +485,8 @@ public class LogrosGlobales : MonoBehaviour
             reqEstaciones = new List<int>() { };
             mision = new Mision(mision_3_nombre, "Completa", requisitosBlo, requisitosComp, requisitosHechos, reqEstaciones, mision_3_descripcion);
             misiones.Add(mision);
-            checks[6].SetActive(false);
-            checks[7].SetActive(true);
+            SetCheckSafe(6, false);
+            SetCheckSafe(7, true);
         }
         else
         {
@@ -410,7 +500,7 @@ public class LogrosGlobales : MonoBehaviour
             //Debug.Log(mision.nombre + " " + mision.estado);
         }
 
-        if (playerCtrl.GetComponent<Player>().playerData.misiones[4])
+        if (player != null && player.playerData != null && player.playerData.misiones[4])
         {
             requisitosBlo = new List<string>() { };
             requisitosComp = new List<string>() { };
@@ -418,8 +508,8 @@ public class LogrosGlobales : MonoBehaviour
             reqEstaciones = new List<int>() { };
             mision = new Mision(mision_4_nombre, "Completa", requisitosBlo, requisitosComp, requisitosHechos, reqEstaciones, mision_4_descripcion);
             misiones.Add(mision);
-            checks[8].SetActive(false);
-            checks[9].SetActive(true);
+            SetCheckSafe(8, false);
+            SetCheckSafe(9, true);
         }
         else
         {
@@ -433,7 +523,7 @@ public class LogrosGlobales : MonoBehaviour
             //Debug.Log(mision.nombre + " " + mision.estado);
         }
 
-        if (playerCtrl.GetComponent<Player>().playerData.misiones[5])
+        if (player != null && player.playerData != null && player.playerData.misiones[5])
         {
             requisitosBlo = new List<string>() { };
             requisitosComp = new List<string>() { };
@@ -441,8 +531,8 @@ public class LogrosGlobales : MonoBehaviour
             reqEstaciones = new List<int>() { };
             mision = new Mision(mision_5_nombre, "Completa", requisitosBlo, requisitosComp, requisitosHechos, reqEstaciones, mision_5_descripcion);
             misiones.Add(mision);
-            checks[10].SetActive(false);
-            checks[11].SetActive(true);
+            SetCheckSafe(10, false);
+            SetCheckSafe(11, true);
         }
         else
         {
@@ -457,7 +547,7 @@ public class LogrosGlobales : MonoBehaviour
 
         }
 
-        if (playerCtrl.GetComponent<Player>().playerData.misiones[6])
+        if (player != null && player.playerData != null && player.playerData.misiones[6])
         {
             requisitosBlo = new List<string>() { };
             requisitosComp = new List<string>() { };
@@ -465,8 +555,8 @@ public class LogrosGlobales : MonoBehaviour
             reqEstaciones = new List<int>() { };
             mision = new Mision(mision_6_nombre, "Completa", requisitosBlo, requisitosComp, requisitosHechos, reqEstaciones, mision_6_descripcion);
             misiones.Add(mision);
-            checks[12].SetActive(false);
-            checks[13].SetActive(true);
+            SetCheckSafe(12, false);
+            SetCheckSafe(13, true);
         }
         else
         {
@@ -480,7 +570,7 @@ public class LogrosGlobales : MonoBehaviour
             //Debug.Log(mision.nombre + " " + mision.estado);
         }
 
-        if (playerCtrl.GetComponent<Player>().playerData.misiones[7])
+        if (player != null && player.playerData != null && player.playerData.misiones[7])
         {
             requisitosBlo = new List<string>() { };
             requisitosComp = new List<string>() { };
@@ -488,8 +578,8 @@ public class LogrosGlobales : MonoBehaviour
             reqEstaciones = new List<int>() { };
             mision = new Mision(mision_7_nombre, "Completa", requisitosBlo, requisitosComp, requisitosHechos, reqEstaciones, mision_7_descripcion);
             misiones.Add(mision);
-            checks[14].SetActive(false);
-            checks[15].SetActive(true);
+            SetCheckSafe(14, false);
+            SetCheckSafe(15, true);
         }
         else
         {
@@ -503,7 +593,7 @@ public class LogrosGlobales : MonoBehaviour
             //Debug.Log(mision.nombre + " " + mision.estado);
         }
 
-        if (playerCtrl.GetComponent<Player>().playerData.misiones[8])
+        if (player != null && player.playerData != null && player.playerData.misiones[8])
         {
             requisitosBlo = new List<string>() { };
             requisitosComp = new List<string>() { };
@@ -511,8 +601,8 @@ public class LogrosGlobales : MonoBehaviour
             reqEstaciones = new List<int>() { };
             mision = new Mision(mision_8_nombre, "Completa", requisitosBlo, requisitosComp, requisitosHechos, reqEstaciones, mision_8_descripcion);
             misiones.Add(mision);
-            checks[16].SetActive(false);
-            checks[17].SetActive(true);
+            SetCheckSafe(16, false);
+            SetCheckSafe(17, true);
         }
         else
         {
@@ -527,6 +617,18 @@ public class LogrosGlobales : MonoBehaviour
 
 
         slothPage = 0;
+        
+        Debug.Log("[LogrosGlobales] Misiones inicializadas - Total: " + misiones.Count);
+
+        // Validar que el array de logros tenga el tamaño correcto (9 elementos)
+        if (player != null && player.playerData != null)
+        {
+            if (player.playerData.logros == null || player.playerData.logros.Length < 9)
+            {
+                Debug.LogWarning("[LogrosGlobales] Array de logros tiene tamaño incorrecto (" + (player.playerData.logros != null ? player.playerData.logros.Length.ToString() : "null") + "). Reinicializando a 9 elementos.");
+                player.playerData.logros = new string[9] { "", "", "", "", "", "", "", "", "" };
+            }
+        }
 
         // LanguageManager Logros
         string logro_0_nombre = LanguageManager.Instancia.ObtenerTexto("logros.logro_0_nombre");
@@ -556,49 +658,49 @@ public class LogrosGlobales : MonoBehaviour
         Logro Logro = new LogroUnico(logro_0_nombre, logro_0_descripcion, imageLogro1);
         logros.Add(Logro);
         Debug.Log(Logro.descripcion);
-        if (playerCtrl.GetComponent<Player>().playerData.logros[0] != "")
-        { ProgresarLogro(0, playerCtrl.GetComponent<Player>().playerData.logros[0]); }
+        if (player != null && player.playerData != null && player.playerData.logros[0] != "")
+        { ProgresarLogro(0, player.playerData.logros[0]); }
         Logro = new LogroUnico(logro_1_nombre, logro_1_descripcion, imageLogro2);
         logros.Add(Logro);
-        if (playerCtrl.GetComponent<Player>().playerData.logros[1] != "")
-        { ProgresarLogro(1, playerCtrl.GetComponent<Player>().playerData.logros[1]); }
+        if (player != null && player.playerData != null && player.playerData.logros[1] != "")
+        { ProgresarLogro(1, player.playerData.logros[1]); }
         //Debug.Log(Logro.descripcion);
         Logro = new LogroUnico(logro_2_nombre, logro_2_descripcion, imageLogro3);
         logros.Add(Logro);
-        if (playerCtrl.GetComponent<Player>().playerData.logros[2] != "")
-        { ProgresarLogro(2, playerCtrl.GetComponent<Player>().playerData.logros[2]); }
+        if (player != null && player.playerData != null && player.playerData.logros[2] != "")
+        { ProgresarLogro(2, player.playerData.logros[2]); }
         //Debug.Log(Logro.descripcion);
         Logro = new LogroUnico(logro_3_nombre, logro_3_descripcion, imageLogro4);
         logros.Add(Logro);
-        if (playerCtrl.GetComponent<Player>().playerData.logros[3] != "")
-        { ProgresarLogro(3, playerCtrl.GetComponent<Player>().playerData.logros[3]); }
+        if (player != null && player.playerData != null && player.playerData.logros[3] != "")
+        { ProgresarLogro(3, player.playerData.logros[3]); }
         //Debug.Log(Logro.descripcion);
         Logro = new LogroUnico(logro_4_nombre, logro_4_descripcion, imageLogro5);
         logros.Add(Logro);
-        if (playerCtrl.GetComponent<Player>().playerData.logros[4] != "")
-        { ProgresarLogro(4, playerCtrl.GetComponent<Player>().playerData.logros[4]); }
+        if (player != null && player.playerData != null && player.playerData.logros[4] != "")
+        { ProgresarLogro(4, player.playerData.logros[4]); }
         //Debug.Log(Logro.descripcion);
         Logro = new LogroUnico(logro_5_nombre, logro_5_descripcion, imageLogro6);
         logros.Add(Logro);
-        if (playerCtrl.GetComponent<Player>().playerData.logros[5] != "")
-        { ProgresarLogro(5, playerCtrl.GetComponent<Player>().playerData.logros[5]); }
+        if (player != null && player.playerData != null && player.playerData.logros[5] != "")
+        { ProgresarLogro(5, player.playerData.logros[5]); }
         //Debug.Log(Logro.descripcion);
 
 
 
         Logro = new LogroRepetible(logro_6_nombre, logro_6_descripcion, -7, 1, imageFauna);
         logros.Add(Logro);
-        if (playerCtrl.GetComponent<Player>().playerData.logros[6] != "")
-        { ProgresarLogro(6, playerCtrl.GetComponent<Player>().playerData.logros[6]); }
+        if (player != null && player.playerData != null && player.playerData.logros[6] != "")
+        { ProgresarLogro(6, player.playerData.logros[6]); }
         //Debug.Log(Logro.descripcion);
         Logro = new LogroRepetible(logro_7_nombre, logro_7_descripcion, -4, 1, imageFlora);
         logros.Add(Logro);
-        if (playerCtrl.GetComponent<Player>().playerData.logros[7] != "")
-        { ProgresarLogro(7, playerCtrl.GetComponent<Player>().playerData.logros[7]); }
+        if (player != null && player.playerData != null && player.playerData.logros[7] != "")
+        { ProgresarLogro(7, player.playerData.logros[7]); }
         //Debug.Log(Logro.descripcion);
         Logro = new LogroUnico(logro_8_nombre, logro_8_descripcion, imageCompletado);
         logros.Add(Logro);
-        /*if (playerCtrl.GetComponent<Player>().playerData.logros[8])
+        /*if (player != null && player.playerData.logros[8])
         { ProgresarLogro(8, "antes"); }*/
         //Debug.Log(Logro.descripcion);
         Completo100 = new LogroRepetible(logro_9_nombre, logro_9_descripcion, -13, 1, imagePerfecto);
@@ -611,18 +713,37 @@ public class LogrosGlobales : MonoBehaviour
         Logro = new LogroUnico(logro_8_nombre, logro_8_descripcion, imageLogro8);
         logros.Add(Logro);
         Debug.Log(Logro.descripcion);
-        if (playerCtrl.GetComponent<Player>().playerData.logros[8] != "")
-        { ProgresarLogro(8, playerCtrl.GetComponent<Player>().playerData.logros[8]); }
+        if (player != null && player.playerData != null && player.playerData.logros[8] != "")
+        { ProgresarLogro(8, player.playerData.logros[8]); }
 
         RecargarTextos(PlayerPrefs.GetString("idioma"));
 
         // ProgresarLogro(8);
-
+        
+            misionesInicializadas = true;
+            Debug.Log("[LogrosGlobales] InicializarMisiones() completado - Total misiones: " + misiones.Count);
+            for (int i = 0; i < misiones.Count; i++)
+            {
+                Debug.Log("[LogrosGlobales] Mision[" + i + "]: " + misiones[i].nombre + " | Estado: " + misiones[i].estado + " | Requisitos: " + string.Join(", ", misiones[i].requisitos.ToArray()));
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("[LogrosGlobales] ERROR en InicializarMisiones(): " + ex.Message);
+            Debug.LogError("[LogrosGlobales] StackTrace: " + ex.StackTrace);
+            misionesInicializadas = false; // Permitir reintentar en Update
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Si las misiones no están inicializadas y LanguageManager ya está disponible, inicializarlas
+        if (!misionesInicializadas && LanguageManager.Instancia != null)
+        {
+            Debug.Log("[LogrosGlobales] LanguageManager ahora disponible - inicializando misiones en Update()");
+            InicializarMisiones();
+        }
         
         /*
         if (Input.GetKeyUp(KeyCode.N))
@@ -750,6 +871,19 @@ public class LogrosGlobales : MonoBehaviour
 
     public void ProgresarMision(int numeromision, string cumplido)
     {
+        // Verificar que las misiones estén inicializadas
+        if (!misionesInicializadas || misiones == null || misiones.Count == 0)
+        {
+            Debug.LogWarning("[LogrosGlobales] ProgresarMision llamado pero misiones no inicializadas aún - ignorando");
+            return;
+        }
+        
+        if (numeromision < 0 || numeromision >= misiones.Count)
+        {
+            Debug.LogError("[LogrosGlobales] ProgresarMision: índice fuera de rango: " + numeromision + " (total misiones: " + misiones.Count + ")");
+            return;
+        }
+        
         Debug.Log("Numero de mision: " + numeromision);
 
         // Debug.Log("**********************se recibe el nombre " + cumplido);
@@ -763,8 +897,8 @@ public class LogrosGlobales : MonoBehaviour
             /*
              *aqui va lo de los checks
              **/
-            checks[numeromision*2].SetActive(false);
-            checks[numeromision*2+1].SetActive(true);
+            SetCheckSafe(numeromision * 2, false);
+            SetCheckSafe(numeromision * 2 + 1, true);
             Debug.Log("**********************se progresa mision " + numeromision);
             playerCtrl.GetComponent<Player>().regMision(numeromision);
             if (numeromision == 6)

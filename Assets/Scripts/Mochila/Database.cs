@@ -18,6 +18,27 @@ public class Database : ScriptableObject
         }
         return null;
     }
+
+    // Unity callback invoked when the ScriptableObject is edited in the inspector.
+    // Se asegura de que no existan IDs repetidos entre los ítems, ya que la lógica
+    // del inventario asume que cada elemento usa un identificador único.
+    private void OnValidate()
+    {
+        HashSet<int> seen = new HashSet<int>();
+        for (int i = 0; i < items.Count; i++)
+        {
+            int id = items[i].id;
+            if (seen.Contains(id))
+            {
+                Debug.LogWarning($"[Database] ID duplicado detectado: {id} en item '{items[i].name}'",
+                    this);
+            }
+            else
+            {
+                seen.Add(id);
+            }
+        }
+    }
 }
 
 

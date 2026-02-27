@@ -32,11 +32,30 @@ public class Galery : MonoBehaviour
 
     private Arbol tree = null;
     public bool visible;
+    
+    // Referencia directa a Panel3 para poder reactivarlo correctamente
+    [HideInInspector]
+    public GameObject panel3Ref;
+    
+    // Referencias a las cajas de objetivos para reactivarlas si no han sido completadas
+    [HideInInspector]
+    public GameObject ardillaCajaRef;
+    [HideInInspector]
+    public GameObject iguanaCajaRef;
+    [HideInInspector]
+    public GameObject pechicheCajaRef;
+
+    private void Awake()
+    {
+        Debug.Log("[Galery] Awake ejecutado para: " + gameObject.name);
+        this.enabled = true;  // Asegurar que está habilitado
+    }
 
     void Update()
     {
         if (visible)
         {
+            Debug.Log("[Galery] Update - visible=true, name='" + name + "'");
             LoadInfoOffline();
             visible = false;
             numImages += 1;
@@ -77,9 +96,13 @@ public class Galery : MonoBehaviour
     /*Modo offline*/
     public void LoadInfoOffline()
     {
+        Debug.Log("[Galery] LoadInfoOffline - buscando especie: '" + name + "'");
+        Debug.Log("[Galery] Total especies en DB: " + (GameManager.instance.test.species != null ? GameManager.instance.test.species.Count : 0));
+        
         foreach(SpecieObject specie in GameManager.instance.test.species){
+            Debug.Log("[Galery] Comparando: '" + specie.Name + "' == '" + name + "' ? " + (specie.Name == name));
             if(specie.Name == name){
-                Debug.Log("Especie encontrada");
+                Debug.Log("[Galery] Especie encontrada: " + specie.Name);
                 tree = new Arbol();
                 tree.SpecieId = specie.SpecieId;
                 tree.Id = specie.Id;
@@ -90,10 +113,19 @@ public class Galery : MonoBehaviour
                 tree.Video = specie.Video;
             }
         }
-        titulo.text = tree.NameView; 
-        String urlPrefix = "file://" + Application.streamingAssetsPath + "/"+  tree.Video;
-        videoplayer.url = urlPrefix;
-        CargarImagen(0);
+        
+        if (tree != null)
+        {
+            Debug.Log("[Galery] Configurando UI - titulo: " + tree.NameView);
+            titulo.text = tree.NameView; 
+            String urlPrefix = "file://" + Application.streamingAssetsPath + "/"+  tree.Video;
+            videoplayer.url = urlPrefix;
+            CargarImagen(0);
+        }
+        else
+        {
+            Debug.LogError("[Galery] *** tree es NULL - especie no encontrada ***");
+        }
     }
 
     public void LoadImageOffLine(int id)
@@ -131,6 +163,79 @@ public class Galery : MonoBehaviour
         tree = null;
         panelGaleria.SetActive(false);
         imagenActual = 0;
+        
+        // Volver a mostrar Panel3 (especies objetivo) usando referencia directa
+        if (panel3Ref != null)
+        {
+            panel3Ref.SetActive(true);
+            Debug.Log("[Galery] Panel3 (especies objetivo) reactivado usando referencia directa");
+            
+            // CRÍTICO: Reactivar las cajas de objetivos pendientes (especies no descubiertas)
+            ReactivarCajasPendientes();
+        }
+        else
+        {
+            // Fallback: intentar buscar Panel3 si no hay referencia
+            GameObject panel3 = GameObject.Find("Panel3");
+            if (panel3 != null)
+            {
+                panel3.SetActive(true);
+                Debug.Log("[Galery] Panel3 (especies objetivo) reactivado usando GameObject.Find (fallback)");
+                ReactivarCajasPendientes();
+            }
+            else
+            {
+                Debug.LogWarning("[Galery] No se pudo encontrar Panel3 para reactivarlo");
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Reactiva las cajas de objetivos (ardilla, iguana, pechiche) si las especies NO han sido descubiertas
+    /// </summary>
+    private void ReactivarCajasPendientes()
+    {
+        // Verificar qué especies faltan por descubrir usando BookPages.isDiscovered
+        if (BookPages.instance == null || BookPages.instance.nombres == null || BookPages.instance.isDiscovered == null)
+        {
+            Debug.LogWarning("[Galery] No se puede verificar especies descubiertas - BookPages no disponible");
+            return;
+        }
+        
+        // Buscar índices de Ardilla, Iguana, Pechiche en el array de especies
+        int ardillaIndex = System.Array.IndexOf(BookPages.instance.nombres, "Ardilla de Guayaquil");
+        int iguanaIndex = System.Array.IndexOf(BookPages.instance.nombres, "Iguana");
+        int pechicheIndex = System.Array.IndexOf(BookPages.instance.nombres, "Pechiche");
+        
+        // Reactivar caja de Ardilla si NO ha sido descubierta
+        if (ardillaIndex >= 0 && ardillaIndex < BookPages.instance.isDiscovered.Length)
+        {
+            if (!BookPages.instance.isDiscovered[ardillaIndex] && ardillaCajaRef != null)
+            {
+                ardillaCajaRef.SetActive(true);
+                Debug.Log("[Galery] ✓ Ardilla caja reactivada (especie no descubierta)");
+            }
+        }
+        
+        // Reactivar caja de Iguana si NO ha sido descubierta
+        if (iguanaIndex >= 0 && iguanaIndex < BookPages.instance.isDiscovered.Length)
+        {
+            if (!BookPages.instance.isDiscovered[iguanaIndex] && iguanaCajaRef != null)
+            {
+                iguanaCajaRef.SetActive(true);
+                Debug.Log("[Galery] ✓ Iguana caja reactivada (especie no descubierta)");
+            }
+        }
+        
+        // Reactivar caja de Pechiche si NO ha sido descubierta
+        if (pechicheIndex >= 0 && pechicheIndex < BookPages.instance.isDiscovered.Length)
+        {
+            if (!BookPages.instance.isDiscovered[pechicheIndex] && pechicheCajaRef != null)
+            {
+                pechicheCajaRef.SetActive(true);
+                Debug.Log("[Galery] ✓ Pechiche caja reactivada (especie no descubierta)");
+            }
+        }
     }
 }
 

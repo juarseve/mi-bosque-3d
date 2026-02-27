@@ -76577,6 +76577,10 @@ PrefabInstance:
       propertyPath: cameraBlocker
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 492060379, guid: 65ef68f3ca4cc7f4aa4fdee7422c6d9a, type: 3}
+      propertyPath: isPlant
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1767110428, guid: 65ef68f3ca4cc7f4aa4fdee7422c6d9a, type: 3}
       propertyPath: semillasAnim
       value: 
