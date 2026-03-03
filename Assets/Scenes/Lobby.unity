@@ -3664,7 +3664,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b63de995beb43bea6e22898fb90721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsController: {fileID: 1503623491}
   controlerObj: {fileID: 0}
   mochila: 0
 --- !u!65 &111073657
@@ -27683,7 +27682,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b63de995beb43bea6e22898fb90721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsController: {fileID: 1503623491}
   controlerObj: {fileID: 0}
   mochila: 0
 --- !u!65 &494515804
@@ -34550,7 +34548,7 @@ Transform:
   - {fileID: 898857435}
   - {fileID: 1445753448}
   - {fileID: 743789601}
-  - {fileID: 1953510400}
+  - {fileID: 746258688}
   m_Father: {fileID: 0}
   m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -40916,7 +40914,7 @@ Transform:
   m_GameObject: {fileID: 627926312}
   m_LocalRotation: {x: -0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: -0.0005669329, y: 1.0144054, z: 0.12}
-  m_LocalScale: {x: 0.06212005, y: 0.06212005, z: 0.06212005}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1972825021}
   m_RootOrder: 4
@@ -47691,21 +47689,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.015, y: 0.12000002, z: 0.051874094}
   m_Center: {x: 0.0009849, y: -0.049999535, z: 0.00000024121255}
---- !u!4 &746258688
+--- !u!4 &746258688 stripped
 Transform:
-  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 5e3eeefe1803f7942a30fbc6e56c48d8,
     type: 3}
   m_PrefabInstance: {fileID: 1137799892}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044292470}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1953510400}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &746333069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50035,7 +50024,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b63de995beb43bea6e22898fb90721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsController: {fileID: 1503623491}
   controlerObj: {fileID: 0}
   mochila: 0
 --- !u!65 &803270768
@@ -59195,7 +59183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b63de995beb43bea6e22898fb90721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsController: {fileID: 1503623491}
   controlerObj: {fileID: 0}
   mochila: 0
 --- !u!65 &992731804
@@ -67791,22 +67778,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1041575619}
   m_CullTransparentMesh: 0
---- !u!1 &1044292470
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 1137799892}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 746258688}
-  m_Layer: 0
-  m_Name: Missing Prefab (Dummy)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1047976659 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8771186974864561325, guid: a3819624f3e321f4a8e2c4f352122c87,
@@ -72966,7 +72937,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b63de995beb43bea6e22898fb90721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsController: {fileID: 1503623491}
   controlerObj: {fileID: 0}
   mochila: 0
 --- !u!65 &1135869723
@@ -73098,6 +73068,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 567560242}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 5e3eeefe1803f7942a30fbc6e56c48d8,
+        type: 3}
+      propertyPath: m_Name
+      value: WindWill
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 5e3eeefe1803f7942a30fbc6e56c48d8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -73152,11 +73127,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 5e3eeefe1803f7942a30fbc6e56c48d8,
-        type: 3}
-      propertyPath: m_Name
-      value: WindWill
       objectReference: {fileID: 0}
     - target: {fileID: -6057140222963153312, guid: 5e3eeefe1803f7942a30fbc6e56c48d8,
         type: 3}
@@ -89040,8 +89010,7 @@ MonoBehaviour:
   fpsCamera: {fileID: 1152084303}
   interactionDetector: {fileID: 0}
   detectorParent: {fileID: 0}
-  detectionRadius: 25
-  maxInteractionAngle: 90
+  maxRaycastDistance: 25
   layerToHit:
     serializedVersion: 2
     m_Bits: 1024
@@ -91922,7 +91891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b63de995beb43bea6e22898fb90721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsController: {fileID: 1503623491}
   controlerObj: {fileID: 0}
   mochila: 0
 --- !u!65 &1539257655
@@ -93563,7 +93531,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b63de995beb43bea6e22898fb90721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsController: {fileID: 1503623491}
   controlerObj: {fileID: 0}
   mochila: 0
 --- !u!65 &1581305657
@@ -103226,7 +103193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b63de995beb43bea6e22898fb90721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsController: {fileID: 1503623491}
   controlerObj: {fileID: 0}
   mochila: 0
 --- !u!65 &1948089214
@@ -103323,37 +103289,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: e721513dd67b1194eb34d01628a2ec38, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03a3404dccc8da44da7eeb75bea469a3, type: 3}
---- !u!1 &1953510399
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 1137799892}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1953510400}
-  m_Layer: 0
-  m_Name: WindWill (Missing Prefab)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1953510400
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 1137799892}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1953510399}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 746258688}
-  m_Father: {fileID: 567560242}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1954778772
 GameObject:
   m_ObjectHideFlags: 0
@@ -103703,7 +103638,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 739f4ff8c72a98d438c7797abd34d015,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 229.32457
+      value: 229.21
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 739f4ff8c72a98d438c7797abd34d015,
         type: 3}
@@ -108761,7 +108696,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b63de995beb43bea6e22898fb90721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsController: {fileID: 1503623491}
   controlerObj: {fileID: 0}
   mochila: 0
 --- !u!65 &2053195571

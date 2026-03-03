@@ -2042,6 +2042,7 @@ MonoBehaviour:
   - {fileID: 306143552}
   spawn: {fileID: 580145598}
   activos: 0101
+  habilitarRecordatorios: 1
   recordatorioEstacion: {fileID: 506017839}
   activarRecordatorioAlInicio: 1
   teclaMostrarRecordatorio: 104
@@ -2954,7 +2955,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.009758145}
+  m_AnchoredPosition: {x: 0, y: 0.004227654}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &82227862
@@ -8705,6 +8706,7 @@ MonoBehaviour:
   - {fileID: 0}
   spawn: {fileID: 322409295}
   activos: 0101
+  habilitarRecordatorios: 1
   recordatorioEstacion: {fileID: 601359207}
   activarRecordatorioAlInicio: 1
   teclaMostrarRecordatorio: 104
@@ -9690,6 +9692,7 @@ MonoBehaviour:
   - {fileID: 265120565}
   spawn: {fileID: 2005078280}
   activos: 0101
+  habilitarRecordatorios: 1
   recordatorioEstacion: {fileID: 1298003975}
   activarRecordatorioAlInicio: 1
   teclaMostrarRecordatorio: 104
@@ -11771,6 +11774,7 @@ MonoBehaviour:
   - {fileID: 2098440838}
   spawn: {fileID: 2142570603}
   activos: 0101
+  habilitarRecordatorios: 0
   recordatorioEstacion: {fileID: 1735835413}
   activarRecordatorioAlInicio: 1
   teclaMostrarRecordatorio: 104
@@ -12951,7 +12955,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &338562483
 Transform:
   m_ObjectHideFlags: 0
@@ -12997,6 +13001,7 @@ MonoBehaviour:
   - {fileID: 782125015}
   spawn: {fileID: 1173972920}
   activos: 0101
+  habilitarRecordatorios: 1
   recordatorioEstacion: {fileID: 1517626843}
   activarRecordatorioAlInicio: 1
   teclaMostrarRecordatorio: 104
@@ -77287,6 +77292,7 @@ MonoBehaviour:
   - {fileID: 149690872}
   spawn: {fileID: 398787312}
   activos: 01
+  habilitarRecordatorios: 1
   recordatorioEstacion: {fileID: 687685555}
   activarRecordatorioAlInicio: 1
   teclaMostrarRecordatorio: 104
@@ -87563,8 +87569,9 @@ MonoBehaviour:
   - {fileID: 341689735}
   spawn: {fileID: 2029927930}
   activos: 0100
+  habilitarRecordatorios: 1
   recordatorioEstacion: {fileID: 506017839}
-  activarRecordatorioAlInicio: 1
+  activarRecordatorioAlInicio: 0
   teclaMostrarRecordatorio: 104
   mostrarLogs: 1
 --- !u!1001 &1721871737
@@ -89680,7 +89687,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1020285834}
   m_HandleRect: {fileID: 1020285833}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
