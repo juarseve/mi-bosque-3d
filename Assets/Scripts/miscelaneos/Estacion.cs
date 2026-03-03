@@ -15,6 +15,9 @@ public class Estacion : MonoBehaviour
     public bool[] activos;
     
     [Header("Sistema de Recordatorios")]
+    [Tooltip("Habilitar sistema de recordatorios para esta estación")]
+    public bool habilitarRecordatorios = true;
+    
     [Tooltip("GameObject del recordatorio específico de esta estación (se mostrará al presionar H)")]
     public GameObject recordatorioEstacion;
     
@@ -45,14 +48,19 @@ public class Estacion : MonoBehaviour
             eventosActDesc[i].SetActive(activos[i]);
         }
         
-        // Activar esta estación como la actual
-        ActivarEstaEstacion();
+        // NO activar automáticamente - debe hacerse desde WallTrigger cuando el jugador entra
+        // ActivarEstaEstacion(); // REMOVIDO
+        
+        if (mostrarLogs)
+        {
+            Debug.Log($"[Estacion] Estación {ID} inicializada (recordatorio NO activado aún)");
+        }
     }
     
     private void Update()
     {
-        // Solo procesar input de recordatorio si esta es la estación actual
-        if (estacionActual == this && recordatorioActivo)
+        // Solo procesar input de recordatorio si esta es la estación actual Y está habilitado
+        if (habilitarRecordatorios && estacionActual == this && recordatorioActivo)
         {
             // Detectar tecla para mostrar recordatorio
             if (Input.GetKeyDown(teclaMostrarRecordatorio))
@@ -67,24 +75,27 @@ public class Estacion : MonoBehaviour
     /// </summary>
     public void ActivarEstaEstacion()
     {
-        // Desactivar recordatorio de la estación anterior
+        // Destruir recordatorio de la estación anterior (solo si tienen recordatorios habilitados)
         if (estacionActual != null && estacionActual != this)
         {
-            estacionActual.DesactivarRecordatorio();
+            if (estacionActual.habilitarRecordatorios)
+            {
+                estacionActual.DestruirRecordatorio();
+            }
         }
         
         // Establecer esta como la estación actual
         estacionActual = this;
         
-        // Activar el recordatorio si está configurado
-        if (activarRecordatorioAlInicio)
+        // Activar el recordatorio si está configurado Y habilitado
+        if (habilitarRecordatorios && activarRecordatorioAlInicio)
         {
             ActivarRecordatorio();
         }
         
         if (mostrarLogs)
         {
-            Debug.Log($"[Estacion] ✅ Estación {ID} activada como estación actual");
+            Debug.Log($"[Estacion] ✅ Estación {ID} activada como estación actual (Recordatorios: {(habilitarRecordatorios ? "HABILITADOS" : "DESHABILITADOS")})");
         }
     }
     
@@ -93,6 +104,16 @@ public class Estacion : MonoBehaviour
     /// </summary>
     public void ActivarRecordatorio()
     {
+        // Si los recordatorios están deshabilitados, no hacer nada
+        if (!habilitarRecordatorios)
+        {
+            if (mostrarLogs)
+            {
+                Debug.Log($"[Estacion] ⏸️ Recordatorios DESHABILITADOS para Estación {ID}");
+            }
+            return;
+        }
+        
         if (recordatorioEstacion == null)
         {
             if (mostrarLogs)
@@ -104,8 +125,27 @@ public class Estacion : MonoBehaviour
         
         recordatorioActivo = true;
         
-        // Ocultar el recordatorio al inicio (se mostrará con H)
+        // Desactivar completamente el recordatorio al inicio (se mostrará con H)
         recordatorioEstacion.SetActive(false);
+        
+        // Si tiene recordControl.cs, deshabilitarlo para evitar conflictos
+        recordControl recordControlScript = recordatorioEstacion.GetComponent<recordControl>();
+        if (recordControlScript != null)
+        {
+            recordControlScript.enabled = false;
+            
+            if (mostrarLogs)
+            {
+                Debug.Log($"[Estacion] 🔇 Script recordControl deshabilitado en '{recordatorioEstacion.name}' para evitar conflictos");
+            }
+        }
+        
+        // Si tiene Animator, resetear el parámetro "show"
+        Animator animator = recordatorioEstacion.GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.SetBool("show", false);
+        }
         
         if (mostrarLogs)
         {
@@ -131,10 +171,38 @@ public class Estacion : MonoBehaviour
     }
     
     /// <summary>
+    /// Destruye el recordatorio de esta estación (usado al cambiar de estación)
+    /// </summary>
+    public void DestruirRecordatorio()
+    {
+        if (recordatorioEstacion == null) return;
+        
+        recordatorioActivo = false;
+        
+        if (mostrarLogs)
+        {
+            Debug.Log($"[Estacion] 💥 DESTRUYENDO recordatorio de Estación {ID} (GameObject: '{recordatorioEstacion.name}')");
+        }
+        
+        Destroy(recordatorioEstacion);
+        recordatorioEstacion = null;
+    }
+    
+    /// <summary>
     /// Muestra el recordatorio visualmente (con animación si tiene Animator)
     /// </summary>
     private void MostrarRecordatorio()
     {
+        // Validación temprana: si los recordatorios están deshabilitados, no hacer nada
+        if (!habilitarRecordatorios)
+        {
+            if (mostrarLogs)
+            {
+                Debug.Log($"[Estacion] ⏸️ Recordatorios deshabilitados para Estación {ID}");
+            }
+            return;
+        }
+        
         if (recordatorioEstacion == null)
         {
             if (mostrarLogs)
@@ -154,35 +222,54 @@ public class Estacion : MonoBehaviour
             return;
         }
         
-        // Activar el GameObject si está desactivado
-        if (!recordatorioEstacion.activeSelf)
-        {
-            recordatorioEstacion.SetActive(true);
-        }
+        // Activar el GameObject primero
+        bool estabaDesactivado = !recordatorioEstacion.activeSelf;
+        recordatorioEstacion.SetActive(true);
         
-        // Intentar usar Animator si existe (como recordControl.cs)
+        // Intentar usar Animator si existe
         Animator animator = recordatorioEstacion.GetComponent<Animator>();
         
         if (animator != null)
         {
-            // Método 1: Usar animación con trigger "show"
-            animator.SetBool("show", true);
+            // Si estaba desactivado, necesitamos esperar un frame para que el Animator se inicialice
+            if (estabaDesactivado)
+            {
+                StartCoroutine(ActivarAnimacionConDelay(animator));
+            }
+            else
+            {
+                // Si ya estaba activo, activar inmediatamente
+                animator.SetBool("show", true);
+                StartCoroutine(ResetearAnimacionRecordatorio(animator, 3f));
+            }
             
             if (mostrarLogs)
             {
                 Debug.Log($"[Estacion] 👁️ Mostrando recordatorio de Estación {ID} con animación");
             }
-            
-            // NUEVO: Resetear la animación después de un tiempo para permitir reproducirla de nuevo
-            StartCoroutine(ResetearAnimacionRecordatorio(animator, 3f));
         }
         else
         {
-            // Método 2: Solo activar si no tiene Animator
+            // Método 2: Solo mantener activo si no tiene Animator
             if (mostrarLogs)
             {
-                Debug.Log($"[Estacion] 👁️ Mostrando recordatorio de Estación {ID} con SetActive");
+                Debug.Log($"[Estacion] 👁️ Mostrando recordatorio de Estación {ID} sin animación");
             }
+        }
+    }
+    
+    /// <summary>
+    /// Activa la animación con un pequeño delay para asegurar que el Animator esté inicializado
+    /// </summary>
+    private IEnumerator ActivarAnimacionConDelay(Animator animator)
+    {
+        // Esperar un frame para que el GameObject se active completamente
+        yield return null;
+        
+        if (animator != null)
+        {
+            animator.SetBool("show", true);
+            StartCoroutine(ResetearAnimacionRecordatorio(animator, 3f));
         }
     }
     
@@ -237,6 +324,46 @@ public class Estacion : MonoBehaviour
     public static int ObtenerIDEstacionActual()
     {
         return estacionActual != null ? estacionActual.ID : -1;
+    }
+    
+    /// <summary>
+    /// Habilita el sistema de recordatorios para esta estación
+    /// </summary>
+    public void HabilitarRecordatorios()
+    {
+        habilitarRecordatorios = true;
+        
+        if (mostrarLogs)
+        {
+            Debug.Log($"[Estacion] ✅ Recordatorios HABILITADOS para Estación {ID}");
+        }
+    }
+    
+    /// <summary>
+    /// Deshabilita el sistema de recordatorios para esta estación
+    /// </summary>
+    public void DeshabilitarRecordatorios()
+    {
+        habilitarRecordatorios = false;
+        
+        // Si hay un recordatorio activo, desactivarlo
+        if (recordatorioActivo)
+        {
+            DesactivarRecordatorio();
+        }
+        
+        if (mostrarLogs)
+        {
+            Debug.Log($"[Estacion] ❌ Recordatorios DESHABILITADOS para Estación {ID}");
+        }
+    }
+    
+    /// <summary>
+    /// Verifica si los recordatorios están habilitados para esta estación
+    /// </summary>
+    public bool RecordatoriosHabilitados()
+    {
+        return habilitarRecordatorios;
     }
     
     private void OnDestroy()

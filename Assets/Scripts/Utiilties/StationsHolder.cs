@@ -51,6 +51,27 @@ public class StationsHolder : MonoBehaviour {
             }
         }
         
+        // NUEVO: Activar la estación inicial basada en GameManager.currentStation
+        int estacionActual = GameManager.instance.currentStation;
+        if (estacionActual > 0 && estacionActual <= estaciones.Length)
+        {
+            // El array es 0-indexed, pero las estaciones son 1-indexed
+            Estacion estacionInicial = estaciones[estacionActual - 1];
+            if (estacionInicial != null)
+            {
+                estacionInicial.ActivarEstaEstacion();
+                Debug.Log($"[StationsHolder] ?? Estación inicial {estacionActual} activada (recordatorio disponible)");
+            }
+            else
+            {
+                Debug.LogWarning($"[StationsHolder] ?? No se encontró la estación {estacionActual} en el array");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"[StationsHolder] ?? currentStation inválido: {estacionActual}");
+        }
+        
         Debug.Log("[StationsHolder] ? Inicialización de estaciones completada");
     }
 }

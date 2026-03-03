@@ -75,6 +75,10 @@ public class WallTrigger : MonoBehaviour
                     StartCoroutine(LateCall());
                 }
             }
+            
+            // NUEVO: Activar esta estación (destruirá el recordatorio de la estación anterior)
+            station.ActivarEstaEstacion();
+            
             try{
                 pendiente.SetActive(true);
 
