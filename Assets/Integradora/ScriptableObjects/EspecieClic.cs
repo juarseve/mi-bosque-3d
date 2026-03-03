@@ -57,7 +57,9 @@ public class EspecieClic : ScriptableObject
         GaleryScript.visible = true;
         // Asignar referencia directa a Panel3 para que Limpiar() pueda reactivarlo
         GaleryScript.panel3Ref = Panel3;
-        // Asignar referencias a las cajas de objetivos
+        // Guardar referencia estática para restauración segura
+        ClickMouse.Panel3Static = Panel3;
+        // SIEMPRE asignar las cajas de objetivos al Galery
         AsignarCajasAGalery();
         //La siguiente linea se encarga de registrar un elemento en el libro.
         registrarEspecieId();

@@ -278,10 +278,26 @@ public class Seeds : MonoBehaviour, IInteractable
                     Debug.Log("[Seeds] Galería script configurado para: " + speciesName + " (visible=" + galeryScript.visible + ")");
                     
                     // PASO 3: Ocultar Panel3 (panel de especies objetivo)
-                    GameObject panel3 = GameObject.Find("Panel3");
+                    // Usar ClickMouse.Panel3Static si está disponible, ya que GameObject.Find
+                    // no funciona con objetos inactivos y el nombre real puede ser "Panel Controles"
+                    GameObject panel3 = null;
+                    if (ClickMouse.Panel3Static != null)
+                    {
+                        panel3 = ClickMouse.Panel3Static;
+                    }
+                    else
+                    {
+                        panel3 = GameObject.Find("Panel3");
+                        if (panel3 == null)
+                        {
+                            panel3 = GameObject.Find("Panel Controles");
+                        }
+                    }
                     if (panel3 != null)
                     {
                         panel3.SetActive(false);
+                        // Guardar referencia estática para restauración segura
+                        ClickMouse.Panel3Static = panel3;
                         // Asignar referencia directa a Panel3 para que Limpiar() pueda reactivarlo
                         galeryScript.panel3Ref = panel3;
                         

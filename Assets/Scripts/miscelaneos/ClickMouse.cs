@@ -14,6 +14,9 @@ public class ClickMouse : MonoBehaviour, IInteractable
     private MouseController mouseController;
     public static bool IsGalery = false;
     public GameObject CuadroChallengeDos;
+    
+    // Referencia estática a Panel3 para que siempre se pueda restaurar
+    public static GameObject Panel3Static;
     public bool isAnimal;
     public bool isPlant;
     public bool isKnown;
@@ -302,19 +305,16 @@ public class ClickMouse : MonoBehaviour, IInteractable
                 GaleryScript.visible = true;
                 // Asignar referencia directa a Panel3 para que Limpiar() pueda reactivarlo
                 GaleryScript.panel3Ref = Panel3;
-                // Asignar referencias a las cajas de objetivos (si están asignadas en esta especie)
-                // Nota: Solo las especies objetivo (Ardilla, Iguana, Pechiche) tendrán CuadroChallengeDos asignado
-                if (CuadroChallengeDos != null)
-                {
-                    // Determinar a qué especie pertenece esta caja y asignarla al Galery
-                    // Esto permite que Limpiar() sepa qué cajas reactivar
-                    AsignarCajasAGalery();
-                }
+                // SIEMPRE asignar las cajas de objetivos al Galery (no solo para especies objetivo)
+                // para que ReactivarCajasPendientes() pueda restaurarlas al cerrar la galería
+                AsignarCajasAGalery();
             }
         }
         
         if (Panel3 != null)
         {
+            // Guardar referencia estática para restauración segura
+            Panel3Static = Panel3;
             Panel3.SetActive(false);
         }
         
@@ -425,7 +425,29 @@ public class ClickMouse : MonoBehaviour, IInteractable
             }
         }
         
-        MenuPausa.instance.Reanudar();
+        // CRÍTICO: Restaurar Panel3 y resetear IsGalery ANTES de cualquier llamada
+        // que pueda lanzar excepciones, para garantizar que la UI siempre se restaure.
+        if (Panel3 != null)
+        {
+            Panel3.SetActive(true);
+        }
+        
+        IsGalery = false;
+        
+        if (Panel != null)
+        {
+            Panel.SetActive(false);
+        }
+        
+        if (Galeria != null)
+        {
+            Galeria.SetActive(false);
+        }
+        
+        if (MenuPausa.instance != null)
+        {
+            MenuPausa.instance.Reanudar();
+        }
         
         if (mouseController != null)
         {
@@ -434,23 +456,6 @@ public class ClickMouse : MonoBehaviour, IInteractable
         
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        
-        if (Panel != null)
-        {
-            Panel.SetActive(false);
-        }
-        
-        if (Panel3 != null)
-        {
-            Panel3.SetActive(true);
-        }
-        
-        if (Galeria != null)
-        {
-            Galeria.SetActive(false);
-        }
-        
-        IsGalery = false;
         
         if (cameraBlocker != null)
         {
@@ -466,24 +471,11 @@ public class ClickMouse : MonoBehaviour, IInteractable
         }
     }
     
-    /// <summary>
-    /// Busca y asigna las referencias de las 3 cajas objetivo al script Galery
-    /// para que pueda reactivarlas después de cerrar la galería
-    /// </summary>
+    // NOTA: La sincronización de las cajas de objetivos (ardilla, iguana, pechiche)
+    // la maneja ChallengePass.SincronizarCajasConMision() cada frame.
+    // Ya no es necesario buscar y asignar las cajas aquí.
     private void AsignarCajasAGalery()
     {
-        // Buscar las cajas de objetivos en la escena
-        GameObject ardillaCaja = GameObject.Find("ArdillaCaja");
-        GameObject iguanaCaja = GameObject.Find("IguanaCaja");
-        GameObject pechicheCaja = GameObject.Find("PechicheCaja");
-        
-        if (GaleryScript != null)
-        {
-            if (ardillaCaja != null) GaleryScript.ardillaCajaRef = ardillaCaja;
-            if (iguanaCaja != null) GaleryScript.iguanaCajaRef = iguanaCaja;
-            if (pechicheCaja != null) GaleryScript.pechicheCajaRef = pechicheCaja;
-            
-            Debug.Log("[ClickMouse] Referencias de cajas asignadas a Galery");
-        }
+        // No-op: ChallengePass maneja la sincronización de cajas
     }
 }

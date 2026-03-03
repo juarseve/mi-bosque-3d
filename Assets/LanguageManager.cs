@@ -136,10 +136,8 @@ public class LanguageManager : MonoBehaviour
             textos["menu_pausa.mapa"] = mp.mapa;
             textos["menu_pausa.lobby"] = mp.lobby;
             textos["menu_pausa.salir"] = mp.salir;
-            textos["menu_pausa.diploma"] = mp.diploma;
             textos["menu_pausa.modo"] = mp.modo;
             textos["menu_pausa.continuar"] = mp.continuar;
-            textos["menu_pausa.noti_diploma"] = mp.noti_diploma;
 
             textos["menu_pausa.ajuste_resolucion"] = mp.ajuste_resolucion;
             textos["menu_pausa.calidad_maxima"] = mp.calidad_maxima;
@@ -827,10 +825,8 @@ public class LanguageManager : MonoBehaviour
         public string mapa;
         public string lobby;
         public string salir;
-        public string diploma;
         public string modo;
         public string continuar;
-        public string noti_diploma;
         public string ajuste_resolucion;
         public string calidad_maxima;
         public string calidad_media;

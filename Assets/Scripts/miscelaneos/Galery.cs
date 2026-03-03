@@ -156,86 +156,67 @@ public class Galery : MonoBehaviour
 
     public void Limpiar()
     {
-        titulo.text = String.Empty;
-        cuerpo.text = String.Empty;
-        buttonVideo.SetActive(true);
-        imagen.texture = null;
-        tree = null;
-        panelGaleria.SetActive(false);
-        imagenActual = 0;
-        
-        // Volver a mostrar Panel3 (especies objetivo) usando referencia directa
-        if (panel3Ref != null)
+        Debug.Log("[Galery] Limpiar() iniciado");
+        try
         {
-            panel3Ref.SetActive(true);
-            Debug.Log("[Galery] Panel3 (especies objetivo) reactivado usando referencia directa");
-            
-            // CRÍTICO: Reactivar las cajas de objetivos pendientes (especies no descubiertas)
-            ReactivarCajasPendientes();
+            titulo.text = String.Empty;
+            cuerpo.text = String.Empty;
+            buttonVideo.SetActive(true);
+            imagen.texture = null;
+            tree = null;
+            panelGaleria.SetActive(false);
+            imagenActual = 0;
         }
-        else
+        catch (Exception e)
         {
-            // Fallback: intentar buscar Panel3 si no hay referencia
-            GameObject panel3 = GameObject.Find("Panel3");
-            if (panel3 != null)
-            {
-                panel3.SetActive(true);
-                Debug.Log("[Galery] Panel3 (especies objetivo) reactivado usando GameObject.Find (fallback)");
-                ReactivarCajasPendientes();
-            }
-            else
-            {
-                Debug.LogWarning("[Galery] No se pudo encontrar Panel3 para reactivarlo");
-            }
+            Debug.LogWarning("[Galery] Error en Limpiar antes de RestaurarPanel3: " + e.Message);
+        }
+        finally
+        {
+            // SIEMPRE restaurar Panel3, incluso si algo falla arriba
+            RestaurarPanel3();
+            // Resetear IsGalery como respaldo (Continuar del BotonCerrar puede fallar
+            // si el Teca de referencia está inactivo)
+            ClickMouse.IsGalery = false;
+            Debug.Log("[Galery] Limpiar() completado, IsGalery=false");
         }
     }
     
     /// <summary>
-    /// Reactiva las cajas de objetivos (ardilla, iguana, pechiche) si las especies NO han sido descubiertas
+    /// Restaura Panel3 usando múltiples estrategias de fallback.
     /// </summary>
-    private void ReactivarCajasPendientes()
+    private void RestaurarPanel3()
     {
-        // Verificar qué especies faltan por descubrir usando BookPages.isDiscovered
-        if (BookPages.instance == null || BookPages.instance.nombres == null || BookPages.instance.isDiscovered == null)
+        if (panel3Ref != null)
         {
-            Debug.LogWarning("[Galery] No se puede verificar especies descubiertas - BookPages no disponible");
+            panel3Ref.SetActive(true);
+            Debug.Log("[Galery] Panel3 reactivado usando referencia directa");
             return;
         }
         
-        // Buscar índices de Ardilla, Iguana, Pechiche en el array de especies
-        int ardillaIndex = System.Array.IndexOf(BookPages.instance.nombres, "Ardilla de Guayaquil");
-        int iguanaIndex = System.Array.IndexOf(BookPages.instance.nombres, "Iguana");
-        int pechicheIndex = System.Array.IndexOf(BookPages.instance.nombres, "Pechiche");
-        
-        // Reactivar caja de Ardilla si NO ha sido descubierta
-        if (ardillaIndex >= 0 && ardillaIndex < BookPages.instance.isDiscovered.Length)
+        if (ClickMouse.Panel3Static != null)
         {
-            if (!BookPages.instance.isDiscovered[ardillaIndex] && ardillaCajaRef != null)
+            ClickMouse.Panel3Static.SetActive(true);
+            panel3Ref = ClickMouse.Panel3Static;
+            Debug.Log("[Galery] Panel3 reactivado usando ClickMouse.Panel3Static");
+            return;
+        }
+        
+        // Último recurso: buscar entre todos los RectTransform (incluye inactivos)
+        Debug.LogWarning("[Galery] panel3Ref es null, buscando Panel3 con FindObjectsOfTypeAll...");
+        RectTransform[] allRects = Resources.FindObjectsOfTypeAll<RectTransform>();
+        foreach (RectTransform rt in allRects)
+        {
+            if (rt.gameObject.name == "Panel Controles")
             {
-                ardillaCajaRef.SetActive(true);
-                Debug.Log("[Galery] ✓ Ardilla caja reactivada (especie no descubierta)");
+                rt.gameObject.SetActive(true);
+                panel3Ref = rt.gameObject;
+                Debug.Log("[Galery] Panel3 encontrado y reactivado: " + rt.gameObject.name);
+                return;
             }
         }
         
-        // Reactivar caja de Iguana si NO ha sido descubierta
-        if (iguanaIndex >= 0 && iguanaIndex < BookPages.instance.isDiscovered.Length)
-        {
-            if (!BookPages.instance.isDiscovered[iguanaIndex] && iguanaCajaRef != null)
-            {
-                iguanaCajaRef.SetActive(true);
-                Debug.Log("[Galery] ✓ Iguana caja reactivada (especie no descubierta)");
-            }
-        }
-        
-        // Reactivar caja de Pechiche si NO ha sido descubierta
-        if (pechicheIndex >= 0 && pechicheIndex < BookPages.instance.isDiscovered.Length)
-        {
-            if (!BookPages.instance.isDiscovered[pechicheIndex] && pechicheCajaRef != null)
-            {
-                pechicheCajaRef.SetActive(true);
-                Debug.Log("[Galery] ✓ Pechiche caja reactivada (especie no descubierta)");
-            }
-        }
+        Debug.LogError("[Galery] No se pudo encontrar Panel3 para reactivarlo");
     }
 }
 

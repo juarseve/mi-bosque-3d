@@ -8,13 +8,10 @@ public class pausa_script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Player.instance.playerData.finishedGame)
+        // Diploma option removed from pause menu
+        if (btnGuardarDiploma != null)
         {
-            btnGuardarDiploma.SetActive(true);
-        }
-        else
-        {
-            btnGuardarDiploma.SetActive(false);
+            Destroy(btnGuardarDiploma);
         }
     }
 

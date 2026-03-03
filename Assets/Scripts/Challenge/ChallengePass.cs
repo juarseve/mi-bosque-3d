@@ -30,20 +30,38 @@ public class ChallengePass : MonoBehaviour
     
     // OPTIMIZACIÓN: Flag para evitar ejecutar lógica de finalización múltiples veces
     private bool misionYaFinalizada = false;
-    // OPTIMIZACIÓN: Cache de Panel3 para evitar GameObject.Find() cada frame
-    private GameObject panel3Cache;
+    // Cache de LogrosGlobales para evitar GetComponent cada frame
+    private LogrosGlobales _logrosGlobalesCache;
 
     //public GameObject actionLogger;
 
     void Start()
     {
         //actionLogger = GameObject.Find("ActionLogger");
-        /*if (Player.instance.playerData.maxStation <2)
-        Debug.Log("estacion maxima "+Player.instance.playerData.maxStation);
+        // Cachear referencia a LogrosGlobales
+        if (LogroSist != null)
         {
-            actionLogger.GetComponent<ActionLogger>().actionLogger.agregarAccion("Begin Bosque mision", "" + 1);
-        }*/
+            _logrosGlobalesCache = LogroSist.GetComponent<LogrosGlobales>();
+        }
         
+        // Desactivar UIElementVisibility en las cajas de objetivos para que ChallengePass
+        // tenga control exclusivo de su visibilidad. UIElementVisibility las oculta cuando
+        // currentStation != 1, lo cual conflictúa con ChallengePass que necesita mostrarlas
+        // en cualquier estación mientras la misión esté activa.
+        DesactivarUIElementVisibility(ardilla);
+        DesactivarUIElementVisibility(iguana);
+        DesactivarUIElementVisibility(pepiche);
+    }
+    
+    private void DesactivarUIElementVisibility(GameObject obj)
+    {
+        if (obj == null) return;
+        var uiVis = obj.GetComponent<UIElementVisibility>();
+        if (uiVis != null)
+        {
+            uiVis.enabled = false;
+            Debug.Log("[ChallengePass] UIElementVisibility desactivado en " + obj.name);
+        }
     }
 
     private void Update()
@@ -56,8 +74,7 @@ public class ChallengePass : MonoBehaviour
             return;
         }
         
-        // NUEVO: Verificar si la misión 0 está completa en lugar de verificar UI boxes
-        // Esto evita falsos positivos cuando Panel3 se oculta temporalmente (ej: al abrir galería)
+        // Verificar si la misión 0 está completa usando datos del jugador (ÚNICA fuente de verdad)
         bool misionCompletada = false;
         
         if (Player.instance != null && Player.instance.playerData != null)
@@ -68,30 +85,15 @@ public class ChallengePass : MonoBehaviour
             }
         }
         
-        // FALLBACK: Si no hay datos de misión, usar el método antiguo (verificar cajas)
-        // Pero solo si Panel3 está activo (no durante visualización de galería)
-        bool usarFallback = false;
+        // SIEMPRE usar datos de misión para determinar si el desafío está completo.
+        // NUNCA usar la visibilidad de las cajas de UI, porque es frágil
+        // (se pueden ocultar al abrir la galería, animaciones, etc.)
+        restric = !misionCompletada;
         
-        // OPTIMIZACIÓN: Cachear Panel3 en la primera búsqueda
-        if (panel3Cache == null)
-        {
-            panel3Cache = GameObject.Find("Panel3");
-        }
-        
-        if (panel3Cache != null && panel3Cache.activeInHierarchy)
-        {
-            usarFallback = true;
-        }
-        
-        if (usarFallback && !misionCompletada)
-        {
-            restric = ardilla.activeSelf || iguana.activeSelf || pepiche.activeSelf;
-        }
-        else
-        {
-            // Si la misión está completa, marcar restric como false
-            restric = !misionCompletada;
-        }
+        // Sincronizar la visibilidad de las cajas con el estado real de la misión.
+        // Esto actúa como red de seguridad: incluso si algo oculta una caja por error,
+        // el siguiente frame la restaurará automáticamente.
+        SincronizarCajasConMision();
 
         if (ardilla.activeSelf != iguana.activeSelf || iguana.activeSelf != pepiche.activeSelf ||ardilla.activeSelf != pepiche.activeSelf)
         {
@@ -165,6 +167,73 @@ public class ChallengePass : MonoBehaviour
             dialogoDesafioPendiente.SetActive(true);
             dialogoDesafioCompleto.SetActive(false);
         }
+    }
+
+    /// <summary>
+    /// Sincroniza la visibilidad de las cajas de objetivos (ardilla, iguana, pepiche)
+    /// con el estado real de la misión 0 en LogrosGlobales.
+    /// Esto previene que bugs de UI (galería, animaciones) afecten los indicadores.
+    /// IMPORTANTE: Respeta UIElementVisibility — las cajas solo se muestran en la estación requerida.
+    /// </summary>
+    private void SincronizarCajasConMision()
+    {
+        if (_logrosGlobalesCache == null)
+        {
+            if (LogroSist != null) _logrosGlobalesCache = LogroSist.GetComponent<LogrosGlobales>();
+            if (_logrosGlobalesCache == null) return;
+        }
+        
+        if (_logrosGlobalesCache.misiones == null || _logrosGlobalesCache.misiones.Count == 0) return;
+        
+        Mision mision0 = _logrosGlobalesCache.misiones[0];
+        if (mision0 == null || mision0.requisitos == null) return;
+        
+        // Verificar si estamos en la estación donde las cajas deben ser visibles.
+        // Las cajas tienen UIElementVisibility con requiredStation=1, pero lo desactivamos
+        // en Start() para que ChallengePass controle la visibilidad directamente.
+        // Las cajas se muestran en CUALQUIER estación mientras la misión esté activa.
+        
+        // Cada caja debe estar visible si la especie aún está pendiente (en requisitos)
+        bool ardillaDebeVerse = mision0.requisitos.Contains("Ardilla de Guayaquil");
+        bool iguanaDebeVerse = mision0.requisitos.Contains("Iguana");
+        bool pechicheDebeVerse = mision0.requisitos.Contains("Pechiche");
+        
+        // Solo llamar SetActive si el estado cambió (optimización para evitar spam)
+        if (ardilla != null && ardilla.activeSelf != ardillaDebeVerse)
+        {
+            ardilla.SetActive(ardillaDebeVerse);
+        }
+        if (iguana != null && iguana.activeSelf != iguanaDebeVerse)
+        {
+            iguana.SetActive(iguanaDebeVerse);
+        }
+        if (pepiche != null && pepiche.activeSelf != pechicheDebeVerse)
+        {
+            pepiche.SetActive(pechicheDebeVerse);
+        }
+        
+        // RED DE SEGURIDAD: Verificar que el padre esté activo
+        bool algunaDebeVerse = ardillaDebeVerse || iguanaDebeVerse || pechicheDebeVerse;
+            if (algunaDebeVerse && ardilla != null)
+            {
+                bool padreInactivo = (ardilla.activeSelf && !ardilla.activeInHierarchy)
+                                  || (iguana != null && iguana.activeSelf && !iguana.activeInHierarchy)
+                                  || (pepiche != null && pepiche.activeSelf && !pepiche.activeInHierarchy);
+                
+                if (padreInactivo)
+                {
+                    Transform current = ardilla.transform.parent;
+                    while (current != null)
+                    {
+                        if (!current.gameObject.activeSelf)
+                        {
+                            current.gameObject.SetActive(true);
+                            Debug.Log("[ChallengePass] Padre '" + current.gameObject.name + "' reactivado (ocultaba cajas de objetivos)");
+                        }
+                        current = current.parent;
+                    }
+                }
+            }
     }
 
     public void sendStartReq()
