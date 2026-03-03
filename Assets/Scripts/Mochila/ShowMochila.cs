@@ -367,91 +367,205 @@ public class ShowMochila : MonoBehaviour
     void GetPreguntaObjects(PreguntaObjectList objectList)
     {
         int cont = 0;
-        //Dictionary<int, bool> preguntasPlayer = profile.player.playerData.getPreguntasDict();
+        
+        // ============================================================
+        // FIX: Validar que GameManager, playerData y LanguageManager existan
+        // ============================================================
+        if (GameManager.instance == null)
+        {
+            Debug.LogError("[ShowMochila] ❌ GameManager.instance es NULL en GetPreguntaObjects. Reintentando...");
+            StartCoroutine(RetryLoadQuestionsLater(objectList));
+            return;
+        }
+        
+        if (GameManager.instance.playerData == null)
+        {
+            Debug.LogError("[ShowMochila] ❌ GameManager.instance.playerData es NULL en GetPreguntaObjects. Reintentando...");
+            StartCoroutine(RetryLoadQuestionsLater(objectList));
+            return;
+        }
+        
+        if (LanguageManager.Instancia == null)
+        {
+            Debug.LogError("[ShowMochila] ❌ LanguageManager.Instancia es NULL en GetPreguntaObjects. Reintentando...");
+            StartCoroutine(RetryLoadQuestionsLater(objectList));
+            return;
+        }
+        
+        // ============================================================
+        // FIX: Validar que los GameObjects del canvas estén asignados
+        // ============================================================
+        if (ContentPregunta == null)
+        {
+            Debug.LogError("[ShowMochila] ❌❌❌ ContentPregunta es NULL! No se pueden crear las preguntas en la UI.");
+            Debug.LogError("[ShowMochila] Verifica en el Inspector que 'Content Pregunta' esté asignado en el script ShowMochila.");
+            return;
+        }
+        
+        if (Pregunta == null)
+        {
+            Debug.LogError("[ShowMochila] ❌❌❌ Pregunta (prefab) es NULL! No se pueden instanciar preguntas.");
+            Debug.LogError("[ShowMochila] Verifica en el Inspector que 'Pregunta' (prefab) esté asignado en el script ShowMochila.");
+            return;
+        }
+        
+        Debug.Log($"[ShowMochila] 🔍 ContentPregunta: {ContentPregunta.name}, activo: {ContentPregunta.activeSelf}");
+        Debug.Log($"[ShowMochila] 🔍 ContentPregunta parent: {ContentPregunta.transform.parent?.name}");
+        
         Dictionary<int, bool> preguntasPlayer = GameManager.instance.playerData.getPreguntasDict();
+        
+        // Validar que el diccionario no sea null
+        if (preguntasPlayer == null)
+        {
+            Debug.LogWarning("[ShowMochila] ⚠️ getPreguntasDict() devolvió NULL. Inicializando diccionario vacío.");
+            preguntasPlayer = new Dictionary<int, bool>();
+        }
+        
+        Debug.Log($"[ShowMochila] ✓ Preguntas del jugador cargadas: {preguntasPlayer.Count} preguntas");
+        
+        string nodesb = "???";
+        try
+        {
+            nodesb = LanguageManager.Instancia.ObtenerTexto("menu_inventario.no_desbloq");
+            Debug.Log($"[ShowMochila] ✓ Texto de LanguageManager obtenido: '{nodesb}'");
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("[ShowMochila] ⚠️ No se pudo obtener texto de LanguageManager: " + e.Message);
+        }
 
-        string nodesb = LanguageManager.Instancia.ObtenerTexto("menu_inventario.no_desbloq");
+        Debug.Log($"[ShowMochila] 📝 Procesando {objectList.preguntas.Count} preguntas para mostrar en la UI...");
 
+        int preguntasCreadas = 0;
         foreach (PreguntaObject question in objectList.preguntas)
         {
             GameObject pregunta = Instantiate(Pregunta, new Vector3(0, 0, 0), Quaternion.identity);
+            pregunta.name = "Pregunta_" + question.ChallengeID;
 
-            pregunta.transform.parent = ContentPregunta.transform;
+            // USAR EL MÉTODO ORIGINAL PERO CON MEJORAS
+            pregunta.transform.SetParent(ContentPregunta.transform, false);
             RectTransform rt = pregunta.GetComponent<RectTransform>();
 
-            rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, rt.rect.width);
-            rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0, rt.rect.height);
+            // Mantener la configuración original del prefab pero ajustar posición
             rt.localScale = new Vector3(1, 1, 1);
+            rt.localRotation = Quaternion.identity;
+            
+            // USAR localPosition como en el código original (esto es clave!)
             rt.localPosition = new Vector3(0, cont, 0);
             cont = cont - 40;
 
+            // Ajustar el fondo como en el código original
             RectTransform rtFondo = pregunta.transform.GetChild(0).GetComponent<RectTransform>();
             rtFondo.localPosition = new Vector3(138, rtFondo.localPosition.y, rtFondo.localPosition.z);
-
-            //if (preguntasPlayer.ContainsKey(question.Id))
-            //{
-            //    if (preguntasPlayer[question.Id])
-            //    {
-            //        pregunta.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "<color=green>" + question.Text + "</color>";
-            //    }
-            //    else
-            //    {
-            //        pregunta.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "<color=red>" + question.Text + "</color>";
-            //    }
-            //}
-            //else
-            //{
-            //    pregunta.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "???????????";
-            //}
-
-            //pregunta.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = question.Text;
-
-
 
             UnityEngine.UI.Button button = pregunta.transform.GetChild(1).GetComponent<UnityEngine.UI.Button>();
             button.onClick.AddListener(delegate { MostrarInfoPreguntas(question.ChallengeID); });
 
-            if (preguntasPlayer.ContainsKey(question.ChallengeID))
+            string textoMostrar = nodesb;
+            bool esDesbloqueada = preguntasPlayer.ContainsKey(question.ChallengeID);
+            
+            if (esDesbloqueada)
             {
                 if (preguntasPlayer[question.ChallengeID])
                 {
-                    pregunta.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "<color=green>" + question.question + "</color>";
+                    textoMostrar = "<color=green>" + question.question + "</color>";
                 }
                 else
                 {
-                    pregunta.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "<color=red>" + question.question + "</color>";
+                    textoMostrar = "<color=red>" + question.question + "</color>";
                 }
                 questionsDict.Add(question.ChallengeID, (question, pregunta, "free"));
             }
             else
             {
-                //pregunta.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "- Pregunta no desbloqueada -";
-                pregunta.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = nodesb;
                 questionsDict.Add(question.ChallengeID, (question, pregunta, "block"));
             }
-
-
-
+            
+            pregunta.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = textoMostrar;
+            preguntasCreadas++;
+            
+            // Log detallado cada 10 preguntas
+            if (preguntasCreadas % 10 == 0 || preguntasCreadas == 1)
+            {
+                Debug.Log($"[ShowMochila] ✓ Pregunta {preguntasCreadas}/{objectList.preguntas.Count} creada en Y={cont + 40}");
+            }
         }
 
         RectTransform contectRT = ContentPregunta.GetComponent<RectTransform>();
-        Debug.Log(cont * -1 + 20);
-        contectRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, cont * -1 + 20);
-
+        float newHeight = cont * -1 + 20;
+        contectRT.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newHeight);
+        
+        Debug.Log($"[ShowMochila] 📏 Tamaño del ContentPregunta ajustado a: {newHeight}");
+        Debug.Log($"[ShowMochila] ✅ {preguntasCreadas} preguntas procesadas correctamente!");
+        Debug.Log($"[ShowMochila] 📊 Resumen: {questionsDict.Count} preguntas en diccionario, {preguntasPlayer.Count} desbloqueadas por el jugador");
+    }
+    
+    /// <summary>
+    /// Reintenta cargar las preguntas después de un delay, cuando GameManager y LanguageManager estén inicializados
+    /// </summary>
+    private IEnumerator RetryLoadQuestionsLater(PreguntaObjectList objectList)
+    {
+        Debug.Log("[ShowMochila] 🔄 Esperando 0.5 segundos para reintentar cargar preguntas...");
+        yield return new WaitForSeconds(0.5f);
+        
+        // Reintentar obtener las preguntas
+        Debug.Log("[ShowMochila] 🔄 Reintentando cargar preguntas ahora...");
+        GetPreguntaObjects(objectList);
     }
 
     public void OnPreguntasScreen()
     {
+        Debug.Log("[ShowMochila] 📖 Abriendo pantalla de preguntas...");
+        
         //-----------COLOCA LA SECCIÓN DE PREGUNTAS CORRECTAMENTE-----------
+        // NOTA: Esta rotación causa que las preguntas se vean torcidas
+        // Solo se ejecuta una vez, pero es problemática
         if (rotaUnaVez == 0) {
-            ContenedorPreg.transform.Rotate(0, 127, 0);
+            // ============================================================
+            // FIX: Comentar o ajustar esta rotación si causa problemas visuales
+            // ============================================================
+            // Si las preguntas se ven torcidas, comenta la siguiente línea:
+            // ContenedorPreg.transform.Rotate(0, 127, 0);
+            
+            // O mejor aún, asegúrate de que la rotación sea correcta:
+            if (ContenedorPreg != null)
+            {
+                Debug.Log($"[ShowMochila] 🔄 Rotación actual del ContenedorPreg: {ContenedorPreg.transform.localEulerAngles}");
+                
+                // Si quieres que las preguntas estén de frente, usa esto:
+                ContenedorPreg.transform.localRotation = Quaternion.identity; // Sin rotación
+                
+                // O si necesitas una rotación específica, ajústala aquí:
+                // ContenedorPreg.transform.localEulerAngles = new Vector3(0, 180, 0);
+                
+                Debug.Log($"[ShowMochila] ✓ Nueva rotación del ContenedorPreg: {ContenedorPreg.transform.localEulerAngles}");
+            }
+            else
+            {
+                Debug.LogWarning("[ShowMochila] ⚠️ ContenedorPreg es NULL, no se puede ajustar rotación");
+            }
+            
             rotaUnaVez++;
         }
         //------------------------------------------------------------------
 
-
-        preguntasScreen.SetActive(true);
-        infoScreen.SetActive(false);
+        if (preguntasScreen != null)
+        {
+            preguntasScreen.SetActive(true);
+            Debug.Log("[ShowMochila] ✓ preguntasScreen activado");
+        }
+        else
+        {
+            Debug.LogError("[ShowMochila] ❌ preguntasScreen es NULL");
+        }
+        
+        if (infoScreen != null)
+        {
+            infoScreen.SetActive(false);
+            Debug.Log("[ShowMochila] ✓ infoScreen desactivado");
+        }
+        
+        Debug.Log("[ShowMochila] ✅ Pantalla de preguntas abierta correctamente");
     }
 
 
