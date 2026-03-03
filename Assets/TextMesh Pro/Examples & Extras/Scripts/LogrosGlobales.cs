@@ -468,7 +468,7 @@ public class LogrosGlobales : MonoBehaviour
         else
         {
             requisitosBlo = new List<string>();
-            requisitosComp = new List<string>() { "Alimentar al Gavilan" };
+            requisitosComp = new List<string>() { "Test Cadenas Tróficas" };
             requisitosHechos = new List<string>() { };
             reqEstaciones = new List<int>() { 4 };
 
