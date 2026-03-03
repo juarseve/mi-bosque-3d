@@ -468,7 +468,9 @@ public class LogrosGlobales : MonoBehaviour
         else
         {
             requisitosBlo = new List<string>();
-            requisitosComp = new List<string>() { "Alimentar al Gavilan" };
+            // ACTUALIZADO: Cambiar de "Alimentar al Gavilan" (sistema antiguo) a "Test Cadenas Tróficas" (sistema nuevo)
+            // Esto debe coincidir con lo que se envía en QuizGavilan.CompletarDesafio() línea ~788
+            requisitosComp = new List<string>() { "Test Cadenas Tróficas" };
             requisitosHechos = new List<string>() { };
             reqEstaciones = new List<int>() { 4 };
 
